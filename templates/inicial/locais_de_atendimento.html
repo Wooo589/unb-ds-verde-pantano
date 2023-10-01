@@ -90,9 +90,13 @@
         <section id="resultados-da-pesquisa">
             <h1><strong>RESULTADOS DA PESQUISA:</strong></h1>
             <ul>
-                <li>HOSPITAL 1<br/>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111 <span class="circles"><span class="c-orange"></span><span class="c-yellow"></span><span class="c-green"></span><span class="c-blue"></span><button class="info "><a href="#">Mais informações</a></button></li>
-                <li>HOSPITAL 2<br/>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111 <span class="circles"><span class="c-orange"></span><span class="c-yellow"></span></span><span class="c-green"></span><span class="c-blue"></span><button class="info"><a href="#">Mais informações</a></button></li>
-                <li>HOSPITAL 3<br/>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111 <span class="circles"><span class="c-orange"></span><span class="c-yellow"></span></span><span class="c-green"></span><span class="c-blue"></span><button class="info"><a href="#">Mais informações</a></button></li>
+                {% if hospitais %}
+                    {% for hospital in hospitais %}
+                        <li>{{ hospital.nome }}<br/>CEP: {{ hospital.cep }} <span class="circles"><span class="c-orange"></span><span class="c-yellow"></span><span class="c-green"></span><span class="c-blue"></span><button class="info "><a href="#">Mais informações</a></button></li>
+                    {% endfor %}
+                    {% else %}
+                        <li>Nenhum hospital encontrado</li>
+                {% endif %}
             </ul>
         </section> 
     </main>
