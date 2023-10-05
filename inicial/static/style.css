@@ -277,44 +277,49 @@ section#resultados-da-pesquisa > ul > li {
     padding: 20px 0 20px 25px;
     border-bottom: 1px solid gray;
 }
-.circles {
+/*.circles {
     display: flex;
     justify-content: space-around;
-}
+}*/
 .c-orange {
+    display: inline-block;
+    position: absolute;
     height: 30px;
     width: 30px;
     border-radius: 50%;
     border: 1px solid gray;
     background-color: var(--c-orange);
-    margin-top: 0px;
-    margin-right: 25px;
-    margin-bottom: 0px;
-    margin-left: 80px;
+    right: 572px;
 }
 .c-yellow {
+    display: inline-block;
+    position: absolute;
     height: 30px;
     width: 30px;
     border-radius: 50%;
     border: 1px solid gray;
     background-color: var(--c-yellow);
-    margin: 0px 25px;
+    right: 496px;
 }
 .c-green {
+    display: inline-block;
+    position: absolute;
     height: 30px;
     width: 30px;
     border-radius: 50%;
     border: 1px solid gray;
     background-color: var(--c-green);
-    margin: 0px 25px;
+    right: 420px;
 }
 .c-blue {
+    display: inline-block;
+    position: absolute;
     height: 30px;
     width: 30px;
     border-radius: 50%;
     border: 1px solid gray;
     background-color: var(--c-blue);
-    margin: 0px 25px;
+    right: 344px;
 }
 .info {
     font-family: var(--fonte-padrao);
