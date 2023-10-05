@@ -202,11 +202,11 @@ section#seletores > ul > li {
     left: 15px;
     color: #999;
     font-size: 20px;
-    line-height: 53px;
+    line-height: 30px;
     position: absolute;
 }
 .search input{
-    height: 53px;
+    height: 30px;
     width: 100%;
     outline: none;
     font-size: 17px;
@@ -216,7 +216,7 @@ section#seletores > ul > li {
 }
 .content .options{
     margin-top: 10px;
-    max-height: 250px;
+    max-height: 100px;
     overflow-y: auto;
     padding-right: 7px;
 }
@@ -232,9 +232,9 @@ section#seletores > ul > li {
     border-radius: 25px;;
 }
 .options li{
-    height: 50px;
-    padding: 0 13px;
-    font-size: 21px;
+    height: 25px;
+    padding: 0 70px;
+    font-size: 15px;
     border-radius: 5px;
 }
 .options li:hover, li.selected{
