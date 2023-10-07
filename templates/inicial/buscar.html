@@ -94,7 +94,7 @@
             <ul>
                 {% if hospitais %}
                     {% for hospital in hospitais %}
-                        <li>{{ hospital.nome }}<br/>{{ hospital.endereco }}<span class="circles"><span class="c-orange"></span><span class="c-yellow"></span><span class="c-green"></span><span class="c-blue"></span><button class="info "><a href="#">Mais informações</a></button></li>
+                        <li>{{ hospital.nome }}<br/>{{ hospital.get_categoria_display }}<span class="circles"><span class="c-orange"></span><span class="c-yellow"></span><span class="c-green"></span><span class="c-blue"></span><button class="info "><a href="#">Mais informações</a></button></li>
                     {% endfor %}
                     {% else %}
                         <li>Nenhum hospital encontrado</li>
