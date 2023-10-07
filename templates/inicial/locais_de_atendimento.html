@@ -1,35 +1,6 @@
+{% extends "inicial/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página - Locais de atendimento</title>
-    <link rel="shortcut icon" href="{% static 'img/favicon_io/favicon.ico' %}" typoe="image/x-icon">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-</head>
-<body>
-    <header>
-        <img id="logotipo" src="{% static 'img/novo-logotipo220px.png' %}" alt="MedConnect logo." />
-        <span id="spanPesquisar">
-            <form action="{% url 'buscar'%}">
-                <img src="{% static 'img/botao-lupa-pesquisa20px.png' %}" alt="ìcone de pesquisa (lupa).">
-                <input type="text" name="buscar" id="txtPesquisar" placeholder="Pesquisar...">
-                <button type="submit" id="btnPesquisar">Pesquisar</button>
-            </form>
-        </span>
-        <img id="log-cad" src="{% static 'img/botao-log-cad.PNG' %}" alt="Botão de login/cadastro." />
-        <!--<div id="division-line"></div>--> <!--Opcional-->
-        <nav>     
-            <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
-            <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
-            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
-            <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
-        </nav>
-    </header>
+{% block content %}
     <main>
         <section id="seletores">
             <div class="wrapper">
@@ -105,5 +76,4 @@
     <!--<footer>
         <p>Site criado por feudo 9 - "Verde Pântano".</p>
     </footer>-->
-</body>
-</html>
+{% endblock %}
