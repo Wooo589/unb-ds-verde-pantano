@@ -12,9 +12,10 @@ def buscar(request):
     hospitais = Hospital.objects.order_by("nome")
 
     if "buscar" in request.GET:
+        
         nome_a_buscar = request.GET['buscar']
 
         if nome_a_buscar:
             hospitais = hospitais.filter(nome__icontains=nome_a_buscar)
 
-    return render(request, "inicial/buscar.html", {"hospitais": hospitais})
+    return render(request, "inicial/buscar.html", {"hospitais": hospitais,})
