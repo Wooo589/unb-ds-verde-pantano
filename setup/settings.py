@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 DATABASES = {
     'default': {
               'ENGINE': 'django.db.backends.mysql',
-              'NAME': 'verdepantano',
+              'NAME': 'medconnect',
               'USER': 'Admin',
               'PASSWORD': str(os.getenv('DATABASE_KEY')),
               'HOST': 'localhost',
