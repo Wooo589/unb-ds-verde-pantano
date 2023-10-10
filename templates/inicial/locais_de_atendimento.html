@@ -1,0 +1,79 @@
+{% extends "inicial/base.html" %}
+{% load static %}
+{% block content %}
+    <main>
+        <section id="seletores">
+            <div class="wrapper">
+                <div class="select-btn">
+                    <span>SELECIONAR UF</span>
+                    <i class="uil uil-angle-down"></i>
+                </div>
+                <div class="content">
+                    <div class="search">
+                        <i class="uil uil-search"></i>
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                    <ul class="options"></ul>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="select-btn">
+                    <span>SELECIONAR CIDADE</span>
+                    <i class="uil uil-angle-down"></i>
+                </div>
+                <div class="content">
+                    <div class="search">
+                        <i class="uil uil-search"></i>
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                    <ul class="options"></ul>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="select-btn">
+                    <span>ESPECIALIDADE</span>
+                    <i class="uil uil-angle-down"></i>
+                </div>
+                <div class="content">
+                    <div class="search">
+                        <i class="uil uil-search"></i>
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                    <ul class="options"></ul>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="select-btn">
+                    <span>SELECIONAR LOCAL</span>
+                    <i class="uil uil-angle-down"></i>
+                </div>
+                <div class="content">
+                    <div class="search">
+                        <i class="uil uil-search"></i>
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                    <ul class="options"></ul>
+                </div>
+            </div>
+
+            <script src="{% static 'js/script-select-menu.js' %}"></script>
+
+            <button id="btnProcurar"><img src="{% static 'img/botao-lupa-pesquisa35px.png'%}" alt="Botão de pesquisa."></button>
+        </section>
+        <section id="resultados-da-pesquisa">
+            <!--<h1><strong>RESULTADOS DA PESQUISA:</strong></h1>-->
+            <ul>
+                {% if hospitais %}
+                    {% for hospital in hospitais %}
+                        <li>{{ hospital.nome }}<br/>{{ hospital.get_categoria_display }}<span class="circles"><span class="c-orange"></span><span class="c-yellow"></span><span class="c-green"></span><span class="c-blue"></span><button class="info "><a href="#">Mais informações</a></button></li>
+                    {% endfor %}
+                    {% else %}
+                        <li>Nenhum hospital encontrado</li>
+                {% endif %}
+            </ul>
+        </section> 
+    </main>
+    <!--<footer>
+        <p>Site criado por feudo 9 - "Verde Pântano".</p>
+    </footer>-->
+{% endblock %}
