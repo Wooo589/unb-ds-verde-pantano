@@ -44,6 +44,7 @@ class Hospital(models.Model):
     cep = models.CharField(max_length=20, null=False, blank=False, editable=False)
     categoria = models.CharField(max_length=100, choices=CATEGORIAS, default='')
     uf = models.CharField(max_length=100, choices=UFS, default='', editable=False)
+    municipio = models.CharField(max_length=150,  default='', editable=False)
     telefone = models.CharField(max_length=100, null=False, blank=False, default="Não informado")
     email = models.CharField(max_length=100, null=False, blank=False, default="Não informado")
 
