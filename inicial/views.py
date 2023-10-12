@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from inicial.models import Hospital
+from .models import Hospital
 
 def index(request):
     return render(request, ('inicial/index.html'))

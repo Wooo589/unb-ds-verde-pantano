@@ -43,6 +43,7 @@ class Command(BaseCommand):
         else:
             created = 0
             updated = 0
+            conectivos = ('de', 'da', 'das', 'do', 'dos', 'e')
 
             for i in range(0, len(df.index)):
 
@@ -51,14 +52,42 @@ class Command(BaseCommand):
                 else:
                     endereco = f"{df['NO_LOGRADOURO'].iloc[i]}" + f" {df['NO_COMPLEMENTO'].iloc[i]}" + f" {df['NU_ENDERECO'].iloc[i]}" + f" - {df['NO_BAIRRO'].iloc[i]}"
 
+
                 cnes = f"{df['CNES'].iloc[i]}".zfill(7)
-                nome = df['NOME_ESTABELECIMENTO'].iloc[i]
+
+                strings = f"{df['NOME_ESTABELECIMENTO'].iloc[i]}".lower().split()
+                nome = ""
+                for temp in strings:
+                    if temp not in conectivos:
+                        temp = temp.capitalize()
+                    nome = nome + temp
+                    nome = nome + " "
+                nome = nome.strip()
+
+                # print(nome)
+
                 cep = df['CO_CEP'].iloc[i]
                 categoria = df['DESC_NATUREZA_JURIDICA'].iloc[i]
                 uf = df['UF'].iloc[i]
-                municipio = df["MUNICIPIO"].iloc[i]
+
+                strings = f"{df['MUNICIPIO'].iloc[i]}".lower().split()
+                municipio = ""
+                for temp in strings:
+                    if temp not in conectivos:
+                        temp = temp.capitalize()
+                    municipio = municipio + temp
+                    municipio = municipio + " "
+                municipio = municipio.strip()
+
+                # print(municipio)
+
                 telefone = df["NU_TELEFONE"].iloc[i]
+                if telefone == '':
+                    telefone = "Telefone não informado"
+
                 email = df["NO_EMAIL"].iloc[i]
+                if email == '':
+                    email = "Email não informado"
 
                 obj, create = Hospital.objects.update_or_create(
                     cnes=cnes,
