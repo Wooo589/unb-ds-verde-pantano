@@ -5,7 +5,7 @@
     <span id="spanPesquisar">
         <form action="{% url 'buscar'%}">
             <img src="{% static 'img/botao-lupa-pesquisa20px.png' %}" alt="ìcone de pesquisa (lupa).">
-            <input type="text" name="buscar" id="txtPesquisar" placeholder="Pesquisar...">
+            {{ form }}
             <button type="submit" id="btnPesquisar">Pesquisar</button>
         </form>
     </span>

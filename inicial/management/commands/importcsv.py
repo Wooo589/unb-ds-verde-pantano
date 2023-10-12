@@ -52,7 +52,6 @@ class Command(BaseCommand):
                 else:
                     endereco = f"{df['NO_LOGRADOURO'].iloc[i]}" + f" {df['NO_COMPLEMENTO'].iloc[i]}" + f" {df['NU_ENDERECO'].iloc[i]}" + f" - {df['NO_BAIRRO'].iloc[i]}"
 
-
                 cnes = f"{df['CNES'].iloc[i]}".zfill(7)
 
                 strings = f"{df['NOME_ESTABELECIMENTO'].iloc[i]}".lower().split()
