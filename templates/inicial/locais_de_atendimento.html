@@ -3,8 +3,8 @@
 {% block content %}
     <main>
         <section id="seletores">
-            <div class="wrapper">
-                <div class="select-btn">
+            <div class="wrapper" id="selecionar_uf">
+                <div class="select-btn" id="selecionar_uf2">
                     <span>SELECIONAR UF</span>
                     <i class="uil uil-angle-down"></i>
                 </div>
@@ -16,8 +16,8 @@
                     <ul class="options"></ul>
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="select-btn">
+            <div class="wrapper" id="selecionar_cidade">
+                <div class="select-btn" id="selecionar_cidade2">
                     <span>SELECIONAR CIDADE</span>
                     <i class="uil uil-angle-down"></i>
                 </div>
@@ -29,8 +29,8 @@
                     <ul class="options"></ul>
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="select-btn">
+            <div class="wrapper" id="especialidade">
+                <div class="select-btn" id="especialidade2">
                     <span>ESPECIALIDADE</span>
                     <i class="uil uil-angle-down"></i>
                 </div>
@@ -42,8 +42,8 @@
                     <ul class="options"></ul>
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="select-btn">
+            <div class="wrapper" id="selecionar_local">
+                <div class="select-btn" id="selecionar_local2">
                     <span>SELECIONAR LOCAL</span>
                     <i class="uil uil-angle-down"></i>
                 </div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <script src="{% static 'js/script-select-menu.js' %}"></script>
+            <!--<script src="{% static 'js/script-select-menu.js' %}"></script>-->
 
             <button id="btnProcurar"><img src="{% static 'img/botao-lupa-pesquisa35px.png'%}" alt="Botão de pesquisa."></button>
         </section>

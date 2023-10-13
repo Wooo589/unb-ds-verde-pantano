@@ -349,4 +349,7 @@ footer {
     background-color: #064119;
     color: #F0F0F0
 }
+.select2-selection__arrow b{
+    display:none !important;
+}
 
