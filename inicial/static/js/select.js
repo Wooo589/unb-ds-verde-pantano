@@ -1,21 +1,3 @@
-var data = [
-    {
-        id: 0,
-        value: 'DF',
-        text: 'Distrito Federal'
-    },
-    {
-        id: 1,
-        value: 'SP',
-        text: 'São Paulo'
-    },
-    {
-        id: 2,
-        value: 'RR',
-        text: 'Roráima'
-    }
-];
-
 $(document).ready(function(){
     $(".select-btn#selecionar_uf2").click(function(){
         $(".wrapper#selecionar_uf").toggleClass("active");
@@ -32,8 +14,22 @@ $(document).ready(function(){
     $(".select-btn#selecionar_local2").click(function(){
         $(".wrapper#selecionar_local").toggleClass("active");
     });
+    
+    $.fn.select2.defaults.set("allowClear", "true");
 
-    $(".basic-select").select2({
-        placeholder: 'Pesquisar',
+    $(".select-uf").select2({
+        placeholder: 'Selecionar UF',
+    });
+
+    $(".select-cidade").select2({
+        placeholder: 'Selecionar Cidade',
+    });
+
+    $(".select-especialidade").select2({
+        placeholder: 'Selecionar Especialidade',
+    });
+
+    $(".select-local").select2({
+        placeholder: 'Selecionar Local',
     });
 });

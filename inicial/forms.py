@@ -1,4 +1,5 @@
 from django import forms
+from .models import Hospital
 
 class BuscarForms(forms.Form):
     buscar = forms.CharField(
@@ -9,6 +10,56 @@ class BuscarForms(forms.Form):
             attrs={
                 "id":"txtPesquisar",
                 "placeholder":"Pesquisar..."
+            }
+        )
+    )
+
+class FilterForms(forms.Form):
+
+    CHOICES = []
+    sub_choices = ["",""]
+    CHOICES.append(sub_choices)
+
+    for i, j in Hospital.UFS:
+        sub_choices = [i,j]
+        CHOICES.append(sub_choices)
+
+    uf = forms.ChoiceField(
+        required=False,
+        choices=CHOICES,
+        widget=forms.Select(
+            attrs={
+                "class":"select-uf",
+                "style":"width: 100%"
+            }
+        )
+    )
+
+    CHOICES = []
+    sub_choices = ["",""]
+    CHOICES.append(sub_choices)
+
+    for i, j in Hospital.objects.values_list("municipio", "uf").distinct():
+        sub_choices = [i,f"{i} - {j}"]
+        CHOICES.append(sub_choices)
+
+    cidade = forms.ChoiceField(
+        required=False,
+        choices=CHOICES,
+        widget=forms.Select(
+            attrs={
+                "class":"select-cidade",
+                "style":"width: 100%"
+            }
+        )
+    )
+
+    especialidade = forms.ChoiceField(
+        required=False,
+        widget=forms.Select(
+            attrs={
+                "class":"select-especialidade",
+                "style":"width: 100%"
             }
         )
     )
