@@ -4,43 +4,13 @@
     <main>
         <section id="seletores">
             <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR UF</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
+                {{ filter.uf }}
             </div>
-            <div class="wrapper" id="selecionar_cidade">
-                <div class="select-btn" id="selecionar_cidade2">
-                    <span>SELECIONAR CIDADE</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
+            <div class="wrapper">
+                {{ filter.municipio }}
             </div>
-            <div class="wrapper" id="especialidade">
-                <div class="select-btn" id="especialidade2">
-                    <span>ESPECIALIDADE</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
+            <div class="wrapper">
+                {{ filter.especialidade }}
             </div>
             <div class="wrapper" id="selecionar_local">
                 <div class="select-btn" id="selecionar_local2">

@@ -21,8 +21,8 @@ $(document).ready(function(){
         placeholder: 'Selecionar UF',
     });
 
-    $(".select-cidade").select2({
-        placeholder: 'Selecionar Cidade',
+    $(".select-municipio").select2({
+        placeholder: 'Selecionar Município',
     });
 
     $(".select-especialidade").select2({

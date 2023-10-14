@@ -43,12 +43,12 @@ class FilterForms(forms.Form):
         sub_choices = [i,f"{i} - {j}"]
         CHOICES.append(sub_choices)
 
-    cidade = forms.ChoiceField(
+    municipio = forms.ChoiceField(
         required=False,
         choices=CHOICES,
         widget=forms.Select(
             attrs={
-                "class":"select-cidade",
+                "class":"select-municipio",
                 "style":"width: 100%"
             }
         )
