@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,31 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página - Mais informações</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" typoe="image/x-icon">
-    <link rel="stylesheet" href="estilo/maisinformacoes.css">
+    <link rel="stylesheet" href="{% static 'maisinformacoes.css' %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 <body>
-    <header>
-        <img id="logotipo" src="../img/novo-logotipo220px.png" alt="MedConnect logo." />
-        <span id="spanPesquisar">
-            <img src="../img/botao-lupa-pesquisa20px.png" alt="ìcone de pesquisa (lupa)."/>
-            <input type="text" id="txtPesquisar" placeholder="Pesquisar..."/>
-            <button id="btnPesquisar">Pesquisar</button>
-        </span>
-        <img id="log-cad" src="../img/botao-log-cad.PNG" alt="Botão de login/cadastro." />
-        <div id="division-line"></div>
-        <nav>         
-            <a href="index.html" rel="prev" target="_self">INÍCIO</a>
-            <!--<span class="divisor">|</span>-->
-            <a href="locais_de_atendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
-            <!--<span class="divisor">|</span>-->
-            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
-            <!--<span class="divisor">|</span>-->
-            <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
-        </nav>
-    </header>
+    {% include "inicial/partials/_menu.html" %}
     <main>
         <!--<section id="seletores">
             <div class="wrapper">
@@ -93,11 +75,13 @@
             <i class="uil uil-angle-down"></i>
             <h1><strong>INFORMAÇÕES GERAIS</strong></h1>
             
-            <span class="nome-local"><strong>HOSPITAL 1</strong></span>
+            <span class="nome-local"><strong>{{ hospital.nome }}</strong></span>
             <br/>
-            <span class="gerais">Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span>
+            <span class="gerais">{{ hospital.endereço }}</span>
             <br/>
-            <span class="gerais">Contato: telefone/e-mail</span>
+            <span class="gerais">CEP: {{ hospital.cep }}</span>
+            <br/>
+            <span class="gerais">Contato: {{ hospital.telefone }}/{{ hospital.email }}</span>
             <br/>
             <span class="gerais">Avaliações:</span>
             <span class="c-orange"></span>

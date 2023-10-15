@@ -48,9 +48,20 @@ class Command(BaseCommand):
             for i in range(0, len(df.index)):
 
                 if df['NO_COMPLEMENTO'].iloc[i] == '':
-                    endereco = f"{df['NO_LOGRADOURO'].iloc[i]}" + f" {df['NU_ENDERECO'].iloc[i]}" + f" - {df['NO_BAIRRO'].iloc[i]}"
+                    strings = f"{df['NO_LOGRADOURO'].iloc[i]}" + f" {df['NU_ENDERECO'].iloc[i]}" + f" - {df['NO_BAIRRO'].iloc[i]}"
+                    strings = strings.lower().split()
                 else:
-                    endereco = f"{df['NO_LOGRADOURO'].iloc[i]}" + f" {df['NO_COMPLEMENTO'].iloc[i]}" + f" {df['NU_ENDERECO'].iloc[i]}" + f" - {df['NO_BAIRRO'].iloc[i]}"
+                    strings = f"{df['NO_LOGRADOURO'].iloc[i]}" + f" {df['NO_COMPLEMENTO'].iloc[i]}" + f" {df['NU_ENDERECO'].iloc[i]}" + f" - {df['NO_BAIRRO'].iloc[i]}"
+                    strings = strings.lower().split()
+
+                endereco = ""
+
+                for temp in strings:
+                    if temp not in conectivos:
+                        temp = temp.capitalize()
+                    endereco = endereco + temp
+                    endereco = endereco + " "
+                endereco = endereco.strip()
 
                 cnes = f"{df['CNES'].iloc[i]}".zfill(7)
 

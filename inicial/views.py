@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Hospital
 from .forms import *
 
@@ -33,3 +33,9 @@ def buscar(request):
     context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form}
 
     return render(request, "inicial/buscar.html", context)
+
+def mais_informacoes(request, hospital_cnes):
+    hospital = get_object_or_404(Hospital, pk=hospital_cnes)
+    context = {"hospital": hospital}
+
+    return render(request, "inicial/maisinformacoes.html", context)
