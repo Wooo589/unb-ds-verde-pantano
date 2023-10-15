@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página - Avaliar hospital</title>
+    <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilo/avaliarhospital.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+</head>
+<body>
+    <header>
+        <img id="logotipo" src="../img/novo-logotipo220px.png" alt="MedConnect logo."/>
+        <span id="spanPesquisar">
+            <img src="../img/botao-lupa-pesquisa20px.png" alt="icone de pesquisa (lupa)"/>
+            <input type="text" id="txtPesquisar" placeholder="Pesquisar...">
+            <button id="btnPesquisar">Pesquisar</button>
+        </span>
+        <img id="log-cad" src="../img/botao-log-cad.PNG" alt="Botão de login/cadastro."/>
+        <div id="division-line"></div>
+        <nav>
+            <a href="#" rel="prev" target="_self">INÍCIO</a>
+            <a href="#" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <a href="#" target="_self">PRÉ-TRIAGEM</a>
+            <a href="#" target="_self">DÚVIDAS FREQUENTES</a>
+        </nav>
+    </header>
+    <main>
+        <i class="uil uil-angle-down"></i>
+        <h1><strong>AVALIAR LOCAL</strong></h1>
+        
+        <span class="nome-local"><strong>HOSPITAL 1</strong></span>
+        <br/>
+        <p class="gerais"><small>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</small></p>
+        <br/>
+        <p class="gerais"><small>Contato: telefone/e-mail</small></p>
+        <br/>
+        <!--<span class="gerais">Avaliações:</span>-->
+        <span class="c-orange"></span>
+        <span class="c-yellow"></span>
+        <span class="c-green"></span>
+        <span class="c-blue"></span>
+        <span class="tempos-de-espera">
+            <span class="laranja">x min</span>
+            <span class="amarelo">x min</span>
+            <span class="verde">x min</span>
+            <span class="azul">x min</span>
+        </span>
+        <br/>
+        <hr/>
+        <!--<p style="margin-top: 10px"><strong>VOCÊ ESTÁ AVALIANDO [NOME DO LOCAL].</strong></p>-->
+        <br/>
+        <p>• [NOME DO LOCAL] ESTÁ LOCALIZADO NO ENDEREÇO APRESENTADO?</p>
+        <span class="respostas">
+            <button class="sim">SIM</button>
+            <button class="nao">NÃO</button>
+            <button class="nao-sei">NÃO SEI</button>
+        </span>
+        <br/><br/>
+        <span>Se não, qual seria o endereço correto?</span>
+        <span id="endereco-correto">
+            <input type="text" id="inf-end-correto">
+        </span>
+        <br/><br/><br/>
+        <p>• O TELEFONE INFORMADO ESTÁ CORRETO?</p>
+        <span class="respostas">
+            <button class="sim">SIM</button>
+            <button class="nao">NÃO</button>
+            <button class="nao-sei">NÃO SEI</button>
+        </span>
+        <br/><br/>
+        <span>Se não, qual seria o novo contato?</span>
+        <span id="telefone-correto">
+            <input type="text" id="inf-tel-correto">
+        </span>
+        <br/><br/><br/>
+        <span>• QUAL DIA E HORÁRIO VOCÊ CHEGOU AO LOCAL?</span>
+        <span>
+            <input id="horario-entrada" type="datetime-local">
+        </span>
+        <br/><br/><br/>
+        <span>• QUAL DIA E HORÁRIO RECEBEU ATENDIMENTO?</span>
+        <span>
+            <input id="horario-atendimento"type="datetime-local">
+        </span>
+        <br/><br/><br/>
+        <span>• QUANTO TEMPO DUROU SEU ATENDIMENTO?</span>
+        <span>
+            <input id="tempo-atendimento" type="time">
+        </span>
+        <br/><br/><br/>
+        <p>• COMO VOCÊ AVALIA O ATENDIMENTO RECEBIDO?</p>
+        <div class="avaliacao">
+            <input type="radio" id="star5" name="avaliacao" value="5"/>
+            <label for="star5" title="text">5 estrelas</label>
+            <input type="radio" id="star4" name="avaliacao" value="4" />
+            <label for="star4" title="text">4 estrelas</label>
+            <input type="radio" id="star3" name="avaliacao" value="3" />
+            <label for="star3" title="text">3 estrelas</label>
+            <input type="radio" id="star2" name="avaliacao" value="2" />
+            <label for="star2" title="text">2 estrelas</label>
+            <input type="radio" id="star1" name="avaliacao" value="1" />
+            <label for="star1" title="text">1 estrela</label>
+        </div>
+        <br/><br/><br/>
+        <p style="margin-bottom: -8px;">VOCÊ TERIA MAIS ALGUMA OBSERVAÇÃO SOBRE O ATENDIMENTO RECEBIDO?</p>
+        <br/>
+        <span>
+            <input id="observacao" type="text">
+        </span>
+        <br/><br/>
+        <button id="enviar">ENVIAR</button>
+    </main>
+</body>
+</html>
