@@ -18,8 +18,13 @@ def buscar(request):
     buscar2 = BuscarForms()
     filter_form = FilterForms()
 
+    if "uf" in request.GET:
+        uf_a_buscar = request.GET['uf']
+
+        if uf_a_buscar:
+            hospitais = hospitais.filter(uf__iexact=uf_a_buscar)
+
     if "buscar" in request.GET:
-        
         nome_a_buscar = request.GET['buscar']
 
         if nome_a_buscar:
