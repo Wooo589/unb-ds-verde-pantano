@@ -39,3 +39,9 @@ def mais_informacoes(request, hospital_cnes):
     context = {"hospital": hospital}
 
     return render(request, "inicial/maisinformacoes.html", context)
+
+def avaliar_hospital(request, hospital_cnes):
+    hospital = get_object_or_404(Hospital, pk=hospital_cnes)
+    context = {"hospital": hospital}
+
+    return render(request, "inicial/avaliarhospital.html", context)
