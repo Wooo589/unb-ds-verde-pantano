@@ -67,108 +67,42 @@
         <!--HOSPITAIS MAIS PRÓXIMOS-->
         <p style="margin-left:50px;text-transform:uppercase;font-size:24px;">Hospitais mais próximos:</p>
         <div class="outer-flex-container">
-            <div class="inner-flex-container">
-                <div class="inner-flex-item">
-                <!--<p>icon</p>-->
-                <img src="https://cdn-icons-png.flaticon.com/128/3022/3022868.png">
+            {% for hospital in hospitais %}
+                <div class="inner-flex-container">
+                    <div class="inner-flex-item">
+                    <!--<p>icon</p>-->
+                    <img src="https://cdn-icons-png.flaticon.com/128/3022/3022868.png">
+                    </div>
+                    <div class="inner-flex-item">
+                    <!--<p style="text-transform:uppercase;font-weight:bold;">--><p class="nome-hospital">{{ hospital.nome }}<br></p>
+                    <p class="endereco-hospital">{{ hospital.endereço }}. {{ hospital.cep }}</p>
+                    </div>
+                    <!--TEMPOS DE ESPERA POR COR DA FICHA-->
+                    <div class="inner-flex-item">
+                        <p style="text-align:center;"><img src="{% static 'img/vermelho_r2.png'%}"><br>X min</p>
+                    </div>
+                    <div class="inner-flex-item">
+                        <p style="text-align:center;"><img src="{% static 'img/laranja_r2.png'%}"><br>X min</p>
+                    </div>
+                    <div class="inner-flex-item">
+                        <p style="text-align:center;"><img src="{% static 'img/amarelo_r2.png'%}"><br>X min</p>
+                    </div>
+                    <div class="inner-flex-item">
+                        <p style="text-align:center;"><img src="{% static 'img/verde_r2.png'%}"><br>X min</p>
+                    </div>
+                    <div class="inner-flex-item">
+                        <p style="text-align:center;"><img src="{% static 'img/azul_r2.png'%}"><br>X min</p>
+                    </div>
+                    <!--AVALIAÇÃO EM ESTRELAS; PRECISA DE INTEGRAÇÃO COM BACK END; PEGUEI DA W3SCHOOLS; REDIMENSIONAR, AUMENTAR TAMANHO-->
+                    <div class="inner-flex-item">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
                 </div>
-                <div class="inner-flex-item">
-                <!--<p style="text-transform:uppercase;font-weight:bold;">--><p class="nome-hospital">hospital regional de são bernardo<br></p>
-                <p class="endereco-hospital">QS 115, Avenida dos Pinheiros. CEP: 11-111.111</p>
-                </div>
-                <!--TEMPOS DE ESPERA POR COR DA FICHA-->
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/vermelho_r2.png'%}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/laranja_r2.png'%}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/amarelo_r2.png'%}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/verde_r2.png'%}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/azul_r2.png'%}"><br>X min</p>
-                </div>
-                <!--AVALIAÇÃO EM ESTRELAS; PRECISA DE INTEGRAÇÃO COM BACK END; PEGUEI DA W3SCHOOLS; REDIMENSIONAR, AUMENTAR TAMANHO-->
-                <div class="inner-flex-item">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="inner-flex-container">
-                <div class="inner-flex-item">
-                <!--<p>icon</p>-->
-                <img src="https://cdn-icons-png.flaticon.com/128/3022/3022868.png">
-                </div>
-                <div class="inner-flex-item">
-                <!--<p style="text-transform:uppercase;font-weight:bold;">--><p class="nome-hospital">hospital regional de são bernardo<br></p>
-                <p class="endereco-hospital">QS 115, Avenida dos Pinheiros. CEP: 11-111.111</p>
-                </div>
-                <!--TEMPOS DE ESPERA POR COR DA FICHA-->
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/vermelho_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/laranja_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/amarelo_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/verde_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/azul_r2.png' %}"><br>X min</p>
-                </div>
-                <!--AVALIAÇÃO EM ESTRELAS; PRECISA DE INTEGRAÇÃO COM BACK END; PEGUEI DA W3SCHOOLS; REDIMENSIONAR, AUMENTAR TAMANHO-->
-                <div class="inner-flex-item">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="inner-flex-container">
-                <div class="inner-flex-item">
-                <!--<p>icon</p>-->
-                <img src="https://cdn-icons-png.flaticon.com/128/3022/3022868.png">
-                </div>
-                <div class="inner-flex-item">
-                <!--<p style="text-transform:uppercase;font-weight:bold;">--><p class="nome-hospital">hospital regional de são bernardo<br></p>
-                <p class="endereco-hospital">QS 115, Avenida dos Pinheiros. CEP: 11-111.111</p>
-                </div>
-                <!--TEMPOS DE ESPERA POR COR DA FICHA-->
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/vermelho_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/laranja_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/amarelo_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/verde_r2.png' %}"><br>X min</p>
-                </div>
-                <div class="inner-flex-item">
-                    <p style="text-align:center;"><img src="{% static 'img/azul_r2.png' %}"><br>X min</p>
-                </div>
-                <!--AVALIAÇÃO EM ESTRELAS; PRECISA DE INTEGRAÇÃO COM BACK END; PEGUEI DA W3SCHOOLS; REDIMENSIONAR, AUMENTAR TAMANHO-->
-                <div class="inner-flex-item">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <p style="margin-left:50px;text-transform:uppercase;font-size:24px;">Notícias:</p>
         <!--OWL CAROUSEL-->

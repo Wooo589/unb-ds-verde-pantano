@@ -52,6 +52,8 @@
                         <button class="info "><a href="{% url "mais_informacoes" hospital.cnes %}">Mais informações</a></button>
                     </li>       
                 </ul>
+            {% empty %}
+                <li>Nenhum hospital encontrado</li>
             {% endfor %}
         </section> 
     </main>

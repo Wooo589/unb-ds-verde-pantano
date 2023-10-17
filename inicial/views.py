@@ -3,7 +3,10 @@ from .models import Hospital
 from .forms import *
 
 def index(request):
-    return render(request, ('inicial/index.html'))
+    hospitais = Hospital.objects.order_by("nome")[:3]
+    context = {"hospitais": hospitais}
+
+    return render(request, 'inicial/index.html', context)
 
 def locais_de_atendimento(request):
     hospitais = Hospital.objects.order_by("nome")
@@ -39,3 +42,10 @@ def mais_informacoes(request, hospital_cnes):
     context = {"hospital": hospital}
 
     return render(request, "inicial/maisinformacoes.html", context)
+
+def avaliar_hospital(request, hospital_cnes):
+    hospital = get_object_or_404(Hospital, pk=hospital_cnes)
+    buscar = BuscarForms()
+    context = {"hospital": hospital, "buscar":buscar}
+
+    return render(request, "inicial/avaliarhospital.html", context)
