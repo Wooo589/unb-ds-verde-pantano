@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,81 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página - Mais informações</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" typoe="image/x-icon">
-    <link rel="stylesheet" href="{% static 'maisinformacoes.css' %}">
+    <link rel="stylesheet" href="estilo/maisinformacoes.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 <body>
-    {% include "inicial/partials/_menu.html" %}
+    <header>
+        <img id="logotipo" src="../img/novo-logotipo220px.png" alt="MedConnect logo." />
+        <span id="spanPesquisar">
+            <img src="../img/botao-lupa-pesquisa20px.png" alt="ìcone de pesquisa (lupa)."/>
+            <input type="text" id="txtPesquisar" placeholder="PESQUISAR..."/>
+            <!--<button id="btnPesquisar">Pesquisar</button>-->
+            <a href="FazerLogin.html">
+                <input class="login_box" type="button" value="LOGIN/CADASTRO">
+            </a>
+                
+        </span>
+        <!--<img id="log-cad" src="../img/botao-log-cad.PNG" alt="Botão de login/cadastro." />
+        <div id="division-line"></div>-->
+        <nav>         
+            <a href="index.html" rel="prev" target="_self">INÍCIO</a>
+            <!--<span class="divisor">|</span>-->
+            <a href="locais_de_atendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <!--<span class="divisor">|</span>-->
+            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+            <!--<span class="divisor">|</span>-->
+            <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!-- 'target="_self"': continua na mesma aba. --> 
+        </nav>
+    </header>
     <main>
-        <!--<section id="seletores">
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR UF</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR CIDADE</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>ESPECIALIDADE</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR LOCAL</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
-            </div>
-
-            <script src="js/script-select-menu.js"></script>
-
-            <button id="btnProcurar"><img src="img/botao-lupa-pesquisa35px.png" alt="Botão de pesquisa."></button>
-        </section>-->
         <section id="inf-gerais">
             <i class="uil uil-angle-down"></i>
             <h1><strong>INFORMAÇÕES GERAIS</strong></h1>
             
-            <span class="nome-local"><strong>{{ hospital.nome }}</strong></span>
+            <span class="nome-local"><strong>HOSPITAL 1</strong></span>
             <br/>
-            <span class="gerais">{{ hospital.endereço }}</span>
+            <span class="gerais">Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span>
             <br/>
-            <span class="gerais">CEP: {{ hospital.cep }}</span>
-            <br/>
-            <span class="gerais">Contato: {{ hospital.telefone }}/{{ hospital.email }}</span>
+            <span class="gerais">Contato: telefone/e-mail</span>
             <br/>
             <span class="gerais">Avaliações:</span>
             <span class="c-orange"></span>
@@ -94,7 +56,7 @@
                 <span class="verde">x min</span>
                 <span class="azul">x min</span>
             </span>
-            <button class="info "><a href="{% url "avaliar_hospital" hospital.cnes %}">AVALIAR HOSPITAL</a></button>
+            <button class="info "><a href="#">AVALIAR HOSPITAL</a></button>
             <br/><br/><br/>
             <span class="detalhamento">ESPECIALIDADES ATENDIDAS:
             <ul>
