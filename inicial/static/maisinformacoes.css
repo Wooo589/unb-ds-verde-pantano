@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 *{
     margin: 0px;
@@ -36,33 +34,30 @@ header{
     position: fixed;
     background-color: var(--back-header1);
     margin: auto;
-    height: 10vh;
+    height: 60px;
     width: 100%;
     text-wrap: nowrap;
     z-index: 1;
 }
 #logotipo {
     display: inline-block;
+    position: relative;
+    left: -12px;
     padding-top: 15px;
     padding-bottom: 8px;
     padding-left: 100px;
     width: 280px;
 }
-/*#log-cad {
-    position: absolute;
-    top: 10px;
-    right: 70px;
-}*/
 .login_box{
     display: inline-block;
     position: fixed;
     width: 100px;
-    height: 6vh;
+    height: 40px;
     border: 0px;
     border-radius: 20px;
     font-size: 10px;
     margin-left: 50px;
-    right: -200px;
+    right: -220px;
 }
 #spanPesquisar {
     display: inline-block;
@@ -74,7 +69,7 @@ header{
     left: 50%;
     transform: translate(-50%);
     width: 700px;
-    height: /*32px*/6vh;
+    height: 40px;
     margin: auto;
     text-indent: 30px;
 }
@@ -95,12 +90,12 @@ header{
     font-size: 10px;
     border: none;
     border-radius: 20px;
-    height: /*30px*/6vh;
+    height: 40px;
     width: 700px;
     left: 50%;
     transform: translate(-50%);
 }
-#btnPesquisar {
+/* #btnPesquisar {
     display: flex;
     position: absolute;
     right: 0px;
@@ -117,18 +112,18 @@ header{
     width: 80px;
     align-items: center;
     cursor: pointer;
-}
+} */
 #spanPesquisar img {
     float:left;
 }
-#division-line{
+/* #division-line{
     width: 100%;
     height: 1px;
     margin-top: 1px;
     margin-bottom: 2px;
     z-index: 1;
     background-color: var(--division-line);
-}
+} */
 nav{
     text-align: center;
     font-family: var(--fonte-destaque);
@@ -159,126 +154,6 @@ body{
     font-family: var(--fonte-padrao);  
     margin: 0;
 }
-/*
-section#seletores {
-    position: fixed;
-    top: 55px;
-    bottom: 0px;
-    height: auto;
-    min-width: 250px;
-    margin-top: 0px;
-    margin-left: 0%;
-    padding-top: 55px; 
-    padding-right: 0px;
-    padding-left: 20px;
-    /*outline: 1px solid var(--letter-nav);-/
-}
-section#seletores > ul {
-    list-style-type: none;
-    margin-right: 0px;
-}
-section#seletores > ul > li {
-    padding: 20px 20px;
-    border-bottom: 1px solid gray;
-}
-.wrapper{
-    width: 220px;
-    padding-left: 20px;
-    margin-top: 10px; 
-    margin-right: 10px;
-    margin-bottom: 22px;
-    margin-left: 30px;
-}
-.select-btn, .options li{
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-}
-.select-btn{
-    height: 30px;
-    font-size: 15px;
-    padding: 0 0 0 7px;
-    border-bottom: 1px solid gray;
-    background: #e9e6e6;
-    justify-content: space-between;
-}
-.select-btn span{
-    left: 7px;
-}
-.select-btn i{
-    font-size: 31px;
-    transition: transform 0.3s linear;
-}
-.wrapper.active .select-btn i{
-    transform: rotate(-180deg);
-}
-.content{
-    display: none;
-    padding: 2px;
-    margin-top: 0px;
-    border-radius: 5px;
-    background: var(--back-nav);
-}
-.wrapper.active .content{
-    display: block;
-}
-.content .search{
-    position: relative;
-}
-.search i{
-    left: 15px;
-    color: #999;
-    font-size: 20px;
-    line-height: 30px;
-    position: absolute;
-}
-.search input{
-    height: 30px;
-    width: 100%;
-    outline: none;
-    font-size: 17px;
-    border-radius: 5px;
-    padding: 0 15px 0 43px;
-    border: 1px solid #b3b3b3;
-}
-.content .options{
-    margin-top: 10px;
-    max-height: 100px;
-    overflow-y: auto;
-    padding-right: 7px;
-}
-.options::-webkit-scrollbar{
-    width: 7px;
-}
-.options::-webkit-scrollbar-track{
-    background: #f1f1f1;
-    border-radius: 25px;
-}
-.options::-webkit-scrollbar-thumb{
-    background: #ccc;
-    border-radius: 25px;;
-}
-.options li{
-    height: 25px;
-    padding: 0 70px;
-    font-size: 15px;
-    border-radius: 5px;
-}
-.options li:hover, li.selected{
-    background: var(--division-line);
-}
-#btnProcurar {
-    position: absolute;
-    background-color: #BBD9FB;
-    border: none;
-    border-radius: 5px;;
-    padding: 5px;
-    margin-top: 0px;
-    right: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid gray;
-}
-*/
 section#inf-gerais {
     font-family: var(--fonte-destaque);
     position: absolute;
@@ -296,9 +171,11 @@ section#inf-gerais > h1 {
     color: var(--color3);
     background-color: #e2e2e2be;
     font-size: 19px;
-    padding: 5px 0 5px 25px;
-    margin-bottom: 15px;
-    left: -50px;
+    padding: 2px 0 2px 35px;
+    margin-bottom: 0px;
+    margin-right: -50px;
+    top: -15px;
+    left: -36px;
 }
 section#inf-gerais .nome-local{
     display: inline-block;
@@ -346,9 +223,10 @@ section#inf-gerais .detalhamento {
 #inf-gerais i{
     position: absolute;
     transform: rotate(90deg);
-    top: 15px;
-    left: 65px;
+    top: 0px;
+    left: 110px;
     font-size: 30px;
+    z-index: 2;
 }
 #inf-gerais i:hover{
     cursor: pointer;
