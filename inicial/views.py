@@ -49,3 +49,7 @@ def avaliar_hospital(request, hospital_cnes):
     context = {"hospital": hospital, "buscar":buscar}
 
     return render(request, "inicial/avaliarhospital.html", context)
+
+def cadastro(request):
+
+    return render(request, "inicial/criar_conta_2.html")
