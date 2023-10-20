@@ -4,7 +4,7 @@ from inicial.models import Hospital
 
 class Command(BaseCommand):
 
-    help = "Imports .csv file to Hospital"
+    help = "Imports .csv file data to Hospital"
 
     def add_arguments(self, parser):
         parser.add_argument('path')

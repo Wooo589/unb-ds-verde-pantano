@@ -39,7 +39,8 @@ def buscar(request):
 
 def mais_informacoes(request, hospital_cnes):
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
-    context = {"hospital": hospital}
+    buscar2 = BuscarForms()
+    context = {"hospital": hospital, "buscar":buscar2}
 
     return render(request, "inicial/maisinformacoes.html", context)
 
