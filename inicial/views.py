@@ -45,3 +45,9 @@ def avaliar_hospital(request, hospital_cnes):
     context = {"hospital": hospital}
 
     return render(request, "inicial/avaliarhospital.html", context)
+
+def sobre_nos(request):
+    return render(request, ('inicial\SobreNos.html'))
+
+def duvidas_frequentes(request):
+    return render(request, ('inicial\duvidas_frequentes.html'))
