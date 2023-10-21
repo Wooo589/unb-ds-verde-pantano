@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página - Avaliar hospital</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'avaliarhospital.css' %}">
+    <link rel="stylesheet" href="{% static "avaliarhospital.css" %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
 <body>
     <header>
-        <img id="logotipo" src="{% static 'img/novo-logotipo220px.png' %}" alt="MedConnect logo."/>
+        <img id="logotipo" src="{% static 'img/novo-logotipo220px.png'%}" alt="MedConnect logo."/>
         <span id="spanPesquisar">
-            <img src="{% static 'img/botao-lupa-pesquisa20px.png'%}" alt="icone de pesquisa (lupa)"/>
-            <input type="text" id="txtPesquisar" placeholder="Pesquisar...">
-            <button id="btnPesquisar">Pesquisar</button>
+            <form action="{% url 'buscar'%}">
+                <img src="{% static 'img/botao-lupa-pesquisa20px.png' %}" alt="ìcone de pesquisa (lupa).">
+                {{ buscar }}
+                <button type="submit" id="btnPesquisar">Pesquisar</button>
+            </form>
         </span>
-        <img id="log-cad" src="{% static 'img/botao-log-cad.PNG'%}" alt="Botão de login/cadastro."/>
+        <img id="log-cad" src="{% static 'img/botao-log-cad.png'%}" alt="Botão de login/cadastro."/>
         <div id="division-line"></div>
         <nav>
             <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
@@ -55,7 +57,7 @@
         <hr/>
         <!--<p style="margin-top: 10px"><strong>VOCÊ ESTÁ AVALIANDO [NOME DO LOCAL].</strong></p>-->
         <br/>
-        <p>• [NOME DO LOCAL] ESTÁ LOCALIZADO NO ENDEREÇO APRESENTADO?</p>
+        <p>• {{ hospital.nome }} ESTÁ LOCALIZADO NO ENDEREÇO APRESENTADO?</p>
         <span class="respostas">
             <button class="sim">SIM</button>
             <button class="nao">NÃO</button>

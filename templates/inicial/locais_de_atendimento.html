@@ -49,9 +49,11 @@
                             <span class="verde">x min</span>
                             <span class="azul">x min</span>
                         </span>
-                        <button class="info "><a href="{% url "mais_informacoes" hospital.cnes %}">Mais informações</a></button>
+                        <button class="info "><a href="{% url 'mais_informacoes' hospital.cnes %}">Mais informações</a></button>
                     </li>       
                 </ul>
+            {% empty %}
+                <li>Nenhum hospital encontrado</li>
             {% endfor %}
         </section> 
     </main>
