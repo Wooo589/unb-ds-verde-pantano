@@ -51,6 +51,11 @@ def avaliar_hospital(request, hospital_cnes):
 
     return render(request, "inicial/avaliarhospital.html", context)
 
-def cadastro(request):
+def sobre_nos(request):
+    return render(request, ('inicial/SobreNos.html'))
 
-    return render(request, "inicial/criar_conta_2.html")
+def duvidas_frequentes(request):
+    return render(request, ('inicial/duvidas_frequentes.html'))
+
+def cadastro(request):
+    return render(request, ('inicial/criar_conta_2.html'))

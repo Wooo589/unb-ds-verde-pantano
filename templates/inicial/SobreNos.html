@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
@@ -6,8 +8,8 @@
     <title>MedConnect</title>
     <link rel="shortcut icon" href="MIDIA/IMG/logo-ds.png" type="image/x-icon">
     <!-- CSS -->
-    <link rel="stylesheet" href="Sobre-Nos(Header).css">
-    <link rel="stylesheet" href="Sobre-Nos(Main).css">
+    <link rel="stylesheet" href="{% static 'Sobre-Nos(Header).css' %}">
+    <link rel="stylesheet" href="{% static 'Sobre-Nos(Main).css' %}">
     <!-- fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

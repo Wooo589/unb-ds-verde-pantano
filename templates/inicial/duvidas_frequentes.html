@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css002.css">
+    <link rel="stylesheet" href="{% static 'css002.css' %}">
 </head>
 <body>
     <div class="header">
@@ -13,9 +15,9 @@
             <!--<div class="header_container_item">1</div>
             <div class="header_container_item">2</div>-->
             <div class="header_container_item">
-                <img src="image_23.png">
+                <img src="{% static 'img/image_23.png' %}">
             </div>
-            <div class="header_container_item"><p class="logo"><a href="index002.html">MedConnect</a></p></div>
+            <div class="header_container_item"><p class="logo"><a href="{% static 'index002.html' %} ">MedConnect</a></p></div>
             <div class="header_container_item">
                 <form id="pesquisa">
                     <!--<input type="text" id="input-pesquisa" name="query" placeholder="Digite o nome de um hospital..." size="100">-->
@@ -24,7 +26,7 @@
             </div>
             <div class="header_container_item">
                 <!--BOTÃO LOGIN/CADASTRO-->
-                <button type="button" id="header_button">Login ou<br>Cadastro<img src="image_7.png" style="float:right;"></button>
+                <button type="button" id="header_button">Login ou<br>Cadastro<img src="{% static 'img/image_7.png' %}" style="float:right;"></button>
             </div>
         </div>
     </div>

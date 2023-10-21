@@ -12,11 +12,14 @@
     <img id="log-cad" src="{% static 'img/botao-log-cad.PNG' %}" alt="Botão de login/cadastro." />
     <!--<div id="division-line"></div>--> <!--Opcional-->
     <nav>     
-        <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
-        <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
+        <a href="{% url 'index' %}" rel="prev" target="_self">INÍCIO</a>
+        <a href="{% url 'locais_de_atendimento' %}" target="_self">LOCAIS DE ATENDIMENTO</a>
+
+        <!-- para o back-end: página em elaboração -->
         <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+
         <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
-        <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+        <a href="{% url 'duvidas_frequentes' %}" target="_self">DÚVIDAS FREQUENTES</a>
         <!-- 'target="_self"': continua na mesma aba. --> 
     </nav>
 </header>
