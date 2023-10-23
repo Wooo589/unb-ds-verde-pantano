@@ -14,7 +14,7 @@ def locais_de_atendimento(request):
     filter_form = FilterForms()
     context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form}
 
-    return render(request, 'inicial/locais_de_atendimento.html', context)
+    return render(request, 'inicial/locaisdeatendimento.html', context)
 
 def buscar(request):
     hospitais = Hospital.objects.order_by("nome")

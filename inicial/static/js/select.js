@@ -6,7 +6,7 @@ $(document).ready(function(){
     });
 
     $(".select-municipio").select2({
-        placeholder: 'Selecionar Município',
+        placeholder: 'Selecionar Cidade/Município',
     });
 
     $(".select-especialidade").select2({

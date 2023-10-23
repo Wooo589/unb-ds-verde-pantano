@@ -55,12 +55,10 @@ class Hospital(models.Model):
 class Avaliacao(models.Model):
 
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    endereco_correto = models.BooleanField(null=False, blank=False, default=True)
-    novo_endereco = models.CharField(max_length=150, null=False, blank=False, default="*")
-    telefone_correto = models.BooleanField(null=False, blank=False, default=True)
-    novo_telefone = models.CharField(max_length=100, null=False, blank=False, default="*")
+    atendimento = models.BooleanField(null=False, blank=False, default=True)
     duracao = models.DurationField(null=False, blank=False, default=timedelta(minutes=30))
-    avaliacao = models.IntegerField(null=False, blank=False, default=1)
+    avaliacao = models.IntegerField(null=False, blank=False, default=3)
+    observacao = models.TextField(null=False, blank=False, default="")
 
     def __str__(self):
         return self.hospital

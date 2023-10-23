@@ -53,17 +53,7 @@ class FilterForms(forms.Form):
             }
         )
     )
-
-    especialidade = forms.ChoiceField(
-        required=False,
-        widget=forms.Select(
-            attrs={
-                "class":"select-especialidade",
-                "style":"width: 100%"
-            }
-        )
-    )
-
+    
     CHOICES = []
     sub_choices = ["",""]
     CHOICES.append(sub_choices)
@@ -78,6 +68,16 @@ class FilterForms(forms.Form):
         widget=forms.Select(
             attrs={
                 "class":"select-categoria",
+                "style":"width: 100%"
+            }
+        )
+    )
+
+    especialidade = forms.ChoiceField(
+        required=False,
+        widget=forms.Select(
+            attrs={
+                "class":"select-especialidade",
                 "style":"width: 100%"
             }
         )
