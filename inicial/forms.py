@@ -63,3 +63,22 @@ class FilterForms(forms.Form):
             }
         )
     )
+
+    CHOICES = []
+    sub_choices = ["",""]
+    CHOICES.append(sub_choices)
+
+    for i, j in Hospital.CATEGORIAS:
+        sub_choices = [i,j]
+        CHOICES.append(sub_choices)
+
+    categoria = forms.ChoiceField(
+        required=False,
+        choices=CHOICES,
+        widget=forms.Select(
+            attrs={
+                "class":"select-categoria",
+                "style":"width: 100%"
+            }
+        )
+    )

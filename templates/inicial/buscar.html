@@ -13,21 +13,11 @@
                 <div class="wrapper">
                     {{ filter.especialidade }}
                 </div>
-                <div class="wrapper" id="selecionar_local">
-                    <div class="select-btn" id="selecionar_local2">
-                        <span>SELECIONAR LOCAL</span>
-                        <i class="uil uil-angle-down"></i>
-                    </div>
-                    <div class="content">
-                        <div class="search">
-                            <i class="uil uil-search"></i>
-                            <input type="text" placeholder="Pesquisar">
-                        </div>
-                        <ul class="options"></ul>
-                    </div>
+                <div class="wrapper">
+                    {{ filter.categoria }}
                 </div>
 
-                <script src="{% static 'js/script-select-menu.js' %}"></script>
+                <script src="{% static 'js/select.js' %}"></script>
 
                 <button type="submit" id="btnProcurar"><img src="{% static 'img/botao-lupa-pesquisa35px.png'%}" alt="Botão de pesquisa."></button>
             </form>    

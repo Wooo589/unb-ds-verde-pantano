@@ -27,6 +27,18 @@ def buscar(request):
         if uf_a_buscar:
             hospitais = hospitais.filter(uf__iexact=uf_a_buscar)
 
+    if "municipio" in request.GET:
+        municipio_a_buscar = request.GET['municipio']
+
+        if municipio_a_buscar:
+            hospitais = hospitais.filter(municipio__iexact=municipio_a_buscar)
+
+    if "categoria" in request.GET:
+        categoria_a_buscar = request.GET['categoria']
+
+        if categoria_a_buscar:
+            hospitais = hospitais.filter(categoria__iexact=categoria_a_buscar)
+
     if "buscar" in request.GET:
         nome_a_buscar = request.GET['buscar']
 
