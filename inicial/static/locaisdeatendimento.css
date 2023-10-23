@@ -43,37 +43,51 @@ body{
     min-height: 100vh;
 }
 header{
-    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; 
     top: 0px;
     background-color: var(--back-header1);
     margin: auto;
     height: 60px;
     width: 100%;
     text-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
     z-index: 2;
 }
 #logotipo{
-    position: fixed;
-    top: 15px;
-    left: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 3%;
+    margin-top: 7px;
+}
+#icone{
+    margin-right: 9px;
+    margin-bottom: 7px;
 }
 #titulo{
     font-family: var(--fonte-titulo);
     font-size: 27px;
     color: var(--clr3);
-    position: fixed;
-    top: 15px;
-    left: 111px;
+    font-weight: 400;
 }
 .login_box{
-    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     width: 150px;
     height: 36px;
     border: 0px;
     border-radius: 20px;
     font-size: 10px;
+    padding-left: 7px;
     top: 12px;
-    right: 60px;
+    margin-right: 4.44%; 
 }
 .active, .login_box:hover {
     border: 1px solid lightgray;
@@ -101,51 +115,50 @@ header{
     background-color: lightgray;
 }
 #spanPesquisar {
-    display: inline-block;
-    position: fixed;
     background-color: white;
     border: 1px solid #F9F9F9;
     border-radius: 20px;
-    top: 12px;
-    left: 50%;
-    transform: translate(-50%);
+    top: 11px;
+    min-width: 250px;
     width: 700px;
+    max-width: 700px;
     height: 36px;
-    margin: auto;
     text-indent: 30px;
+    margin: 0 30px;
 }
 #spanPesquisar img{
-    display: inline-block;
-    position: relative;
+    float:left;
+    position: absolute; 
+    padding-right: 7px;
     margin-top: 7px;
-    margin-left: 10px;
-    margin-right: 7px;
+    margin-left: -20px;
     margin-bottom: 0px;
     opacity: 0.6;
+    border-right: 1px solid gray;
 }
 #txtPesquisar {
-    position: fixed;
-    float: left;
+    float: left; 
     background-color: transparent;
-    padding-left: 40px;
-    font-size: 10px;
+    padding-left: 50px;
+    padding-bottom: 2px;
+    font-size: 12px;
+    font-family: var(--fonte-padrao);
     border: none;
     border-radius: 20px;
     height: 36px;
+    min-width: 250px;
     width: 700px;
-    left: 50%;
-    transform: translate(-50%);
-}
-#spanPesquisar img {
-    float:left;
-}
+    max-width: 700px;
+    outline: none;
+} 
 #spanPesquisar:hover {
     border: 1px solid lightgray;
 }
 nav{
-    display: block;
+    display: flex;
     position: fixed;
-    text-align: center;
+    flex-direction: row;
+    justify-content: center;
     font-family: var(--fonte-destaque);
     background-color: var(--back-nav1);
     top: 60px;
@@ -188,7 +201,7 @@ section#seletores > ul > li {
 }
 .wrapper{
     display: block;
-    width: 190px;
+    width: 180px;
     margin-top: 10px; 
     margin-right: 10px;
     margin-bottom: 22px;
@@ -299,14 +312,14 @@ section#resultados-da-pesquisa {
     font-family: var(--fonte-destaque);
     position: relative; 
     display: inline-block; 
-    top: 100px;
+    top: 40px;
     padding-top: 20px;
     padding-left: 30px;
     padding-bottom: 15px;
     border-radius: 20px;
     background-color: whitesmoke;
     margin: auto; 
-    margin-bottom: 200px;
+    margin-bottom: 120px;
     z-index: 1;
     left: 52%;
     transform: translate(-50%);
@@ -421,6 +434,9 @@ section#resultados-da-pesquisa > ul {
     text-decoration: none;
     text-align: center;
     font-size: 14px;
+}
+.info:hover{
+    border: 1px solid #196fd2;
 }
 footer {
     position: relative;  
