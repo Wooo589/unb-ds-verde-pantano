@@ -10,16 +10,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         .material-symbols-outlined {
-            display: inline-block;
-            position: fixed;
             font-variation-settings:
             'FILL' 10,
             'wght' 200,
             'GRAD' 0,
             'opsz' 36;
             z-index: 1;
-            right: 62px;
-            top: 12px;
             font-size: 36px;
             color: gray;
             font-family: 'Material Symbols Outlined';
@@ -29,16 +25,17 @@
 <body>
         <!-- MENU SUPERIOR -->
         <header>
-            <img id="logotipo" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
-            <span id="titulo">MedConnect</span>
+            <div id="logotipo">
+                <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+                <h2 id="titulo">MedConnect</h2>
+            </div>
             <span id="spanPesquisar">
                 <img src="../img/botao-lupa-pesquisa20px.png" alt="ìcone de pesquisa (lupa)."/>
                 <input type="text" id="txtPesquisar" placeholder="PESQUISAR..."/>
-                <!--<button id="btnPesquisar">Pesquisar</button>-->
             </span>
                 <!-- <a href="FazerLogin.html"> -->
             <button type="button" class="login_box">
-                <span style="position: fixed; top: 23px; right: 100px; font-size: 11px;">JOSEFO ALENCAR</span>
+                <span style="font-size: 11px;">JOSEFO ALENCAR</span>
                 <span class="material-symbols-outlined">account_circle</span>
             </button>
                 <!--</a>-->
@@ -69,7 +66,13 @@
             <div class="nome_local">
                 <h3><strong>HOSPITAL 1</strong></h3>
                 <span><small>Qs 115, Avenida dos Pinheiros.</small></span> <span><small>CEP: 11-111.111</small></span>
-                <span><small>Contato: telefone/e-mail</small></span>
+                <div id="container_contato">
+                    <span><small>Contato:</small></span> 
+                    <div id="contato">
+                        <span><small>telefone</small></span>
+                        <span><small>e-mail</small></span>
+                    </div>
+                </div>
             </div>
             <br/>
             <div class="tempos_de_espera">
