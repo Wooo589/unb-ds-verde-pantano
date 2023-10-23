@@ -64,4 +64,3 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return self.hospital
-    

@@ -22,7 +22,7 @@
         <DIV class="header_container">
             <div>
                 <!--colocar link para a pagina inicial-->
-                <a class="titulo" href="#">
+                <a class="titulo" href="{% url "index" %}">
                     <h1>MedConnect</h1>
                 </a>
                     <input class="buscador" type="text" placeholder="FAZER PESQUISA...">
@@ -36,10 +36,10 @@
             </div>
         </DIV>
         <nav>
-            <a href="#">PROCURAR HOSPITAL</a>
+            <a href="{% url "locais_de_atendimento" %}">PROCURAR HOSPITAL</a>
             <a href="#">PRÉ-TRIAGEM</a>
-            <a href="#">SOBRE NÓS</a>
-            <a href="#">DUVIDAS FREQUENTES</a>
+            <a href="{% url "sobre_nos" %}">SOBRE NÓS</a>
+            <a href="{% url "duvidas_frequentes" %}">DUVIDAS FREQUENTES</a>
         </nav>
     </header>
 
