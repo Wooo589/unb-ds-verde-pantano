@@ -82,3 +82,22 @@ class FilterForms(forms.Form):
             }
         )
     )
+
+class AvaliarForms(forms.Form):
+    horario_entrada = forms.DateTimeField(
+        required=True,
+        widget=forms.DateTimeInput(
+            attrs={
+                "id":"horario-entrada",
+                "type": "datetime-local"
+            }
+    ))
+
+    horario_atendimento = forms.DateTimeField(
+        required=True,
+        widget=forms.DateTimeInput(
+            attrs={
+                "id":"horario-atendimento",
+                "type": "datetime-local"
+            }
+    ))

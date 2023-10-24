@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import timedelta
+from datetime import date, timedelta
 
 class Hospital(models.Model):
 
@@ -54,11 +54,27 @@ class Hospital(models.Model):
     
 class Avaliacao(models.Model):
 
+    ATENDIMENTO = [
+        ("SIM", "Sim"),
+        ["NAO", "Não"]
+    ]
+
+    RISCO = [
+        ("EMERGENTE", "Emergente"),
+        ("MUITO_URGENTE", "Muito Urgente"),
+        ("URGENTE", "Urgente"),
+        ("POUCO_URGENTE", "Pouco Urgente"),
+        ("NAO_URGENTE", "Não Urgente")
+    ]
+
+    usuario = models.CharField(max_length=100, null=False, blank=False, default="")
+    data = models.DateField(null=False, blank=False, default=date.today())
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    atendimento = models.BooleanField(null=False, blank=False, default=True)
+    atendimento = models.CharField(max_length=100, null=False, blank=False, default="SIM", choices=ATENDIMENTO)
+    risco = models.CharField(max_length=100, null=False, blank=False, default="NAO_URGENTE", choices=RISCO)
     duracao = models.DurationField(null=False, blank=False, default=timedelta(minutes=30))
     avaliacao = models.IntegerField(null=False, blank=False, default=3)
     observacao = models.TextField(null=False, blank=False, default="")
 
     def __str__(self):
-        return self.hospital
+        return self.risco
