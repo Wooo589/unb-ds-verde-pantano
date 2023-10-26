@@ -101,14 +101,16 @@ class Command(BaseCommand):
 
                 obj, create = Hospital.objects.update_or_create(
                     cnes=cnes,
-                    nome=nome,
-                    endereço=endereco,
-                    cep=cep,
-                    categoria=categoria,
-                    uf=uf,
-                    municipio=municipio,
-                    telefone=telefone,
-                    email=email              
+                    defaults={
+                        "nome":nome,
+                        "endereço":endereco,
+                        "cep":cep,
+                        "categoria":categoria,
+                        "uf":uf,
+                        "municipio":municipio,
+                        "telefone":telefone,
+                        "email":email
+                    }            
                 )
 
                 if create == True:

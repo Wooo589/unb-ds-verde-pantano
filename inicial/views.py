@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Hospital
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import *
 from .forms import *
+from datetime import datetime
 
 def index(request):
     hospitais = Hospital.objects.order_by("nome")[:3]
@@ -14,7 +15,7 @@ def locais_de_atendimento(request):
     filter_form = FilterForms()
     context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form}
 
-    return render(request, 'inicial/locais_de_atendimento.html', context)
+    return render(request, 'inicial/locaisdeatendimento.html', context)
 
 def buscar(request):
     hospitais = Hospital.objects.order_by("nome")
@@ -59,7 +60,24 @@ def mais_informacoes(request, hospital_cnes):
 def avaliar_hospital(request, hospital_cnes):
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
     buscar = BuscarForms()
-    context = {"hospital": hospital, "buscar":buscar}
+    avaliar = AvaliarForms()
+    context = {"hospital": hospital, "buscar":buscar, "avaliar":avaliar}
+
+    if request.method == "POST":
+        risco = request.POST["risco"]
+        duracao = datetime.strptime(request.POST["horario_atendimento"],"%Y-%m-%dT%H:%M") - datetime.strptime(request.POST["horario_entrada"], "%Y-%m-%dT%H:%M")
+        avaliacao = request.POST["avaliacao"]
+        observacao = request.POST["observacao"]
+
+        a = Avaliacao.objects.create(
+            hospital=hospital,
+            risco=risco,
+            duracao=duracao,
+            avaliacao=avaliacao,
+            observacao=observacao
+        )
+
+        return redirect('locais_de_atendimento')
 
     return render(request, "inicial/avaliarhospital.html", context)
 

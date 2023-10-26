@@ -53,17 +53,7 @@ class FilterForms(forms.Form):
             }
         )
     )
-
-    especialidade = forms.ChoiceField(
-        required=False,
-        widget=forms.Select(
-            attrs={
-                "class":"select-especialidade",
-                "style":"width: 100%"
-            }
-        )
-    )
-
+    
     CHOICES = []
     sub_choices = ["",""]
     CHOICES.append(sub_choices)
@@ -82,3 +72,32 @@ class FilterForms(forms.Form):
             }
         )
     )
+
+    especialidade = forms.ChoiceField(
+        required=False,
+        widget=forms.Select(
+            attrs={
+                "class":"select-especialidade",
+                "style":"width: 100%"
+            }
+        )
+    )
+
+class AvaliarForms(forms.Form):
+    horario_entrada = forms.DateTimeField(
+        required=True,
+        widget=forms.DateTimeInput(
+            attrs={
+                "id":"horario-entrada",
+                "type": "datetime-local"
+            }
+    ))
+
+    horario_atendimento = forms.DateTimeField(
+        required=True,
+        widget=forms.DateTimeInput(
+            attrs={
+                "id":"horario-atendimento",
+                "type": "datetime-local"
+            }
+    ))
