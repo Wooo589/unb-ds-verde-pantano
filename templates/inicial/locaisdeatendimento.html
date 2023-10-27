@@ -42,10 +42,17 @@
             </form>
         </span>
             <!-- <a href="FazerLogin.html"> -->
-        <button type="button" class="login_box">
-            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
-            <span class="material-symbols-outlined">account_circle</span>
-        </button>
+        {% if user.is_authenticated %}
+            <button type="button" class="login_box">
+                <span style="font-size: 11px;">{{ user.username }}</span>
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+        {% else %}
+            <button type="button" class="login_box">
+                <span  style="font-size: 11px;"><a href="{% url "login" %}">Realizar Login</a></span>
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+        {% endif %}
             <!--</a>-->
                 
         <div class="content_account">

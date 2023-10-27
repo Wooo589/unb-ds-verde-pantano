@@ -9,5 +9,6 @@ urlpatterns = [
     path("avaliar/<int:hospital_cnes>", avaliar_hospital, name='avaliar_hospital'),
     path("sobre_nos", sobre_nos, name='sobre_nos'),
     path("duvidas_frequentes", duvidas_frequentes, name='duvidas_frequentes'),
-    path("cadastro", cadastro, name='cadastro')
+    path("cadastro", cadastro, name='cadastro'),
+    path("login", loginsite, name='login'),
 ]
