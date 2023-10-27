@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from .models import *
 from .forms import *
 from datetime import datetime
@@ -21,6 +23,7 @@ def buscar(request):
     hospitais = Hospital.objects.order_by("nome")
     buscar2 = BuscarForms()
     filter_form = FilterForms()
+    user = request.user
 
     if "uf" in request.GET:
         uf_a_buscar = request.GET['uf']
@@ -69,7 +72,7 @@ def avaliar_hospital(request, hospital_cnes):
         avaliacao = request.POST["avaliacao"]
         observacao = request.POST["observacao"]
 
-        a = Avaliacao.objects.create(
+        Avaliacao.objects.create(
             hospital=hospital,
             risco=risco,
             duracao=duracao,
@@ -89,3 +92,20 @@ def duvidas_frequentes(request):
 
 def cadastro(request):
     return render(request, ('inicial/criar_conta_2.html'))
+
+def loginsite(request):
+
+    if request.method == "POST":
+        email = request.POST["email"]
+        senha = request.POST["senha"]
+
+        user = authenticate(request, username=email, password=senha)
+
+        if user is not None:
+            login(request, user)
+            return redirect('locais_de_atendimento')
+
+        else:
+            return redirect('login')
+
+    return render(request, ('inicial/FazerLogin.html'))
