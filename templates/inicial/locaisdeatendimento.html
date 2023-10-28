@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página - Locais de atendimento</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{% static "locaisdeatendimento.css"%}">
+    <link rel="stylesheet" href="estilo/locaisdeatendimento.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .material-symbols-outlined {
             font-variation-settings:
@@ -22,37 +19,69 @@
             font-size: 36px;
             color: gray;
             font-family: 'Material Symbols Outlined';
-        }      
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="{% static "js/select.js"%}"></script>
+    <script>
+    $(document).ready(function(){
+       $("#btnPesquisar").click(function(){
+        $("#top-bar1").show("fast");
+        $("#fechar_aba").show("fast");
+      });
+      $("#locais_de_atendimento").click(function(){
+        $("#top-bar2").toggle("fast");
+        $("#top-bar1").hide();
+        $("#top-bar3").hide();
+      });
+      $("#outras_duvidas").click(function(){
+        $("#top-bar3").toggle("fast");
+        $("#top-bar1").hide();
+        $("#top-bar2").hide();
+      });
+      $("#fechar_aba").click(function(){
+        $("#top-bar1").hide();
+        $("#top-bar2").hide();
+        $("#top-bar3").hide();
+      });
+      $(".voltar").click(function(){
+        $("#top-bar1").show();
+        $("#top-bar2").hide();
+        $("#top-bar3").hide();
+      }); 
+    });
+    </script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
     <header>
         <div id="logotipo">
-            <img id="icone" src="{% static "img/estetoscopio32px.png" %}" alt="MedConnect logo." />
+            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
             <span id="titulo">MedConnect</span>
         </div>
-        <span id="spanPesquisar">
-            <form action="{% url 'buscar' %}">
-                <img src="{% static "img/botao-lupa-pesquisa20px.png"%}" alt="ìcone de pesquisa (lupa)."/>
-                {{ buscar }}
-            </form>
-        </span>
+        <nav>         
+            <a href="index.html" rel="prev" target="_self">INÍCIO</a>
+            <span class="divisor">|</span>
+            <a href="locais_de_atendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <span class="divisor">|</span>
+            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+            <span class="divisor">|</span>
+            <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!-- 'target="_self"': continua na mesma aba. --> 
+        </nav>
+        <!-- <span id="spanPesquisar">
+            <img src="../img/botao-lupa-pesquisa20px.png" alt="ìcone de pesquisa (lupa)."/>
+            <input type="text" id="txtPesquisar" placeholder="PESQUISAR..."/>
+        </span> -->
             <!-- <a href="FazerLogin.html"> -->
-        {% if user.is_authenticated %}
-            <button type="button" class="login_box">
-                <span style="font-size: 11px;">{{ user.username }}</span>
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
-        {% else %}
-            <button type="button" class="login_box">
-                <span  style="font-size: 11px;"><a href="{% url "login" %}">Realizar Login</a></span>
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
-        {% endif %}
+        <button id="btnPesquisar">
+            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
+            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
+        </button>
+        <button type="button" class="login_box">
+            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
             <!--</a>-->
                 
         <div class="content_account">
@@ -61,47 +90,109 @@
             <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
         </div>
 
-        <nav>         
-            <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
+        <!-- <nav>         
+            <a href="index.html" rel="prev" target="_self">INÍCIO</a>
             <span class="divisor">|</span>
-            <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <a href="locais_de_atendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
             <span class="divisor">|</span>
             <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+            <!-<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>--
             <span class="divisor">|</span>
-            <a href="{% url "duvidas_frequentes" %}" target="_self">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
-        </nav>
+            <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!- 'target="_self"': continua na mesma aba. -- 
+        </nav> -->
     </header>
 
     <main>
-        <section id="seletores">
-            <form action="{% url 'buscar' %}">
+        <!-- <section id="pesquisa"> -->
+            <div id="top-bar1" style="display: none;">
+                <span>Selecione o tipo de pesquisa:</span>
+                <button id="locais_de_atendimento">Locais de atendimento</button>
+                <button id="outras_duvidas">Outras dúvidas</button>
+                <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">
+                    close
+                    </span></button>
+                <!-- <input type="radio" name="..." id="procurar_locais">
+                <label for="procurar_locais" title="text" style="font-weight: 400;">Locais de atendimento</label>
+                <input type="radio" name="..." id="outras_duvidas">
+                <label for="outras_duvidas" title="text" style="font-weight: 400;">Outras dúvidas</label> -->
+            </div>
+            <div id="top-bar2" style="display: none;">
+                <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
+                <span class="spanPesquisar">
+                    <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
+                    <input type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
+                </span>
                 <div class="wrapper">
-                    {{ filter.uf }}
+                    <div class="select-btn">
+                        <span>UF</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
                 </div>
                 <div class="wrapper">
-                    {{ filter.municipio }}
+                    <div class="select-btn">
+                        <span>CIDADE</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
                 </div>
                 <div class="wrapper">
-                    {{ filter.especialidade }}
+                    <div class="select-btn">
+                        <span>ESPECIALIDADE</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
                 </div>
                 <div class="wrapper">
-                    {{ filter.categoria }}
+                    <div class="select-btn">
+                        <span>LOCAL</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
                 </div>
-
-                <button type="submit" id="btnProcurar"><img src="{% static 'img/botao-lupa-pesquisa35px.png'%}" alt="Botão de pesquisa."></button>
-            </form>
-        </section>
+                <button id="btnProcurar"><span class="material-symbols-outlined" style="color: black; font-size: 30px">search</span></button>
+            </div>
+            <div id="top-bar3" style="display: none;">
+                <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray; margin-left: 25px;"></i></button>
+                <span class="spanPesquisar">
+                    <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
+                    <input type="text" id="txt_pesquisar_locais" placeholder="PESQUISAR..."/>
+                </span>
+            </div>
+        <!-- </section> -->
         <section id="resultados-da-pesquisa">
-            <!--<h1><strong>RESULTADOS DA PESQUISA:</strong></h1>
-            <hr/>-->
+            <h1><strong>RESULTADOS DA PESQUISA:</strong></h1>
+            <hr/>
             <ul>
-                {% for hospital in hospitais %}
                 <li>
                     <div class="nome_local">
-                        <h3><strong>{{ hospital.nome }}</strong></h3>
-                        <span>{{ hospital.endereço }}. CEP: {{ hospital.cep }}</span> 
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
                     </div>
                     <div class="informacoes">
                         <div class="tempos_de_espera">
@@ -122,16 +213,285 @@
                                 <span>x min</span>  
                             </div>     
                         </div>
-                        <button class="info"><a href="{% url "mais_informacoes" hospital.cnes %}"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
                     </div>
                 </li>
-                {% endfor %}
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1 abcdef ab abcdfeghijk abcde fghijklmn xxxxx aaaaaaaaaaa bbbbbbbbbbbbbb cccccccccc ddddddddd eeeee ff ggggg</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbb ccccccccccc nnnnn ss kkkkkkkkk</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nome_local">
+                        <h3><strong>HOSPITAL 1</strong></h3>
+                        <span>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111</span> 
+                    </div>
+                    <div class="informacoes">
+                        <div class="tempos_de_espera">
+                            <div class="tempos">
+                                <span class="c-orange"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">
+                                <span class="c-yellow"></span>
+                                <span>x min</span>
+                            </div>   
+                            <div class="tempos">   
+                                <span class="c-green"></span>
+                                <span>x min</span>
+                            </div>
+                            <div class="tempos">  
+                                <span class="c-blue"></span> 
+                                <span>x min</span>  
+                            </div>     
+                        </div>
+                        <button class="info"><a href="#"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                    </div>
+                </li> 
             </ul>
         </section> 
     </main>
-        <script type="text/javascript" src="{% static "js/script-select-menu-e-login-box.js"%}"></script>
+        <script type="text/javascript" src="js/script-select-menu-e-login-box.js"></script> 
     <footer>
-        <p>MedConnect, c2023.</p>
+        <p>©MedConnect 2023</p>
         <p>Site criado por feudo 9 - "Verde Pântano".</p>
     </footer>
 </body>
