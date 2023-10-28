@@ -16,4 +16,8 @@ $(document).ready(function(){
     $(".select-categoria").select2({
         placeholder: 'Selecionar Categoria',
     });
+
+    $(".login_box").click(function(){
+        $(".content_account").toggleClass("active");
+    });
 });

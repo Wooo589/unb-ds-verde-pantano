@@ -85,13 +85,13 @@ def avaliar_hospital(request, hospital_cnes):
     return render(request, "inicial/avaliarhospital.html", context)
 
 def sobre_nos(request):
-    return render(request, ('inicial/SobreNos.html'))
+    return render(request, 'inicial/SobreNos.html')
 
 def duvidas_frequentes(request):
-    return render(request, ('inicial/duvidas_frequentes.html'))
+    return render(request, 'inicial/duvidas_frequentes.html')
 
 def cadastro(request):
-    return render(request, ('inicial/criar_conta_2.html'))
+    return render(request, 'inicial/criar_conta_2.html')
 
 def loginsite(request):
 
@@ -108,4 +108,10 @@ def loginsite(request):
         else:
             return redirect('login')
 
-    return render(request, ('inicial/FazerLogin.html'))
+    return render(request, 'inicial/FazerLogin.html')
+
+def esqueci_senha(request):
+    return render(request, 'inicial/esqueciSenha.html')
+
+def confirma_email(request):
+    return render(request, 'inicial/ConfirmaEmail.html')
