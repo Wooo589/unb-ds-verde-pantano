@@ -17,7 +17,7 @@
     --back-nav3: #76B88C;
     --black: #000000;
     --color3: #024053;
-    --c-orange: #FF9533;
+    --c-orange: #fda035;
     --c-yellow: #FBFE2D;
     --c-green: #6EFF57;
     --c-blue: #577CFF;
@@ -39,7 +39,7 @@ html{
     height: 100%;
 }
 body{
-    background-color: rgba(211, 211, 211, 0.623);
+    background-color: #ededed;
     min-height: 100vh;
 }
 header{
@@ -57,13 +57,14 @@ header{
     justify-content: space-between;
     align-items: center;
     z-index: 2;
+    border-bottom: 6px solid #33975488;
 }
 #logotipo{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 3%;
-    margin-top: 7px;
+    margin-top: 6px;
 }
 #icone{
     margin-right: 9px;
@@ -86,12 +87,16 @@ header{
     border-radius: 20px;
     font-size: 10px;
     padding-left: 7px;
-    top: 12px;
-    margin-right: 4.44%; 
+    margin-top: 7px;
+    margin-right: 3.6%; 
+    /* box-shadow: 1px 1px gray; */
+    border: 1px solid rgba(128, 128, 128, 0.616);
+    z-index: 3;
 }
 .active, .login_box:hover {
     border: 1px solid lightgray;
     cursor: pointer;
+    z-index: 3;
 }
 .content_account {
     padding: 0 18px;
@@ -105,42 +110,47 @@ header{
     top: 47px;
     right: 42px;
     font-size: 8px;
+    z-index: 3;
 }
 .content_account > button{
     border: 1px solid lightgray;
     border-radius: 0px;
     background-color: whitesmoke;
+    z-index: 3;
 }
 .content_account > button:hover{
     background-color: lightgray;
 }
-#spanPesquisar {
+.spanPesquisar {
+    display: flex;
+    flex-direction: row;
     background-color: white;
-    border: 1px solid #F9F9F9;
+    border: 1px solid rgba(128, 128, 128, 0.616);
     border-radius: 20px;
-    top: 11px;
+    top: 150px;
     min-width: 250px;
-    width: 700px;
-    max-width: 700px;
+    width: 750px;
+    max-width: 750px;
     height: 36px;
     text-indent: 30px;
-    margin: 0 30px;
+    margin: auto;
 }
-#spanPesquisar img{
+.spanPesquisar span{
     float:left;
-    position: absolute; 
-    padding-right: 7px;
-    margin-top: 7px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
     margin-left: -20px;
-    margin-bottom: 0px;
-    opacity: 0.6;
+    margin-bottom: 6px;
+    /* opacity: 0.6; */
     border-right: 1px solid gray;
 }
-#txtPesquisar {
-    float: left; 
+#txt_pesquisar_locais,
+#txt_outras_duvidas{
+    float: left;  
     background-color: transparent;
-    padding-left: 50px;
-    padding-bottom: 2px;
+    padding-left: 12px;
+    padding-bottom: 2px; 
     font-size: 12px;
     font-family: var(--fonte-padrao);
     border: none;
@@ -151,62 +161,154 @@ header{
     max-width: 700px;
     outline: none;
 } 
-#spanPesquisar:hover {
+.spanPesquisar:hover {
     border: 1px solid lightgray;
 }
 nav{
     display: flex;
-    position: fixed;
     flex-direction: row;
     justify-content: center;
     font-family: var(--fonte-destaque);
-    background-color: var(--back-nav1);
-    top: 60px;
-    width: 100%;
-    /*border-bottom: 2px solid var(--back-nav-selected1*/
-    /*#91d29fd5*/
+    margin-top: 10px;
+    padding: 0 10px 0 35px;;
 }
 nav > a {
     display: inline-block;
     color: var(--letter-nav);
-    padding: 6px 25px;
+    padding: 6px 12px;
     text-decoration: none;
     font-size: 15px;
+    font-weight: 500;
+    border-radius: 3px;
 }
 nav > a:hover {
-    background-color: var(--back-nav2);
+    text-decoration: underline;
+    cursor: pointer;
 }
 .divisor {
-    color: transparent;
+    color: var(--back-nav-selected1);
+    font-size: 7px;
+    margin-top: 10px;
 }
-section#seletores {
-    position: fixed;
-    top: 55px;
-    bottom: 0px;
+/* #pesquisa{
+    display: flex;
+    /* position: sticky; *
+    top: 150px;
+    flex-direction: row;
+    width: 80%;
+    /* left: 50%;
+    transform: translate(-50%);  *
+    margin: auto;
+    justify-content: center; 
+    align-items: center;
     height: auto;
-    margin-top: 0px;
-    margin-left: 0%;
-    padding-top: 55px; 
-    padding-right: 0px;
-    padding-left: 20px;
-    /*outline: 1px solid var(--letter-nav);*/
+    background-color: #196fd2;
+} */
+#btnPesquisar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    padding: 7px 10px;
+    margin-top: 10px;
+    margin-right: 7px;
 }
-section#seletores > ul {
+#btnPesquisar:hover{
+    background-color: #60c2797a;
+}
+#top-bar1{
+    /* display: flex;
+    flex-direction: row;  */
+    position: sticky;
+    top: 60px;
+    /* left: 50%;
+    transform: translate(-50%);  */
+    margin: auto;
+    width: 100%;
+    padding: .6% 28%;
+    justify-content: space-around;
+    align-items: center;
+    background-color:lightgray;
+    z-index: 2;
+}
+#locais_de_atendimento,
+#outras_duvidas{
+    font-family: var(--fonte-padrao);
+    font-size: 15px;
+    background-color: whitesmoke;
+    padding: 7px;
+    border: 1px solid rgba(128, 128, 128, 0.616);
+    border-radius: 3px;
+}
+#locais_de_atendimento:hover,
+#outras_duvidas:hover{
+    background-color: #cae2fe;
+    cursor: pointer;
+}
+#top-bar2{
+    display: flex; 
+    flex-direction: row; 
+    position: sticky;
+    top: 60px;
+    /* left: 50%;
+    transform: translate(-50%);  */
+    margin: auto;
+    height: auto;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+    padding: 0px 2%;
+    background-color:lightgray;
+}
+#top-bar3{
+    display: flex; 
+    flex-direction: row; 
+    position: sticky; 
+    top: 50px;
+    /* left: 50%;
+    transform: translate(-50%);  */
+    margin: auto;
+    height: auto;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+    padding: 7px 0px;
+    background-color:lightgray;
+}
+#fechar_aba{
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    z-index: 2;
+    background-color: transparent;
+    border: none;
+    /* border-radius: 2px; */
+    padding: 4px 8px 0px 8px;
+}
+#fechar_aba:hover{
+    background-color:rgb(190, 188, 188);
+    cursor: pointer;
+}
+#seletores > ul {
     list-style-type: none;
     margin-right: 0px;
 }
-section#seletores > ul > li {
+#seletores > ul > li {
     padding: 20px 20px;
-    border-bottom: 1px solid gray;
+    border: 1px solid rgba(128, 128, 128, 0.616);
 }
 .wrapper{
     display: block;
     width: 180px;
-    margin-top: 10px; 
-    margin-right: 10px;
-    margin-bottom: 22px;
-    margin-left: 40px;
-    
+    margin: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.616);
+    border-radius: 3px;
 }
 .wrapper span{
     font-family: var(--fonte-destaque);
@@ -221,7 +323,6 @@ section#seletores > ul > li {
     height: 30px;
     font-size: 15px;
     padding: 0 0 0 7px;
-    border-bottom: 1px solid gray;
     border-radius: 2.5px;
     background: whitesmoke;
     justify-content: space-between;
@@ -291,39 +392,57 @@ section#seletores > ul > li {
 .options li:hover, li.selected{
     background: var(--division-line);
 }
-#btnProcurar {
-    position: absolute;
-    background-color: #BBD9FB;
+.voltar{
+    background-color: transparent;
     border: none;
-    border-radius: 5px;;
-    padding: 5px;
-    margin-top: 0px;
-    right: 10px;
+    padding: 0 5px;
+    margin: 0px 10px;
+}
+.voltar:hover{
     cursor: pointer;
-    border-bottom: 1px solid gray;
+    background-color:rgb(190, 188, 188);
+}
+#btnProcurar {
+    /* position: absolute; */
+    background-color: #BBD9FB;
+    border: 1px solid var(--c-blue);
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+    margin: 0 25px 0 10px;
+    cursor: pointer;
     box-shadow: 1px 1px 10px 0px lightgray;
     z-index: 0;
 }
 #btnProcurar:hover{
     cursor:pointer;
-    border: 1px solid var(--c-blue);
+    background-color: #88bfff;
+}
+#icon_lupa{
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color: black;                
 }
 section#resultados-da-pesquisa {
     font-family: var(--fonte-destaque);
     position: relative; 
     display: inline-block; 
-    top: 40px;
-    padding-top: 20px;
-    padding-left: 30px;
+    top: 0px;
+    bottom: 0px;
+    padding-top: 30px;
+    /* padding-left: 30px; */
     padding-bottom: 15px;
     border-radius: 7px;
-    background-color: whitesmoke;
-    margin: auto; 
-    margin-bottom: 120px;
+    /* background-color: whitesmoke; */
+    /* border: 1px solid rgba(211, 211, 211, 0.623); */
+    /* margin: auto;  */
+    padding-bottom: 100px;
     z-index: 1;
-    left: 52%;
+    left: 50%;
     transform: translate(-50%);
-    width: 65%;
+    width: 75%;
 }
 section#resultados-da-pesquisa > h1 {
     color: var(--color3);
@@ -335,14 +454,19 @@ section#resultados-da-pesquisa  span{
     font-size: 15px;
 }
 section#resultados-da-pesquisa > ul > li{
+    display: flex;
     justify-content: space-between;
     min-height: 90px;
     max-width: 1015px;
     display: flex;
-    margin: auto;
+    margin: 5px auto;
     top: 100px;
     padding: 20px 0 20px 25px;
-    border-bottom: 1px solid gray;
+    border: 1px solid lightgray;
+    /* border-bottom: 1px solid gray; */
+    border-radius: 3px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 4px 0px lightgray;
 }
 section#resultados-da-pesquisa > ul {
     list-style-type: disc;
@@ -351,8 +475,9 @@ section#resultados-da-pesquisa > ul {
 .nome_local{
     display: flex;
     flex-flow: column;
+    word-wrap: break-word;
     min-height: 30px;
-    max-width: 350px;
+    max-width: 400px;
     justify-content: space-between;
     font-size: 15px;
 }
@@ -362,7 +487,8 @@ section#resultados-da-pesquisa > ul {
 .informacoes{
     display: flex;
     justify-content: space-between;
-    width: 470px;
+    align-items: center;
+    width: 500px;
     font-size: 15px;
 }
 .circles{
@@ -428,6 +554,7 @@ section#resultados-da-pesquisa > ul {
     margin-right: 20px;
     height: 36px;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    min-width: 155px;
 }
 .info > a {
     color: whitesmoke;
