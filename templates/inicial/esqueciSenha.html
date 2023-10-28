@@ -1,22 +1,24 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>modal</title>
-        <link rel="stylesheet" href="esqueciSenha.css">
+        <title>MedConnect</title>
+        <link rel="stylesheet" href="{% static 'esqueciSenha.css'%}">
     </head>
     <body>
         <div class="modal_box_esqueciSenha">
             <div class="modal_esqueciSenha">
-                <a href="FazerLogin.html"><img class="modal_icon_back" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a>
+                <a href="{% url "login" %}"><img class="modal_icon_back" src="{% static 'img/icone-voltar-overlay.png'%}" alt="icone voltar"></a>
                 <h1 class="modal_title">Esqueci minha senha</h1>
                 <p class="modal_phrase">
                     Para redefinir sua senha, informe o e-mail cadastrado na sua conta e 
                     lhe enviaremos um link com as instruções:
                 </p>
                 <input class="modal_email" type="email" placeholder="EMAIL">
-                <a href="ConfirmaEmail.html"><input class="modal_button" type="button" value="Enviar"></a>
+                <a href="{% url "confirma_email" %}"><input class="modal_button" type="button" value="Enviar"></a>
             </div>
         </div>
     </body>

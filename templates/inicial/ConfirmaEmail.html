@@ -1,15 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>modal</title>
-        <link rel="stylesheet" href="ConfirmaEmail.css"> <!--reciclei ocodigo do esqueci minha senha-->
+        <title>MedConnect</title>
+        <link rel="stylesheet" href="{% static 'ConfirmaEmail.css'%}"> <!--reciclei ocodigo do esqueci minha senha-->
     </head>
     <body>
         <div class="modal_box_notification">
             <div class="modal_notification">
-                <a href="esqueciSenha.html"><img class="modal_icon_back" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a>
+                <a href="{% url "esqueci_senha" %}"><img class="modal_icon_back" src="{% static 'img/icone-voltar-overlay.png'%}" alt="icone voltar"></a>
                 
                 <h1 class="modal_title">Confirmar email</h1>
                 <p class="modal_phrase">

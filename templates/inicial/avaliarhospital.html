@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página - Avaliar hospital</title>
+    <title>MedConnect</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="{% static "avaliarhospital.css" %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -38,10 +38,17 @@
                 </form>
             </span>
                 <!-- <a href="FazerLogin.html"> -->
-            <button type="button" class="login_box">
-                <span style="font-size: 11px;">JOSEFO ALENCAR</span>
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
+            {% if user.is_authenticated %}
+                <button type="button" class="login_box">
+                    <span style="font-size: 11px;">{{ user.username }}</span>
+                    <span class="material-symbols-outlined">account_circle</span>
+                </button>
+            {% else %}
+                <button type="button" class="login_box">
+                    <span  style="font-size: 11px;"><a href="{% url "login" %}">Realizar Login</a></span>
+                    <span class="material-symbols-outlined">account_circle</span>
+                </button>
+            {% endif %}
                 <!--</a>-->
                     
             <div class="content_account">
@@ -187,7 +194,7 @@
     </form>
     </div>
     </main>
-        <script type="text/javascript" src="{% static "js/script-login-box.js" %}"></script> 
+        <script type="text/javascript" src="{% static "js/script-select-menu-e-login-box.js" %}"></script> 
     <footer>
         <p>MedConnect, c2023.</p>
         <p>Site criado por feudo 9 - "Verde Pântano".</p>

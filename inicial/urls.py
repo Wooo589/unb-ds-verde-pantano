@@ -11,4 +11,6 @@ urlpatterns = [
     path("duvidas_frequentes", duvidas_frequentes, name='duvidas_frequentes'),
     path("cadastro", cadastro, name='cadastro'),
     path("login", loginsite, name='login'),
+    path("login/senha", esqueci_senha, name="esqueci_senha"),
+    path("login/confirmacao", confirma_email, name="confirma_email")
 ]

@@ -63,16 +63,16 @@
             <img id="icone" src="{% static "img/estetoscopio32px.png" %}" alt="MedConnect logo." />
             <span id="titulo">MedConnect</span>
         </div>
-        <nav>         
+        <nav>
             <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
             <span class="divisor">|</span>
-            <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <a href="{% url "locais_de_atendimento" %}" target="_self">PROCURAR HOSPITAL</a>
             <span class="divisor">|</span>
             <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
             <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
             <span class="divisor">|</span>
             <a href="{% url "duvidas_frequentes" %}" target="_self">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
+            <!-- 'target="_self"': continua na mesma aba. -->
         </nav>
         <!-- <span id="spanPesquisar">
             <img src="../img/botao-lupa-pesquisa20px.png" alt="ìcone de pesquisa (lupa)."/>
@@ -131,11 +131,11 @@
             </div>
             <div id="top-bar2" style="display: none;">
                 <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
+                <form action="{% url 'buscar' %}">
                 <span class="spanPesquisar">
                     <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
-                    <input type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
+                    <input name="buscar" type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
                 </span>
-                <form action="{% url 'buscar' %}">
                     <div class="wrapper">
                         {{ filter.uf }}
                     </div>
@@ -149,9 +149,8 @@
                         {{ filter.categoria }}
                     </div>
     
-                    <button type="submit" id="btnProcurar"><img src="{% static 'img/botao-lupa-pesquisa35px.png'%}" alt="Botão de pesquisa."></button>
+                    <button type="submit" id="btnProcurar"><span class="material-symbols-outlined" style="color: black; font-size: 30px">search</span></button>
                 </form>
-                <button id="btnProcurar"><span class="material-symbols-outlined" style="color: black; font-size: 30px">search</span></button>
             </div>
             <div id="top-bar3" style="display: none;">
                 <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray; margin-left: 25px;"></i></button>
@@ -162,8 +161,8 @@
             </div>
         <!-- </section> -->
         <section id="resultados-da-pesquisa">
-            <h1><strong>RESULTADOS DA PESQUISA:</strong></h1>
-            <hr/>
+            <!--<h1><strong>RESULTADOS DA PESQUISA:</strong></h1>
+            <hr/>-->
             <ul>
                 {% for hospital in hospitais %}
                 <li>
