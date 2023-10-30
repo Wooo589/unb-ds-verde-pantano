@@ -91,7 +91,35 @@ def duvidas_frequentes(request):
     return render(request, 'inicial/duvidas_frequentes.html')
 
 def cadastro(request):
-    return render(request, 'inicial/criar_conta_2.html')
+
+    cadastro = CadastroForms()
+
+    if request.method == "POST":
+        cadastro = CadastroForms(request.POST)
+
+        if cadastro.is_valid():
+            if cadastro["senha_1"].value() != cadastro["senha_2"].value():
+                return redirect('cadastro')
+
+            nome = cadastro["nome_cadastro"].value()
+            email = cadastro["email"].value()
+            senha = cadastro["senha_1"].value()
+
+            if User.objects.filter(username=nome).exists():
+                redirect('cadastro')
+
+            usuario = User.objects.create_user(
+                username=nome,
+                email=email,
+                password=senha
+            )
+
+            usuario.save()
+            return redirect('login')
+
+    context = {"cadastro":cadastro}
+
+    return render(request, 'inicial/criar_conta_2.html', context)
 
 def loginsite(request):
 
