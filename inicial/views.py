@@ -23,7 +23,6 @@ def buscar(request):
     hospitais = Hospital.objects.order_by("nome")
     buscar2 = BuscarForms()
     filter_form = FilterForms()
-    user = request.user
 
     if "uf" in request.GET:
         uf_a_buscar = request.GET['uf']
@@ -73,6 +72,7 @@ def avaliar_hospital(request, hospital_cnes):
         observacao = request.POST["observacao"]
 
         Avaliacao.objects.create(
+            usuario=request.user.username,
             hospital=hospital,
             risco=risco,
             duracao=duracao,

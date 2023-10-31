@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from datetime import date, timedelta
 
 class Hospital(models.Model):
@@ -48,10 +49,15 @@ class Hospital(models.Model):
     municipio = models.CharField(max_length=150,  default='')
     telefone = models.CharField(max_length=100, null=False, blank=False, default="Não informado")
     email = models.CharField(max_length=100, null=False, blank=False, default="Não informado")
+    tempo_emergente = models.IntegerField(null=False, blank=False, default=0)
+    tempo_muito_urgente = models.IntegerField(null=False, blank=False, default=0)
+    tempo_urgente = models.IntegerField(null=False, blank=False, default=0)
+    tempo_pouco_urgente = models.IntegerField(null=False, blank=False, default=0)
+    tempo_nao_urgente = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
         return self.nome
-    
+
 class Avaliacao(models.Model):
 
     ATENDIMENTO = [
@@ -68,7 +74,7 @@ class Avaliacao(models.Model):
     ]
 
     usuario = models.CharField(max_length=100, null=False, blank=False, default="")
-    data = models.DateField(null=False, blank=False, default=date.today())
+    data = models.DateField(null=False, blank=False, default=timezone.now)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     atendimento = models.CharField(max_length=100, null=False, blank=False, default="SIM", choices=ATENDIMENTO)
     risco = models.CharField(max_length=100, null=False, blank=False, default="NAO_URGENTE", choices=RISCO)

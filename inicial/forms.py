@@ -1,5 +1,5 @@
 from django import forms
-from .models import Hospital
+from .models import *
 
 class BuscarForms(forms.Form):
     buscar = forms.CharField(
