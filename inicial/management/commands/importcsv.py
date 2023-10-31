@@ -18,7 +18,7 @@ class Command(BaseCommand):
         df = pd.read_csv(options['path'])
         df = df.fillna('')
 
-        if options['uf']:
+        if options['uf'] != '*':
             df = df[df["UF"] == options['uf']]
             df = df.reset_index(drop=True)
 

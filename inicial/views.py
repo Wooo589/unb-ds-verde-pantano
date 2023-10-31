@@ -23,7 +23,6 @@ def buscar(request):
     hospitais = Hospital.objects.order_by("nome")
     buscar2 = BuscarForms()
     filter_form = FilterForms()
-    user = request.user
 
     if "uf" in request.GET:
         uf_a_buscar = request.GET['uf']
@@ -73,6 +72,7 @@ def avaliar_hospital(request, hospital_cnes):
         observacao = request.POST["observacao"]
 
         Avaliacao.objects.create(
+            usuario=request.user.username,
             hospital=hospital,
             risco=risco,
             duracao=duracao,
@@ -91,7 +91,35 @@ def duvidas_frequentes(request):
     return render(request, 'inicial/duvidas_frequentes.html')
 
 def cadastro(request):
-    return render(request, 'inicial/criar_conta_2.html')
+
+    cadastro = CadastroForms()
+
+    if request.method == "POST":
+        cadastro = CadastroForms(request.POST)
+
+        if cadastro.is_valid():
+            if cadastro["senha_1"].value() != cadastro["senha_2"].value():
+                return redirect('cadastro')
+
+            nome = cadastro["nome_cadastro"].value()
+            email = cadastro["email"].value()
+            senha = cadastro["senha_1"].value()
+
+            if User.objects.filter(username=nome).exists():
+                redirect('cadastro')
+
+            usuario = User.objects.create_user(
+                username=nome,
+                email=email,
+                password=senha
+            )
+
+            usuario.save()
+            return redirect('login')
+
+    context = {"cadastro":cadastro}
+
+    return render(request, 'inicial/criar_conta_2.html', context)
 
 def loginsite(request):
 
