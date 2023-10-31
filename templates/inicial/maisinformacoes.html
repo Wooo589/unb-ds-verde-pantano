@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedConnect</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" typoe="image/x-icon">
-    <link rel="stylesheet" href="{% static "maisinformacoes.css"%}">
+    <link rel="stylesheet" href="{% static "static/maisinformacoes.css"%}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
@@ -70,10 +70,10 @@
         </nav>
     </header>
     <main>
-        <i class="uil uil-angle-down"></i>
+        <a href="{% url "locais_de_atendimento" %}"><i class="uil uil-angle-down"></i></a>
         <h1><strong>INFORMAÇÕES GERAIS</strong></h1>
         <hr/>
-        <div id="inf_gerais">  
+        <div id="inf_gerais">
             <div id="gerais">  
                 <h3><strong>{{ hospital.nome }}</strong></h3>
                 <span><small>{{ hospital.endereço }}</small></span>

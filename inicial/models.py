@@ -4,6 +4,9 @@ from datetime import date, timedelta
 
 class Hospital(models.Model):
 
+    class Meta:
+        verbose_name_plural = "Hospitais"
+
     CATEGORIAS = [
         ("HOSPITAL_PUBLICO", "Público"),
         ("HOSPITAL_PRIVADO", "Privado"),
@@ -59,6 +62,10 @@ class Hospital(models.Model):
         return self.nome
 
 class Avaliacao(models.Model):
+
+    class Meta:
+        verbose_name = "avaliação"
+        verbose_name_plural = "Avaliações"
 
     ATENDIMENTO = [
         ("SIM", "Sim"),

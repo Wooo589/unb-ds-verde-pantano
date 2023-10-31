@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+:root{
+    --clr:#1D7FF1;
+    --clr2: #002653;
+} 
+body{
+    background-color: rgba(0, 0, 0, 0.285);
+}
+.modal_box_esqueciSenha{
+    position: fixed;
+    place-content: center;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+}
+.modal_esqueciSenha{
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+width: 400px;
+height: 320px;
+}
+.modal_title{
+    text-align: center;
+    font-size: 20px;
+    font-family: Josefin Sans;
+    margin-top: 20px;
+}
+.modal_phrase{
+    text-align: justify;
+    align-items: center;
+    font-family: Josefin Sans;
+    margin-top: 10px;
+    padding: 20px;
+}
+.modal_box_esqueciSenha .modal_esqueciSenha .modal_email{
+    display: block;
+    border-radius: 5px;
+    width: 320px;
+    height: 35px;
+    margin-top: 10px;
+    text-indent: 10px;
+    border: 1px solid #252525;
+    margin-left:20px;
+}
+.modal_button{
+    margin-top: 10px;
+    margin-left:20px;
+    font-family: Josefin Sans;
+    background-color: var(--clr);
+    padding: 10px;
+    width: 320px;
+    height: 35px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.modal_button:hover{
+    background-color: #002653;
+}
+.modal_icon_back{
+    width: 20px;
+}

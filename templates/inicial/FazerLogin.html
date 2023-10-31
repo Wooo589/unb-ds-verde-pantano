@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedConnect</title>
-    <link rel="stylesheet" href="{% static 'FazerLogin.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/FazerLogin.css'%}">
 </head>
 <body>
     <div class="modal_box_login">
@@ -14,9 +14,14 @@
             <a href="{% url "sobre_nos" %}"><img style="width: 20px; position: relative; bottom:20px; left: -15px;" src="{% static 'img/icone-voltar-overlay.png'%}" alt="icone voltar"></a>
             <h1 class="titule"> Fazer login</h1>
             <a style="text-decoration: none" href="{% url "cadastro" %}"><p class="CriarConta" >Criar conta</p></a>
+            {% for message in messages %}
+            <div>
+                <h2>{{message}}</h2>
+            </div>
+            {% endfor %}
             <form action="{% url "login" %}" method="POST">
             {% csrf_token %}
-                <input name="email" class="email_login" style="display: block;" type="text" placeholder="USUÁRIO">
+                <input name="usuario" class="email_login" style="display: block;" type="text" placeholder="USUÁRIO">
                 <input name="senha" class="password_login" style="display: block;" type="password" placeholder="SENHA">
                 <a style="text-decoration: none;" href="{% url "esqueci_senha" %}"><p class="link_esqueciSenha">esqueci a senha</p></a>
                 <button style="display: block;" type="submit" id="button_login">REALIZAR LOGIN</button>
