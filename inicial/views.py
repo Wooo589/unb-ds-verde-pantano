@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import *
 from .forms import *
@@ -125,7 +125,7 @@ def cadastro(request):
 
     return render(request, 'inicial/criar_conta_2.html', context)
 
-def loginsite(request):
+def login_site(request):
 
     if request.method == "POST":
         usuario = request.POST["usuario"]
@@ -149,3 +149,8 @@ def esqueci_senha(request):
 
 def confirma_email(request):
     return render(request, 'inicial/ConfirmaEmail.html')
+
+def logout_site(request):
+    logout(request)
+    messages.success(request, "Logout efetuado com sucesso!")
+    return redirect('locais_de_atendimento')

@@ -23,6 +23,8 @@
             font-family: 'Material Symbols Outlined';
         }      
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{% static "js/login.js"%}"></script>
 </head>
 <body>
         <!-- MENU SUPERIOR -->
@@ -54,7 +56,7 @@
             <div class="content_account">
                 <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
                 <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
-                <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
+                <button style="border-radius: 0px 0px 20px 20px;"><a href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
             </div>
     
             <nav>         
@@ -194,7 +196,6 @@
     </form>
     </div>
     </main>
-        <script type="text/javascript" src="{% static "js/script-select-menu-e-login-box.js" %}"></script> 
     <footer>
         <p>MedConnect, c2023.</p>
         <p>Site criado por feudo 9 - "Verde Pântano".</p>

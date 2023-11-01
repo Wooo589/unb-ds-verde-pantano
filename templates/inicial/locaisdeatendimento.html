@@ -55,7 +55,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{% static "js/select.js"%}"></script>
-    <script src="{% static 'js/script-select-menu-e-login-box.js'%}"></script>
+    <script src="{% static "js/login.js"%}"></script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
@@ -100,7 +100,7 @@
         <div class="content_account">
             <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
             <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
-            <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
+            <button style="border-radius: 0px 0px 20px 20px;"><a href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
         </div>
 
         <!-- <nav>         
