@@ -1,0 +1,45 @@
+{% load static %}
+
+<header>
+    <div id="logotipo">
+        <img id="icone" src="{% static "img/estetoscopio32px.png"%}" alt="MedConnect logo." />
+        <h2 id="titulo">MedConnect</h2>
+    </div>
+    <span id="spanPesquisar">
+        <form action="{% url 'buscar' %}">
+            <img src="{% static "img/botao-lupa-pesquisa20px.png"%}" alt="ìcone de pesquisa (lupa)."/>
+            {{ buscar }}
+        </form>
+    </span>
+        <!-- <a href="FazerLogin.html"> -->
+    {% if user.is_authenticated %}
+        <button type="button" class="login_box">
+            <span style="font-size: 11px;">{{ user.username }}</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+    {% else %}
+        <button type="button" class="login_box">
+            <span  style="font-size: 11px;"><a href="{% url "login" %}">Realizar Login</a></span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+    {% endif %}
+        <!--</a>-->
+            
+    <div class="content_account">
+        <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
+        <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
+        <button style="border-radius: 0px 0px 20px 20px;"><a href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
+    </div>
+
+    <nav>         
+        <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
+        <span class="divisor">|</span>
+        <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
+        <span class="divisor">|</span>
+        <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+        <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+        <span class="divisor">|</span>
+        <a href="{% url "duvidas_frequentes" %}" target="_self">DÚVIDAS FREQUENTES</a>
+        <!-- 'target="_self"': continua na mesma aba. --> 
+    </nav>
+</header>

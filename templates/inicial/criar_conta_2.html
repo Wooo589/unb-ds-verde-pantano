@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedConnect</title>
-    <link rel="stylesheet" href="{% static 'css_criarconta_2.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/css_criarconta_2.css' %}">
 </head>
 <body>
     <div class="multi-step-form-container">
@@ -44,21 +44,26 @@
             <p><input placeholder="Digite sua senha" oninput="this.className = ''"></p>
         </div>-->
         <section id="step-1" class="form-step">
-          <h2 class="font-normal">Informações Básicas</h2>
-          <!--campos de input do passo 1-->
-          <div class="mt-3">
-              <!--Vão aqui os campos de input..-->
+            <h2 class="font-normal">Informações Básicas</h2>
+            <!--campos de input do passo 1-->
+            {% for message in messages %}
+            <div class="mt-3">
+                <h3>{{message}}</h3>
+            </div>
+            {% endfor %}
+            <div class="mt-3">
+            <!--Vão aqui os campos de input..-->
             <!--<img src="https://electricwoodlands.com/wp-content/uploads/2021/06/Google_NoHover.png" style="width:60%;height:auto;">
             <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/FB_NoHover.png" style="width:60%;height:auto;">-->
             {% for field in  cadastro.visible_fields %}
                 <label for="{{ field.id_for_label }}"><b><br>{{ field.label }}</b></label>
                     {{ field }}
             {% endfor %}
-          </div>
-          <div class="mt-3">
-              <button class="button btn-navigate-form-step" type="button" step_number="2">Próximo</button>
-          </div>
-      </section>
+            </div>
+            <div class="mt-3">
+                <button class="button btn-navigate-form-step" type="button" step_number="2">Próximo</button>
+            </div>
+        </section>
 
         <!--conteúdo step 2
         <div class="tab">

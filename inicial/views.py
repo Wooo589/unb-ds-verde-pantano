@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import *
 from .forms import *
@@ -99,6 +100,7 @@ def cadastro(request):
 
         if cadastro.is_valid():
             if cadastro["senha_1"].value() != cadastro["senha_2"].value():
+                messages.error(request, "Digite senhas iguais para concluir o cadastro")
                 return redirect('cadastro')
 
             nome = cadastro["nome_cadastro"].value()
@@ -106,7 +108,8 @@ def cadastro(request):
             senha = cadastro["senha_1"].value()
 
             if User.objects.filter(username=nome).exists():
-                redirect('cadastro')
+                messages.error(request, "Usuário já existente")
+                return redirect('cadastro')
 
             usuario = User.objects.create_user(
                 username=nome,
@@ -115,25 +118,28 @@ def cadastro(request):
             )
 
             usuario.save()
+            messages.success(request, "Usuário cadastrado com sucesso")
             return redirect('login')
 
     context = {"cadastro":cadastro}
 
     return render(request, 'inicial/criar_conta_2.html', context)
 
-def loginsite(request):
+def login_site(request):
 
     if request.method == "POST":
-        email = request.POST["email"]
+        usuario = request.POST["usuario"]
         senha = request.POST["senha"]
 
-        user = authenticate(request, username=email, password=senha)
+        user = authenticate(request, username=usuario, password=senha)
 
         if user is not None:
             login(request, user)
+            messages.success(request, f"{usuario} logado com sucesso!")
             return redirect('locais_de_atendimento')
 
         else:
+            messages.error(request, "Usuário ou senha incorretos")
             return redirect('login')
 
     return render(request, 'inicial/FazerLogin.html')
@@ -143,3 +149,8 @@ def esqueci_senha(request):
 
 def confirma_email(request):
     return render(request, 'inicial/ConfirmaEmail.html')
+
+def logout_site(request):
+    logout(request)
+    messages.success(request, "Logout efetuado com sucesso!")
+    return redirect('locais_de_atendimento')
