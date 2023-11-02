@@ -165,9 +165,8 @@
             <!--<h1><strong>RESULTADOS DA PESQUISA:</strong></h1>
             <hr/>-->
             {% for message in messages %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}
-            </div>
+            <h1><strong>{{ message }}</strong></h1>
+            <hr/>
             {% endfor %}
             <ul>
                 {% for hospital in hospitais %}
