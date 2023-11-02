@@ -61,6 +61,11 @@ def mais_informacoes(request, hospital_cnes):
     return render(request, "inicial/maisinformacoes.html", context)
 
 def avaliar_hospital(request, hospital_cnes):
+
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário precisa estar logado para avaliar hospitais")
+        return redirect('login')
+
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
     buscar = BuscarForms()
     avaliar = AvaliarForms()
