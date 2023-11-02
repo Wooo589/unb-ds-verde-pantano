@@ -151,6 +151,20 @@ $(document).ready(function(){
    $("#c4 .question2").addClass("on");
    $("#c4 .answer2").toggle();
  });
+ $("#topic5").click(function(){
+  $("#c5 .question1").toggle();
+  $("#c5 .question2").toggle();
+  $("#c5 .answer1").hide();
+  $("#c5 .answer2").hide();
+ });
+ $("#c5 .question1").click(function(){
+   $("#c5 .question1").addClass("on");
+   $("#c5 .answer1").toggle();
+ });
+ $("#c5 .question2").click(function(){
+  $("#c5 .question2").addClass("on");
+  $("#c5 .answer2").toggle();
+ });
 });
 // $(window).scroll(function() {
 //    if($(this).scrollTop() > 1){
