@@ -1,64 +1,231 @@
-{% load static %}
-
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedConnect</title>
-    <link rel="shortcut icon" href="MIDIA/IMG/logo-ds.png" type="image/x-icon">
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'styles/Sobre-Nos(Header).css' %}">
-    <link rel="stylesheet" href="{% static 'styles/Sobre-Nos(Main).css' %}">
-    <!-- fonte -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
-    
+    <title>Página - Sobre nós</title>
+    <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style/header_e_footer.css">
+    <link rel="stylesheet" href="style/sobre_nos.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 10,
+            'wght' 200,
+            'GRAD' 0,
+            'opsz' 36;
+            z-index: 1;
+            font-size: 36px;
+            color: gray;
+            font-family: 'Material Symbols Outlined';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+   $("#btnPesquisar").click(function(){
+    $("#top-bar1").toggle("fast");
+    $("#top-bar2").hide("fast");
+    $("#top-bar3").hide("fast");
+    $("#fechar_aba").show("fast");
+  });
+  $("#locais_de_atendimento").click(function(){
+    $("#top-bar2").toggle("fast");
+    $("#top-bar1").hide();
+    $("#top-bar3").hide();
+    $("#fechar_aba").show("fast");
+  });
+  $("#outras_duvidas").click(function(){
+    $("#top-bar3").toggle("fast");
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#fechar_aba").show("fast");
+  });
+  $("#fechar_aba").click(function(){
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+  });
+  $(".voltar").click(function(){
+    $("#top-bar1").show();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+    $("#fechar_aba").show("fast");
+  }); 
+  $(".login_box").click(function(){
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+  }); 
+});
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 1){  
+    $("#top-bar1").addClass("fixed");
+    $("#top-bar2").addClass("fixed");
+    $("#top-bar3").addClass("fixed");
+    }
+    else{
+    $("#top-bar1").removeClass("fixed");
+    $("#top-bar2").removeClass("fixed");
+    $("#top-bar3").removeClass("fixed");
+    }
+});
+    </script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
-    <header >
-        <DIV class="header_container">
-            <div>
-                <!--colocar link para a pagina inicial-->
-                <a class="titulo" href="{% url "index" %}">
-                    <h1>MedConnect</h1>
-                </a>
-                    <input class="buscador" type="text" placeholder="FAZER PESQUISA...">
-                <a href="FazerLogin.html">
-                    <input class="login_box" type="button" value="LOGIN/CADASTRO">
-                </a>
-                
-                <!-- imagens: -->
-                <!-- <img id="logoMenu" src="MIDIA/IMG/logo-ds.png" alt="logo menu superior">
-                <img src="MIDIA/IMG/lupa.png" alt=""> -->
-            </div>
-        </DIV>
-        <nav>
-            <a href="{% url "locais_de_atendimento" %}">PROCURAR HOSPITAL</a>
-            <a href="#">PRÉ-TRIAGEM</a>
-            <a href="{% url "sobre_nos" %}">SOBRE NÓS</a>
-            <a href="{% url "duvidas_frequentes" %}">DUVIDAS FREQUENTES</a>
+    <header>
+        <div id="logotipo">
+            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <span id="titulo">MedConnect</span>
+        </div>
+        <nav>         
+            <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
+            <span class="divisor">|</span>
+            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <span class="divisor">|</span>
+            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+            <span class="divisor">|</span>
+            <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!-- 'target="_self"': continua na mesma aba. --> 
         </nav>
-    </header>
+        <button id="btnPesquisar">
+            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
+            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
+        </button>
+        <button type="button" class="login_box">
+            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+            <!--</a>-->
+                
+        <div class="content_account">
+            <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
+            <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
+            <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
+        </div>
 
+        <!-- <nav>         
+            <a href="index.html" rel="prev" target="_self">INÍCIO</a>
+            <span class="divisor">|</span>
+            <a href="locais_de_atendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <span class="divisor">|</span>
+            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+            <!-<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>--
+            <span class="divisor">|</span>
+            <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!- 'target="_self"': continua na mesma aba. -- 
+        </nav> -->
+    </header>
+        <section id="pesquisa"> 
+            <div id="top-bar1" style="display: none;">
+                <span>Selecione o tipo de pesquisa:</span>
+                <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self"><button id="locais_de_atendimento">Locais de atendimento</button></a>
+                <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self"><button id="outras_duvidas">Outras dúvidas</button></a>
+                <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">close</span></button>
+            </div>
+                <div id="top-bar2">
+            <!-- <div id="top-bar2" style="display: none;"> -->
+                <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
+                <span class="spanPesquisar">
+                    <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
+                    <input type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
+                </span>
+                <div class="wrapper">
+                    <div class="select-btn">
+                        <span>UF</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="select-btn">
+                        <span>CIDADE</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="select-btn">
+                        <span>ESPECIALIDADE</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="select-btn">
+                        <span>LOCAL</span>
+                        <i class="uil uil-angle-down"></i>
+                    </div>
+                    <div class="content">
+                        <div class="search">
+                            <i class="uil uil-search"></i>
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                        <ul class="options"></ul>
+                    </div>
+                </div>
+                <button id="btnProcurar"><span class="material-symbols-outlined" style="color: black; font-size: 30px">search</span></button>
+            </div>
+            <div id="top-bar3" style="display: none;">
+                <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray; margin-left: 25px;"></i></button>
+                <span class="spanPesquisar">
+                    <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
+                    <input type="text" id="txt_pesquisar_locais" placeholder="PESQUISAR..."/>
+                </span>
+            </div>
+        </section> 
     
-    <Main>
+    <main>
         <span>
             <article>
                 <h1>QUEM SOMOS</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Commodi hic dolorem quibusdam minima facilis excepturi rerum aperiam nam maiores eaque ad aut blanditiis eum, repudiandae fuga, magnam ex, doloremque impedit?
+                        Somos um grupo de estudantes da faculdade do Gama da Universidade de Brasília. O site desenvolvido se trata de um projeto da disciplina "Desenvolvimento de Software", componente curricular do programa de graduação em Engenharia de Software. 
                     </p>
+                    <p>
+                        Através do desenvolvimento deste site, almejamos apresentar um projeto produtivo e que oferte à sociedade um serviço que agregue na vida cotidiana das pessoas, em relação ao atendimento à saúde.
+                    </p>
+            </article>
+            <article>
                 <h1>OBJETIVO DO SITE</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, ad et? Voluptates velit accusantium quia quasi. 
-                        Error illum similique magnam veniam mollitia eveniet, pariatur aut impedit obcaecati ducimus reprehenderit molestias?
+                        O site MedConnect tem como objetivo principal fornecer informações seguras ao usuário sobre os pontos de atendimento à saúde mais próximos à sua localização, permitindo uma prévia noção das possibilidades de atendimento ao seu caso, de modo a otimizar o planejamento do usuário, no intuito de ajudar a reduzir as chances de agravamento de sua situação de saúde.
+                    </p>
+                    <p>
+                        Nesse sentido, o enfoque é apresentar estimativas do tempo médio de espera para o atendimento em cada unidade de saúde próxima ao usuário, com base em informações cedidas pelos próprios usuários do site acerca do atendimento recebido em determinada unidade.
+                    </p>
+                    <p>
+                        Na mesma linha, facilita-se o acesso a informações gerais a respeito de cada unidade de saúde, como logradouro, contato, infraestrutura de atendimento e especialidades atendidas. Além dise, apresentam-se informações mais específicas, medicamentos disponíveis e escala de serviço, que são disponibilizadas por órgâos gestores da rede pública de saúde. 
                     </p>
             </article>
         </span>
-    </Main>
+    </main>
+    <footer>
+        <p>©2023, MedConnect.</p>
+        <p>Verde Pântano - Desenvolvimento do Sotfware, 2023/2.</p>
+    </footer>
+    <script type="text/javascript" src="js/script-select-menu-e-login-box.js"></script> 
 </body>
 </html>
