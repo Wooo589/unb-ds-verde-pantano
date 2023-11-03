@@ -127,8 +127,8 @@ body{
     border: 1px solid rgba(128, 128, 128, 0.616);
     border-radius: 20px;
     min-width: 250px;
-    width: 750px;
-    max-width: 750px;
+    width: 770px;
+    max-width: 770px;
     height: 30px;
     text-indent: 30px;
     margin: auto;
@@ -264,7 +264,7 @@ body{
     color: black;
     text-decoration: none;
 } 
-#fechar_aba{
+.fechar_aba{
     font-size: 20px;
     position: absolute;
     top: 8px;
@@ -275,7 +275,7 @@ body{
     /* border-radius: 2px; */
     padding: 4px 8px 0px 8px;
 }
-#fechar_aba:hover{
+.fechar_aba:hover{
     background-color:rgb(190, 188, 188);
     cursor: pointer;
 }
