@@ -65,7 +65,21 @@ $(document).ready(function(){
    $("#fechar_aba").show("fast");
   //  $("#numbers_aside").toggleClass("top-bar_on", flip++ % 2 === 0);
   //  $("#navigation_aside").toggleClass("top-bar_on");
+  // if ($("#top-bar1").css('display') == 'none'){
+  //   $("#numbers_aside").addClass('top_bar_off');
+  //   $("#navigation_aside").addClass("top_bar_off"); 
+  // }
  });
+ if ($("#top-bar1").css('display') == 'none') {
+  $("#numbers_aside").css({
+    "position": "fixed",
+    "top": "100px"
+  });
+  $("#navigation_aside").css({
+    "position": "fixed",
+    "top": "100px"
+  });
+}
  $("#locais_de_atendimento").click(function(){
    $("#top-bar2").toggle("fast");
    $("#top-bar1").hide();
@@ -77,8 +91,6 @@ $(document).ready(function(){
    $("#top-bar1").hide();
    $("#top-bar2").hide();
    $("#fechar_aba").show("fast");
-   $("#numbers_aside").toggleClass("top-bar_on");
-   $("#navigation_aside").toggleClass("top-bar_on");
  });
  $("#fechar_aba").click(function(){
    $("#top-bar1").hide();
@@ -166,15 +178,35 @@ $(document).ready(function(){
   $("#c5 .answer2").toggle();
  });
 });
-// $(window).scroll(function() {
-//    if($(this).scrollTop() > 1){
-//        $("#top-bar1").removeClass("fixed");
-//        $("#top-bar2").removeClass("fixed");
-//        $("#top-bar3").removeClass("fixed");
-//    }
-//    else{
-//        $("#top-bar1").addClass("fixed");
-//        $("#top-bar2").addClass("fixed");
-//        $("#top-bar3").addClass("fixed");    
-//    }
-// });
+if ($("#top-bar3").css('visibility') == 'hidden') {
+  $("#numbers_aside").css({
+    position: "fixed",
+    top: "100px"
+  });
+  $("#navigation_aside").css({
+    position: "fixed",
+    top: "100px"
+  });
+}
+else{
+  $("#numbers_aside").css({
+    "position": "fixed",
+    "top": "130px"
+  });
+  $("#navigation_aside").css({
+    "position": "fixed",
+    "top": "130px"
+  });
+}
+$(window).scroll(function() {
+    if($(this).scrollTop() > 1){
+      $("#top-bar1").addClass("fixed");
+      $("#top-bar2").addClass("fixed");
+      $("#top-bar3").addClass("fixed");   
+    }
+    else{
+      $("#top-bar1").removeClass("fixed");
+      $("#top-bar2").removeClass("fixed");
+      $("#top-bar3").removeClass("fixed");      
+    }
+});
