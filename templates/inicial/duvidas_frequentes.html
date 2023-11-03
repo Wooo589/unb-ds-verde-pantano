@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dúvidas frequentes</title>
+    <link rel="stylesheet" href="estilo/header_e_footer.css">
     <link rel="stylesheet" href="estilo/duvidas_frequentes.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -127,7 +128,7 @@
             <div id="top-bar3">
                 <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray; margin-left: 25px;"></i></button>
                 <span class="spanPesquisar">
-                    <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
+                    <span class="material-symbols-outlined" style="color: black; font-size: 22px;">search</span>
                     <input type="text" id="txt_pesquisar_locais" placeholder="PESQUISAR..."/>
                 </span>
             </div>
@@ -137,7 +138,7 @@
     <!--aqui começa a página de fato-->
     
     <div id="faq-container">
-        <p style="margin-bottom: 15px; border-top: 1px solid gray; border-bottom: 1px solid gray;">Leia as perguntas mais frequentes sobre os seguintes tópicos:</p>
+        <p style="background-color: rgba(70, 131, 180, 0.25); padding: 5px 0; margin-bottom: 15px; border-top: 1px solid lightgray; border-bottom: 1px solid lightgray;">Leia as perguntas mais frequentes sobre os seguintes tópicos:</p>
         <div id="topic_box_container">
             <div id="c1">     
                 <h1 id="topic1"><a href="#acesso a informacoes">ACESSO A INFORMAÇÕES</a></h1>
@@ -199,7 +200,7 @@
                 </ul>
             </div>
             <div id="c5">     
-                <h1 id="topic5"><a href="#acesso a informacoes">SOBRE NÓS</a></h1>
+                <h1 id="topic5"><a href="#sobre_nos">SOBRE NÓS</a></h1>
                 <ul>
                     <div class="question_answer">
                         <h2 class="question1"><li>QUEM SOMOS</li></h2>
@@ -233,7 +234,7 @@
         <script type="text/javascript" src="js/script-select-menu-e-login-box.js"></script> 
     </main>
     <aside id="navigation_aside">
-        <nav id="aside_nav">
+        <nav class="aside_nav">
             <div id="nav-aside-container">
                 <header id="navigation-aside-header">
                     <h2 id="navigation-aside-title">Nesta página:</h2>
@@ -243,20 +244,21 @@
                     <li><a href="#avaliacao de locais" aria-current="true">Avaliação de locais</a></li>
                     <li><a href="#minha conta" aria-current="true">Minha conta</a></li>
                     <li><a href="#funcionalidades do site" aria-current="true">Funcionalidades do site</a></li>
+                    <li><a href="#sobre_nos" aria-current="true">Sobre nós</a></li>
                 </ul>
             </div>
         </nav>
     </aside>
     <aside id="numbers_aside">
-        <nav id="aside_nav">
+        <nav class="aside_nav">
             <div id="numbers-aside-container">
                 <header id="num-aside-header">
-                    <h2 id="numbers-aside-title">Telefones úteis:</h2>
+                    <h2 id="numbers_aside_title">Telefones úteis:</h2>
                 </header>
                 <ul id="numbers-aside-list">
-                    <li><span class="span1">160</span><span class="span2">Disque Saúde</span></li>
+                    <li><span class="span1">160</span><span class="span2">DISQUE SAÚDE</span></li>
                     <li><span class="span1">192</span><span class="span2">SAMU</span></li>
-                    <li><span class="span1">193</span><span class="span2">Corpo de bombeiros</span></li>
+                    <li><span class="span1">193</span><span class="span2">CORPO DE BOMBEIROS</span></li>
                 </ul>
             </div>
         </nav>
