@@ -8,7 +8,10 @@ from datetime import datetime
 
 def index(request):
     hospitais = Hospital.objects.order_by("nome")[:3]
-    context = {"hospitais": hospitais}
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    counter = (1, 2, 3, 4, 5)
+    context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form, "counter":counter}
 
     return render(request, 'inicial/index.html', context)
 
@@ -56,7 +59,9 @@ def buscar(request):
 def mais_informacoes(request, hospital_cnes):
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
     buscar2 = BuscarForms()
-    context = {"hospital": hospital, "buscar":buscar2}
+    filter_form = FilterForms()
+    counter = (1, 2, 3, 4, 5)
+    context = {"hospital": hospital, "buscar": buscar2, "filter":filter_form, "counter":counter}
 
     return render(request, "inicial/maisinformacoes.html", context)
 
@@ -67,9 +72,10 @@ def avaliar_hospital(request, hospital_cnes):
         return redirect('login')
 
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
-    buscar = BuscarForms()
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
     avaliar = AvaliarForms()
-    context = {"hospital": hospital, "buscar":buscar, "avaliar":avaliar}
+    context = {"hospital": hospital, "buscar": buscar2, "filter":filter_form, "avaliar":avaliar}
 
     if request.method == "POST":
         risco = request.POST["risco"]
@@ -94,7 +100,12 @@ def sobre_nos(request):
     return render(request, 'inicial/SobreNos.html')
 
 def duvidas_frequentes(request):
-    return render(request, 'inicial/duvidas_frequentes.html')
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    avaliar = AvaliarForms()
+    context = {"buscar": buscar2, "filter":filter_form, "avaliar":avaliar}
+
+    return render(request, 'inicial/duvidas_frequentes.html', context)
 
 def cadastro(request):
 
