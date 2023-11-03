@@ -58,6 +58,11 @@ class Hospital(models.Model):
     tempo_pouco_urgente = models.IntegerField(null=False, blank=False, default=0)
     tempo_nao_urgente = models.IntegerField(null=False, blank=False, default=0)
     nota = models.IntegerField(null=False, blank=False, default=0)
+    leitos = models.IntegerField(null=False, blank=False, default=0)
+    uti_adulto = models.IntegerField(null=False, blank=False, default=0)
+    uti_pediatrico = models.IntegerField(null=False, blank=False, default=0)
+    uti_neonatal = models.IntegerField(null=False, blank=False, default=0)
+    uti_queimado = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
         return self.nome

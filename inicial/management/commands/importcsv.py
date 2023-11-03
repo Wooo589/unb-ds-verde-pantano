@@ -99,6 +99,12 @@ class Command(BaseCommand):
                 if email == '':
                     email = "Email não informado"
 
+                leitos = df["LEITOS_EXISTENTES"].iloc[i]
+                uti_adulto = df["UTI_ADULTO_EXIST"].iloc[i]
+                uti_pediatrico = df["UTI_PEDIATRICO_EXIST"].iloc[i]
+                uti_neonatal = df["UTI_NEONATAL_EXIST"].iloc[i]
+                uti_queimado = df["UTI_QUEIMADO_EXIST"].iloc[i]
+
                 obj, create = Hospital.objects.update_or_create(
                     cnes=cnes,
                     defaults={
@@ -109,7 +115,12 @@ class Command(BaseCommand):
                         "uf":uf,
                         "municipio":municipio,
                         "telefone":telefone,
-                        "email":email
+                        "email":email,
+                        "leitos":leitos,
+                        "uti_adulto":uti_adulto,
+                        "uti_pediatrico":uti_pediatrico,
+                        "uti_neonatal":uti_neonatal,
+                        "uti_queimado":uti_queimado
                     }            
                 )
 
