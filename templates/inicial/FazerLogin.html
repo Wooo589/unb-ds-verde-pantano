@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modal</title>
-    <link rel="stylesheet" href="style/FazerLogin.css">
+    <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 <body>
@@ -13,11 +15,14 @@
             <!-- <a href="SobreNos.html"><img style="width: 20px; position: relative; bottom:20px; left: -15px;" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a> -->
             <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
             <h1 class="titule">Fazer login</h1>
-            <a style="text-decoration: none" href="#"><p class="CriarConta" >Criar conta</p></a>
-            <input class="email_login" style="display: block;" type="email" placeholder="EMAIL">
-            <input class="password_login" style="display: block;" type="password" placeholder="SENHA">
-            <a style="text-decoration: none;" href="esqueciSenha.html"><p class="link_esqueciSenha">esqueci a senha</p></a>
-            <input style="display: block;" type="button" value="REALIZAR LOGIN" id="button_login">
+            <a style="text-decoration: none" href="{% url "cadastro" %}"><p class="CriarConta" >Criar conta</p></a>
+            <form action="{% url "locais_de_atendimento" %}" method="POST">
+                {% csrf_token %}
+                <input class="email_login" style="display: block;" type="email" placeholder="EMAIL">
+                <input class="password_login" style="display: block;" type="password" placeholder="SENHA">
+                <a style="text-decoration: none;" href="esqueciSenha.html"><p class="link_esqueciSenha">esqueci a senha</p></a>
+                <input style="display: block;" type="button" value="REALIZAR LOGIN" id="button_login">
+            </form>
             <p style="text-align: center;"> OU </p>
             <input class="login_google" type="button" value="CONTINUAR COM O GOOGLE">
             <input class="login_facebook" type="button" value="CONTINUAR COM O FACEBOOK">
