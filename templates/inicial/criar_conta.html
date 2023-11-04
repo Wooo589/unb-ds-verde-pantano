@@ -1,12 +1,12 @@
-<!-- {% load static %} -->
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta | MedConnect</title>
-    <link rel="stylesheet" href="style/css_criarconta_2.css">
+    <title>Cadastro | MedConnect</title>
+    <link rel="stylesheet" href="{% static 'styles/css_criarconta_2.css' %}">
 </head>
 <body>
     <div class="multi-step-form-container">
@@ -19,7 +19,7 @@
                 <span class="form-stepper-circle">
                     <span>1</span>
                 </span>
-                <div class="label">Dados pessoais</div>
+                <div class="label">Informações Básicas</div>
             </a>
         </li>
         <!--etapa 2-->
@@ -28,7 +28,7 @@
                 <span class="form-stepper-circle text-muted">
                     <span>2</span>
                 </span>
-                <div class="label text-muted">Perfis Sociais</div>
+                <div class="label text-muted">Conclusão</div>
             </a>
         </li>
 
@@ -36,7 +36,7 @@
 
     <!--<form id="regForm" action="">-->
     <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
-        <!-- {% csrf_token %} -->
+        {% csrf_token %}
 
         <!--conteúdo step 1
         <div class="tab">
@@ -44,27 +44,26 @@
             <p><input placeholder="Digite sua senha" oninput="this.className = ''"></p>
         </div>-->
         <section id="step-1" class="form-step">
-          <h2 class="font-normal">Detalhes Básicos de Conta</h2>
-          <!--campos de input do passo 1-->
-          <div class="mt-3">
-              <!--Vão aqui os campos de input..-->
-            <!-- <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/Google_NoHover.png" style="width:60%;height:auto;">
-            <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/FB_NoHover.png" style="width:60%;height:auto;"> -->
-                <label for="email"><b><br>E-mail</b></label>
-                <input type="text" placeholder="Digite seu e-mail" name="email" required>
-                <label for="psw"><b><br>Senha</b></label>
-                <input type="password" placeholder="Digite sua senha" name="psw" required>
-                <label for="psw-repeat"><br><b>Confirme sua senha</b></label>
-                <input type="password" placeholder="Confirme sua senha" name="psw-repeat" required>
-                <!-- <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/Google_NoHover.png" style="width:100%;height:auto;">
-                <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/FB_NoHover.png" style="width:100%;height:auto;"> -->
-                <input class="login_google" type="button" value="CONTINUAR COM O GOOGLE">
-                <input class="login_facebook" type="button" value="CONTINUAR COM O FACEBOOK">
-          <!-- </div>
-          <div class="mt-3"> -->
-              <button class="button btn-navigate-form-step" type="button" step_number="2">Próximo</button>
-          </div>
-      </section>
+            <h2 class="font-normal">Informações Básicas</h2>
+            <!--campos de input do passo 1-->
+            {% for message in messages %}
+            <div class="mt-3">
+                <h3>{{message}}</h3>
+            </div>
+            {% endfor %}
+            <div class="mt-3">
+            <!--Vão aqui os campos de input..-->
+            <!--<img src="https://electricwoodlands.com/wp-content/uploads/2021/06/Google_NoHover.png" style="width:60%;height:auto;">
+            <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/FB_NoHover.png" style="width:60%;height:auto;">-->
+            {% for field in  cadastro.visible_fields %}
+                <label for="{{ field.id_for_label }}"><b><br>{{ field.label }}</b></label>
+                    {{ field }}
+            {% endfor %}
+            </div>
+            <div class="mt-3">
+                <button class="button btn-navigate-form-step" type="button" step_number="2">Próximo</button>
+            </div>
+        </section>
 
         <!--conteúdo step 2
         <div class="tab">
@@ -72,14 +71,14 @@
             <p><input placeholder="Sobrenome" oninput="this.className = ''"></p>
         </div>-->
         <section id="step-2" class="form-step d-none">
-          <h2 class="font-normal">Perfis Sociais</h2>
+          <h2 class="font-normal">Social profiles</h2>
           <!--Campos de input do step 2-->
           <div class="mt-3">
               Vão aqui os campos de imput..
           </div>
           <div class="mt-3">
               <button class="button btn-navigate-form-step" type="button" step_number="1">Anterior</button>
-              <button class="button submit-btn" type="submit">Enviar</button>
+              <button class="button submit-btn" type="submit">Concluir cadastro</button>
           </div>
       </section>
 

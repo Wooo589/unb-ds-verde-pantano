@@ -16,6 +16,9 @@
             <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
             <h1 class="titule">Fazer login</h1>
             <a style="text-decoration: none" href="{% url "cadastro" %}"><p class="CriarConta" >Criar conta</p></a>
+            {% for message in messages %}
+            <p>{{message}}<p>
+            {% endfor %}
             <form action="{% url "login" %}" method="POST">
                 {% csrf_token %}
                 <input name="usuario" class="email_login" style="display: block;" type="text" placeholder="USUARIO">

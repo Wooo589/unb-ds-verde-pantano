@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>modal</title>
-        <link rel="stylesheet" href="style/ConfirmaEmail.css"> <!--reciclei ocodigo do esqueci minha senha-->
+        <title>Login | MedConnect</title>
+        <link rel="stylesheet" href="{% static "styles/ConfirmaEmail.css" %}"> <!--reciclei ocodigo do esqueci minha senha-->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     </head>
     <body>
@@ -12,7 +14,7 @@
             <div class="modal_notification">
                 <!-- <a href="esqueciSenha.html"><img class="modal_icon_back" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a> -->
                 <div id="modal_title">
-                    <a href="esqueciSenha.html"><button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button></a>
+                    <a href="{% url "esqueci_senha" %}"><button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button></a>
                     <h1>Confirmar email</h1>
                 </div>
                 <p class="modal_phrase">
