@@ -139,7 +139,7 @@ def cadastro(request):
 
     context = {"cadastro":cadastro}
 
-    return render(request, 'inicial/criar_conta_2.html', context)
+    return render(request, 'inicial/criar_conta.html', context)
 
 def login_site(request):
 

@@ -5,8 +5,13 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    
 }
+
+body{
+    background-image:url('../img/bg_criarconta.jpg');
+    background-size:cover;
+}
+
 :root{
     --clr:#1D7FF1;
     --clr2: #002653;
@@ -39,7 +44,7 @@ body{
     padding: 30px;
     border-radius: 10px;
     width: 450px;
-    height: 420px;
+    height: 480px;
 }
 .CriarConta{
     color: var(--clr);
