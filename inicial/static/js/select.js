@@ -2,18 +2,18 @@ $(document).ready(function(){
     $.fn.select2.defaults.set("allowClear", "true");
 
     $(".select-uf").select2({
-        placeholder: 'Selecionar UF',
+        placeholder: 'UF',
     });
 
     $(".select-municipio").select2({
-        placeholder: 'Selecionar Cidade/Município',
+        placeholder: 'Cidade/Município',
     });
 
     $(".select-especialidade").select2({
-        placeholder: 'Selecionar Especialidade',
+        placeholder: 'Especialidade',
     });
 
     $(".select-categoria").select2({
-        placeholder: 'Selecionar Categoria',
+        placeholder: 'Categoria',
     });
 });

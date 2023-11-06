@@ -63,7 +63,7 @@ class Command(BaseCommand):
                     endereco = endereco + " "
                 endereco = endereco.strip()
 
-                cnes = f"{df['CNES'].iloc[i]}".zfill(7)
+                cnes = f"{df['CNES'].iloc[i]}"
 
                 strings = f"{df['NOME_ESTABELECIMENTO'].iloc[i]}".lower().split()
                 nome = ""

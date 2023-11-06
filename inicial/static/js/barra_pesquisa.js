@@ -11,12 +11,6 @@ $(document).ready(function(){
    $("#top-bar3").hide();
    $("#fechar_aba").show("fast");
  });
- $("#outras_duvidas").click(function(){
-   $("#top-bar3").toggle("fast");
-   $("#top-bar1").hide();
-   $("#top-bar2").hide();
-   $("#fechar_aba").show("fast");
- });
  $("#fechar_aba").click(function(){
    $("#top-bar1").hide();
    $("#top-bar2").hide();

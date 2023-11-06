@@ -68,7 +68,7 @@
         <div id="top-bar1" style="display: none;">
             <span>Selecione o tipo de pesquisa:</span>
             <button id="locais_de_atendimento">Locais de atendimento</button>
-            <button id="outras_duvidas">Outras dúvidas</button>
+            <a href="{% url "duvidas_frequentes" %}"><button id="outras_duvidas">Outras dúvidas</button></a>
             <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">
                 close
                 </span></button>
@@ -80,10 +80,7 @@
         <div id="top-bar2" style="display: none;">
             <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
             <form action="{% url 'buscar' %}">
-            <span class="spanPesquisar">
-                <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
                 <input name="buscar" type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
-            </span>
                 <div class="wrapper">
                     {{ filter.uf }}
                 </div>
@@ -98,12 +95,5 @@
                 </div>
                 <button type="submit" id="btnProcurar"><span class="material-symbols-outlined" style="color: black; font-size: 30px">search</span></button>
             </form>
-        </div>
-        <div id="top-bar3" style="display: none;">
-            <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray; margin-left: 25px;"></i></button>
-            <span class="spanPesquisar">
-                <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
-                <input type="text" id="txt_pesquisar_locais" placeholder="PESQUISAR..."/>
-            </span>
         </div>
     </section>
