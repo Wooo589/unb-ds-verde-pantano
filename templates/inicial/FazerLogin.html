@@ -13,7 +13,7 @@
     <div class="modal_box_login">
         <div class="modal_login">
             <!-- <a href="SobreNos.html"><img style="width: 20px; position: relative; bottom:20px; left: -15px;" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a> -->
-            <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
+            <a href="{% url "locais_de_atendimento" %}"><button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button></a>
             <h1 class="titule">Fazer login</h1>
             <a style="text-decoration: none" href="{% url "cadastro" %}"><p class="CriarConta" >Criar conta</p></a>
             {% for message in messages %}

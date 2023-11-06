@@ -163,19 +163,20 @@ header{
 }
 #txt_pesquisar_locais,
 #txt_outras_duvidas{
-    float: left;  
-    background-color: transparent;
+    float: inline-start;
+    background-color: white;
     padding-left: 12px;
-    padding-bottom: 2px; 
+    padding-bottom: 2px;
     font-size: 12px;
     font-family: var(--fonte-padrao);
     border: none;
     border-radius: 20px;
     height: 36px;
     min-width: 250px;
-    width: 700px;
+    width: 400px;
     max-width: 700px;
     outline: none;
+    margin: 7px 15px 7px 5px;
 } 
 .spanPesquisar:hover {
     border: 1px solid lightgray;
@@ -306,11 +307,13 @@ nav > a:hover {
     border: 1px solid rgba(128, 128, 128, 0.616);
 }
 .wrapper{
-    display: inline-block;
-    width: 180px;
+    min-width: 50px;
+    width: 140px;
+    max-width: 140px;
     margin: 10px;
     border: 1px solid rgba(128, 128, 128, 0.616);
     border-radius: 3px;
+    float: left;
 }
 .wrapper span{
     font-family: var(--fonte-destaque);
@@ -410,7 +413,7 @@ nav > a:hover {
     border: 1px solid var(--c-blue);
     border-radius: 5px;
     padding: 2px 3px 0px 3px;
-    margin: 0 25px 0 10px;
+    margin: 6.5px 25px 6.5px 0px;
     cursor: pointer;
     box-shadow: 1px 1px 10px 0px lightgray;
     z-index: 0;

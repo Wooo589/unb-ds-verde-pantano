@@ -92,7 +92,7 @@ def avaliar_hospital(request, hospital_cnes):
             observacao=observacao
         )
 
-        return redirect('locais_de_atendimento')
+        return redirect('mais_informacoes', hospital_cnes)
 
     return render(request, "inicial/avaliarhospital.html", context)
 
