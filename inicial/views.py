@@ -69,7 +69,7 @@ def avaliar_hospital(request, hospital_cnes):
 
     if not request.user.is_authenticated:
         messages.error(request, "Usuário precisa estar logado para avaliar hospitais")
-        return redirect('login')
+        return redirect('mais_informacoes', hospital_cnes)
 
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
     buscar2 = BuscarForms()
@@ -152,13 +152,11 @@ def login_site(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"{usuario} logado com sucesso!")
-            return redirect('locais_de_atendimento')
+            return redirect('index')
 
         else:
             messages.error(request, "Usuário ou senha incorretos")
-            return redirect('login')
-
-    return render(request, 'inicial/FazerLogin.html')
+            return redirect('index')
 
 def esqueci_senha(request):
     return render(request, 'inicial/esqueciSenha.html')

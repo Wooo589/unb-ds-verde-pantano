@@ -449,19 +449,9 @@ div.c{
     margin:2em;
 }
 
-input{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    opacity:0;
-    visibility: 0;
-}
-
 /*problema acima*/
 
-h1{
+h1.index{
     background:steelblue;
     color:white;
     padding:1em;

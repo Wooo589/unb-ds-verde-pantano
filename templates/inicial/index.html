@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static "styles/header_e_footer.css" %}">
     <link rel="stylesheet" href="{% static "styles/index.css"%}">
+    <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}">
         <!--AVALIAÇÃO EM ESTRELAS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!--OWL CAROUSEL YOUTUBE-->
@@ -37,10 +38,12 @@
     <script src="{% static "js/select.js" %}"></script>
     <script src="{% static "js/login.js" %}"></script>
     <script src="{% static "js/barra_pesquisa.js"%}"></script>
+    <script src="{% static "js/login_popup.js"%}"></script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
-    {% include "inicial/partials/_header.html" %} 
+    {% include "inicial/partials/_login.html" %}
+    {% include "inicial/partials/_header.html" %}
     <body>
        
         <!--<p>A importância de se avaliar os hospitais</p>-->
@@ -54,7 +57,7 @@
         <!--FIM DA BARRA DE PESQUISA-->
         <!--HOSPITAIS MAIS PRÓXIMOS-->
         <main>
-        <h1>LOCAIS DE ATENDIMENTO MAIS PRÓXIMOS:</h1>
+        <h1 class="index">LOCAIS DE ATENDIMENTO MAIS PRÓXIMOS:</h1>
         {% for hospital in hospitais %}
         <div class="outer-flex-container">
             <div class="inner-flex-container">
@@ -128,7 +131,7 @@
             </div>
         </div>
         {% endfor %}
-        <h1>NOTÍCIAS:</h1>
+        <h1 class="index">NOTÍCIAS:</h1>
         <!--OWL CAROUSEL-->
         <!--<div class="owl-carousel">
             <div>

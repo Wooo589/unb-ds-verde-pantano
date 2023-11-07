@@ -7,11 +7,6 @@
     box-sizing: border-box;
 }
 
-body{
-    background-image:url('../img/bg_criarconta.jpg');
-    background-size:cover;
-}
-
 :root{
     --clr:#1D7FF1;
     --clr2: #002653;
@@ -20,10 +15,6 @@ body{
     --fonte-titulo: 'Oleo script', sans-serif; 
 } 
 
-body{
-    background-color: rgba(0, 0, 0, 0.285);
-    font-family: var(--fonte-destaque);
-}
 .titule{
     display: inline-block; 
     font-size: 20px; 
@@ -35,9 +26,14 @@ body{
 .modal_box_login{
     position: fixed;
     place-content: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: grid;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.5);
+}
+.hidden{
+    display: none;
 }
 .modal_login{
     background-color: white;
@@ -140,12 +136,13 @@ body{
     background-color: #ededed;
     box-shadow: none;
 }
-.voltar{
+.voltar2{
     background-color: transparent;
     border: none;
     padding: 0 5px;
     margin: 0px 10px;
 }
-.voltar:hover{
+
+.voltar2:hover{
     cursor: pointer;
 }
