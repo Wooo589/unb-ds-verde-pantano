@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedConnect</title>
+    <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}"> <!--css de fazer login-->
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static "styles/header_e_footer.css" %}">
@@ -37,12 +38,13 @@
     <script src="{% static "js/select.js" %}"></script>
     <script src="{% static "js/login.js" %}"></script>
     <script src="{% static "js/barra_pesquisa.js"%}"></script>
+    <script src="{% static "js/FazerLogin.js"%}"></script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
     {% include "inicial/partials/_header.html" %} 
+    {%include "inicial/partials/_FazerLogin.html"%}
     <body>
-       
         <!--<p>A importância de se avaliar os hospitais</p>-->
         <!--<label for="hospitais"></label>
         <input type="text" id="hospital" name="hospital" size="100"/>-->
@@ -130,7 +132,8 @@
         {% endfor %}
         <h1>NOTÍCIAS:</h1>
         <!--OWL CAROUSEL-->
-        <!--<div class="owl-carousel">
+        <!--<div class="owl-carousel"
+            >
             <div>
                 <img src="https://www.sodapdf.com/blog/wp-content/uploads/2018/10/blog_how-to-make-a-tutorial-video.jpg" alt="">
                 <p>Como realizar a avaliação?<br></p>
