@@ -142,7 +142,98 @@
     padding: 0 5px;
     margin: 0px 10px;
 }
-
 .voltar2:hover{
     cursor: pointer;
+}
+.voltar3{
+    background-color: transparent;
+    border: none;
+    padding: 0 5px;
+    margin: 0px 10px;
+}
+.voltar3:hover{
+    cursor: pointer;
+}
+.modal_box_esqueciSenha{
+    position: fixed;
+    place-content: center;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+}
+.modal_esqueciSenha{
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+width: 400px;
+height: 320px;
+}
+#modal_title{
+    text-align: center;
+    font-size: 20px;
+    /* font-family: Josefin Sans; */
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    /* font-family: Josefin Sans; */
+    margin-top: 0px;
+}
+#modal_title > h1{
+    font-size: 20px;
+    margin-left: 20px;
+    /* margin: auto; */
+}
+.modal_phrase{
+    text-align: justify;
+    align-items: center;
+    /* font-family: Josefin Sans; */
+    margin-top: 10px;
+    padding: 20px;
+}
+.modal_esqueciSenha .modal_email{
+    display: block;
+    border-radius: 5px;
+    width: 320px;
+    height: 35px;
+    margin-top: 10px;
+    text-indent: 10px;
+    border: 1px solid #252525;
+    margin-left:20px;
+}
+.modal_button{
+    margin-top: 35px;
+    margin-left:20px;
+    /* font-family: Josefin Sans; */
+    font-family: var(--fonte-padrao);
+    font-size: 17px;
+    background-color: var(--clr);
+    /* padding: 0px; */
+    width: 320px;
+    height: 35px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.message{
+    width: 350px;
+    height: 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.500);
+    z-index: 3;
+    place-content: center;
+    display: grid;
+    border: 2px solid;
+    border-radius: 15px;
+}
+.active, .message:hover {
+    border: 2px solid lightgray;
+    cursor: pointer;
+    z-index: 10;
 }

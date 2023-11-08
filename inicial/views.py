@@ -141,8 +141,7 @@ def cadastro(request):
 
     return render(request, 'inicial/criar_conta.html', context)
 
-def login_site(request):
-
+def login_site(request, view_name):
     if request.method == "POST":
         usuario = request.POST["usuario"]
         senha = request.POST["senha"]
@@ -152,11 +151,11 @@ def login_site(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"{usuario} logado com sucesso!")
-            return redirect('index')
+            return redirect(view_name)
 
         else:
             messages.error(request, "Usuário ou senha incorretos")
-            return redirect('index')
+            return redirect(view_name)
 
 def esqueci_senha(request):
     return render(request, 'inicial/esqueciSenha.html')
@@ -167,4 +166,4 @@ def confirma_email(request):
 def logout_site(request):
     logout(request)
     messages.success(request, "Logout efetuado com sucesso!")
-    return redirect('locais_de_atendimento')
+    return redirect('index')

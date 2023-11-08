@@ -93,6 +93,11 @@ header{
     border: 1px solid rgba(128, 128, 128, 0.616);
     z-index: 10;
 }
+.active, .login_box2:hover {
+    border: 1px solid lightgray;
+    cursor: pointer;
+    z-index: 10;
+}
 .login_box{
     display: flex;
     flex-direction: row;
