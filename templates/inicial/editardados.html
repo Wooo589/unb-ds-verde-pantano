@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Meus dados | MedConnect</title>
+    <link rel="stylesheet" href="estilo/header_e_footer.css">
+    <link rel="stylesheet" href="estilo/meusdados.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 10,
+            'wght' 200,
+            'GRAD' 0,
+            'opsz' 36;
+            z-index: 1;
+            font-size: 36px;
+            color: gray;
+            font-family: 'Material Symbols Outlined';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+   $("#btnPesquisar").click(function(){
+    $("#top-bar1").toggle("fast");
+    $("#top-bar2").hide("fast");
+    $("#top-bar3").hide("fast");
+    $("#fechar_aba").show("fast");
+  });
+  $("#locais_de_atendimento").click(function(){
+    $("#top-bar2").toggle("fast");
+    $("#top-bar1").hide();
+    $("#top-bar3").hide();
+    $("#fechar_aba").show("fast");
+  });
+  $("#outras_duvidas").click(function(){
+    $("#top-bar3").toggle("fast");
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#fechar_aba").show("fast");
+  });
+  $("#fechar_aba").click(function(){
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+  });
+  $(".voltar").click(function(){
+    $("#top-bar1").show();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+    $("#fechar_aba").show("fast");
+  }); 
+  $(".login_box").click(function(){
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+  }); 
+});
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 1){  
+    $("#top-bar1").addClass("fixed");
+    $("#top-bar2").addClass("fixed");
+    $("#top-bar3").addClass("fixed");
+    }
+    else{
+    $("#top-bar1").removeClass("fixed");
+    $("#top-bar2").removeClass("fixed");
+    $("#top-bar3").removeClass("fixed");
+    }
+});
+    </script>
+</head>
+<body>
+    <!-- MENU SUPERIOR -->
+    <header>
+        <div id="logotipo">
+            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <span id="titulo">MedConnect</span>
+        </div>
+        <nav>         
+            <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
+            <span class="divisor">|</span>
+            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self" style="font-weight: 650;">LOCAIS DE ATENDIMENTO</a>
+            <span class="divisor">|</span>
+            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+            <span class="divisor">|</span>
+            <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!-- 'target="_self"': continua na mesma aba. --> 
+        </nav>
+        <button id="btnPesquisar">
+            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
+            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
+        </button>
+        <button type="button" class="login_box">
+            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+            <!--</a>-->
+                
+        <div class="content_account">
+            <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
+            <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
+            <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
+        </div>
+
+    </header>
+        <section id="pesquisa"> 
+            <div id="top-bar1" style="display: none;">
+                <span>Selecione o tipo de pesquisa:</span>
+                <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self"><button id="locais_de_atendimento">Locais de atendimento</button></a>
+                <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self"><button id="outras_duvidas">Outras dúvidas</button></a>
+                <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">close</span></button>
+            </div>
+        </section> 
+        <main>
+            <h1>MEUS DADOS</h1>
+            <span>Nome completo:</span>
+            <input type="text">
+            <span>Idade:</span>
+                <input type="number">
+            <span>Sexo:</span>
+                <input type="radio" id="feminino" name="feminino" value="feminino">
+                <label for="feminino">Feminino</label>
+                <input type="radio" id="masculino" name="masculino" value="masculino">
+                <label for="feminino">Masculino</label>
+                <!--<input type="radio" id="feminino" name="feminino" value="feminino">
+                <label for="feminino">Feminino</label>-->
+            <span>Profissão:</span>
+                <input type="text">
+            <span>Endereço:</span>
+                <input type="text">
+            <div id="contato">
+                <h3>Contato<h3>
+                    <span>Telefone:</span>
+                    <input type="tel">
+                    <span>E-mail:</span>
+                    <input type="email">
+            </div>
+
+            <h2>CONDIÇÕES FÍSICAS</h2>
+            <span>Peso:</span>
+                <input type="number">
+            <span>Altura:</span>
+                <input type="number">
+            <span>Tipo sanguíneo:</span>
+                <input type="text">
+            <div>
+            <span>Consome cigarro ou álcool?</span>
+                <input type="radio" id="sim1" name="sim-nao1" value="sim1">
+                <label for="sim1">Sim</label>
+                <input type="radio" id="nao1" name="sim-nao1" value="nao1">
+                <label for="nao1">Não</label>
+            <span>Com que frequência?</span>
+                <input type="radio" id="d1" name="freq1" value="d1">
+                <label for="d1">Diariamente</label>
+                <input type="radio" id="s1" name="freq1" value="s1">
+                <label for="s1">Semanalmente</label>
+                <input type="radio" id="m1" name="freq1" value="m1">
+                <label for="m1">Mensalmente</label>
+                <input type="radio" id="a1" name="freq1" value="a1">
+                <label for="a1">Anualmente</label>
+            </div>
+            <div>
+            <span>Pratica exercício(s) físico(s)?</span>
+                <input type="radio" id="sim2" name="sim-nao2" value="sim2">
+                <label for="sim2">Sim</label>
+                <input type="radio" id="nao2" name="sim-nao2" value="nao2">
+                <label for="nao2">Não</label>
+            <span>Qual(is)?</span>
+                <input type="text">
+            <span>Com que frequência?</span>
+                <input type="number">
+                <span>vez(es) por semana.</span>
+            </div>
+
+            <h2>HISTÓRICO DE SAÚDE</h2>
+            <h3>HISTÓRIA MÉDICA PREGRESSA</h3>
+            <div>
+            <h4>Doenças crônicas</h4>
+                <span>Possui doença(s) crônica(s)?</span>
+                    <input type="radio" id="sim3" name="sim-nao3" value="sim3">
+                    <label for="sim3">Sim</label>
+                    <input type="radio" id="nao3" name="sim-nao3" value="nao3">
+                    <label for="nao3">Não</label>
+                <span>Qual(is)?</span>
+                <input type="text">
+            </div>
+            
+            <h4>Diagnósticos</h4>
+                <span>Possui condição(ões) diagnosticada(s)?</span>
+                    <input type="radio" id="sim4" name="sim-nao4" value="sim4">
+                    <label for="sim4">Sim</label>
+                    <input type="radio" id="nao4" name="sim-nao4" value="nao4">
+                    <label for="nao4">Não</label>
+                <span>Qual(is)?</span>
+                    <input type="text" name="doencas-diag" id="doencas-diag">
+            <h4>Sintomas</h4>
+                <span>Apresenta sintoma(s) recorrente(s)?</span>
+                    <input type="radio" id="sim4" name="sim-nao4" value="sim4">
+                    <label for="sim4">Sim</label>
+                    <input type="radio" id="nao4" name="sim-nao4" value="nao4">
+                    <label for="nao4">Não</label>
+                <span>Qual(is)?</span>
+                    <input type="text" name="sintomas" id="sintomas">
+            <h4>Cirurgias</h4>
+                <span>Já foi submetido a cirurgia(s)?</span>
+                    <input type="radio" id="sim4" name="sim-nao4" value="sim4">
+                    <label for="sim4">Sim</label>
+                    <input type="radio" id="nao4" name="sim-nao4" value="nao4">
+                    <label for="nao4">Não</label>
+                <span>Qual(is)?</span>
+                    <input type="text" name="cirurgias" id="cirurgias">
+            <h4>Internações</h4>
+                <span>Já foi internado(a)?</span>
+                    <input type="radio" id="sim4" name="sim-nao4" value="sim4">
+                    <label for="sim4">Sim</label>
+                    <input type="radio" id="nao4" name="sim-nao4" value="nao4">
+                    <label for="nao4">Não</label>
+                <span>Quantas vezes?</span>
+                    <input type="number">
+                <span>Por qual(is) motivo(s)?</span>
+                    <input type="text" name="internacoes" id="internacoes">
+
+            <h3>HISTÓRICO FAMILIAR</h3>
+
+            <h3>USO DE MEDICAMENTOS</h3>
+            <div>
+                <span>Utiliza medicamento(s) com prescrição médica?</span>
+                    <input type="radio" id="sim4" name="sim-nao4" value="sim4">
+                    <label for="sim4">Sim</label>
+                    <input type="radio" id="nao4" name="sim-nao4" value="nao4">
+                    <label for="nao4">Não</label>
+                <div>
+                    <span>Medicamento:</span>
+                        <input type="text">
+                    <span>Frequência:</span>
+                        <input type="radio" id="d2" name="freq2" value="d2">
+                        <label for="d2">Diariamente</label>
+                            <input type="number">
+                            <span>vez(es) por dia.</span>
+                        <input type="radio" id="s2" name="freq2" value="s2">
+                        <label for="s2">Semanalmente</label>
+                            <input type="number">
+                            <span>vez(es) por semana.</span>
+                        <input type="radio" id="m2" name="freq2" value="m2">
+                        <label for="m2">Mensalmente</label>
+                            <input type="number">
+                            <span>vez(es) por mês.</span>
+                        <input type="radio" id="a2" name="freq2" value="a2">
+                        <label for="a2">Anualmente</label>
+                            <input type="number">
+                            <span>vez(es) por ano.</span>
+                </div>
+                <span>Utiliza medicamento(s) sem prescrição médica?</span>
+                    <input type="radio" id="sim5" name="sim-nao5" value="sim5">
+                    <label for="sim5">Sim</label>
+                    <input type="radio" id="nao5" name="sim-nao5" value="nao5">
+                    <label for="nao5">Não</label>
+                <div>
+                    <span>Medicamento:</span>
+                        <input type="text">
+                    <span>Frequência:</span>
+                        <input type="radio" id="d3" name="freq3" value="d3">
+                        <label for="d3">Diariamente</label>
+                            <input type="number">
+                            <span>vez(es) por dia.</span>
+                        <input type="radio" id="s3" name="freq3" value="s3">
+                        <label for="s3">Semanalmente</label>
+                            <input type="number">
+                            <span>vez(es) por semana.</span>
+                        <input type="radio" id="m3" name="freq3" value="m3">
+                        <label for="m3">Mensalmente</label>
+                            <input type="number">
+                            <span>vez(es) por mês.</span>
+                        <input type="radio" id="a3" name="freq3" value="a3">
+                        <label for="a3">Anualmente</label>
+                            <input type="number">
+                            <span>vez(es) por ano.</span>
+                </div>
+            </div>
+
+            <h3>(Resultados de exames)**</h3>
+            <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não dee ser o local primordial de consulta.</span>
+
+            <!--<div><a href=""><button>EDITAR DADOS</button></a></div>-->
+
+            <input type="submit" id="submit">
+            <label for="submit">CONFIRMAR</label>
+
+        </main>
+        <footer>
+            <p>©2023, MedConnect.</p>
+            <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
+        </footer>
+</body>
+</html>
