@@ -6,7 +6,6 @@
     </div>
 {% endfor %}
 {% with request.resolver_match.view_name as view_name %}
-
     <div class="modal_box_login hidden">
         <div class="modal_login">
             <!-- <a href="SobreNos.html"><img style="width: 20px; position: relative; bottom:20px; left: -15px;" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a> -->
@@ -46,8 +45,21 @@
                 Para redefinir sua senha, informe o e-mail cadastrado na sua conta e 
                 lhe enviaremos um link com as instruções:
             </p>
-            <input name="email" class="modal_email" type="email" placeholder="EMAIL">
-            <a href="{% url "confirma_email" %}"><input class="modal_button" type="button" value="Enviar"></a>
+            {% if view_name == 'mais_informacoes' %}
+                {% with view_name='locais_de_atendimento' %}
+                    <form action="{% url "confirma_email" view_name %}" method="POST">
+                        {% csrf_token %}
+                        <input name="email" class="modal_email" type="email" placeholder="EMAIL">
+                        <input type="submit" class="modal_button" type="button" value="Enviar">
+                    </form>
+                {% endwith %}
+                {% else %}
+                    <form action="{% url "confirma_email" view_name %}" method="POST">
+                        {% csrf_token %}
+                        <input name="email" class="modal_email" type="email" placeholder="EMAIL">
+                        <input type="submit" class="modal_button" type="button" value="Enviar">
+                    </form>
+            {% endif %}
         </div>
     </div>
 {% endwith %}

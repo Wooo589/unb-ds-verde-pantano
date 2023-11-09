@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from datetime import datetime
+from setup import settings
 from .models import *
 from .forms import *
-from datetime import datetime
 
 def index(request):
     hospitais = Hospital.objects.order_by("nome")[:3]
@@ -134,7 +136,7 @@ def cadastro(request):
             )
 
             usuario.save()
-            messages.success(request, "Usuário cadastrado com sucesso")
+            messages.success(request, "Usuário cadastrado com sucesso!")
             return redirect('login')
 
     context = {"cadastro":cadastro}
@@ -157,11 +159,24 @@ def login_site(request, view_name):
             messages.error(request, "Usuário ou senha incorretos")
             return redirect(view_name)
 
-def esqueci_senha(request):
-    return render(request, 'inicial/esqueciSenha.html')
+def confirma_email(request, view_name):
 
-def confirma_email(request):
-    return render(request, 'inicial/ConfirmaEmail.html')
+    if request.method == "POST":
+        email = request.POST["email"]
+
+        if User.objects.filter(email__exact=email).exists():
+            send_mail(
+                "Redefinição de Senha",
+                "Uma requisição de troca de senha foi feita para a conta associada a este email, "
+                "caso essa requisição não tenha sido feita por você ignore esta mensagem.",
+                settings.EMAIL_HOST_USER,
+                recipient_list=[email,]
+            )
+            messages.success(request, "Email de redefinição de senha enviado com sucesso!")
+        else:
+            messages.error(request, "Nenhum usuário encontrado com o email informado")
+
+    return redirect(view_name)
 
 def logout_site(request):
     logout(request)

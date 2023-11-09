@@ -231,6 +231,7 @@ height: 320px;
     display: grid;
     border: 2px solid;
     border-radius: 15px;
+    padding: 10px;
 }
 .active, .message:hover {
     border: 2px solid lightgray;
