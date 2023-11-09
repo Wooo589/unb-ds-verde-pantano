@@ -187,7 +187,8 @@ $(window).scroll(function() {
                     <input type="radio" id="nao3" name="sim-nao3" value="nao3">
                     <label for="nao3">Não</label>
                 <span>Qual(is)?</span>
-                <input type="text">
+                <button id="ad_doenca_cronica">Adicionar</button>
+                <input type="text" id="doenca_cronica" name="doenca_cronica" value="doenca_cronica">
             </div>
             
             <h4>Diagnósticos</h4>
@@ -197,14 +198,16 @@ $(window).scroll(function() {
                     <input type="radio" id="nao4" name="sim-nao4" value="nao4">
                     <label for="nao4">Não</label>
                 <span>Qual(is)?</span>
+                <button id="ad_diagnostico">Adicionar</button>
                     <input type="text" name="doencas-diag" id="doencas-diag">
-            <h4>Sintomas</h4>
+            <h4>Sintomas recorrentes</h4>
                 <span>Apresenta sintoma(s) recorrente(s)?</span>
                     <input type="radio" id="sim4" name="sim-nao4" value="sim4">
                     <label for="sim4">Sim</label>
                     <input type="radio" id="nao4" name="sim-nao4" value="nao4">
                     <label for="nao4">Não</label>
                 <span>Qual(is)?</span>
+                <button id="ad_sintoma">Adicionar</button>
                     <input type="text" name="sintomas" id="sintomas">
             <h4>Cirurgias</h4>
                 <span>Já foi submetido a cirurgia(s)?</span>
@@ -213,6 +216,7 @@ $(window).scroll(function() {
                     <input type="radio" id="nao4" name="sim-nao4" value="nao4">
                     <label for="nao4">Não</label>
                 <span>Qual(is)?</span>
+                <button id="ad_cirurgia">Adicionar</button>
                     <input type="text" name="cirurgias" id="cirurgias">
             <h4>Internações</h4>
                 <span>Já foi internado(a)?</span>
@@ -226,6 +230,21 @@ $(window).scroll(function() {
                     <input type="text" name="internacoes" id="internacoes">
 
             <h3>HISTÓRICO FAMILIAR</h3>
+                <p>Registre aqui condições de saúde existentes em sua família.</p>
+                <button id="ad_condicao_familiar">Adicionar</button>
+                <div class="condicao_familiar">
+                    <span>Grau de parentesco:</span>
+                    <input type="radio" id="1grau" value="1grau">
+                    <label for="1grau">1º grau</label>
+                    <input type="radio" id="2grau" value="2grau">
+                    <label for="2grau">2º grau</label>
+                    <input type="radio" id="3grau" value="3grau">
+                    <label for="3grau">3º grau</label>
+
+                    <span>Condição:</span>
+                    <input type="text" id="condicao" value="condicao">
+                </div>
+
 
             <h3>USO DE MEDICAMENTOS</h3>
             <div>
@@ -234,6 +253,7 @@ $(window).scroll(function() {
                     <label for="sim4">Sim</label>
                     <input type="radio" id="nao4" name="sim-nao4" value="nao4">
                     <label for="nao4">Não</label>
+                <button id="ad_medicamento_cp">Adicionar Medicamento</button>
                 <div>
                     <span>Medicamento:</span>
                         <input type="text">
@@ -260,6 +280,7 @@ $(window).scroll(function() {
                     <label for="sim5">Sim</label>
                     <input type="radio" id="nao5" name="sim-nao5" value="nao5">
                     <label for="nao5">Não</label>
+                <button id="ad_medicamento_sp">Adicionar Medicamento</button>
                 <div>
                     <span>Medicamento:</span>
                         <input type="text">

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Meus dados | MedConnect</title>
+    <link rel="stylesheet" href="estilo/header_e_footer.css">
+    <link rel="stylesheet" href="estilo/meusdados.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 10,
+            'wght' 200,
+            'GRAD' 0,
+            'opsz' 36;
+            z-index: 1;
+            font-size: 36px;
+            color: gray;
+            font-family: 'Material Symbols Outlined';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+   $("#btnPesquisar").click(function(){
+    $("#top-bar1").toggle("fast");
+    $("#top-bar2").hide("fast");
+    $("#top-bar3").hide("fast");
+    $("#fechar_aba").show("fast");
+  });
+  $("#locais_de_atendimento").click(function(){
+    $("#top-bar2").toggle("fast");
+    $("#top-bar1").hide();
+    $("#top-bar3").hide();
+    $("#fechar_aba").show("fast");
+  });
+  $("#outras_duvidas").click(function(){
+    $("#top-bar3").toggle("fast");
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#fechar_aba").show("fast");
+  });
+  $("#fechar_aba").click(function(){
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+  });
+  $(".voltar").click(function(){
+    $("#top-bar1").show();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+    $("#fechar_aba").show("fast");
+  }); 
+  $(".login_box").click(function(){
+    $("#top-bar1").hide();
+    $("#top-bar2").hide();
+    $("#top-bar3").hide();
+  }); 
+});
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 1){  
+    $("#top-bar1").addClass("fixed");
+    $("#top-bar2").addClass("fixed");
+    $("#top-bar3").addClass("fixed");
+    }
+    else{
+    $("#top-bar1").removeClass("fixed");
+    $("#top-bar2").removeClass("fixed");
+    $("#top-bar3").removeClass("fixed");
+    }
+});
+    </script>
+</head>
+<body>
+    <!-- MENU SUPERIOR -->
+    <header>
+        <div id="logotipo">
+            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <span id="titulo">MedConnect</span>
+        </div>
+        <nav>         
+            <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
+            <span class="divisor">|</span>
+            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self" style="font-weight: 650;">LOCAIS DE ATENDIMENTO</a>
+            <span class="divisor">|</span>
+            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
+            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
+            <span class="divisor">|</span>
+            <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <!-- 'target="_self"': continua na mesma aba. --> 
+        </nav>
+        <button id="btnPesquisar">
+            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
+            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
+        </button>
+        <button type="button" class="login_box">
+            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </button>
+            <!--</a>-->
+                
+        <div class="content_account">
+            <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
+            <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
+            <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
+        </div>
+
+    </header>
+        <section id="pesquisa"> 
+            <div id="top-bar1" style="display: none;">
+                <span>Selecione o tipo de pesquisa:</span>
+                <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self"><button id="locais_de_atendimento">Locais de atendimento</button></a>
+                <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self"><button id="outras_duvidas">Outras dúvidas</button></a>
+                <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">close</span></button>
+            </div>
+        </section> 
+    <main>
+        <div id="dados_gerais">
+            <h1>MEUS DADOS</h1>
+            <span id="nome_completo">Nome completo:</span>
+                <span id="nome">[nome completo]</span>
+            <span>Idade:</span>
+                <span id="idade">[idade]</span>
+            <span>Sexo:</span>
+                <span id="sexo">[sexo]</span>
+            <span>Profissão:</span>
+                <span id="profissao">[profissão]</span>
+            <span>Endereço:</span>
+                <span id="endereco">[endereço]</span>
+            <div id="contato">
+                <h3>Contato<h3>
+                    <div id="tipos_contato">
+                        <span>Telefone:</span>
+                            <span id="telefone">[telefone]</span>
+                        <span>E-mail:</span>
+                            <span id="e-mail">[e-mail]</span>
+                    </div>
+            </div>
+        </div>
+
+        <div id="condicoes_fisicas">
+            <h2>CONDIÇÕES FÍSICAS</h2>
+            <span>Peso:</span>
+                <span id="peso">[peso]</span>
+            <span>Altura:</span>
+                <span id="altura">[aultura]</span>
+            <span>Tipo sanguíneo:</span>
+                <span id="tp_sanguineo">[tipo sangíneo]</span>
+            <div class="complete_answer">
+                <span>Consome cigarro ou álcool?</span>
+                    <span class="resp">Sim/Não</span>
+                    <span>Frequência:</span>
+                        <span id="freq1">[frequência]</span>
+            </div>
+            <div class="complete_answer">
+                <span>Pratica exercícios físicos?</span>
+                    <span class="resp">Sim/Não</span>
+                    <span>Frequência:</span>
+                        <span id="freq2">[frequência]</span>
+            </div>
+        </div>
+
+        <h2>HISTÓRICO DE SAÚDE</h2>
+
+    <div id="historia_medica_pregressa">
+        <h3>HISTÓRIA MÉDICA PREGRESSA</h3>
+        <div class="hmp_container">
+            <h4>Doenças crônicas</h4>
+                <span class="sem_registro">Não houve registros.</span>
+                <div id="doencas_cronicas">
+                    <ul id="d_cronica_ul">
+                        <li class="d_cronica_li">Diabetes tipo 1</li>
+                        <li class="d_cronica_li">Hipertensão arterial</li>
+                    </ul> 
+                </div>
+        </div>        
+        <div class="hmp_container">
+            <h4>Sintomas recorrentes</h4>
+                <span class="sem_registro">Não houve registros.</span>
+                <div id="sintomas_recorrentes">
+                    <ul>
+                        <li class="sintoma_li">Sintoma 1</li>
+                        <li class="sintoma_li">Sintoma 2</li>
+                    </ul> 
+                </div>
+        </div>
+        <div class="hmp_container">
+            <h4>Diagnósticos</h4>
+                <span class="sem_registro">Não houve registros.</span>
+                <div id="diagnosticos">
+                    <ul id="diagnostico_ul">
+                        <li class="diagnostico_li">Diagnóstico 1</li>
+                        <li class="diagnostico_li">Diagnóstico 2</li>
+                    </ul> 
+                </div>
+        </div>
+        <div class="hmp_container">
+            <h4>Cirurgias</h4>
+                <span class="sem_registro">Não houve registros.</span>
+                <div id="cirurgias">
+                    <ul id="cirurgia_ul">
+                        <li class="cirurgia_li">Sintoma 1</li>
+                        <li class="cirurgia_li">Sintoma 2</li>
+                    </ul> 
+                </div>
+        </div>
+        <div class="hmp_container">
+            <h4>Internações</h4>
+                <span class="sem_registro">Não houve registros.</span>
+                <span id="num_internacoes">[número de internações]</span>
+                <span id="motivos_internacao">[motivos]</span>
+        </div>
+
+        <div class="general_container">
+            <h3>HISTÓRICO FAMILIAR</h3>
+                <span class="sem_registro">Não houve registros.</span>
+                <span>Grau de parentesco:</span>
+                    <span class="grau_parentesco">[grau de parentesco]</span>
+                <span>Condição:</span>
+                    <span class="condicao_familiar">[condição]</span>
+        </div>
+
+        <div class="general_container">
+            <h3>USO DE MEDICAMENTOS</h3>
+            <div class="med_container">
+                <span>Medicamentos utilizados com prescrição médica:</span>
+                    <span class="sem_registro">Não houve registros.</span>
+                    <div class="medicamentos_cp">
+                        <span class="nome_med_cp">[nome do medicamento]</span>
+                        <span class="freq_med_cp">[frequencia]</span>
+                    </div>
+            </div>
+
+            <div class="med_container">
+                <span>Medicamentos utilizados sem prescrição médica</span>
+                    <span class="sem_registro">Não houve registros.</span>
+                    <div class="medicamentos_sp">
+                        <span class="nome_med_sp">[nome do medicamento]</span>
+                        <span class="nome_med_sp">[frequencia]</span>
+                    </div>
+            </div>
+        </div>
+
+            <h3>(Resultados de exames)**</h3>
+            <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não dee ser o local primordial de consulta.</span>
+
+            <div id="editar_dados"><a href="../Página - Editar dados/editardados.html"><button id="btn_editar_dados">EDITAR DADOS</button></a></div>
+
+            <!--OBSERVAÇÃO: O histórico médico on-line deve ser armazenado de forma organizada, em uma base de dados segura e adequada, e apresentar assinatura digital válida junto a autoridades como o Ministério da Saúde.
+
+            As informações históricas presentes no prontuário pertencem ao paciente e, portanto, devem estar disponíveis sempre que ele solicitar.
+
+            Também são confidenciais, uma vez que estão protegidas por mecanismos do Código de Ética Médica, como o sigilo entre médico e paciente.
+
+            Atendendo a esses padrões, o documento on-line tem o mesmo efeito do histórico em papel, sendo válido para fins assistenciais, legais e jurídicos, nas situações que forem requeridas.-->
+        </main>
+        <footer>
+            <p>©2023, MedConnect.</p>
+            <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
+        </footer>
+</body>
+</html>
