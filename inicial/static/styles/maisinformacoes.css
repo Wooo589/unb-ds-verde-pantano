@@ -18,6 +18,7 @@
     --black: #000000;
     --color3: #024053;
     --c-orange: #FF9533;
+    --c-orange2: #c56104;
     --c-yellow: #FBFE2D;
     --c-green: #6EFF57;
     --c-blue: #577CFF;
@@ -212,6 +213,9 @@ main i:hover{
     color: #F0F0F0;
     font-size: 16px;
     font-weight: 500;
+}
+#btn_avaliar:hover{
+    background-color: rgb(177, 54, 9);
 }
 #link_avaliar{ 
     /* font-size: 14px; */

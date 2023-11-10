@@ -24,6 +24,7 @@
     --clr:#9BFAB0;
     --clr2:#64C27B;
     --clr3:#2A8C4A;
+    --clr4:#002653;
 
     --fonte-padrao: 'Inter', sans-serif;
     --fonte-destaque: 'Open sans', sans-serif;
@@ -183,6 +184,10 @@ section#resultados-da-pesquisa > ul {
     height: 36px;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
     min-width: 155px;
+}
+.info:hover{
+    background-color: var(--clr4);
+    box-shadow: none;
 }
 .info > a {
     color: whitesmoke;

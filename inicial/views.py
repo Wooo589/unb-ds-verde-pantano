@@ -182,3 +182,6 @@ def logout_site(request):
     logout(request)
     messages.success(request, "Logout efetuado com sucesso!")
     return redirect('index')
+
+def redefinir_senha(request):
+    return render(request,'redefinir_senha')

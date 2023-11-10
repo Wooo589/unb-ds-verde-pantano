@@ -12,5 +12,6 @@ urlpatterns = [
     path("cadastro", cadastro, name='cadastro'),
     path("login/<str:view_name>", login_site, name='login'),
     path("login/confirmacao/<str:view_name>", confirma_email, name="confirma_email"),
-    path("logout", logout_site, name="logout")
+    path("logout", logout_site, name="logout"),
+    path("redefinir_senha", redefinir_senha ,name="redefinir_senha"),
 ]

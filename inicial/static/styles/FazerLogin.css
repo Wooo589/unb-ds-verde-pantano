@@ -85,6 +85,7 @@
 }
 .link_esqueciSenha:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 #button_login{
     background-color: #1D7FF1;
@@ -101,6 +102,8 @@
 }
 #button_login:hover{
     background-color:var(--clr2) ;
+    box-shadow: none;
+    cursor: pointer;
 }
 .login_google{
     margin: 10px;
@@ -117,6 +120,7 @@
     box-shadow: none;
     color: #822b25;
     border-color:#822b25;
+    cursor: pointer;
 }
 .login_facebook{
     display: block;
@@ -135,6 +139,7 @@
     border-color: #002653;
     background-color: #ededed;
     box-shadow: none;
+    cursor: pointer;
 }
 .voltar2{
     background-color: transparent;
@@ -218,6 +223,11 @@ height: 320px;
     color: white;
     border: none;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.modal_button:hover{
+    background-color: var(--clr2);
+    box-shadow: none;
+    cursor: pointer;
 }
 .message{
     width: 350px;
