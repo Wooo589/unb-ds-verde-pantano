@@ -225,13 +225,18 @@ height: 320px;
     position: fixed;
     bottom: 10px;
     right: 10px;
-    background-color: rgba(255, 0, 0, 0.500);
     z-index: 3;
     place-content: center;
     display: grid;
     border: 2px solid;
     border-radius: 15px;
     padding: 10px;
+}
+.message.success{
+    background-color: rgba(50, 205, 50, 0.500);
+}
+.message.error{
+    background-color: rgba(255, 0, 0, 0.500);
 }
 .active, .message:hover {
     border: 2px solid lightgray;
