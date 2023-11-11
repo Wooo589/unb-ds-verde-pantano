@@ -83,7 +83,7 @@ $(window).scroll(function() {
         <nav>         
             <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
             <span class="divisor">|</span>
-            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self" style="font-weight: 650;">LOCAIS DE ATENDIMENTO</a>
+            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
             <span class="divisor">|</span>
             <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
             <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
@@ -146,21 +146,24 @@ $(window).scroll(function() {
         <!-- <div id="condicoes_fisicas"> -->
         <div class="general_container">
             <h2>CONDIÇÕES FÍSICAS</h2>
+        <div class="inner_container">
             <span>Peso:<span id="peso">[peso]</span></span>
                 
             <span>Altura:<span id="altura">[altura]</span></span>
                 
             <span>Tipo sanguíneo:<span id="tp_sanguineo">[tipo sangíneo]</span></span>
-            <br/>
+        </div>
+        <div class="inner_container">
             <div class="complete_answer">
                 <span>Consome cigarro ou álcool?<span id="resp1">Sim/Não</span></span>
                 <span>Frequência:<span id="freq1">[frequência]</span></span>        
             </div>
-            <br/>
             <div class="complete_answer">
                 <span>Pratica exercícios físicos?<span id="resp2">Sim/Não</span></span>    
+                <span id="exercicio_praticado">Exercício praticado:</span>
                 <span>Frequência:<span id="freq2">[frequência]</span></span>          
             </div>
+        </div>
         </div>
 
         <h2>HISTÓRICO DE SAÚDE</h2>
@@ -168,7 +171,7 @@ $(window).scroll(function() {
     <!-- <div id="historia_medica_pregressa"> -->
     <div class="general_container">
         <h3>HISTÓRIA MÉDICA PREGRESSA</h3>
-        <div class="hmp_container">
+        <div class="hmp_container" style="margin-top: 0px;">
             <h4>Doenças crônicas</h4>
                 <span class="sem_registro">Não houve registros.</span>
                 <div id="doencas_cronicas">
@@ -215,31 +218,31 @@ $(window).scroll(function() {
                 <span>Motivos:<span id="motivos_internacao">[motivos]</span></span>
         </div>
 
-        <h3>HISTÓRICO FAMILIAR</h3>
         <div class="general_container">
+            <h3>HISTÓRICO FAMILIAR</h3>
                 <span class="sem_registro">Não houve registros.</span>
                 <span>Grau de parentesco:<span class="grau_parentesco">[grau de parentesco]</span></span>
                 <span>Condição:<span class="condicao_familiar">[condição]</span></span>
                     
         </div>
 
-        <h3>USO DE MEDICAMENTOS</h3>
         <div class="general_container">
-            <div class="med_container">
-                <span>Medicamentos utilizados com prescrição médica:</span>
+            <h3>USO DE MEDICAMENTOS</h3>
+            <div class="inner_container">
+                <span style="font-weight: 440; text-decoration: underline;">Medicamentos utilizados com prescrição médica:</span>
                     <span class="sem_registro">Não houve registros.</span>
-                    <div class="medicamentos_cp">
-                        <span class="nome_med_cp">[nome do medicamento]</span>
-                        <span class="freq_med_cp">[frequencia]</span>
+                    <div class="medicamentos">
+                        <span>Nome:<span class="nome_med_cp">[nome do medicamento]</span></span>
+                        <span>Frequência:<span class="freq_med_cp">[frequencia]</span></span>
                     </div>
             </div>
 
-            <div class="med_container">
-                <span>Medicamentos utilizados sem prescrição médica:</span>
+            <div class="inner_container">
+                <span style="font-weight: 440; text-decoration: underline;">Medicamentos utilizados sem prescrição médica:</span>
                     <span class="sem_registro">Não houve registros.</span>
-                    <div class="medicamentos_sp">
-                        <span class="nome_med_sp">[nome do medicamento]</span>
-                        <span class="nome_med_sp">[frequencia]</span>
+                    <div class="medicamentos">
+                        <span>Nome:<span class="nome_med_sp">[nome do medicamento]</span></span>
+                        <span>Frequência:<span class="nome_med_sp">[frequencia]</span></span>
                     </div>
             </div>
         </div>
