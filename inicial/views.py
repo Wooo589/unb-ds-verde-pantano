@@ -185,3 +185,16 @@ def logout_site(request):
 
 def redefinir_senha(request):
     return render(request,'redefinir_senha')
+
+def minhas_avaliacoes(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar suas avaliações")
+        return redirect("index")
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    counter = (1, 2, 3, 4, 5)
+    avaliacoes = Avaliacao.objects.filter(usuario__exact=request.user.username).order_by("-data")
+    context = {"buscar": buscar2, "filter":filter_form, "counter":counter, "avaliacoes":avaliacoes}
+
+    return render(request, "inicial/minhasavaliacoes.html", context)

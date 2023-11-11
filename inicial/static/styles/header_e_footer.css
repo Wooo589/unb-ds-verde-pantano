@@ -42,7 +42,7 @@ body{
     background-color: #ededed;
     min-height: 100vh;
 }
-header{
+header#principal-header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -186,7 +186,7 @@ header{
 .spanPesquisar:hover {
     border: 1px solid lightgray;
 }
-nav{
+nav#_header{
     display: flex;
     flex-direction: row;
     justify-content: center;

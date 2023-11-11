@@ -1,11 +1,11 @@
 {% load static %}
 
-<header>
+<header id="principal-header">
     <div id="logotipo">
         <img id="icone" src="{% static "img/estetoscopio32px.png"%}" alt="MedConnect logo." />
         <span id="titulo">MedConnect</span>
     </div>
-    <nav>
+    <nav id="_header">
         {% if request.path == "/" %}
             <a href="{% url "index" %}" rel="prev" target="_self" style="font-weight: 650;">INÍCIO</a>
             <span class="divisor">|</span>
@@ -27,7 +27,12 @@
             <a href="#" target="_self">PRÉ-TRIAGEM</a>
             <span class="divisor">|</span>
         {% endif %}
-        <a href="{% url "duvidas_frequentes" %}" target="_self">DÚVIDAS FREQUENTES</a>
+        {% if request.path == "/duvidas_frequentes" %}
+            <a href="{% url "duvidas_frequentes" %}" target="_self" style="font-weight: 650;">DÚVIDAS FREQUENTES</a>
+        {% else %}
+            <a href="{% url "duvidas_frequentes" %}" target="_self">DÚVIDAS FREQUENTES</a>
+        {% endif %}
+        
     </nav>
     <button id="btnPesquisar">
         <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
@@ -48,8 +53,8 @@
             
     <div class="content_account">
         <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
-        <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
-        <button style="border-radius: 0px 0px 20px 20px;"><a href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
+        <button><a style="text-decoration: none; color: inherit;" href="{% url "minhas_avaliacoes" %}"><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></a></button>
+        <button style="border-radius: 0px 0px 20px 20px;"><a style="text-decoration: none; color: inherit;" href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
     </div>
 
     <!-- <nav>         

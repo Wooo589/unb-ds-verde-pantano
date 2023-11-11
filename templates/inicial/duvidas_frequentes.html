@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dúvidas frequentes | MedConnect</title>
-    <link rel="stylesheet" href="{% static "styles/duvidas_f_header_e_footer.css"%}">
+    <link rel="stylesheet" href="{% static "styles/header_e_footer.css"%}">
     <link rel="stylesheet" href="{% static "styles/duvidas_frequentes.css"%}">
     <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -29,87 +29,14 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{% static "js/select.js" %}"></script>
     <script src="{% static "js/login.js" %}"></script>
+    <script src="{% static "js/script_duvidas_frequentes.js"%}"></script>
     <script src="{% static "js/login_popup.js"%}"></script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
-    <header id="principal-header">
-        <div id="logotipo">
-            <img id="icone" src="{% static "img/estetoscopio32px.png"%}" alt="MedConnect logo." />
-            <span id="titulo">MedConnect</span>
-        </div>
-        <nav id="principal-nav">         
-            <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
-            <span class="divisor">|</span>
-            <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
-            <span class="divisor">|</span>
-            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
-            <span class="divisor">|</span>
-            <a href="{% url "duvidas_frequentes" %}" target="_self" style="font-weight: 650;">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
-        </nav>
-        <button id="btnPesquisar">
-            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
-            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
-        </button>
-        {% if user.is_authenticated %}
-            <button type="button" class="login_box">
-                <span style="font-size: 11px;">{{ user.username }}</span>
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
-        {% else %}
-            <button type="button" class="login_box">
-                <span  style="font-size: 11px;">Realizar Login</span>
-                <span class="material-symbols-outlined">account_circle</span>
-            </button>
-        {% endif %}
-            <!--</a>-->
-        <div class="content_account">
-            <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
-            <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
-            <button style="border-radius: 0px 0px 20px 20px;"><a href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
-        </div>
-    </header>
-        <section id="pesquisa"> 
-            <div id="top-bar1" style="display: none;">
-                <span>Selecione o tipo de pesquisa:</span>
-                <button id="locais_de_atendimento">Locais de atendimento</button>
-                <button id="outras_duvidas">Outras dúvidas</button>
-                <button id="fechar_aba"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">close</span></button>
-            </div>
-            <div id="top-bar2" style="display: none;">
-                <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
-                <form action="{% url 'buscar' %}">
-                <span class="spanPesquisar">
-                    <span class="material-symbols-outlined" style="color: black; font-size: 25px">search</span>
-                    <input name="buscar" type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
-                </span>
-                    <div class="wrapper">
-                        {{ filter.uf }}
-                    </div>
-                    <div class="wrapper">
-                        {{ filter.municipio }}
-                    </div>
-                    <div class="wrapper">
-                        {{ filter.especialidade }}
-                    </div>
-                    <div class="wrapper">
-                        {{ filter.categoria }}
-                    </div>
-                    <button type="submit" id="btnProcurar"><span class="material-symbols-outlined" style="color: black; font-size: 30px">search</span></button>
-                </form>
-            </div>
-            <div id="top-bar3">
-                <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray; margin-left: 25px;"></i></button>
-                <span class="spanPesquisar">
-                    <span class="material-symbols-outlined" style="color: black; font-size: 22px;">search</span>
-                    <input type="text" id="txt_pesquisar_locais" placeholder="PESQUISAR..."/>
-                </span>
-            </div>
-        </section>
+    {% include "inicial/partials/_login.html" %}
+    {% include "inicial/partials/_header.html" %}
     <main>
-        {% include "inicial/partials/_login.html" %}
     <!--aqui começa a página de fato-->
     
     <div id="faq-container">
@@ -206,7 +133,7 @@
             </div>    
         </div>    
     </main>
-    <aside id="navigation_aside">
+    <aside id="navigation_aside" style="position: fixed; top: 100px;">
         <nav class="aside_nav">
             <div id="nav-aside-container">
                 <header id="navigation-aside-header">
@@ -222,7 +149,7 @@
             </div>
         </nav>
     </aside>
-    <aside id="numbers_aside">
+    <aside id="numbers_aside" style="position: fixed; top: 100px;">
         <nav class="aside_nav">
             <div id="numbers-aside-container">
                 <header id="num-aside-header">
@@ -236,12 +163,10 @@
             </div>
         </nav>
     </aside>
-    
     <footer>
         <p>©MedConnect 2023</p>
         <p>Site criado por feudo 9 - "Verde Pântano".</p>
     </footer>
-    <script src="{% static "js/script_duvidas_frequentes.js"%}"></script>
     </div>
 </body>
 </html>
