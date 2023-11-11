@@ -77,7 +77,7 @@ $(window).scroll(function() {
     <!-- MENU SUPERIOR -->
     <header>
         <div id="logotipo">
-            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <img id="icone" src="../../img/estetoscopio32px.png" alt="MedConnect logo." />
             <span id="titulo">MedConnect</span>
         </div>
         <nav>         
@@ -117,54 +117,56 @@ $(window).scroll(function() {
             </div>
         </section> 
     <main>
-        <div id="dados_gerais">
+        <!-- <div id="dados_gerais"> -->
             <h1>MEUS DADOS</h1>
-            <span id="nome_completo">Nome completo:</span>
-                <span id="nome">[nome completo]</span>
-            <span>Idade:</span>
-                <span id="idade">[idade]</span>
-            <span>Sexo:</span>
-                <span id="sexo">[sexo]</span>
-            <span>Profissão:</span>
-                <span id="profissao">[profissão]</span>
-            <span>Endereço:</span>
-                <span id="endereco">[endereço]</span>
+            <hr/>
+        <!-- <div id="dados_gerais"> -->
+        <div class="general_container">
+            <span id="nome_completo">Nome completo:<span id="nome">[nome completo]</span></span>
+    
+            <span>Idade:<span id="idade">[idade]</span></span>
+                
+            <span>Sexo:<span id="sexo">[sexo]</span></span>
+                
+            <span>Profissão:<span id="profissao">[profissão]</span></span>
+                
+            <span>Endereço:<span id="endereco">[endereço]</span></span>
+                
             <div id="contato">
-                <h3>Contato<h3>
+                <h5>Contato:<h5>
+                    <!-- <div id="tipos_contato"> -->
                     <div id="tipos_contato">
-                        <span>Telefone:</span>
-                            <span id="telefone">[telefone]</span>
-                        <span>E-mail:</span>
-                            <span id="e-mail">[e-mail]</span>
+                        <span>Telefone:<span id="telefone">[telefone]</span></span>
+                            
+                        <span>E-mail:<span id="e-mail">[e-mail]</span></span>         
                     </div>
             </div>
         </div>
 
-        <div id="condicoes_fisicas">
+        <!-- <div id="condicoes_fisicas"> -->
+        <div class="general_container">
             <h2>CONDIÇÕES FÍSICAS</h2>
-            <span>Peso:</span>
-                <span id="peso">[peso]</span>
-            <span>Altura:</span>
-                <span id="altura">[aultura]</span>
-            <span>Tipo sanguíneo:</span>
-                <span id="tp_sanguineo">[tipo sangíneo]</span>
+            <span>Peso:<span id="peso">[peso]</span></span>
+                
+            <span>Altura:<span id="altura">[altura]</span></span>
+                
+            <span>Tipo sanguíneo:<span id="tp_sanguineo">[tipo sangíneo]</span></span>
+            <br/>
             <div class="complete_answer">
-                <span>Consome cigarro ou álcool?</span>
-                    <span class="resp">Sim/Não</span>
-                    <span>Frequência:</span>
-                        <span id="freq1">[frequência]</span>
+                <span>Consome cigarro ou álcool?<span id="resp1">Sim/Não</span></span>
+                <span>Frequência:<span id="freq1">[frequência]</span></span>        
             </div>
+            <br/>
             <div class="complete_answer">
-                <span>Pratica exercícios físicos?</span>
-                    <span class="resp">Sim/Não</span>
-                    <span>Frequência:</span>
-                        <span id="freq2">[frequência]</span>
+                <span>Pratica exercícios físicos?<span id="resp2">Sim/Não</span></span>    
+                <span>Frequência:<span id="freq2">[frequência]</span></span>          
             </div>
         </div>
 
         <h2>HISTÓRICO DE SAÚDE</h2>
 
-    <div id="historia_medica_pregressa">
+    <!-- <div id="historia_medica_pregressa"> -->
+    <div class="general_container">
         <h3>HISTÓRIA MÉDICA PREGRESSA</h3>
         <div class="hmp_container">
             <h4>Doenças crônicas</h4>
@@ -209,21 +211,20 @@ $(window).scroll(function() {
         <div class="hmp_container">
             <h4>Internações</h4>
                 <span class="sem_registro">Não houve registros.</span>
-                <span id="num_internacoes">[número de internações]</span>
-                <span id="motivos_internacao">[motivos]</span>
+                <span>Número de internações:<span id="num_internacoes">[número de internações]</span></span>
+                <span>Motivos:<span id="motivos_internacao">[motivos]</span></span>
         </div>
 
+        <h3>HISTÓRICO FAMILIAR</h3>
         <div class="general_container">
-            <h3>HISTÓRICO FAMILIAR</h3>
                 <span class="sem_registro">Não houve registros.</span>
-                <span>Grau de parentesco:</span>
-                    <span class="grau_parentesco">[grau de parentesco]</span>
-                <span>Condição:</span>
-                    <span class="condicao_familiar">[condição]</span>
+                <span>Grau de parentesco:<span class="grau_parentesco">[grau de parentesco]</span></span>
+                <span>Condição:<span class="condicao_familiar">[condição]</span></span>
+                    
         </div>
 
+        <h3>USO DE MEDICAMENTOS</h3>
         <div class="general_container">
-            <h3>USO DE MEDICAMENTOS</h3>
             <div class="med_container">
                 <span>Medicamentos utilizados com prescrição médica:</span>
                     <span class="sem_registro">Não houve registros.</span>
@@ -234,7 +235,7 @@ $(window).scroll(function() {
             </div>
 
             <div class="med_container">
-                <span>Medicamentos utilizados sem prescrição médica</span>
+                <span>Medicamentos utilizados sem prescrição médica:</span>
                     <span class="sem_registro">Não houve registros.</span>
                     <div class="medicamentos_sp">
                         <span class="nome_med_sp">[nome do medicamento]</span>
@@ -243,8 +244,8 @@ $(window).scroll(function() {
             </div>
         </div>
 
-            <h3>(Resultados de exames)**</h3>
-            <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não dee ser o local primordial de consulta.</span>
+            <!-- <h3>(Resultados de exames)**</h3>
+            <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não deve ser o local primordial de consulta.</span> -->
 
             <div id="editar_dados"><a href="../Página - Editar dados/editardados.html"><button id="btn_editar_dados">EDITAR DADOS</button></a></div>
 
