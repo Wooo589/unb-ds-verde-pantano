@@ -12,7 +12,7 @@
     margin:0;
 }
 .body_Redefinir{
-    background-image:url('MIDIA/IMG/bg_criarconta.jpg');
+    background-image:url('../img/bg_criarconta.jpg');
     background-size:cover;
     font-family: var(--fonte-padrao);
 }

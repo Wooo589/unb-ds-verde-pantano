@@ -3,6 +3,9 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from datetime import datetime
 from setup import settings
 from .models import *
@@ -165,12 +168,20 @@ def confirma_email(request, view_name):
         email = request.POST["email"]
 
         if User.objects.filter(email__exact=email).exists():
+
+            gerador = PasswordResetTokenGenerator()
+            usuario = User.objects.get(email=email)
+            token = gerador.make_token(usuario)
+            username = usuario.username
+            context = {"token":token, "username": username}
+            # print(gerador.check_token(usuario, token))
+
             send_mail(
                 "Redefinição de Senha",
-                "Uma requisição de troca de senha foi feita para a conta associada a este email, "
-                "caso essa requisição não tenha sido feita por você ignore esta mensagem.",
-                settings.EMAIL_HOST_USER,
-                recipient_list=[email,]
+                html_message= render_to_string('inicial/email.html', context),
+                message= strip_tags(render_to_string('inicial/email.html', context)),
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email,],
             )
             messages.success(request, "Email de redefinição de senha enviado com sucesso!")
         else:
@@ -183,8 +194,28 @@ def logout_site(request):
     messages.success(request, "Logout efetuado com sucesso!")
     return redirect('index')
 
-def redefinir_senha(request):
-    return render(request,'redefinir_senha')
+def redefinir_senha(request, username, token):
+
+    usuario = User.objects.get(username=username)
+
+    if request.method == "POST":
+        if request.POST["senha_1"] != request.POST["senha_2"]:
+            return redirect("redefinir_senha", username, token)
+
+        senha = request.POST["senha_1"]
+        usuario.set_password(senha)
+        usuario.save(force_update=True)
+
+        messages.success(request, "Senha redefinida com sucesso!")
+        return redirect("index")
+
+    gerador = PasswordResetTokenGenerator()
+
+    if gerador.check_token(usuario, token):
+
+        context = {"username":username, "token":token}
+
+        return render(request,'inicial/RedefinirSenha.html', context)
 
 def minhas_avaliacoes(request):
     if not request.user.is_authenticated:
