@@ -13,7 +13,7 @@ def update_time(sender, instance, created, **kwargs):
         minutos = round(duracao["duracao__avg"].seconds / 60)
         
         avaliacao = Avaliacao.objects.filter(hospital=hospital).aggregate(Avg("avaliacao", default=0))
-        nota = round(avaliacao["avaliacao__avg"])
+        nota = avaliacao["avaliacao__avg"]
         hospital.nota = nota
 
         if risco == "EMERGENTE":

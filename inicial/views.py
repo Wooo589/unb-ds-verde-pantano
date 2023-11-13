@@ -9,7 +9,7 @@ from .models import *
 from .forms import *
 
 def index(request):
-    hospitais = Hospital.objects.order_by("nome")[:3]
+    hospitais = Hospital.objects.order_by("-nota")[:3]
     buscar2 = BuscarForms()
     filter_form = FilterForms()
     counter = (1, 2, 3, 4, 5)

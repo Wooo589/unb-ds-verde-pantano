@@ -57,7 +57,7 @@ class Hospital(models.Model):
     tempo_urgente = models.IntegerField(null=False, blank=False, default=0)
     tempo_pouco_urgente = models.IntegerField(null=False, blank=False, default=0)
     tempo_nao_urgente = models.IntegerField(null=False, blank=False, default=0)
-    nota = models.IntegerField(null=False, blank=False, default=0)
+    nota = models.DecimalField(max_digits=4, decimal_places=3, null=False, blank=False, default=0)
     leitos = models.IntegerField(null=False, blank=False, default=0)
     uti_adulto = models.IntegerField(null=False, blank=False, default=0)
     uti_pediatrico = models.IntegerField(null=False, blank=False, default=0)
