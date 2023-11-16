@@ -23,7 +23,9 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="jquer"></script>
+    <script>
+
+    </script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
@@ -156,9 +158,26 @@
                     <span>Qual(is)?</span>
                     <input type="text">
                     <span>Com que frequência?</span>
-                    <div>
-                        <span><input type="number">vez(es) por semana.</span>
+                    <div class="f">
+                        <div>
+                            <input type="radio" id="d2" name="freq2" value="d2">
+                            <label for="d2">Diariamente</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="s2" name="freq2" value="s2">
+                            <label for="s2">Semanalmente</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="m2" name="freq2" value="m2">
+                            <label for="m2">Mensalmente</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="a2" name="freq2" value="a2">
+                            <label for="a2">Anualmente</label>
+                        </div>
                     </div>
+                    <span>Nesse período, quantas vezes você pratica exercícios físicos?</span>
+                    <input type="number" id="freq_ex_fisicos" name="freq_ex_fisicos">
                 </div>
             </div>
         </div>
@@ -180,8 +199,14 @@
                 
                 <div id="outer_box_doenca_cronica">
                     <span>Qual(is)?</span>
-                </div>
-                <button type="button" id="add_doenca_cronica">Adicionar</button>
+                    <div class="inner_box_doenca_cronica">
+                        <div class="addmoreadd1">
+                            <button type="button" class="add_doenca_cronica">Adicionar</button>
+                        </div>
+                        <input type="text" class="doenca_cronica" name="doenca_cronica" value="doenca_cronica">
+                        <input type="image" class="comp_doenca_cronica" name="comp_doenca_cronica">
+                    </div>
+                </div> 
             </div>
             <div class="hmp_container">
                 <h4>Sintomas recorrentes</h4>
@@ -196,8 +221,15 @@
                 
                 <div id="outer_box_sintoma">
                     <span>Qual(is)?</span>
-                </div>
-                <button type="button" id="add_sintoma">Adicionar</button>
+                    <div class='inner_box_sintoma'>
+                        <div class="addmoreadd2">
+                            <button type="button" class="add_sintoma">Adicionar</button>
+                        </div>
+                        <input type="text" name="sintomas" class="sintomas">
+                        <span>Adicione a data e o horário aproximado de início do sintoma:</span>
+                        <input type="datetime-local" class="datetime_sintoma">
+                    </div>
+                </div>  
             </div>
             <div class="hmp_container">
                 <h4>Diagnósticos</h4>
@@ -212,8 +244,13 @@
                 
                 <div id="outer_box_diagnostico">
                     <span>Qual(is)?</span>
+                    <div class='inner_box_diagnostico'>
+                        <div class="addmoreadd3">
+                            <button type="button" class="add_diagnostico">Adicionar</button>
+                        </div>
+                        <input type='text' name='doencas-diag' class="doencas">
+                    </div>
                 </div>
-                <button type="button" id="add_diagnostico">Adicionar</button>
             </div>
             <div class="hmp_container">
                 <h4>Cirurgias</h4>
@@ -228,8 +265,18 @@
                 
                 <div id="outer_box_cirurgia">
                     <span>Qual(is)?</span>
+                    <div class='inner_box_cirurgia'>
+                        <div class="addmoreadd4">
+                            <button type="button" class="add_cirurgia">Adicionar</button>
+                        </div>
+                        <div>
+                          <span>Cirurgia realizada:<input type='text' name='cirurgias' class="cirurgias"></span>
+                        </div>
+                        <div>
+                          <span>Data:<input type='date' name='data_cirurgia' class="data_cirurgia"></span>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" id="add_cirurgia">Adicionar</button>
             </div>
             <div class="hmp_container">
                 <h4>Internações</h4>
@@ -242,15 +289,44 @@
                     <label for="nao7">Não</label>
                 </div>
                 <div id="outer_box_internacao">
+                    <div class='inner_box_internacao'>
+                        <div class="addmoreadd5">
+                            <button type="button" class="add_internacao">Adicionar</button>
+                        </div>
+                        <div>
+                          <span>Motivo:</span>
+                          <input type='text' name='motivo_internacao' class="motivo_internacao">
+                        </div>
+                        <div>
+                          <span>Data:<input type='date' name='data_internacao' class="data_internacao"></span>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" id="add_internacao">Adicionar</button>
             </div>
         </div>
         <div class="general_container">
             <h3>HISTÓRICO FAMILIAR</h3>
                 <p>Registre aqui condições de saúde existentes em sua família.</p>
-                <div id="outer_condicao_familiar"></div>
-                <button type="button" id="add_condicao_familiar">Adicionar</button>
+                <div id="outer_condicao_familiar">
+                    <div class="inner_condicao_familiar">
+                        <div class="addmoreadd6">
+                            <button type="button" class="add_condicao_familiar">Adicionar</button>
+                        </div>
+                        <span>Grau de parentesco:</span>
+                        <div>
+                            <input type='radio' class="1grau" value="1grau" name="grau_parentesco">
+                                <label for="1grau">1º grau</label>
+                            <input type='radio' class="2grau" value="2grau" name="grau_parentesco">
+                                <label for="2grau">2º grau</label>
+                            <input type='radio' class="3grau" value="3grau" name="grau_parentesco">
+                                <label for="3grau">3º grau</label>
+                        </div>
+                        <div>
+                          <span>Condição:</span>
+                        <input type='text' class="condicao" value="condicao">
+                        </div>
+                    </div>
+                </div>
         </div>
         <div class="general_container">
             <h3>USO DE MEDICAMENTOS</h3>
@@ -265,8 +341,39 @@
                 </div>
 
                 <div id="outer_med_cp">
+                    <div class="inner_med_cp">
+                        <div class="addmoreadd7">
+                            <button type="button" class="add_med_cp">Adicionar</button>
+                        </div>
+                        <div>
+                          <span>Medicamento:</span>
+                          <input type='text' class="med_cp">
+                        </div>
+                        <div>
+                          <span>Frequência:</span>
+                          <div class='f'>
+                              <div>
+                                <input type='radio' class="d3" name="freq3" value="d3">
+                                <label for= "d3">Diariamente</label>
+                              </div>
+                              <div>
+                                <input type="radio" class="s3" name="freq3" value="s3">
+                                <label for="s3">Semanalmente</label>
+                              </div>
+                              <div>
+                                <input type='radio' class="m3" name="freq3" value="m3">
+                                <label for="m3">Mensalmente</label>
+                              </div>
+                              <div>
+                                <input type='radio' class="a3" name="freq3" value="a3">
+                                <label for="a3">Anualmente</label>
+                              </div>  
+                          </div>
+                        </div>
+                        <span>Neste período, quantas vezes você usa o medicamento?</span>
+                        <input type='number' class="freq_med_cp" name="freq_med_cp">
+                    </div>
                 </div>
-                <button type="button" id="add_medicamento_cp">Adicionar Medicamento</button>
             </div>
             <div class="inner_container">
                 
@@ -279,8 +386,39 @@
                 </div>
                 
                 <div id="outer_med_sp">
+                    <div class="inner_med_sp">
+                        <div class="addmoreadd8">
+                            <button type="button" class="add_med_sp">Adicionar</button>
+                        </div>
+                        <div>
+                          <span>Medicamento:</span>
+                          <input type='text' class="med_sp">
+                        </div>
+                        <div>
+                          <span>Frequência:</span>
+                          <div class='f'>
+                              <div>
+                                <input type='radio' class="d4" name="freq4" value="d4">
+                                <label for="d4">Diariamente</label>
+                              </div>
+                              <div>
+                                <input type='radio' class="s4" name="freq4" value="s4">
+                                <label for="s4">Semanalmente</label>
+                              </div> 
+                              <div>
+                                <input type='radio' class="m4" name="freq4" value="m4">
+                                <label for="m4">Mensalmente</label>
+                              </div>
+                              <div>
+                                <input type='radio' class="a4" name="freq4" value="a4">
+                                <label for="a4">Anualmente</label>
+                              </div>
+                          </div>
+                          Neste período, quantas vezes você usa o medicamento?
+                          <input type='number' class="freq_med_sp" name="freq_med_sp">
+                        </div>
+                    </div>
                 </div>
-                <button type="button" id="add_medicamento_sp">Adicionar Medicamento</button>
             </div>
         </div>
             <!-- <h3>(Resultados de exames)**</h3>
