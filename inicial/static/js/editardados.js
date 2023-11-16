@@ -114,7 +114,7 @@ $(document).ready(function(){
     var $address = $(this).parents('.inner_box_doenca_cronica');
     var nextHtml = $address.clone();
     nextHtml.prop('checked', false); 
-    nextHtml.attr('id', 'address' + count1);
+    nextHtml.attr('id', 'doenca_cronica' + count1);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
@@ -134,7 +134,7 @@ $(document).ready(function(){
     count2++;
     var $address = $(this).parents('.inner_box_sintoma');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count2);
+    nextHtml.attr('id', 'sintoma' + count2);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
@@ -154,7 +154,7 @@ $(document).ready(function(){
     count3++;
     var $address = $(this).parents('.inner_box_diagnostico');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count3);
+    nextHtml.attr('id', 'diagnostico' + count3);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
@@ -174,7 +174,7 @@ $(document).ready(function(){
     count4++;
     var $address = $(this).parents('.inner_box_cirurgia');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count4);
+    nextHtml.attr('id', 'cirurgia' + count4);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
@@ -194,7 +194,7 @@ $(document).ready(function(){
     count5++;
     var $address = $(this).parents('.inner_box_internacao');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count5);
+    nextHtml.attr('id', 'internacao' + count5);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
@@ -214,7 +214,7 @@ $(document).ready(function(){
     count6++;
     var $address = $(this).parents('.inner_condicao_familiar');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count6);
+    nextHtml.attr('id', 'condicao_familiar' + count6);
     $('.1grau', nextHtml).attr('name', 'parentesco' + count6);
     $('.2grau', nextHtml).attr('name', 'parentesco' + count6);
     $('.3grau', nextHtml).attr('name', 'parentesco' + count6);
@@ -237,7 +237,7 @@ $(document).ready(function(){
     count7++;
     var $address = $(this).parents('.inner_med_cp');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count7);
+    nextHtml.attr('id', 'med_cp' + count7);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
@@ -257,7 +257,7 @@ $(document).ready(function(){
     count8++;
     var $address = $(this).parents('.inner_med_sp');
     var nextHtml = $address.clone();
-    nextHtml.attr('id', 'address' + count8);
+    nextHtml.attr('id', 'med_sp' + count8);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remove</button>";
