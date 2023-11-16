@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - Meus dados | MedConnect</title>
+    <link rel="shortcut icon" href="../../img/favicon_io/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilo/header_e_footer.css">
     <link rel="stylesheet" href="estilo/meusdados.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -81,14 +82,14 @@ $(window).scroll(function() {
             <span id="titulo">MedConnect</span>
         </div>
         <nav>         
-            <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
+            <a href="../../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
             <span class="divisor">|</span>
-            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <a href="../../Página - Locais de atendimento/locaisdeatendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
             <span class="divisor">|</span>
             <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
             <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
             <span class="divisor">|</span>
-            <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
+            <a href="../../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
             <!-- 'target="_self"': continua na mesma aba. --> 
         </nav>
         <button id="btnPesquisar">
@@ -118,7 +119,13 @@ $(window).scroll(function() {
         </section> 
     <main>
         <!-- <div id="dados_gerais"> -->
-            <h1>MEUS DADOS</h1>
+            <h1>MEUS DADOS
+                <div id="editar_dados">
+                    <a href="../Página - Editar dados/editardados.html">
+                        <button id="btn_editar_dados">EDITAR DADOS</button>
+                    </a>
+                </div>
+            </h1>
             <hr/>
         <!-- <div id="dados_gerais"> -->
         <div class="general_container">
@@ -217,6 +224,7 @@ $(window).scroll(function() {
                 <span>Número de internações:<span id="num_internacoes">[número de internações]</span></span>
                 <span>Motivos:<span id="motivos_internacao">[motivos]</span></span>
         </div>
+    </div>
 
         <div class="general_container">
             <h3>HISTÓRICO FAMILIAR</h3>
@@ -246,11 +254,10 @@ $(window).scroll(function() {
                     </div>
             </div>
         </div>
-
+        <hr/>
             <!-- <h3>(Resultados de exames)**</h3>
             <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não deve ser o local primordial de consulta.</span> -->
 
-            <div id="editar_dados"><a href="../Página - Editar dados/editardados.html"><button id="btn_editar_dados">EDITAR DADOS</button></a></div>
 
             <!--OBSERVAÇÃO: O histórico médico on-line deve ser armazenado de forma organizada, em uma base de dados segura e adequada, e apresentar assinatura digital válida junto a autoridades como o Ministério da Saúde.
 
