@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from datetime import date, timedelta
+from django.contrib.auth.models import User
 
 class Hospital(models.Model):
 
@@ -97,3 +98,23 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return self.risco
+
+class Dados(models.Model):
+
+    class Meta:
+        verbose_name = "dados"
+        verbose_name_plural = "Dados"
+
+    SEXO = [
+        ("femininino", "Feminino"),
+        ("masculino", "Masculino"),
+        ("na", "Não informado")
+    ]
+
+    usuario = models.OneToOneField(User,on_delete=models.CASCADE)
+    nome = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
+    idade = models.IntegerField(null=False, blank=False, default=0)
+    sexo = models.CharField(max_length=20, null=False, blank=False, default="na", choices=SEXO)
+    profissao = models.CharField(max_length=200, null=False, blank=False, default="Não informada")
+    endereco = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
+    telefone = models.CharField(max_length=20, null=False, blank=False, default="Não informado")
