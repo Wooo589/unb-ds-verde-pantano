@@ -135,7 +135,7 @@ def cadastro(request):
 
             usuario.save()
             messages.success(request, "Usuário cadastrado com sucesso!")
-            return redirect('login')
+            return redirect('index')
 
     context = {"cadastro":cadastro}
 

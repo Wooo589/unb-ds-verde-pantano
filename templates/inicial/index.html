@@ -68,7 +68,7 @@
                         <h3><strong>{{ hospital.nome }}</strong></h3>
                         <span id="endereco"><small>{{ hospital.endereço }}</small></span>
                         <span id="cep"><small>CEP: {{ hospital.cep }}</small></span>
-                        <div class="inner-flex-item">
+                        <abbr style="text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">
                             {% for number in counter %}
                                 {% if number <= hospital.nota %}
                                 <span class="fa fa-star checked"></span>
@@ -76,7 +76,7 @@
                                 <span class="fa fa-star"></span>
                                 {% endif %}
                             {% endfor %}
-                        </div>
+                        </div></abbr>
                     </div>
                         <!-- <div id="container_contato">
                             <span><small>Contato:</small></span> 

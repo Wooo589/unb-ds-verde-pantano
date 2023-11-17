@@ -108,10 +108,11 @@ class Dados(models.Model):
     SEXO = [
         ("femininino", "Feminino"),
         ("masculino", "Masculino"),
+        ("outro", "Outro"),
         ("na", "Não informado")
     ]
 
-    usuario = models.OneToOneField(User,on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     nome = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
     idade = models.IntegerField(null=False, blank=False, default=0)
     sexo = models.CharField(max_length=20, null=False, blank=False, default="na", choices=SEXO)

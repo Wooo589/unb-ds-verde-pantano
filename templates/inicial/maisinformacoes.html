@@ -92,7 +92,7 @@
         <div id="avaliacao">
             <div id="classificacao">
                 <span>Avaliação geral:</span>
-                <div class="inner-flex-item">
+                <abbr style="text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">
                     {% for number in counter %}
                         {% if number <= hospital.nota %}
                         <span class="fa fa-star checked"></span>
@@ -100,7 +100,7 @@
                         <span class="fa fa-star"></span>
                         {% endif %}
                     {% endfor %}
-                </div>
+                </div></abbr>
             </div>
             <a href="{% url "avaliar_hospital" hospital.cnes%}" id="link_avaliar"><button id="btn_avaliar"><abbr style="text-decoration:none;" title="Clique aqui para avaliar o local selecionado. É necessario estar autenticado para realizar avaliações">AVALIAR LOCAL</abbr></button></a>
         </div>
