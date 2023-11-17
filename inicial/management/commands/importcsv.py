@@ -13,6 +13,10 @@ class Command(BaseCommand):
             '--display',
             action='store_true'
         )
+        parser.add_argument(
+            '--delete',
+            action='store_true'
+        )
     
     def handle(self, *args, **options):
         df = pd.read_csv(options['path'])
@@ -39,6 +43,9 @@ class Command(BaseCommand):
                 entries += 1
 
             self.stdout.write(self.style.SUCCESS(f"Entries: {entries}"))
+
+        if options['delete']:
+            Hospital.objects.filter(uf__exact=options["uf"]).delete()
 
         else:
             created = 0

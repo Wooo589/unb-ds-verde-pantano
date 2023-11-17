@@ -71,7 +71,7 @@ def mais_informacoes(request, hospital_cnes):
 def avaliar_hospital(request, hospital_cnes):
 
     if not request.user.is_authenticated:
-        messages.error(request, "Usuário precisa estar logado para avaliar hospitais")
+        messages.error(request, "Usuário precisa estar autenticado para avaliar hospitais")
         return redirect('mais_informacoes', hospital_cnes)
 
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
@@ -150,7 +150,7 @@ def login_site(request, view_name):
 
         if user is not None:
             login(request, user)
-            messages.success(request, f"{usuario} logado com sucesso!")
+            messages.success(request, f"{usuario} autenticado com sucesso!")
             return redirect(view_name)
 
         else:
