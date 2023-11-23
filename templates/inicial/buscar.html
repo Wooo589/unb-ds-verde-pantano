@@ -52,22 +52,22 @@
                         <div class="tempos_de_espera">
                             <div class="tempos">
                                 <span class="c-orange"></span>
-                                <span>{{ hospital.tempo_muito_urgente}} min</span>
+                                <span><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
                             </div>
                             <div class="tempos">
                                 <span class="c-yellow"></span>
-                                <span>{{ hospital.tempo_urgente }} min</span>
+                                <span><abbr title="Tempo médio de espera para atendimento de pacientes urgentes">{{ hospital.tempo_urgente }} min</abbr></span>
                             </div>   
                             <div class="tempos">   
                                 <span class="c-green"></span>
-                                <span>{{ hospital.tempo_pouco_urgente }} min</span>
+                                <span><abbr title="Tempo médio de espera para atendimento de pacientes pouco urgentes">{{ hospital.tempo_pouco_urgente }} min</abbr></span>
                             </div>
                             <div class="tempos">  
                                 <span class="c-blue"></span> 
-                                <span>{{ hospital.tempo_nao_urgente }} min</span>  
+                                <span><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
                             </div>     
                         </div>
-                        <button class="info"><a href="{% url "mais_informacoes" hospital.cnes %}"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></a></button>
+                        <button class="info"><a href="{% url "mais_informacoes" hospital.cnes %}"><abbr style="text-decoration:none;" title="Clique aqui para acessar mais informações sobre este hospital"><span style="font-size: 22px;">+</span><span> INFORMAÇÕES</span></abbr></a></button>
                     </div>
                 </li>
                 {% endfor %}

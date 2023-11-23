@@ -6,36 +6,56 @@
         <span id="titulo">MedConnect</span>
     </div>
     <nav id="_header">
-        {% if request.path == "/" %}
-            <a href="{% url "index" %}" rel="prev" target="_self" style="font-weight: 650;">INÍCIO</a>
-            <span class="divisor">|</span>
-        {% else %}
-            <a href="{% url "index" %}" rel="prev" target="_self">INÍCIO</a>
-            <span class="divisor">|</span>
-        {% endif %}
+            {% if request.path == "/" %}
+            
+            <a href="{% url "index" %}" rel="prev" target="_self" style="font-weight: 650;">
+                <abbr style='text-decoration:none; color: inherit;' title="página inicial">INÍCIO</abbr>
+            </a>
+                <span class="divisor">|</span>
+            {% else %}
+                <a href="{% url "index" %}" rel="prev" target="_self">
+                    <abbr style="text-decoration:none; color:inherit;" title="página inicial">INÍCIO</abbr>
+                </a>
+                <span class="divisor">|</span>
+            {% endif %}
+        
         {% if request.path == "/atendimento"%}
-            <a href="{% url "locais_de_atendimento" %}" target="_self" style="font-weight: 650;">LOCAIS DE ATENDIMENTO</a>
+            <a href="{% url "locais_de_atendimento" %}" target="_self" style="font-weight: 650;">
+                <abbr style="text-decoration:none; color:inherit;" title="pesquisa de hospitais">LOCAIS DE ATENDIMENTO</abbr>
+            </a>
             <span class="divisor">|</span>
         {% else %}
-            <a href="{% url "locais_de_atendimento" %}" target="_self">LOCAIS DE ATENDIMENTO</a>
+            <a href="{% url "locais_de_atendimento" %}" target="_self">
+                <abbr style="text-decoration:none; color:inherit;" title="pesquisa de hospitais">LOCAIS DE ATENDIMENTO</abbr>
+            </a>
             <span class="divisor">|</span>
         {% endif %}
         {% if request.path == "/triagem" %}
-            <a href="#" target="_self" style="font-weight: 650;">PRÉ-TRIAGEM</a>
+            <a href="#" target="_self" style="font-weight: 650;">
+                <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
+            </a>
             <span class="divisor">|</span>
         {% else %}
-            <a href="#" target="_self">PRÉ-TRIAGEM</a>
+            <a href="#" target="_self">
+                <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
+            </a>
             <span class="divisor">|</span>
         {% endif %}
         {% if request.path == "/duvidas_frequentes" %}
-            <a href="{% url "duvidas_frequentes" %}" target="_self" style="font-weight: 650;">DÚVIDAS FREQUENTES</a>
+            <a href="{% url "duvidas_frequentes" %}" target="_self" style="font-weight: 650;">
+                <abbr style="text-decoration:none; color:inherit;" title="informações sobre o site">DÚVIDAS FREQUENTES</abbr>
+            </a>
         {% else %}
-            <a href="{% url "duvidas_frequentes" %}" target="_self">DÚVIDAS FREQUENTES</a>
+            <a href="{% url "duvidas_frequentes" %}" target="_self">
+                <abbr style="text-decoration:none; color:inherit;" title="informações sobre o site">DÚVIDAS FREQUENTES</abbr>
+            </a>
         {% endif %}
         
     </nav>
     <button id="btnPesquisar">
-        <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
+        <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">
+            <abbr style="text-decoration:none; color:inherit;" title="filtrar e buscar informação">PESQUISAR</abbr>
+        </p>
         <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
     </button>
     {% if user.is_authenticated %}
@@ -52,8 +72,8 @@
         <!--</a>-->
             
     <div class="content_account">
-        <button><a style="text-decoration: none; color: inherit;" href="{% url "meus_dados" %}"><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></a></button>
-        <button><a style="text-decoration: none; color: inherit;" href="{% url "minhas_avaliacoes" %}"><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></a></button>
+        <button><a style="text-decoration: none; color: inherit;" href="{% url "meus_dados" %}"><p style="font-size: 11px; padding: 9px 0;"><abbr style="text-decoration:none; color: inherit;" title="minhas informações pessoais">MEUS DADOS</abbr></p></a></button>
+        <button><a style="text-decoration: none; color: inherit;" href="{% url "minhas_avaliacoes" %}"><p style="font-size: 11px; padding: 9px 0;"><abbr style="text-decoration:none; color: inherit;" title="minhas avaliações de hospitais">MINHAS AVALIAÇÕES</abbr></p></a></button>
         <button style="border-radius: 0px 0px 20px 20px;"><a style="text-decoration: none; color: inherit;" href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
     </div>
 
@@ -72,8 +92,8 @@
     <section id="pesquisa"> 
         <div id="top-bar1" style="display: none;">
             <span>Selecione o tipo de pesquisa:</span>
-            <button id="locais_de_atendimento">Locais de atendimento</button>
-            <a href="{% url "duvidas_frequentes" %}"><button id="outras_duvidas">Outras dúvidas</button></a>
+            <abbr title="encaminha para locais de atendimento"><button id="locais_de_atendimento">Locais de atendimento</button></abbr>
+            <abbr title="encaminha para dúvidas frequentes"><a href="{% url "duvidas_frequentes" %}"><button id="outras_duvidas">Outras dúvidas</button></a></abbr>
             <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">
                 close
                 </span></button>
