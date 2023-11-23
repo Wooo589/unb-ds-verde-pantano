@@ -14,5 +14,10 @@ class ListandoAvaliacoes(admin.ModelAdmin):
     list_filter = ("atendimento", "risco")
     list_per_page = 10
 
+class ListandoDados(admin.ModelAdmin):
+    list_display = ("usuario",)
+    list_per_page = 10
+
 admin.site.register(Hospital, ListandoHospitais)
 admin.site.register(Avaliacao, ListandoAvaliacoes)
+admin.site.register(Dados, ListandoDados)

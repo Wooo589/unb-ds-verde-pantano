@@ -7,7 +7,6 @@ urlpatterns = [
     path("atendimento/", buscar, name='buscar'),
     path("informacoes/<int:hospital_cnes>", mais_informacoes, name='mais_informacoes'),
     path("avaliar/<int:hospital_cnes>", avaliar_hospital, name='avaliar_hospital'),
-    path("sobre_nos", sobre_nos, name='sobre_nos'),
     path("duvidas_frequentes", duvidas_frequentes, name='duvidas_frequentes'),
     path("cadastro", cadastro, name='cadastro'),
     path("login/<str:view_name>", login_site, name='login'),
@@ -15,4 +14,5 @@ urlpatterns = [
     path("logout", logout_site, name="logout"),
     path("redefinir_senha/<str:username>/<str:token>", redefinir_senha, name="redefinir_senha"),
     path("perfil/avaliacoes", minhas_avaliacoes, name="minhas_avaliacoes"),
+    path("perfil/meus_dados", meus_dados, name="meus_dados"),
 ]

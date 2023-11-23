@@ -4,8 +4,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from datetime import datetime
 from setup import settings
 from .models import *
@@ -73,7 +71,7 @@ def mais_informacoes(request, hospital_cnes):
 def avaliar_hospital(request, hospital_cnes):
 
     if not request.user.is_authenticated:
-        messages.error(request, "Usuário precisa estar logado para avaliar hospitais")
+        messages.error(request, "Usuário precisa estar autenticado para avaliar hospitais")
         return redirect('mais_informacoes', hospital_cnes)
 
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
@@ -100,9 +98,6 @@ def avaliar_hospital(request, hospital_cnes):
         return redirect('mais_informacoes', hospital_cnes)
 
     return render(request, "inicial/avaliarhospital.html", context)
-
-def sobre_nos(request):
-    return render(request, 'inicial/SobreNos.html')
 
 def duvidas_frequentes(request):
     buscar2 = BuscarForms()
@@ -140,7 +135,7 @@ def cadastro(request):
 
             usuario.save()
             messages.success(request, "Usuário cadastrado com sucesso!")
-            return redirect('login')
+            return redirect('index')
 
     context = {"cadastro":cadastro}
 
@@ -155,7 +150,7 @@ def login_site(request, view_name):
 
         if user is not None:
             login(request, user)
-            messages.success(request, f"{usuario} logado com sucesso!")
+            messages.success(request, f"{usuario} autenticado com sucesso!")
             return redirect(view_name)
 
         else:
@@ -178,8 +173,10 @@ def confirma_email(request, view_name):
 
             send_mail(
                 "Redefinição de Senha",
-                html_message= render_to_string('inicial/email.html', context),
-                message= strip_tags(render_to_string('inicial/email.html', context)),
+                message=
+                "Uma requisição de redefinição de senha foi feita no site MedConnect para a conta vinculada a este email, "
+                f"para prosseguir com a redefinição basta acessar o seguinte link: http://127.0.0.1:8000/redefinir_senha/{username}/{token}. "
+                "Caso a requisição não tenha sido feita por você por favor ignore este email.",
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[email,],
             )
@@ -229,3 +226,14 @@ def minhas_avaliacoes(request):
     context = {"buscar": buscar2, "filter":filter_form, "counter":counter, "avaliacoes":avaliacoes}
 
     return render(request, "inicial/minhasavaliacoes.html", context)
+
+def meus_dados(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar seus dados")
+        return redirect("index")
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    context = {"buscar": buscar2, "filter":filter_form}
+
+    return render(request, "inicial/meusdados.html", context)

@@ -215,6 +215,7 @@ div.c{
 .question1,
 .question2{
     display: none;
+    text-decoration: underline;
     margin: 12px 12px 10px 20px;
 }
 .question1:hover,
