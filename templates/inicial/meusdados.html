@@ -36,9 +36,16 @@
     <!-- MENU SUPERIOR -->
     {% include "inicial/partials/_login.html" %}
     {% include "inicial/partials/_header.html" %} 
+
     <main>
         <!-- <div id="dados_gerais"> -->
-            <h1>MEUS DADOS</h1>
+            <h1>MEUS DADOS
+                <div id="editar_dados">
+                    <a href="../Página - Editar dados/editardados.html">
+                        <button id="btn_editar_dados">EDITAR DADOS</button>
+                    </a>
+                </div>
+            </h1>
             <hr/>
         <!-- <div id="dados_gerais"> -->
         <div class="general_container">
@@ -137,6 +144,7 @@
                 <span>Número de internações:<span id="num_internacoes">[número de internações]</span></span>
                 <span>Motivos:<span id="motivos_internacao">[motivos]</span></span>
         </div>
+    </div>
 
         <div class="general_container">
             <h3>HISTÓRICO FAMILIAR</h3>
@@ -166,11 +174,10 @@
                     </div>
             </div>
         </div>
-
+        <hr/>
             <!-- <h3>(Resultados de exames)**</h3>
             <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não deve ser o local primordial de consulta.</span> -->
 
-            <div id="editar_dados"><a href="../Página - Editar dados/editardados.html"><button id="btn_editar_dados">EDITAR DADOS</button></a></div>
 
             <!--OBSERVAÇÃO: O histórico médico on-line deve ser armazenado de forma organizada, em uma base de dados segura e adequada, e apresentar assinatura digital válida junto a autoridades como o Ministério da Saúde.
 
