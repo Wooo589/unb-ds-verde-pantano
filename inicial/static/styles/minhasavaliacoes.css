@@ -63,6 +63,15 @@ main i:hover{
     display: flex;
     flex-direction: row;
 }
+#pesq_av{
+    padding: 7px;
+    width: 50%;
+    max-width: 95%;
+    margin: 10px 0;
+}
+input[type=search]:focus{
+    outline: none;
+}
 h1{
     position: relative;
     display: block;
@@ -83,12 +92,41 @@ h2{
 }
 h3{
     font-weight: 600;
+    margin-bottom: 4px;
+}
+.subtitle{
+    margin: 5px 0;
 }
 .inner_container_av{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100px;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 10px 20px 20px 20px;
+    border: 1px solid gray;
+}
+.inner_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.link{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    background-color: var(--c-orange);
+    padding: 7px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px 0px gray;
+    margin: 7px 0;
+    text-decoration: none;
+}
+.link:hover{
+    cursor: pointer;
+    background-color: rgba(255, 68, 0, 0.729);
 }
 .av_box{
     display: flex;
