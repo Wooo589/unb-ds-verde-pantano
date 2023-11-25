@@ -63,12 +63,15 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 3%;
     margin-top: 6px;
 }
 #icone{
     margin-right: 9px;
     margin-bottom: 7px;
+}
+#link_sobre_nos{
+    text-decoration: none;
+    padding-left: 3%;
 }
 #titulo{
     font-family: var(--fonte-titulo);
@@ -88,9 +91,10 @@ header{
     font-size: 10px;
     padding-left: 7px;
     margin-top: 7px;
+    margin-bottom: 7px;
     margin-right: 3.6%; 
     /* box-shadow: 1px 1px gray; */
-    border: 1px solid rgba(128, 128, 128, 0.616);
+    border: 1px solid lightgray;
     z-index: 10;
 }
 .active, .login_box:hover {
