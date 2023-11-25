@@ -72,6 +72,8 @@ $(document).ready(function(){
     $("#outer_box_internacao").addClass("on");
    });
    $("#sim8").click(function(){
+    $("#outer_condicao_familiar").addClass("on");
+    $(".condicao_familiar").addClass("on");
    });
    $("#sim9").click(function(){
     $("#outer_med_cp").addClass("on");
@@ -79,9 +81,9 @@ $(document).ready(function(){
    $("#sim10").click(function(){
     $("#outer_med_sp").addClass("on");
    });
-   $(".add_condicao_familiar").click(function(){
+   /*$(".add_condicao_familiar").click(function(){
     $(".condicao_familiar").addClass("on");
-   });
+   });*/
     $("#nao3").click(function(){
      $("#outer_box_doenca_cronica").removeClass("on");
     });
@@ -109,15 +111,17 @@ $(document).ready(function(){
     $('input[name="freq4"]').prop('checked', false).change(); 
    });
   
+  //Gerar novas divs com id's únicas.
   $("body").on("click", ".add_doenca_cronica", function(){
     count1++;
     var $address = $(this).parents('.inner_box_doenca_cronica');
     var nextHtml = $address.clone();
     nextHtml.prop('checked', false); 
     nextHtml.attr('id', 'doenca_cronica' + count1);
+
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd1', nextHtml).append(rm);
       $('.add_doenca_cronica', nextHtml).remove(); 
     }
@@ -137,7 +141,7 @@ $(document).ready(function(){
     nextHtml.attr('id', 'sintoma' + count2);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd2', nextHtml).append(rm);
       $('.add_sintoma', nextHtml).remove();
     }
@@ -157,7 +161,7 @@ $(document).ready(function(){
     nextHtml.attr('id', 'diagnostico' + count3);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd3', nextHtml).append(rm);
       $('.add_diagnostico', nextHtml).remove();
     }
@@ -177,7 +181,7 @@ $(document).ready(function(){
     nextHtml.attr('id', 'cirurgia' + count4);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd4', nextHtml).append(rm);
       $('.add_cirurgia', nextHtml).remove();
     }
@@ -197,7 +201,7 @@ $(document).ready(function(){
     nextHtml.attr('id', 'internacao' + count5);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd5', nextHtml).append(rm);
       $('.add_internacao', nextHtml).remove();
     }
@@ -220,7 +224,7 @@ $(document).ready(function(){
     $('.3grau', nextHtml).attr('name', 'parentesco' + count6);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd6', nextHtml).append(rm);
       $('.add_condicao_familiar', nextHtml).remove();
     }
@@ -240,7 +244,7 @@ $(document).ready(function(){
     nextHtml.attr('id', 'med_cp' + count7);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd7', nextHtml).append(rm);
       $('.add_med_cp', nextHtml).remove();
     }
@@ -260,7 +264,7 @@ $(document).ready(function(){
     nextHtml.attr('id', 'med_sp' + count8);
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
-      var rm = "<button type='button' class='rmbtn'>Remove</button>";
+      var rm = "<button type='button' class='rmbtn'>Remover</button>";
       $('.addmoreadd8', nextHtml).append(rm);
       $('.add_med_sp', nextHtml).remove();
     }
@@ -271,6 +275,13 @@ $(document).ready(function(){
    });
    $("body").on("click", ".rmbtn", function(){
     $(this).parents('.inner_med_sp').remove();
+   });
+
+
+   //Evitar que a página recarregue quando o usuário submeter o formulário;
+   $(document).on('submit', '#form', function() {
+    // do your things
+    return false;
    });
 });
 
@@ -286,3 +297,45 @@ $(document).ready(function(){
      $("#top-bar3").removeClass("fixed");
      }
  });
+
+ //Função JQuery para converter valores de inputs para objetos json.
+ $.fn.serializeObject = function(){
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+
+$(function() {
+  $('form').submit(function() {
+      $('#result').text(JSON.stringify($('form').serializeObject()));
+      return false;
+  });
+});
+
+//Adicinar imagens para comprovar doenças crônicas.
+// function previewFile() {
+//   var preview = document.querySelector('.show_doenca_cronica');
+//   var file    = document.querySelector('input[type=file]').files[0];
+//   var reader  = new FileReader();
+
+//   reader.onloadend = function () {
+
+//     preview.src = reader.result;
+//   }
+
+//   if (file) {
+//     reader.readAsDataURL(file);
+//   } else {
+//     preview.src = "";
+//   }  
+// }
