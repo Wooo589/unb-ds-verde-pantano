@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - Meus dados | MedConnect</title>
+    <title>Perfil - Minhas avaliações | MedConnect</title>
     <link rel="stylesheet" href="estilo/header_e_footer.css">
     <link rel="stylesheet" href="estilo/minhasavaliacoes.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!--Avaliação em estrelas-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .material-symbols-outlined {
             font-variation-settings:
@@ -27,7 +29,7 @@
     <!-- MENU SUPERIOR -->
     <header>
         <div id="logotipo">
-            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <img id="icone" src="../../img/estetoscopio32px.png" alt="MedConnect logo." />
             <span id="titulo">MedConnect</span>
         </div>
         <nav>         
@@ -71,41 +73,65 @@
         <hr/>
 
         <input type="search" id="pesq_av" placeholder="Pesquisar avaliações">
-        <label for="pesq_av"></label>
+        <!-- <label for="pesq_av"></label> -->
 
         <h2>HISTÓRICO DE AVALIAÇÕES</h2>
-    <div class="outer_container_av" id="outer1">
-        <div class="inner_container_av" id="inner1">
-            <h3>Av. n° x (xx/xx/xx)</h3>
-            <h4>Hospital X</h4>
-            <span class="endereco">Endereço</span>
+    
+        
+        <div class="inner_container_av" id="1">
+            <div class="inner_header">
+                <h3>Av. n° x (xx/xx/xx)</h3>
+                <a href="../Página - Avaliação completa/av_completa.html" class="link">Ver avaliação completa</a>
+            </div>
+            <hr/>
+            <div class="subtitle">
+                <h4>Hospital X</h4>
+                <span class="endereco">Endereço</span>
+            </div>
+
+            <div id="avaliacao">
+                <span>Avaliação:</span>
+                <div class="inner-flex-item" id="estrelas">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+            </div>
+            <div class="class_recebida">
+                <span>Class. recebida:</span>
+                <span class="classificacao">Urgente<span class="cor"></span>(Amarelo)</span>
+            </div>
+        </div>
+
+        <div class="inner_container_av" id="2">
+            <div class="inner_header">
+                <h3>Av. n° x (xx/xx/xx)</h3>
+                <a href="../Página - Avaliação completa/av_completa.html" class="link">Ver avaliação completa</a>
+            </div>
+            <hr/>
+            <div class="subtitle">
+                <h4>Hospital X</h4>
+                <span class="endereco">Endereço</span>
+            </div>
+            <div id="avaliacao">
+                <span>Avaliação:</span>
+                <div class="inner-flex-item" id="estrelas">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+            </div>
             <div class="stars"></div>
             <div class="class_recebida">
                 <span>Class. recebida:</span>
-                <span class="classificacao">X</span>
-                <span class="color"></span>
+                <span class="classificacao">Muito urgente<span class="cor">(Laranja)</span></span>
             </div>
-            <button type="button" class="btn_ver_av" id="av1">Ver avaliação completa</button>
         </div>
-    <div class="av_box" id="box1">
-        <div class="general_container">
-            <span>Recebeu atendimento?</span>
-            <span class="resp">Sim/Não</span>
-            <span>Dia e horário de entrada:</span>
-            <span class="dia_hora_entrada">xx/xx/xx - xxhxx</span>
-            <span>Dia e horário de saída:</span>
-            <span class="dia_hora_saida">xx/xx/xx - xxhxx</span>
-        </div>
-        <div class="general_container">
-            <span>Comentários adicionais:</span>
-            <span class="comentario">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum adipisci ratione molestias, recusandae illo voluptas tempore suscipit ea libero similique maxime optio modi sunt dolores, eligendi tenetur! Magnam, facilis quos.</span>
-        </div>
-        <button type="button" class="fechar_av" id="f1">Ver menos</button>
-    </div>
-    </div>  
-        <!-- <div>
-            <a href="../../Página - Avaliar hospital/avaliarhospital.html"><button class="btn_corrigir_av">Corrigir avaliação</button></a>
-        </div> -->
+
     </main>
     <footer>
         <p>©2023, MedConnect.</p>
