@@ -102,6 +102,17 @@ h4{
 span{
     margin: 5px 0;
 }
+#aviso{
+    font-size: 14px;
+    color: rgba(229, 0, 0, 0.731);
+    margin: 7px 10px;
+}
+.group{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 7px 0;
+}
 .general_container,
 .complete_answer,
 .inner_container,
@@ -130,44 +141,170 @@ span{
 .complete_answer{
     margin: 10px 0;
 }
+#contato{
+    display: flex;
+    flex-direction: row;
+}
 li{
     font-size: 18px;
     margin: 2px 0px 2px 20px;
 }
 .hmp_container > span,
-.general_container > span,
+.general_container span,
+.general_container input,
+.general_container button,
+#contato > span,
 .sem_registro, h5{
     margin-left: 10px;
+}
+input[type=text], input[type=tel], input[type=email], input[type=number]{
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+}
+input[type=text]:focus{
+    outline: none;
+}
+input[type=number], #tipo_sanguineo{
+    width: 70px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    padding-right: 5px;
+    margin-left: 10px;
+}
+input[type=date]{
+    width: 150px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    padding-right: 5px;
+    margin-left: 10px;
+}
+input[type=datetime-local]{
+    width: 180px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    padding-right: 5px;
+    margin-left: 10px;
+}
+#profissao{
+    display: flex;
+    color: var(--color3);
+    flex-direction: column;
+    margin-left: 0px;
+}
+#informe_profissao{
+    font-size: 14px;
+    display: none;
+}
+#profissao:hover #informe_profissao{
+    position: relative;
+    display: block;
+    width: 700px;
+}
+.doenca_cronica, .sintomas, .doencas, .cirurgias, .motivo_internacao, .tempo_internacao, .condicao, .med_cp, .med_sp{
+    width: 500px;
+}
+.f{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
 }
 .medicamentos{
     margin: 7px 0 7px 10px;
 }
-#nome, #idade, #sexo, #profissao, #endereco, #telefone, #e-mail, #peso, #altura, #tp_sanguineo, #freq1, #freq2, #resp1, #resp2, #num_internacoes, #motivos_internacao, .grau_parentesco, .condicao_familiar, .nome_med_cp, .nome_med_sp, .freq_med_cp, .freq_med_sp{
+.inner_box_sintoma, .inner_box_internacao, .inner_box_doenca_cronica, .inner_box_diagnostico{
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-between;
+}
+.inner_box_sintoma{
+    height: 130px;
+}
+.inner_box_diagnostico{
+    height: 40px;
+}
+.inner_box_cirurgia{
+    height: 90px;
+}
+#nome, #sexo, #endereco, #telefone, #e-mail, #peso, #altura, #tp_sanguineo, #freq1, #freq2, #resp1, #resp2, #num_internacoes, #motivos_internacao, .grau_parentesco, .condicao_familiar, .nome_med_cp, .nome_med_sp, .freq_med_cp, .freq_med_sp{
     margin-left: 5px;
 }
-#btn_editar_dados{
+#btn_editar_dados, #submit{
     font-size: 20px;
     font-weight: 500;
     background-color: #577bff89;
     padding: 7px;
     border: none;
+    border-radius: 2px;
     box-shadow: 1px 1px 4px 0px gray;
     margin-top: 10px;
 }
-#btn_editar_dados:hover{
+#btn_editar_dados:hover, #submit:hover{
     cursor: pointer;
     background-color: #577CFF;
 }
-#outer_box_doenca_cronica, #outer_box_sintoma, #outer_box_diagnostico, #outer_box_cirurgia, #outer_box_internacao, #add_doenca_cronica, #add_sintoma, #add_diagnostico, #add_cirurgia, #add_internacao, #answer1, #answer2, .condicao_familiar{
+#outer_box_doenca_cronica, #outer_box_sintoma, #outer_box_diagnostico, #outer_box_cirurgia, #outer_condicao_familiar, #outer_box_internacao, #outer_med_cp, #outer_med_sp, #add_doenca_cronica, #add_sintoma, #add_diagnostico, #add_cirurgia, #add_internacao, #answer1, #answer2, .condicao_familiar{
     display: none;
 }
-#outer_box_doenca_cronica.on, #outer_box_sintoma.on, #outer_box_diagnostico.on, #outer_box_cirurgia.on, #outer_box_internacao.on, #add_doenca_cronica.on, #add_sintoma.on, #add_diagnostico.on, #add_cirurgia.on, #add_internacao.on, #answer1.on, #answer2.on, .inner_box_doenca_cronica, .inner_box_sintoma, .inner_box_diagnostico, .inner_box_cirurgia, .inner_box_internacao{
+#outer_box_doenca_cronica.on, #outer_box_sintoma.on, #outer_box_diagnostico.on, #outer_box_cirurgia.on, #outer_condicao_familiar.on, #outer_box_internacao.on, #outer_med_cp.on, #outer_med_sp.on, #add_doenca_cronica.on, #add_sintoma.on, #add_diagnostico.on, #add_cirurgia.on, #add_internacao.on, #answer1.on, #answer2.on, .condicao_familiar.on, .inner_box_doenca_cronica, .inner_box_sintoma, .inner_box_diagnostico, .inner_box_cirurgia, .inner_box_internacao{
     display: flex;
     flex-direction: column;
+}
+#answer1{
+    margin-bottom: 10px;
+}
+.inner_box_doenca_cronica, .inner_box_sintoma, .inner_box_diagnostico, .inner_box_cirurgia{
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.inner_box_internacao{
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+}
+.condicao_familiar.on{
+    justify-content: space-around;
+    height: 100px;
+}
+.inner_condicao_familiar, .inner_med_cp, .inner_med_sp{
+    margin-bottom: 20px;
+}
+.organize_button{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
 }
 .f{
     display: flex;
     flex-direction: row;
     width: 70%;
     justify-content: space-around;
+}
+.subquestion{
+    margin-top: 20px;
+}
+.add_doenca_cronica, .add_sintoma, .add_diagnostico, .add_cirurgia, .add_internacao, .add_condicao_familiar, .add_med_cp, .add_med_sp{
+    padding: 5px 10px;
+    margin: 10px;
+    background-color: #577bffa2;
+    border: none;
+    border-radius: 2px;
+}
+.rmbtn{
+    padding: 5px 10px;
+    margin: 10px;
+    background-color: rgba(255, 0, 0, 0.704);
+    border: none;
+    border-radius: 2px;
 }
