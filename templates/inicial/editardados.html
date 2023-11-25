@@ -22,6 +22,7 @@
             font-family: 'Material Symbols Outlined';
         }
     </style>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
 
@@ -76,44 +77,70 @@
             <h1>MEUS DADOS</h1>
         </div>
             <hr/>
+            <span id="aviso">*Os dados informados não são obrigatórios. Podem ajudar no entendimento de seu caso de saúde.</span>
     <form id="form">
         <div class="general_container">
-            <span>Nome completo:</span>
-            <input type="text">
-            <span>Idade:</span>
-                <input type="number">
-            <span>Sexo:</span>
-            <div>
-                <input type="radio" id="feminino" name="sexo" value="feminino">
-                <label for="feminino">Feminino</label>
+            <div class="group">
+                <span>Nome completo:</span>
+                <input type="text" placeholder="Insira aqui seu nome completo">
             </div>
-            <div>
-                <input type="radio" id="masculino" name="sexo" value="masculino">
-                <label for="masculino">Masculino</label>
+            <div class="group">
+                <span>Idade:</span>
+                <input type="number" id="idade">
+            </div>
+            <div class="group">
+                <span>Sexo:</span>
+                <div>
+                    <input type="radio" id="feminino" name="sexo" value="feminino">
+                    <label for="feminino">Feminino</label>
+                </div>
+                <div>
+                    <input type="radio" id="masculino" name="sexo" value="masculino">
+                    <label for="masculino">Masculino</label>
+                </div>
             </div>
                 <!--<input type="radio" id="feminino" name="feminino" value="feminino">
                 <label for="feminino">Feminino</label>-->
-            <span>Profissão:</span>
-                <input type="text">
-            <span>Endereço:</span>
-                <input type="text">
-            <div id="contato">
-                <h3>Contato:</h3>
-                    <span>Telefone:</span>
-                    <input type="tel">
-                    <span>E-mail:</span>
-                    <input type="email">
+            <div class="group">
+                <span id="profissao"><span style="color: black;">Profissão:</span>
+                <input type="text" placeholder="Informe sua profissão">
+                <span id="informe_profissao">Ao informar sua profissão/ocupação, você permite que o contexto em que vive seja melhor compreendido, possibilitando uma percepção mais adequada à sua situação de saúde.</span>
+                </span>
+            </div>
+            <div class="group">
+                <span>Endereço:</span>
+                <input type="text" placeholder="Caso deseje, informe seu endereço">
+            </div>
+            <div class="group">
+                <span>Contato:</span>
+                <div id="contato">
+                    <!-- <span>Contato:</span> -->
+                    <div class="group">
+                        <span>Telefone:</span>
+                        <input type="tel" name="telefone" placeholder="Insira seu n° de telefone">
+                    </div>
+                    <div class="group">
+                        <span>E-mail:</span>
+                        <input type="email" name="e-mail" placeholder="Insira seu email">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="general_container">
             <h2>CONDIÇÕES FÍSICAS</h2>
         <div class="inner_container">
-            <span>Peso:</span>
-                <input type="number">
-            <span>Altura:</span>
-                <input type="number">
-            <span>Tipo sanguíneo:</span>
-                <input type="text">
+            <div class="group">
+                <span>Peso (kg):</span>
+                <input type="number" name="peso" step=".01">
+            </div>
+            <div class="group">
+                <span>Altura (metros):</span>
+                <input type="number" name="altura" step=".01">
+            </div>
+            <div class="group">
+                <span>Tipo sanguíneo:</span>
+                <input type="text" id="tipo_sanguineo" name="tipo_sanguineo">
+            </div>
         </div>
         <div class="inner_container">
             <div class="complete_answer">
@@ -126,7 +153,7 @@
                 <label for="nao1">Não</label>
                 </div>
                 <div id="answer1">
-                    <span>Com que frequência?</span>
+                    <span class="subquestion">Com que frequência?</span>
                     <div class="f">
                         <div>
                             <input type="radio" id="d1" name="freq1" value="d1">
@@ -155,9 +182,9 @@
                 <label for="nao2">Não</label>
                 </div>
                 <div id="answer2">
-                    <span>Qual(is)?</span>
+                    <span class="subquestion">Qual(is)?</span>
                     <input type="text">
-                    <span>Com que frequência?</span>
+                    <span class="subquestion">Com que frequência?</span>
                     <div class="f">
                         <div>
                             <input type="radio" id="d2" name="freq2" value="d2">
@@ -176,7 +203,7 @@
                             <label for="a2">Anualmente</label>
                         </div>
                     </div>
-                    <span>Nesse período, quantas vezes você pratica exercícios físicos?</span>
+                    <span class="subquestion">Nesse período, quantas vezes você pratica exercícios físicos?</span>
                     <input type="number" id="freq_ex_fisicos" name="freq_ex_fisicos">
                 </div>
             </div>
@@ -200,11 +227,18 @@
                 <div id="outer_box_doenca_cronica">
                     <span>Qual(is)?</span>
                     <div class="inner_box_doenca_cronica" id="doença_cronica0">
+                    <div class="organize_button">
                         <div class="addmoreadd1">
                             <button type="button" class="add_doenca_cronica">Adicionar</button>
                         </div>
-                        <input type="text" class="doenca_cronica" name="doenca_cronica">
-                        <input type="image" class="comp_doenca_cronica" name="comp_doenca_cronica">
+                        <input type="text" class="doenca_cronica" name="doenca_cronica" placeholder="Insira aqui a condição crônica">
+                        <!-- <input type="image" class="comp_doenca_cronica" name="comp_doenca_cronica"> -->
+                    </div>
+                        <div class="group">
+                            <span>Adicione uma imagem do documento de comprovação da condição:</span>
+                            <input type="file" class="img_doenca_cronica" id="img_doenca_cronica0" name="comp_doenca_cronica" onchange="previewFile()"><br>
+                            <!-- <img src="" class="show_doenca_cronica" width="200" alt="Image preview..."> -->
+                        </div>
                     </div>
                 </div> 
             </div>
@@ -222,12 +256,18 @@
                 <div id="outer_box_sintoma">
                     <span>Qual(is)?</span>
                     <div class='inner_box_sintoma' id="sintoma0">
+                    <div class="organize_button">
                         <div class="addmoreadd2">
                             <button type="button" class="add_sintoma">Adicionar</button>
                         </div>
-                        <input type="text" name="sintomas" class="sintomas">
-                        <span>Adicione a data e o horário aproximado de início do sintoma:</span>
-                        <input type="datetime-local" class="datetime_sintoma">
+                        <!-- <div class="group"> -->
+                            <input type="text" name="sintomas" class="sintomas" placeholder="Descreva aqui o sintoma">
+                    </div>
+                            <div class="group">
+                                <span>Adicione a data e o horário aproximado de início do sintoma:</span>
+                                <input type="datetime-local" class="datetime_sintoma" name="data_sintoma">
+                            </div>
+                        <!-- </div> -->
                     </div>
                 </div>  
             </div>
@@ -243,12 +283,15 @@
                 </div>
                 
                 <div id="outer_box_diagnostico">
-                    <span>Qual(is)?</span>
+                    <span class="subquestion">Qual(is)?</span>
+                    
                     <div class='inner_box_diagnostico' id="diagnostico0">
-                        <div class="addmoreadd3">
-                            <button type="button" class="add_diagnostico">Adicionar</button>
+                        <div class="organize_button">
+                            <div class="addmoreadd3">
+                                <button type="button" class="add_diagnostico">Adicionar</button>
+                            </div>
+                            <input type='text' name='doencas-diag' class="doencas" placeholder="Insira a condição diagnosticada">
                         </div>
-                        <input type='text' name='doencas-diag' class="doencas">
                     </div>
                 </div>
             </div>
@@ -264,13 +307,15 @@
                 </div>
                 
                 <div id="outer_box_cirurgia">
-                    <span>Qual(is)?</span>
+                    <span class="subquestion">Qual(is)?</span>
                     <div class='inner_box_cirurgia' id="cirurgia0">
-                        <div class="addmoreadd4">
-                            <button type="button" class="add_cirurgia">Adicionar</button>
-                        </div>
-                        <div>
-                          <span>Cirurgia realizada:<input type='text' name='cirurgias' class="cirurgias"></span>
+                        <div class="organize_button">
+                            <div class="addmoreadd4">
+                                <button type="button" class="add_cirurgia">Adicionar</button>
+                            </div>
+                            <div> 
+                                <span>Cirurgia realizada:<input type='text' name='cirurgias' class="cirurgias" placeholder="Adicione o tipo de cirurgia"></span>
+                            </div>
                         </div>
                         <div>
                           <span>Data:<input type='date' name='data_cirurgia' class="data_cirurgia"></span>
@@ -290,12 +335,18 @@
                 </div>
                 <div id="outer_box_internacao">
                     <div class='inner_box_internacao' id="internacao0">
-                        <div class="addmoreadd5">
-                            <button type="button" class="add_internacao">Adicionar</button>
+                        <div class="organize_button">
+                            <div class="addmoreadd5">
+                                <button type="button" class="add_internacao">Adicionar</button>
+                            </div>
+                            <div>
+                                <span class="subquestion">Motivo:</span>
+                                <input type='text' name='motivo_internacao' class="motivo_internacao" placeholder="Adicione o motivo da internação">
+                            </div>
                         </div>
                         <div>
-                          <span>Motivo:</span>
-                          <input type='text' name='motivo_internacao' class="motivo_internacao">
+                            <span class="subquestion">Tempo:</span>
+                            <input type='text' name='tempo_internacao' class="tempo_internacao" placeholder="Adicione o tempo de duração da internação">
                         </div>
                         <div>
                           <span>Data:<input type='date' name='data_internacao' class="data_internacao"></span>
@@ -316,11 +367,13 @@
                 </div>
                 <div id="outer_condicao_familiar">
                     <div class="inner_condicao_familiar" id="condicao_familiar0">
-                        <div class="addmoreadd6">
-                            <button type="button" class="add_condicao_familiar">Adicionar</button>
-                        </div>
                         <div class="condicao_familiar">
-                            <span>Grau de parentesco:</span>
+                            <div class="organize_button">
+                                <div class="addmoreadd6">
+                                    <button type="button" class="add_condicao_familiar">Adicionar</button>
+                                </div>
+                                <span>Grau de parentesco:</span>
+                            </div>
                             <div>
                                 <input type='radio' class="1grau" value="1grau" name="grau_parentesco">
                                     <label for="1grau">1º grau</label>
@@ -355,8 +408,8 @@
                             <button type="button" class="add_med_cp">Adicionar</button>
                         </div>
                         <div>
-                          <span>Medicamento:</span>
-                          <input type='text' class="med_cp">
+                          <span class="subquestion">Medicamento:</span>
+                          <input type='text' class="med_cp" placeholder="Nome/tipo do medicamento">
                         </div>
                         <div>
                           <span>Frequência:</span>
@@ -400,8 +453,8 @@
                             <button type="button" class="add_med_sp">Adicionar</button>
                         </div>
                         <div>
-                          <span>Medicamento:</span>
-                          <input type='text' class="med_sp">
+                          <span class="subquestion">Medicamento:</span>
+                          <input type='text' class="med_sp" placeholder="Nome/tipo do medicamento">
                         </div>
                         <div>
                           <span>Frequência:</span>
@@ -434,11 +487,12 @@
             <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não dee ser o local primordial de consulta.</span> -->
 
             <!--<div><a href=""><button>EDITAR DADOS</button></a></div>-->
+        
         <div>
             <input type="submit" id="submit">
-            <label for="submit">CONFIRMAR</label>
         </div>
     </form>
+    <pre id="result"></pre>
         </main>
         <footer>
             <p>©2023, MedConnect.</p>
