@@ -14,5 +14,7 @@ urlpatterns = [
     path("logout", logout_site, name="logout"),
     path("redefinir_senha/<str:username>/<str:token>", redefinir_senha, name="redefinir_senha"),
     path("perfil/avaliacoes", minhas_avaliacoes, name="minhas_avaliacoes"),
+    path("perfil/avaliacoes/", pesquisar_avaliacoes, name="pesquisar_avaliacoes"),
+    path("perfil/avaliacoes/<int:avaliacao_id>", avaliacao_completa, name="avaliacao_completa"),
     path("perfil/meus_dados", meus_dados, name="meus_dados"),
 ]

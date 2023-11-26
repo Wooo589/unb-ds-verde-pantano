@@ -1,15 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - Minhas avaliações | MedConnect</title>
-    <link rel="stylesheet" href="estilo/header_e_footer.css">
-    <link rel="stylesheet" href="estilo/minhasavaliacoes.css">
+    <link rel="stylesheet" href="{% static "styles/header_e_footer.css"%}">
+    <link rel="stylesheet" href="{% static "styles/minhasavaliacoes.css"%}">
+    <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--Avaliação em estrelas-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .material-symbols-outlined {
             font-variation-settings:
@@ -24,121 +28,59 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{% static "js/select.js" %}"></script>
+    <script src="{% static "js/login.js" %}"></script>
+    <script src="{% static "js/barra_pesquisa.js"%}"></script>
+    <script src="{% static "js/login_popup.js"%}"></script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
-    <header>
-        <div id="logotipo">
-            <img id="icone" src="../../img/estetoscopio32px.png" alt="MedConnect logo." />
-            <span id="titulo">MedConnect</span>
-        </div>
-        <nav>         
-            <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
-            <span class="divisor">|</span>
-            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self" style="font-weight: 650;">LOCAIS DE ATENDIMENTO</a>
-            <span class="divisor">|</span>
-            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
-            <span class="divisor">|</span>
-            <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
-        </nav>
-        <button id="btnPesquisar">
-            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
-            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
-        </button>
-        <button type="button" class="login_box">
-            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
-            <span class="material-symbols-outlined">account_circle</span>
-        </button>
-            <!--</a>-->
-                
-        <div class="content_account">
-            <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
-            <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
-            <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
-        </div>
-
-    </header>
-        <section id="pesquisa"> 
-            <div id="top-bar1" style="display: none;">
-                <span>Selecione o tipo de pesquisa:</span>
-                <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self"><button id="locais_de_atendimento">Locais de atendimento</button></a>
-                <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self"><button id="outras_duvidas">Outras dúvidas</button></a>
-                <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">close</span></button>
-            </div>
-        </section> 
+    {% include "inicial/partials/_login.html" %}
+    {% include "inicial/partials/_header.html" %} 
     <main>
         <h1>MINHAS AVALIAÇÕES</h1>
         <hr/>
-
-        <input type="search" id="pesq_av" placeholder="Pesquisar avaliações">
-        <!-- <label for="pesq_av"></label> -->
+        <form method="GET" action={% url "pesquisar_avaliacoes" %}>
+            <input name="hospital" type="search" id="pesq_av" placeholder="Pesquisar avaliações">
+        </form>
 
         <h2>HISTÓRICO DE AVALIAÇÕES</h2>
     
-        
-        <div class="inner_container_av" id="1">
-            <div class="inner_header">
-                <h3>Av. n° x (xx/xx/xx)</h3>
-                <a href="../Página - Avaliação completa/av_completa.html" class="link">Ver avaliação completa</a>
-            </div>
-            <hr/>
-            <div class="subtitle">
-                <h4>Hospital X</h4>
-                <span class="endereco">Endereço</span>
-            </div>
+        {% for avaliacao in avaliacoes %}
+            <div class="inner_container_av">
+                <div class="inner_header">
+                    <h3>Av. n° {{ avaliacao.numero }} - {{ avaliacao.data|date:"d/m/y" }}</h3>
+                    <a href="{% url "avaliacao_completa" avaliacao.id %}" class="link">Ver avaliação completa</a>
+                </div>
+                <hr/>
+                <div class="subtitle">
+                    <h4>{{ avaliacao.hospital }}</h4>
+                    <span class="endereco">{{ avaliacao.hospital.endereco }}</span>
+                </div>
 
-            <div id="avaliacao">
-                <span>Avaliação:</span>
-                <div class="inner-flex-item" id="estrelas">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <div id="avaliacao">
+                    <span>Avaliação:</span>
+                    {% for number in counter %}
+                        {% if number <= avaliacao.avaliacao %}
+                            <span class="fa fa-star checked"></span>
+                        {% else %}
+                            <span class="fa fa-star"></span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="class_recebida">
+                    <span>Class. recebida:</span>
+                    <span class="classificacao">{{ avaliacao.get_risco_display }}<!--<span class="cor"></span>(Amarelo)--></span>
                 </div>
             </div>
-            <div class="class_recebida">
-                <span>Class. recebida:</span>
-                <span class="classificacao">Urgente<span class="cor"></span>(Amarelo)</span>
-            </div>
-        </div>
-
-        <div class="inner_container_av" id="2">
-            <div class="inner_header">
-                <h3>Av. n° x (xx/xx/xx)</h3>
-                <a href="../Página - Avaliação completa/av_completa.html" class="link">Ver avaliação completa</a>
-            </div>
-            <hr/>
-            <div class="subtitle">
-                <h4>Hospital X</h4>
-                <span class="endereco">Endereço</span>
-            </div>
-            <div id="avaliacao">
-                <span>Avaliação:</span>
-                <div class="inner-flex-item" id="estrelas">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="stars"></div>
-            <div class="class_recebida">
-                <span>Class. recebida:</span>
-                <span class="classificacao">Muito urgente<span class="cor">(Laranja)</span></span>
-            </div>
-        </div>
-
+        {% endfor %}
     </main>
     <footer>
         <p>©2023, MedConnect.</p>
         <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
     </footer>
-    <script src="script/general_script.js"></script>
+    <!--<script src="script/general_script.js"></script>-->
     <!-- Obs.: Avaliação do atendimento recebido abarca se a pessoa recebeu ou não atendimento, o tipo e a forma de atendimento (disponibilidade, empatia, segurança) -->
-
 </body>
 </html>

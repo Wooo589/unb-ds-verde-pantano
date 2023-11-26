@@ -44,7 +44,10 @@
     <!-- MENU SUPERIOR -->
     {% include "inicial/partials/_login.html" %}
     {% include "inicial/partials/_header.html" %}
-    <body>
+        <div id="box_banner">
+            <span id="text_banner">O melhor local de atendimento para você.</span>
+            <div id="banner"></div>
+        </div>
         <!--<p>A importância de se avaliar os hospitais</p>-->
         <!--<label for="hospitais"></label>
         <input type="text" id="hospital" name="hospital" size="100"/>-->
@@ -56,7 +59,7 @@
         <!--FIM DA BARRA DE PESQUISA-->
         <!--HOSPITAIS MAIS PRÓXIMOS-->
         <main>    
-        <h1 class="index">LOCAIS DE ATENDIMENTO MELHOR AVALIADOS:</h1>
+        <h1 id="locais_proximos">LOCAIS DE ATENDIMENTO MELHOR AVALIADOS:</h1>
         {% for hospital in hospitais %}
         <div class="outer-flex-container">
             <div class="inner-flex-container">
@@ -66,7 +69,7 @@
                     </div>
                     <div id="gerais">  
                         <h3><strong>{{ hospital.nome }}</strong></h3>
-                        <span id="endereco"><small>{{ hospital.endereço }}</small></span>
+                        <span id="endereco"><small>{{ hospital.endereco }}</small></span>
                         <span id="cep"><small>CEP: {{ hospital.cep }}</small></span>
                         <abbr style="text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">
                             {% for number in counter %}
@@ -130,7 +133,7 @@
             </div>
         </div>
         {% endfor %}
-        <h1 class="index">NOTÍCIAS:</h1>
+        <h1 id="noticias">NOTÍCIAS:</h1>
         <!--OWL CAROUSEL-->
         <!--<div class="owl-carousel">
             <div>
