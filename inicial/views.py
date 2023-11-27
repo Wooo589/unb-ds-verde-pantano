@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+import json
 from setup import settings
 from .models import *
 from .forms import *
@@ -271,3 +273,19 @@ def meus_dados(request):
     context = {"buscar": buscar2, "filter":filter_form}
 
     return render(request, "inicial/meusdados.html", context)
+
+def editar_dados(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar seus dados")
+        return redirect("index")
+
+    if request.method == "POST":
+        dados = json.loads(request.POST["dados"])
+        dados.pop("dados")
+        print(dados)
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    context = {"buscar": buscar2, "filter":filter_form}
+
+    return render(request, "inicial/editardados.html", context)

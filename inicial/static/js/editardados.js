@@ -8,40 +8,6 @@ var count7 = 0;
 var count8 = 0;
 
 $(document).ready(function(){
-    $("#btnPesquisar").click(function(){
-     $("#top-bar1").toggle("fast");
-     $("#top-bar2").hide("fast");
-     $("#top-bar3").hide("fast");
-     $("#fechar_aba").show("fast");
-   });
-   $("#locais_de_atendimento").click(function(){
-     $("#top-bar2").toggle("fast");
-     $("#top-bar1").hide();
-     $("#top-bar3").hide();
-     $("#fechar_aba").show("fast");
-   });
-   $("#outras_duvidas").click(function(){
-     $("#top-bar3").toggle("fast");
-     $("#top-bar1").hide();
-     $("#top-bar2").hide();
-     $("#fechar_aba").show("fast");
-   });
-   $("#fechar_aba").click(function(){
-     $("#top-bar1").hide();
-     $("#top-bar2").hide();
-     $("#top-bar3").hide();
-   });
-   $(".voltar").click(function(){
-     $("#top-bar1").show();
-     $("#top-bar2").hide();
-     $("#top-bar3").hide();
-     $("#fechar_aba").show("fast");
-   }); 
-   $(".login_box").click(function(){
-     $("#top-bar1").hide();
-     $("#top-bar2").hide();
-     $("#top-bar3").hide();
-   }); 
    $("#sim1").click(function(){
     $("#answer1").addClass("on");
    });
@@ -277,27 +243,16 @@ $(document).ready(function(){
     $(this).parents('.inner_med_sp').remove();
    });
 
+   $("#submit").click(function(){
+    $("#submit2").show();
+   });
+
 
    //Evitar que a página recarregue quando o usuário submeter o formulário;
-   $(document).on('submit', '#form', function() {
-    // do your things
+   /*$(document).on('submit', '#form', function() {
     return false;
-   });
+   });*/
 });
-
- $(window).scroll(function() {
-     if ($(this).scrollTop() > 1){  
-     $("#top-bar1").addClass("fixed");
-     $("#top-bar2").addClass("fixed");
-     $("#top-bar3").addClass("fixed");
-     }
-     else{
-     $("#top-bar1").removeClass("fixed");
-     $("#top-bar2").removeClass("fixed");
-     $("#top-bar3").removeClass("fixed");
-     }
- });
-
  //Função JQuery para converter valores de inputs para objetos json.
  $.fn.serializeObject = function(){
   var o = {};
@@ -316,9 +271,10 @@ $(document).ready(function(){
 };
 
 $(function() {
-  $('form').submit(function() {
-      $('#result').text(JSON.stringify($('form').serializeObject()));
-      return false;
+  $('#submit').click(function() {
+    $('#result').val()
+    $('#result').val(JSON.stringify($('form').serializeObject()));
+    return false;
   });
 });
 

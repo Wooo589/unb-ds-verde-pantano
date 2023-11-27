@@ -17,4 +17,5 @@ urlpatterns = [
     path("perfil/avaliacoes/", pesquisar_avaliacoes, name="pesquisar_avaliacoes"),
     path("perfil/avaliacoes/<int:avaliacao_id>", avaliacao_completa, name="avaliacao_completa"),
     path("perfil/meus_dados", meus_dados, name="meus_dados"),
+    path("perfil/editar_dados", editar_dados, name="editar_dados")
 ]

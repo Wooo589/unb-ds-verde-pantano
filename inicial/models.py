@@ -106,8 +106,19 @@ class Dados(models.Model):
     SEXO = [
         ("femininino", "Feminino"),
         ("masculino", "Masculino"),
-        ("outro", "Outro"),
-        ("na", "Não informado")
+        ("na","Não informado")
+    ]
+
+    TIPO_SANGUINIO = [
+        ("A+","A+"),
+        ("A-","A-"),
+        ("B+","B+"),
+        ("B-","B-"),
+        ("AB+","AB+"),
+        ("AB-","AB-"),
+        ("O+","O+"),
+        ("O-","O-"),
+        ("na","Não informado")
     ]
 
     usuario = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
@@ -118,3 +129,5 @@ class Dados(models.Model):
     endereco = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
     telefone = models.CharField(max_length=20, null=False, blank=False, default="Não informado")
     peso = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, default=0)
+    altura = models.DecimalField(max_digits=3, decimal_places=2, null=False, blank=False, default=0)
+    tipo_sanguineo = models.CharField(max_length=4, null=False, blank=False, default="na", choices=TIPO_SANGUINIO)
