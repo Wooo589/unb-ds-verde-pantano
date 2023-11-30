@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+import json
 from setup import settings
 from .models import *
 from .forms import *
@@ -77,19 +79,26 @@ def avaliar_hospital(request, hospital_cnes):
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
     buscar2 = BuscarForms()
     filter_form = FilterForms()
-    avaliar = AvaliarForms()
-    context = {"hospital": hospital, "buscar": buscar2, "filter":filter_form, "avaliar":avaliar}
+    context = {"hospital": hospital, "buscar": buscar2, "filter":filter_form}
 
     if request.method == "POST":
+        numero = Avaliacao.objects.filter(usuario=request.user.username).count() + 1
         risco = request.POST["risco"]
-        duracao = datetime.strptime(request.POST["horario_atendimento"],"%Y-%m-%dT%H:%M") - datetime.strptime(request.POST["horario_entrada"], "%Y-%m-%dT%H:%M")
+        horario_entrada = datetime.strptime(request.POST["horario_entrada"],"%Y-%m-%dT%H:%M")
+        horario_atendimento = datetime.strptime(request.POST["horario_atendimento"],"%Y-%m-%dT%H:%M")
+        horario_saida = datetime.strptime(request.POST["horario_saida"],"%Y-%m-%dT%H:%M")
+        duracao = horario_atendimento - horario_entrada
         avaliacao = request.POST["avaliacao"]
         observacao = request.POST["observacao"]
 
         Avaliacao.objects.create(
+            numero=numero,
             usuario=request.user.username,
             hospital=hospital,
             risco=risco,
+            horario_entrada=horario_entrada,
+            horario_atendimento=horario_atendimento,
+            horario_saida=horario_saida,
             duracao=duracao,
             avaliacao=avaliacao,
             observacao=observacao
@@ -102,8 +111,7 @@ def avaliar_hospital(request, hospital_cnes):
 def duvidas_frequentes(request):
     buscar2 = BuscarForms()
     filter_form = FilterForms()
-    avaliar = AvaliarForms()
-    context = {"buscar": buscar2, "filter":filter_form, "avaliar":avaliar}
+    context = {"buscar": buscar2, "filter":filter_form}
 
     return render(request, 'inicial/duvidas_frequentes.html', context)
 
@@ -222,10 +230,38 @@ def minhas_avaliacoes(request):
     buscar2 = BuscarForms()
     filter_form = FilterForms()
     counter = (1, 2, 3, 4, 5)
-    avaliacoes = Avaliacao.objects.filter(usuario__exact=request.user.username).order_by("-data")
+    avaliacoes = Avaliacao.objects.filter(usuario__exact=request.user.username).order_by("numero")
     context = {"buscar": buscar2, "filter":filter_form, "counter":counter, "avaliacoes":avaliacoes}
 
     return render(request, "inicial/minhasavaliacoes.html", context)
+
+def pesquisar_avaliacoes(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar suas avaliações")
+        return redirect("index")
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    counter = (1, 2, 3, 4, 5)
+    avaliacoes = Avaliacao.objects.filter(usuario__exact=request.user.username).order_by("numero")
+    if "hospital" in request.GET:
+        avaliacoes = Avaliacao.objects.filter(usuario__exact=request.user.username).filter(hospital__nome__icontains=request.GET["hospital"]).order_by("numero")
+    context = {"buscar": buscar2, "filter":filter_form, "counter":counter, "avaliacoes":avaliacoes}
+
+    return render(request, "inicial/minhasavaliacoes.html", context)
+
+def avaliacao_completa(request, avaliacao_id):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar suas avaliações")
+        return redirect("index")
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    counter = (1, 2, 3, 4, 5)
+    avaliacao = get_object_or_404(Avaliacao, pk=avaliacao_id)
+    context = {"buscar": buscar2, "filter":filter_form, "counter":counter, "avaliacao":avaliacao}
+
+    return render(request, "inicial/av_completa.html", context)
 
 def meus_dados(request):
     if not request.user.is_authenticated:
@@ -275,3 +311,20 @@ def resultado_vermelho(request):
 
 # falta terminar a logica das crianças, integrar os resultados e adulto do 2 pra cima
 # e crianÇa tbm
+
+def editar_dados(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar seus dados")
+        return redirect("index")
+
+    if request.method == "POST":
+        dados = json.loads(request.POST["dados"])
+        dados.pop("dados")
+        print(dados)
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    context = {"buscar": buscar2, "filter":filter_form}
+
+    return render(request, "inicial/editardados.html", context)
+

@@ -45,7 +45,7 @@
         <div id="inf_gerais">
             <div class="nome_local">
                 <h3><strong>{{ hospital.nome }}</strong></h3>
-                <span><small>{{ hospital.endereço }}.</small></span> <span><small>CEP: {{ hospital.nome }}</small></span>
+                <span><small>{{ hospital.endereco }}.</small></span> <span><small>CEP: {{ hospital.nome }}</small></span>
                 <div id="container_contato">
                     <span><small>Contato:</small></span> 
                     <div id="contato">
@@ -117,38 +117,38 @@
             <div class="input1">
                 <span>• EM QUE DIA E HORÁRIO VOCÊ CHEGOU AO LOCAL?</span>
                 <span>
-                    {{ avaliar.horario_entrada }}
+                    <input type="datetime-local" name="horario_entrada" id="horario-entrada" required="">
                 </span>
             </div>
             <br/><br/>
             <div class="input1">
                 <span>• EM QUE DIA E HORÁRIO VOCÊ FOI ATENDIDO?</span>
                 <span>
-                    {{ avaliar.horario_atendimento }}
+                    <input type="datetime-local" name="horario_atendimento" id="horario-atendimento" required="">
                 </span>
             </div>
             <br/><br/>
-            <!--<div class="input1" style="width: 530px;">
+            <div class="input1" style="width: 530px;">
                 <span>• QUAL FOI O DIA E O HORÁRIO DE SAÍDA?</span>
                 <span>
-                    <input id="horario-saida"type="datetime-local">
+                    <input type="datetime-local" name="horario_saida" id="horario-saida" required="">
                 </span>
             </div>
-            <br/><br/>-->
+            <br/><br/>
             <div class="question">
                 <span>• COMO VOCÊ AVALIA O ATENDIMENTO RECEBIDO?</span>
                 <div id="stars">
                 <div class="avaliacao">
                     <input type="radio" id="star5" name="avaliacao" value="5"/>
-                    <label for="star5" title="text">5 estrelas</label>
+                    <label for="star5">5 estrelas</label>
                     <input type="radio" id="star4" name="avaliacao" value="4" />
-                    <label for="star4" title="text">4 estrelas</label>
+                    <label for="star4">4 estrelas</label>
                     <input type="radio" id="star3" name="avaliacao" value="3" />
-                    <label for="star3" title="text">3 estrelas</label>
+                    <label for="star3">3 estrelas</label>
                     <input type="radio" id="star2" name="avaliacao" value="2" />
-                    <label for="star2" title="text">2 estrelas</label>
+                    <label for="star2">2 estrelas</label>
                     <input type="radio" id="star1" name="avaliacao" value="1" />
-                    <label for="star1" title="text">1 estrela</label>
+                    <label for="star1">1 estrela</label>
                 </div>
                 </div>
             </div>

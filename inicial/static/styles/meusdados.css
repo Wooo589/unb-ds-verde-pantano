@@ -233,7 +233,7 @@ input[type=datetime-local]{
 #nome, #sexo, #endereco, #telefone, #e-mail, #peso, #altura, #tp_sanguineo, #freq1, #freq2, #resp1, #resp2, #num_internacoes, #motivos_internacao, .grau_parentesco, .condicao_familiar, .nome_med_cp, .nome_med_sp, .freq_med_cp, .freq_med_sp{
     margin-left: 5px;
 }
-#btn_editar_dados, #submit{
+#btn_editar_dados, #submit, #submit2{
     font-size: 20px;
     font-weight: 500;
     background-color: #577bff89;
@@ -243,7 +243,10 @@ input[type=datetime-local]{
     box-shadow: 1px 1px 4px 0px gray;
     margin-top: 10px;
 }
-#btn_editar_dados:hover, #submit:hover{
+#submit2{
+    display: none;
+}
+#btn_editar_dados:hover, #submit:hover, #submit2:hover{
     cursor: pointer;
     background-color: #577CFF;
 }

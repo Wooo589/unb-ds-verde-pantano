@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - Meus dados | MedConnect</title>
     <link rel="shortcut icon" href="../../img/favicon_io/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="estilo/header_e_footer.css">
-    <link rel="stylesheet" href="estilo/meusdados.css">
+    <link rel="stylesheet" href="{% static "styles/header_e_footer.css"%}">
+    <link rel="stylesheet" href="{% static "styles/meusdados.css"%}">
+    <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .material-symbols-outlined {
             font-variation-settings:
@@ -24,69 +28,33 @@
     </style>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{% static "js/select.js" %}"></script>
+    <script src="{% static "js/login.js" %}"></script>
+    <script src="{% static "js/barra_pesquisa.js"%}"></script>
+    <script src="{% static "js/login_popup.js"%}"></script>
 </head>
 <body>
     <!-- MENU SUPERIOR -->
-    <header>
-        <div id="logotipo">
-            <img id="icone" src="../../img/estetoscopio32px.png" alt="MedConnect logo." />
-            <span id="titulo">MedConnect</span>
-        </div>
-        <nav>         
-            <a href="../Página inicial/index .html" rel="prev" target="_self">INÍCIO</a>
-            <span class="divisor">|</span>
-            <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self" style="font-weight: 650;">LOCAIS DE ATENDIMENTO</a>
-            <span class="divisor">|</span>
-            <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-            <!--<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>-->
-            <span class="divisor">|</span>
-            <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
-            <!-- 'target="_self"': continua na mesma aba. --> 
-        </nav>
-        <button id="btnPesquisar">
-            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">PESQUISAR</p>
-            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
-        </button>
-        <button type="button" class="login_box">
-            <span style="font-size: 11px;">JOSEFO ALENCAR</span>
-            <span class="material-symbols-outlined">account_circle</span>
-        </button>
-            <!--</a>-->
-                
-        <div class="content_account">
-            <button><p style="font-size: 11px; padding: 9px 0;">MEUS DADOS</p></button>
-            <button><p style="font-size: 11px; padding: 9px 0;">MINHAS AVALIAÇÕES</p></button>
-            <button style="border-radius: 0px 0px 20px 20px;"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></button>
-        </div>
-
-    </header>
-        <section id="pesquisa"> 
-            <div id="top-bar1" style="display: none;">
-                <span>Selecione o tipo de pesquisa:</span>
-                <a href="../Página - Locais de atendimento/locaisdeatendimento.html" target="_self"><button id="locais_de_atendimento">Locais de atendimento</button></a>
-                <a href="../Página - Dúvidas frequentes/duvidas_frequentes.html" target="_self"><button id="outras_duvidas">Outras dúvidas</button></a>
-                <button id="fechar_aba" style="display: none;"><span class="material-symbols-outlined" style="font-size: 25px; height: 20px;">close</span></button>
-            </div>
-        </section> 
+    {% include "inicial/partials/_login.html" %}
+    {% include "inicial/partials/_header.html" %} 
         <main>
         <div id="title">
-            <a href="../Página - Meus dados/meusdados.html"><i class="uil uil-angle-down"></i></a>
+            <a href="{% url "meus_dados" %}"><i class="uil uil-angle-down"></i></a>
             <h1>MEUS DADOS</h1>
         </div>
             <hr/>
             <span id="aviso">*Os dados informados não são obrigatórios. Podem ajudar no entendimento de seu caso de saúde.</span>
-    <form id="form">
+    <form method="POST" id="form" action="{% url "editar_dados" %}">
+        {% csrf_token %}
         <div class="general_container">
             <div class="group">
                 <span>Nome completo:</span>
-                <input type="text" placeholder="Insira aqui seu nome completo">
+                <input name="nome" type="text" placeholder="Insira aqui seu nome completo">
             </div>
             <div class="group">
                 <span>Idade:</span>
-                <input type="number" id="idade">
+                <input name="idade" type="number" id="idade">
             </div>
             <div class="group">
                 <span>Sexo:</span>
@@ -103,13 +71,13 @@
                 <label for="feminino">Feminino</label>-->
             <div class="group">
                 <span id="profissao"><span style="color: black;">Profissão:</span>
-                <input type="text" placeholder="Informe sua profissão">
+                <input name="profissao" type="text" placeholder="Informe sua profissão">
                 <span id="informe_profissao">Ao informar sua profissão/ocupação, você permite que o contexto em que vive seja melhor compreendido, possibilitando uma percepção mais adequada à sua situação de saúde.</span>
                 </span>
             </div>
             <div class="group">
                 <span>Endereço:</span>
-                <input type="text" placeholder="Caso deseje, informe seu endereço">
+                <input name="endereco" type="text" placeholder="Caso deseje, informe seu endereço">
             </div>
             <div class="group">
                 <span>Contato:</span>
@@ -119,10 +87,10 @@
                         <span>Telefone:</span>
                         <input type="tel" name="telefone" placeholder="Insira seu n° de telefone">
                     </div>
-                    <div class="group">
+                    <!--<div class="group">
                         <span>E-mail:</span>
-                        <input type="email" name="e-mail" placeholder="Insira seu email">
-                    </div>
+                        <input type="email" name="email" placeholder="Insira seu email">
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -483,21 +451,24 @@
                 </div>
             </div>
         </div>
+
             <!-- <h3>(Resultados de exames)**</h3>
             <span>Aqui é possível anexar exames para serem consultados em caso de necessidade. Não dee ser o local primordial de consulta.</span> -->
 
             <!--<div><a href=""><button>EDITAR DADOS</button></a></div>-->
         
         <div>
-            <input type="submit" id="submit">
+            <input type="hidden" id="result" value="" name="dados">
+            <button id="submit">Salvar</button>
+            <input type="submit" id="submit2">
         </div>
     </form>
-    <pre id="result"></pre>
+    <!--<pre id="result"></pre>-->
         </main>
         <footer>
             <p>©2023, MedConnect.</p>
             <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
         </footer>
-        <script src="js/editardados.js"></script>
+        <script src="{% static "js/editardados.js"%}"></script>
 </body>
 </html>

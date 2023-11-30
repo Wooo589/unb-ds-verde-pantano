@@ -40,8 +40,35 @@ html{
     height: 100%;
 }
 body{
-    background-color: #ededed;
+    background-color: rgba(245, 245, 245, 0.600);
     min-height: 100vh;
+}
+#box_banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(240, 240, 240);
+    /* border-bottom: 1px solid lightgray; */
+}
+#banner{
+    background-image: url("../img/banner.jpg");
+    background-size: cover;    
+    /* background-attachment: fixed; */
+    /* height: 200px;  */
+    width: 100%;  
+    /* margin-top: 10px; */
+    /* opacity: 50%; */
+}
+#text_banner{
+    font-family: var(--fonte-titulo);
+    font-size: 35px;
+    font-weight: 200;
+    color: var(--color3);
+    margin-top: 85px;
+    margin-left: 120px; 
+    text-shadow: 2px 3px rgba(0, 0, 255, .2);
+    height: 160px;
+    width: 90%;
 }
 main{
     position: relative;
@@ -62,6 +89,24 @@ main > h1{
     color: var(--color3);
     background-color: rgba(70, 131, 180, 0.25);
     border-radius: 2.5px;
+}
+#locais_proximos, #noticias{
+    font-size: 20px;
+    margin: 0 5% 20px 0;
+    /* border-top: 1px solid rgba(128, 128, 128, 0.496);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.496); */
+    padding: 5px 8%;
+    font-weight: 600;
+    color: var(--color3);
+    background-color: transparent;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;;
+}
+#locais_proximos{
+    margin-top: 10px;
+}
+#noticias{
+    margin-top: 50px;
 }
 img{
     margin:0;

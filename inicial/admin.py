@@ -11,7 +11,7 @@ class ListandoHospitais(admin.ModelAdmin):
 class ListandoAvaliacoes(admin.ModelAdmin):
     list_display = ("hospital", "risco", "duracao", "avaliacao", "data")
     ordering = ["-data",]
-    list_filter = ("atendimento", "risco")
+    list_filter = ("risco",)
     list_per_page = 10
 
 class ListandoDados(admin.ModelAdmin):

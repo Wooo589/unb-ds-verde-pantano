@@ -74,11 +74,6 @@ class Avaliacao(models.Model):
         verbose_name = "avaliação"
         verbose_name_plural = "Avaliações"
 
-    ATENDIMENTO = [
-        ("SIM", "Sim"),
-        ["NAO", "Não"]
-    ]
-
     RISCO = [
         ("EMERGENTE", "Emergente"),
         ("MUITO_URGENTE", "Muito Urgente"),
@@ -88,10 +83,13 @@ class Avaliacao(models.Model):
     ]
 
     usuario = models.CharField(max_length=100, null=False, blank=False, default="")
+    numero = models.IntegerField(null=False, blank=False, default=1)
     data = models.DateField(null=False, blank=False, default=timezone.now)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    atendimento = models.CharField(max_length=100, null=False, blank=False, default="SIM", choices=ATENDIMENTO)
     risco = models.CharField(max_length=100, null=False, blank=False, default="NAO_URGENTE", choices=RISCO)
+    horario_entrada = models.DateTimeField(null=False, blank=False, default=timezone.now)
+    horario_atendimento = models.DateTimeField(null=False, blank=False, default=timezone.now)
+    horario_saida = models.DateTimeField(null=False, blank=False, default=timezone.now)
     duracao = models.DurationField(null=False, blank=False, default=timedelta(minutes=30))
     avaliacao = models.IntegerField(null=False, blank=False, default=3)
     observacao = models.TextField(null=False, blank=False, default="")
@@ -108,8 +106,19 @@ class Dados(models.Model):
     SEXO = [
         ("femininino", "Feminino"),
         ("masculino", "Masculino"),
-        ("outro", "Outro"),
-        ("na", "Não informado")
+        ("na","Não informado")
+    ]
+
+    TIPO_SANGUINIO = [
+        ("A+","A+"),
+        ("A-","A-"),
+        ("B+","B+"),
+        ("B-","B-"),
+        ("AB+","AB+"),
+        ("AB-","AB-"),
+        ("O+","O+"),
+        ("O-","O-"),
+        ("na","Não informado")
     ]
 
     usuario = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
@@ -119,3 +128,6 @@ class Dados(models.Model):
     profissao = models.CharField(max_length=200, null=False, blank=False, default="Não informada")
     endereco = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
     telefone = models.CharField(max_length=20, null=False, blank=False, default="Não informado")
+    peso = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, default=0)
+    altura = models.DecimalField(max_digits=3, decimal_places=2, null=False, blank=False, default=0)
+    tipo_sanguineo = models.CharField(max_length=4, null=False, blank=False, default="na", choices=TIPO_SANGUINIO)

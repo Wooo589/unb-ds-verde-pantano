@@ -116,7 +116,7 @@ class Command(BaseCommand):
                     cnes=cnes,
                     defaults={
                         "nome":nome,
-                        "endereço":endereco,
+                        "endereco":endereco,
                         "cep":cep,
                         "categoria":categoria,
                         "uf":uf,
