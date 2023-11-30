@@ -289,28 +289,85 @@ def triagem(request):
     return render(request, 'inicial/PreTriagem.html')
 
 def adulto1(request):
+    if request.method=="POST":
+        if "quest_a1" not in request.POST:
+            return redirect("adulto2")   
+        if request.POST["quest_a1"] == "1":
+            return redirect("resultado_vermelho")
     return render(request, 'inicial/adulto1.html')
 
 def crianca1(request):
     if request.method=="POST":
-            if request.POST["quest"] == "1":
-                return redirect("resultado_vermelho")
-            elif request.POST["quest"] == "2":
-                return redirect("resultado_vermelho")
-            elif request.POST["quest"] == "3":
-                return redirect("resultado_vermelho")
-            elif request.POST["quest"] == "4":
-                return redirect("resultado_vermelho")
-            else:
-                return redirect("crianca2")
+        if "quest_b1" not in request.POST:
+            return redirect("crianca2")   
+        if request.POST["quest_b1"] == "1":
+            return redirect("resultado_vermelho")
     return render(request, 'inicial/criança1.html' )
-def crianca2(request):
-    return render(request, 'inicial/criança2.html') 
+
 def resultado_vermelho(request):
     return render(request, 'inicial/vermelho_triagem.html')
 
+def crianca2(request):
+    if request.method=="POST":
+        if "quest_b2" not in request.POST:
+            return redirect("crianca3")   
+        if request.POST["quest_b2"] == "1":
+            return redirect("resultado_laranja")
+    return render(request, 'inicial/criança2.html') 
+
+def adulto2(request):
+    if request.method=="POST":
+        if "quest_a2" not in request.POST:
+            return redirect("adulto3")   
+        if request.POST["quest_a2"] == "1":
+            return redirect("resultado_laranja")
+    return render(request, 'inicial/adulto2.html')
+
+def resultado_laranja(request):
+    return render(request, 'inicial/laranja_triagem.html')
 # falta terminar a logica das crianças, integrar os resultados e adulto do 2 pra cima
 # e crianÇa tbm
+
+def crianca3(request):
+    if request.method=="POST":
+        if "quest_b3" not in request.POST:
+            return redirect("crianca4")   
+        if request.POST["quest_b3"] == "1":
+            return redirect("resultado_amarelo")
+    return render(request, 'inicial/criança3.html')
+
+def adulto3(request):
+    if request.method=="POST":
+        if "quest_a3" not in request.POST:
+            return redirect("adulto4")   
+        if request.POST["quest_a3"] == "1":
+            return redirect("resultado_amarelo")
+    return render(request, 'inicial/adulto3.html')
+
+def resultado_amarelo(request):
+    return render(request, 'inicial/amarelo_triagem.html')
+
+def crianca4(request):
+    if request.method=="POST":
+        if "quest_b4" not in request.POST:
+            return redirect("resultado_azul")   
+        if request.POST["quest_b4"] == "1":
+            return redirect("resultado_verde")
+    return render(request,'inicial/criança4.html')
+
+def adulto4(request):
+    if request.method=="POST":
+        if "quest_a4" not in request.POST:
+            return redirect("resultado_azul")   
+        if request.POST["quest_a4"] == "1":
+            return redirect("resultado_verde")
+    return render(request, 'inicial/adulto4.html')
+
+def resultado_azul(request):
+    return render(request, 'inicial/azul_triagem.html')
+
+def resultado_verde(request):
+    return render(request, 'inicial/verde_triagem.html')
 
 def editar_dados(request):
     if not request.user.is_authenticated:

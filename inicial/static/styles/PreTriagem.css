@@ -10,7 +10,7 @@
 }
 
 .container_pre-triagem{
-    padding: 50px 50px 50px 50px;
+    padding: 30px 40px 30px 40px;
     display: flex;
 }
 
@@ -61,8 +61,14 @@
     border-radius: 5px;
     padding: 10px;
 }
-
+.checkbox_pre-triagem_1{
+    display: inline; margin-top: 10px; margin-bottom: 8px;
+}
+.checkbox_pre-triagem_1{
+    cursor: pointer;
+}
 .btn_preTriagem:hover{
     background-color: #023D83;
     box-shadow: none;
+    cursor: pointer;
 }

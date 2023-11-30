@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% load static %}
 <html lang="PT-BR">
 <head>
@@ -63,17 +64,17 @@
                 Se você não tiver certeza sobre a resposta a uma pergunta, consulte um profissional de saúde.
                 Agradecemos sua compreensão.
             </p>
-            <input style="display: inline; margin-top: 30px" type="checkbox" name="termo" value="1">
+            <input style="display: inline; margin-top: 30px; cursor: pointer;" type="checkbox" name="termo" value="1">
                 <label for="teste">DECLARO QUE <u>LI</u> E <u>CONCORDO</u> COM O PROPOSTO PELO QUESTIONÁRIO.</label>
         </div>
         <div class="div2">
                 <p style="color: black; font-size: 20px;"><strong>Oficialmente as Classificações de risco são:</strong></p>
                 <img style="width: 350px;" src="{% static "img/manchester.jpg"%}" alt="" srcset="">
                 <p class="pergunta_idade"><strong>Para um melhor resultado, qual é a idade do paciente?</strong></p>
-                <input style="display: inline; margin-top: 10px; margin-bottom: 10px;" class="checkbox_pre-triagem_2" type="radio" name="idade" value="1">
+                <input class="checkbox_pre-triagem_1" type="radio" name="idade" value="1">
                 <label for="teste">até 14 anos</label>
                 <br>
-                <input style="display: inline;" class="checkbox_pre-triagem_2" type="radio" name="idade" value="2">
+                <input class="checkbox_pre-triagem_1" type="radio" name="idade" value="2">
                 <label for="teste">acima de 14 anos</label>
                 <br>
                 <br>

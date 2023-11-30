@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% load static%}
 <html lang="en">
 <head>
@@ -36,9 +37,9 @@
     <script src="{% static "js/barra_pesquisa.js"%}"></script>
     <script src="{% static "js/login_popup.js"%}"></script>
 </head>
-{% include "inicial/partials/_header.html"%}
-{% include "inicial/partials/_login.html"%}
 <body>
+    {% include "inicial/partials/_header.html"%}
+    {% include "inicial/partials/_login.html"%}
     <div class="container_adulto1">
         <h1 class="titule_adulto1">RESULTADO DA PRE-TRIAGEM</h1>
         <hr>

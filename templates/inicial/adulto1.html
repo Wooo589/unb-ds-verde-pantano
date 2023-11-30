@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% load static %}
 <html lang="PT-BR">
 <head>
@@ -29,38 +30,47 @@
             font-family: 'Material Symbols Outlined';
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{% static "js/select.js" %}"></script>
+    <script src="{% static "js/login.js" %}"></script>
+    <script src="{% static "js/barra_pesquisa.js"%}"></script>
+    <script src="{% static "js/login_popup.js"%}"></script>
 </head>
-{% include "inicial/partials/_header.html"%}
-{% include "inicial/partials/_login.html"%}
 <body>
-    <div class="container_adulto1">
-        <h1 class="titule_adulto1">QUESTIONÁRIO DE PRÉ-TRIAGEM</h1>
-        <strong>  
-        <h2 style="margin-bottom:20px">selecione os seguintes sintomas do paciente</h2>
-        </strong>
-            <input class="checkbox_adulto1" type="checkbox">
-                <h3 class="subtitule_adulto1">O paciente está com comprometimento da via aérea?</h3>
-                <p class="phrase_adulto1">O comprometimento das vias aéreas pode ser causado por um corpo estranho, edema ou infecção, trauma ou lesão, inflamação ou doenças neuromusculares ocasionando a paralisia dos músculos da respiração.</p>
-        <input class="checkbox_adulto1" type="checkbox" name="" id="">
-        <h3 class="subtitule_adulto1">O paciente está com respiração ineficaz?</h3>
-        
-        <p class="phrase_adulto1">Apresenta sensação de dificuldade para respirar; Respiração rápida e superficial;
-            Respiração lenta e profunda; ausência de respiração; Respiração rápida e profunda;
-            uso de músculos que não são usados normalmente na respiração, como os músculos do pescoço, ombros e costas;
-            Ruídos anormais na respiração, como sibilância, ronco ou crepitação.</p>
-        <input class="checkbox_adulto1" type="checkbox" name="" id="">
-        <h3 class="subtitule_adulto1">O paciente está em choque?</h3>
-        
-        <p class="phrase_adulto1">O paciente pode parecer confuso, desorientado ou simplesmente não estar respondendo.
-            Pele fria, pálida ou úmida: a pele do paciente pode estar fria ao toque, pálida ou úmida.
-            Taquicardia: a frequência cardíaca do paciente pode estar acima de 100 batimentos por minuto.
-            Hipotensão: a pressão arterial do paciente pode estar baixa. Respiração rápida e
-            superficial: a respiração do paciente pode ser rápida e superficial. Desidratação:
-            o paciente pode estar com sede ou apresentar sinais de desidratação, como boca seca, urina concentrada ou diminuição da produção de urina.</p>
+    {% include "inicial/partials/_header.html"%}
+    {% include "inicial/partials/_login.html"%}
+    <form action="{% url "adulto1" %}" method="POST">
+        {% csrf_token %}
+        <div class="container_adulto1">
+            <h1 class="titule_adulto1">QUESTIONÁRIO DE PRÉ-TRIAGEM</h1>
+            <strong>
+            <h2 style="margin-bottom:20px">selecione os seguintes sintomas do paciente</h2>
+            </strong>
+            <input class="checkbox_adulto1" type="checkbox" name="quest_a1" value="1">
+            <label class="subtitule_adulto1" for="quest_a1"> O paciente está com comprometimento da via aérea?</label>
+            <p class="phrase_adulto1">O comprometimento das vias aéreas pode ser causado por um corpo estranho, edema ou infecção, trauma ou lesão, inflamação ou doenças neuromusculares ocasionando a paralisia dos músculos da respiração.</p>
+            
+            <input class="checkbox_adulto1" type="checkbox" name="quest_a1" value="1">
+            <label class="subtitule_adulto1" for="quest_a1"> O paciente está com respiração ineficaz?</label>
+            <p class="phrase_adulto1">Apresenta sensação de dificuldade para respirar; Respiração rápida e superficial;
+                Respiração lenta e profunda; ausência de respiração; Respiração rápida e profunda;
+                uso de músculos que não são usados normalmente na respiração, como os músculos do pescoço, ombros e costas;
+                Ruídos anormais na respiração, como sibilância, ronco ou crepitação.</p>
+
+            <input class="checkbox_adulto1" type="checkbox" name="quest_a1" value="1">
+            <label class="subtitule_adulto1" for="quest_a1"> O paciente  está em choque?</label>
+            <p class="phrase_adulto1">O paciente pode parecer confuso, desorientado ou simplesmente não estar respondendo.
+                Pele fria, pálida ou úmida: a pele do paciente pode estar fria ao toque, pálida ou úmida.
+                Taquicardia: a frequência cardíaca do paciente pode estar acima de 100 batimentos por minuto.
+                Hipotensão: a pressão arterial do paciente pode estar baixa. Respiração rápida e
+                superficial: a respiração do paciente pode ser rápida e superficial. Desidratação:
+                o paciente pode estar com sede ou apresentar sinais de desidratação, como boca seca, urina concentrada ou diminuição da produção de urina.</p>
             <br>
-    <a href= "{% url "triagem" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
-    
-    <input class="btn_adulto1_continuar" type="button" value="continuar">
-    </div>
+            <a href= "{% url "triagem" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
+        
+        <input class="btn_adulto1_continuar" type="submit" value="continuar">
+        </div>
+    </form>
 </body>
 </html>
