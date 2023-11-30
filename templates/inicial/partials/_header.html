@@ -32,12 +32,12 @@
             <span class="divisor">|</span>
         {% endif %}
         {% if request.path == "/triagem" %}
-            <a href="#" target="_self" style="font-weight: 650;">
+            <a href="{% url "triagem" %}" target="_self" style="font-weight: 650;">
                 <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
             </a>
             <span class="divisor">|</span>
         {% else %}
-            <a href="#" target="_self">
+            <a href="{% url "triagem" %}" target="_self">
                 <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
             </a>
             <span class="divisor">|</span>

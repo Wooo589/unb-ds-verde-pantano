@@ -274,6 +274,44 @@ def meus_dados(request):
 
     return render(request, "inicial/meusdados.html", context)
 
+def triagem(request):
+    if request.method=="POST":
+        # lógica para modaldd
+        print(request.POST)
+        if "idade" not in request.POST or "termo" not in request.POST:
+            messages.error(request,"Você precisa selecionar os campos.")
+            return redirect("triagem")        
+        # lógica para selecionas qual tipo de atendimento}
+        elif request.POST["idade"] == "1":
+            return redirect("crianca1")
+        else:
+            return redirect("adulto1")
+    return render(request, 'inicial/PreTriagem.html')
+
+def adulto1(request):
+    return render(request, 'inicial/adulto1.html')
+
+def crianca1(request):
+    if request.method=="POST":
+            if request.POST["quest"] == "1":
+                return redirect("resultado_vermelho")
+            elif request.POST["quest"] == "2":
+                return redirect("resultado_vermelho")
+            elif request.POST["quest"] == "3":
+                return redirect("resultado_vermelho")
+            elif request.POST["quest"] == "4":
+                return redirect("resultado_vermelho")
+            else:
+                return redirect("crianca2")
+    return render(request, 'inicial/criança1.html' )
+def crianca2(request):
+    return render(request, 'inicial/criança2.html') 
+def resultado_vermelho(request):
+    return render(request, 'inicial/vermelho_triagem.html')
+
+# falta terminar a logica das crianças, integrar os resultados e adulto do 2 pra cima
+# e crianÇa tbm
+
 def editar_dados(request):
     if not request.user.is_authenticated:
         messages.error(request, "Realize login para visualizar seus dados")
@@ -434,3 +472,4 @@ def editar_dados(request):
     context = {"buscar": buscar2, "filter":filter_form}
 
     return render(request, "inicial/editardados.html", context)
+
