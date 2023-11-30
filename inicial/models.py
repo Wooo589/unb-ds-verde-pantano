@@ -121,6 +121,14 @@ class Dados(models.Model):
         ("na","Não informado")
     ]
 
+    FREQUENCIA = [
+        ("n","Não"),
+        ("d","Diariamente"),
+        ("s","Semanalmente"),
+        ("m","Mensalmente"),
+        ("a","Anualmente")
+    ]
+
     usuario = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
     nome = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
     idade = models.IntegerField(null=False, blank=False, default=0)
@@ -131,3 +139,9 @@ class Dados(models.Model):
     peso = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, default=0)
     altura = models.DecimalField(max_digits=3, decimal_places=2, null=False, blank=False, default=0)
     tipo_sanguineo = models.CharField(max_length=4, null=False, blank=False, default="na", choices=TIPO_SANGUINIO)
+    fumo_alcool = models.CharField(max_length=200, null=False, blank=False, default="n", choices=FREQUENCIA)
+    exercicio = models.CharField(max_length=200, null=False, blank=False, default="Nâo informado")
+    exercicio_frequencia = models.CharField(max_length=200, null=False, blank=False, default="n", choices=FREQUENCIA)
+
+    def __str__(self):
+        return self.usuario.username
