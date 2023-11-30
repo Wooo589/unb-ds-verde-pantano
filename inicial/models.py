@@ -46,7 +46,7 @@ class Hospital(models.Model):
 
     cnes = models.CharField(max_length=7, null=False, blank=False, primary_key=True, default="0000000", editable=False)
     nome = models.CharField(max_length=100, null=False, blank=False)
-    endereço = models.CharField(max_length=150, null=False, blank=False)
+    endereco = models.CharField(max_length=150, null=False, blank=False)
     cep = models.CharField(max_length=20, null=False, blank=False)
     categoria = models.CharField(max_length=100, choices=CATEGORIAS, default='')
     uf = models.CharField(max_length=100, choices=UFS, default='')

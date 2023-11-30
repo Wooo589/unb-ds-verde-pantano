@@ -15,4 +15,9 @@ urlpatterns = [
     path("redefinir_senha/<str:username>/<str:token>", redefinir_senha, name="redefinir_senha"),
     path("perfil/avaliacoes", minhas_avaliacoes, name="minhas_avaliacoes"),
     path("perfil/meus_dados", meus_dados, name="meus_dados"),
+    path("triagem", triagem, name="triagem"),
+    path("triagem/a1",adulto1, name="adulto1"),
+    path("triagem/b1",crianca1, name="crianca1"),
+    path("triagem/b2",crianca2, name="crianca2"),
+    path("resultado_vermelho",resultado_vermelho, name="resultado_vermelho"),
 ]
