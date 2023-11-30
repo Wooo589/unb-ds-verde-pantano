@@ -282,7 +282,152 @@ def editar_dados(request):
     if request.method == "POST":
         dados = json.loads(request.POST["dados"])
         dados.pop("dados")
-        print(dados)
+        # print(dados)
+        novos_dados = Dados.objects.get(usuario=request.user)
+
+        if dados["nome"] != "":
+            novos_dados.nome = dados["nome"]
+
+        if dados["idade"] != "":
+            novos_dados.idade = dados["idade"]
+        
+        if "sexo" in dados:
+            novos_dados.sexo = dados["sexo"]
+
+        if dados["profissao"] != "":
+            novos_dados.profissao = dados["profissao"]
+        
+        if dados["endereco"] != "":
+            novos_dados.endereco = dados["endereco"]
+
+        if dados["telefone"] != "":
+            novos_dados.telefone = dados["telefone"]
+
+        if dados["peso"] != "":
+            novos_dados.peso = dados["peso"]
+
+        if dados["altura"] != "":
+            novos_dados.altura = dados["altura"]
+
+        if dados["tipo_sanguineo"] != "":
+            novos_dados.tipo_sanguineo = dados["tipo_sanguineo"]
+
+        if "sim-nao1" in dados:
+            if dados["sim-nao1"] != "nao":
+                if "freq1" in dados:
+                    novos_dados.fumo_alcool = dados["freq1"]
+
+        if "sim-nao2" in dados:
+            if dados["exercicio"] != "":
+                novos_dados.exercicio = dados["exercicio"]
+                
+            if dados["sim-nao2"] != "nao":
+                if "freq2" in dados:
+                    novos_dados.exercicio_frequencia = dados["freq2"]
+
+        if "sim-nao3" in dados:
+            if dados["sim-nao3"] != "nao":
+                if "doenca_cronica" in dados:
+                    doencas = dados["doenca_cronica"]
+
+                    if isinstance(doencas,list):
+                        doencas.pop(0)
+
+                        for i in doencas:
+                            print(f"Doença: {i}")
+
+        if "sim-nao4" in dados:
+            if dados["sim-nao4"] != "nao":
+                sintomas = dados["sintomas"]
+                data_sintoma = dados["data_sintoma"]
+
+                if isinstance(sintomas,list) and isinstance(data_sintoma,list):
+                    sintomas.pop(0)
+                    data_sintoma.pop(0)
+
+                    for i in range(len(sintomas)):
+                        print(f"Sintoma: {sintomas[i]} Data: {data_sintoma[i]}")
+
+        if "sim-nao5" in dados:
+            if dados["sim-nao5"] != "nao":
+                diagnosticos = dados["doencas-diag"]
+
+                if isinstance(diagnosticos, list):
+                    diagnosticos.pop(0)
+
+                    for i in diagnosticos:
+                        print(f"Diagnosticos: {i}")
+
+        if "sim-nao6" in dados:
+            if dados["sim-nao6"] != "nao":
+                cirurgias = dados["cirurgias"]
+                data_cirurgia = dados["data_cirurgia"]
+
+                if isinstance(cirurgias, list) and isinstance(data_cirurgia, list):
+                    cirurgias.pop(0)
+                    data_cirurgia.pop(0)
+
+                    for i in range(len(cirurgias)):
+                        print(f"Cirurgia: {cirurgias[i]} Data: {data_cirurgia[i]}")
+
+        if "sim-nao7" in dados:
+            if dados["sim-nao7"] != "nao":
+                motivo = dados["motivo_internacao"]
+                tempo_internacao = dados["tempo_internacao"]
+                data_internacao = dados["data_internacao"]
+
+                if isinstance(motivo, list) and isinstance(tempo_internacao, list) and isinstance(data_internacao, list):
+                    motivo.pop(0)
+                    tempo_internacao.pop(0)
+                    data_internacao.pop(0)
+
+                    for i in range(len(motivo)):
+                        print(f"Motivo: {motivo[i]} Tempo: {tempo_internacao[i]} dias Data: {data_internacao[i]}")
+
+        if "sim-nao8" in dados:
+            if dados["sim-nao8"] != "nao":
+                if "condicao" in dados and "grau_parentesco" in dados:
+                    grau_parentesco = dados["grau_parentesco"]
+                    condicao = dados["condicao"]
+                    grau_parentesco = list(grau_parentesco)
+
+                    if isinstance(grau_parentesco, list) and isinstance(condicao, list):
+                        condicao.pop(0)
+
+                        for i in range(len(grau_parentesco)):
+                            print(f"Grau: {grau_parentesco} Condicao: {condicao}")
+
+        if "sim-nao9" in dados:
+            if dados["sim-nao9"] != "nao":
+                if "medicamento_cp" in dados and "freq_med_cp" in dados and "freq3" in dados: 
+                    medicamento_cp = dados["medicamento_cp"]
+                    freq_cp = dados["freq_med_cp"]
+                    freq3 = dados["freq3"]
+                    freq3 = list(freq3)
+
+                    if isinstance(medicamento_cp, list) and isinstance(freq_cp, list) and isinstance(freq3, list):
+                        medicamento_cp.pop(0)
+                        freq_cp.pop(0)
+
+                        for i in range(len(medicamento_cp)):
+                            print(f"Medicamento: {medicamento_cp} Frequência: {freq_cp} {freq3}")
+
+        if "sim-nao10" in dados:
+            if dados["sim-nao10"] != "nao":
+                if "medicamento_sp" in dados and "freq_med_sp" in dados and "freq4" in dados:
+                    medicamento_sp = dados["medicamento_sp"]
+                    freq_sp = dados["freq_med_sp"]
+                    freq4 = dados["freq4"]
+                    freq4 = list(freq4)
+
+                    if isinstance(medicamento_sp, list) and isinstance(freq_sp, list) and isinstance(freq4, list):
+                        medicamento_sp.pop(0)
+                        freq_sp.pop(0)
+
+                        for i in range(len(medicamento_sp)):
+                            print(f"Medicamento: {medicamento_sp} Frequência: {freq_sp} {freq4}")
+
+        novos_dados.save()
 
     buscar2 = BuscarForms()
     filter_form = FilterForms()

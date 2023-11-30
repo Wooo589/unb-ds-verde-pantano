@@ -1,6 +1,7 @@
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from django.db.models import Avg
+from django.contrib.auth.models import User
 from .models import *
 from datetime import timedelta
 
@@ -32,3 +33,9 @@ def update_time(sender, instance, created, **kwargs):
             hospital.tempo_nao_urgente = minutos
 
         hospital.save()
+
+@receiver(post_save, sender=User)
+def create_data(sender, instance, created, **kwargs):
+    if created:
+        dados = Dados(usuario=instance)
+        dados.save()

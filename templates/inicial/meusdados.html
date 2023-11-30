@@ -49,23 +49,23 @@
             <hr/>
         <!-- <div id="dados_gerais"> -->
         <div class="general_container">
-            <span id="nome_completo">Nome completo:<span id="nome">[nome completo]</span></span>
+            <span id="nome_completo">Nome completo:<span id="nome">{{ user.dados.nome }}</span></span>
     
-            <span>Idade:<span id="idade">[idade]</span></span>
+            <span>Idade:<span id="idade">{{ user.dados.idade }}</span></span>
                 
-            <span>Sexo:<span id="sexo">[sexo]</span></span>
+            <span>Sexo:<span id="sexo">{{ user.dados.get_sexo_display}}</span></span>
                 
-            <span>Profissão:<span id="profissao">[profissão]</span></span>
+            <span>Profissão:<span id="profissao">{{ user.dados.profissao }}</span></span>
                 
-            <span>Endereço:<span id="endereco">[endereço]</span></span>
+            <span>Endereço:<span id="endereco">{{ user.dados.endereco }}</span></span>
                 
             <div id="contato">
                 <h5>Contato:<h5>
                     <!-- <div id="tipos_contato"> -->
                     <div id="tipos_contato">
-                        <span>Telefone:<span id="telefone">[telefone]</span></span>
+                        <span>Telefone:<span id="telefone">{{ user.dados.telefone }}</span></span>
                             
-                        <span>E-mail:<span id="e-mail">[e-mail]</span></span>         
+                        <span>E-mail:<span id="e-mail">{{ user.email }}</span></span>         
                     </div>
             </div>
         </div>
@@ -74,24 +74,26 @@
         <div class="general_container">
             <h2>CONDIÇÕES FÍSICAS</h2>
         <div class="inner_container">
-            <span>Peso:<span id="peso">[peso]</span></span>
+            <span>Peso:<span id="peso">{{ user.dados.peso }} kg</span></span>
                 
-            <span>Altura:<span id="altura">[altura]</span></span>
+            <span>Altura:<span id="altura">{{ user.dados.altura }} m</span></span>
                 
-            <span>Tipo sanguíneo:<span id="tp_sanguineo">[tipo sangíneo]</span></span>
+            <span>Tipo sanguíneo:<span id="tp_sanguineo">{{ user.dados.get_tipo_sanguineo_display }}</span></span>
         </div>
         <div class="inner_container">
             <div class="complete_answer">
-                <span>Consome cigarro ou álcool?<span id="resp1">Sim/Não</span></span>
-                <span>Frequência:<span id="freq1">[frequência]</span></span>        
+                <span>Consome cigarro ou álcool?<span id="resp1">{{ user.dados.get_fumo_alcool_display }}</span></span>
+                <!--<span>Frequência:<span id="freq1">[frequência]</span></span>-->        
             </div>
             <div class="complete_answer">
-                <span>Pratica exercícios físicos?<span id="resp2">Sim/Não</span></span>    
-                <span id="exercicio_praticado">Exercício praticado:</span>
-                <span>Frequência:<span id="freq2">[frequência]</span></span>          
+                <span>Pratica exercícios físicos?<span id="resp2">{{ user.dados.get_exercicio_frequencia_display }}</span></span>  
+                {% if user.dados.exercicio_frequencia != "n" %}  
+                    <span id="exercicio_praticado">Exercício praticado: {{ user.dados.exercicio }}</span>
+                {% endif %}
+                <!--<span>Frequência:<span id="freq2">[frequência]</span></span>-->      
             </div>
         </div>
-        </div>
+        </div>  
 
         <h2>HISTÓRICO DE SAÚDE</h2>
 
