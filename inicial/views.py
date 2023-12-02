@@ -371,8 +371,9 @@ def editar_dados(request):
                     if isinstance(doencas,list):
                         doencas.pop(0)
 
-                        for i in doencas:
-                            print(f"Doença: {i}")
+                        for doenca in doencas:
+                            # print(f"Doença: {i}")
+                            Doencas.objects.create(user=request.user, doenca=doenca)
 
         if "sim-nao4" in dados:
             if dados["sim-nao4"] != "nao":
@@ -384,7 +385,9 @@ def editar_dados(request):
                     data_sintoma.pop(0)
 
                     for i in range(len(sintomas)):
-                        print(f"Sintoma: {sintomas[i]} Data: {data_sintoma[i]}")
+                        # print(f"Sintoma: {sintomas[i]} Data: {data_sintoma[i]}")
+                        data = datetime.strptime(data_sintoma[i],"%Y-%m-%dT%H:%M")
+                        Sintomas.objects.create(user=request.user, sintoma=sintomas[i], data=data)
 
         if "sim-nao5" in dados:
             if dados["sim-nao5"] != "nao":
@@ -393,8 +396,9 @@ def editar_dados(request):
                 if isinstance(diagnosticos, list):
                     diagnosticos.pop(0)
 
-                    for i in diagnosticos:
-                        print(f"Diagnosticos: {i}")
+                    for diagnostico in diagnosticos:
+                        # print(f"Diagnosticos: {i}")
+                        Diagnostico.objects.create(user=request.user, diagnostico=diagnostico)
 
         if "sim-nao6" in dados:
             if dados["sim-nao6"] != "nao":
@@ -406,7 +410,9 @@ def editar_dados(request):
                     data_cirurgia.pop(0)
 
                     for i in range(len(cirurgias)):
-                        print(f"Cirurgia: {cirurgias[i]} Data: {data_cirurgia[i]}")
+                        # print(f"Cirurgia: {cirurgias[i]} Data: {data_cirurgia[i]}")
+                        data = datetime.strptime(data_cirurgia[i],"%Y-%m-%d")
+                        Cirurgia.objects.create(user=request.user, cirurgia=cirurgias[i], data=data)
 
         if "sim-nao7" in dados:
             if dados["sim-nao7"] != "nao":
@@ -420,20 +426,23 @@ def editar_dados(request):
                     data_internacao.pop(0)
 
                     for i in range(len(motivo)):
-                        print(f"Motivo: {motivo[i]} Tempo: {tempo_internacao[i]} dias Data: {data_internacao[i]}")
+                        # print(f"Motivo: {motivo[i]} Tempo: {tempo_internacao[i]} dias Data: {data_internacao[i]}")
+                        data = datetime.strptime(data_internacao[i],"%Y-%m-%d")
+                        Internacao.objects.create(user=request.user, tempo=tempo_internacao[i], data=data, internacao=motivo[i])
 
         if "sim-nao8" in dados:
             if dados["sim-nao8"] != "nao":
                 if "condicao" in dados and "grau_parentesco" in dados:
                     grau_parentesco = dados["grau_parentesco"]
                     condicao = dados["condicao"]
-                    grau_parentesco = list(grau_parentesco)
 
                     if isinstance(grau_parentesco, list) and isinstance(condicao, list):
                         condicao.pop(0)
+                        grau_parentesco.pop(0)
 
-                        for i in range(len(grau_parentesco)):
-                            print(f"Grau: {grau_parentesco} Condicao: {condicao}")
+                        for i in range(len(condicao)):
+                            # print(f"Grau: {grau_parentesco} Condicao: {condicao}")
+                            Condicao_familiar.objects.create(user=request.user, condicao=condicao[i], grau_parentesco=grau_parentesco[i])
 
         if "sim-nao9" in dados:
             if dados["sim-nao9"] != "nao":
@@ -446,9 +455,15 @@ def editar_dados(request):
                     if isinstance(medicamento_cp, list) and isinstance(freq_cp, list) and isinstance(freq3, list):
                         medicamento_cp.pop(0)
                         freq_cp.pop(0)
+                        freq3.pop(0)
 
                         for i in range(len(medicamento_cp)):
-                            print(f"Medicamento: {medicamento_cp} Frequência: {freq_cp} {freq3}")
+                            # print(f"Medicamento: {medicamento_cp} Frequência: {freq_cp} {freq3}")
+                            Medicamento.objects.create(user=request.user, 
+                                tipo="1", 
+                                medicamento=medicamento_cp[i], 
+                                frequencia=freq3[i],
+                                numero_frequencia=freq_cp[i])
 
         if "sim-nao10" in dados:
             if dados["sim-nao10"] != "nao":
@@ -461,11 +476,19 @@ def editar_dados(request):
                     if isinstance(medicamento_sp, list) and isinstance(freq_sp, list) and isinstance(freq4, list):
                         medicamento_sp.pop(0)
                         freq_sp.pop(0)
+                        freq3.pop(0)
 
                         for i in range(len(medicamento_sp)):
-                            print(f"Medicamento: {medicamento_sp} Frequência: {freq_sp} {freq4}")
+                            # print(f"Medicamento: {medicamento_sp} Frequência: {freq_sp} {freq4}")
+                            Medicamento.objects.create(user=request.user, 
+                                tipo="2", 
+                                medicamento=medicamento_sp[i], 
+                                frequencia=freq4[i],
+                                numero_frequencia=freq_sp[i])
 
         novos_dados.save()
+        messages.success(request, "Dados alterados com sucesso!")
+        return redirect("meus_dados")
 
     buscar2 = BuscarForms()
     filter_form = FilterForms()

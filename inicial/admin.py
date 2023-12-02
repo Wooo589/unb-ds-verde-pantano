@@ -21,3 +21,4 @@ class ListandoDados(admin.ModelAdmin):
 admin.site.register(Hospital, ListandoHospitais)
 admin.site.register(Avaliacao, ListandoAvaliacoes)
 admin.site.register(Dados, ListandoDados)
+admin.site.register(Medicamento)

@@ -35,7 +35,8 @@
 <body>
     <!-- MENU SUPERIOR -->
     {% include "inicial/partials/_login.html" %}
-    {% include "inicial/partials/_header.html" %} 
+    {% include "inicial/partials/_header.html" %}
+    {% load inicial_extras %}
 
     <main>
         <!-- <div id="dados_gerais"> -->
@@ -102,57 +103,79 @@
         <h3>HISTÓRIA MÉDICA PREGRESSA</h3>
         <div class="hmp_container" style="margin-top: 0px;">
             <h4>Doenças crônicas</h4>
-                <span class="sem_registro">Não houve registros.</span>
+                {% for doenca in user.doencas.all %}
                 <div id="doencas_cronicas">
                     <ul id="d_cronica_ul">
-                        <li class="d_cronica_li">Diabetes tipo 1</li>
-                        <li class="d_cronica_li">Hipertensão arterial</li>
+                        <li class="d_cronica_li">{{ doenca.doenca }}</li>
                     </ul> 
                 </div>
+                {% empty %}
+                <span class="sem_registro">Não houve registros.</span>
+                {% endfor %}
         </div>        
         <div class="hmp_container">
             <h4>Sintomas recorrentes</h4>
-                <span class="sem_registro">Não houve registros.</span>
+                {% for sintoma in user.sintomas.all %}
                 <div id="sintomas_recorrentes">
                     <ul>
-                        <li class="sintoma_li">Sintoma 1</li>
-                        <li class="sintoma_li">Sintoma 2</li>
+                        <li class="sintoma_li">{{ sintoma.sintoma }}</li>
                     </ul> 
                 </div>
+                {% empty %}
+                <span class="sem_registro">Não houve registros.</span>
+                {% endfor %}
         </div>
         <div class="hmp_container">
             <h4>Diagnósticos</h4>
-                <span class="sem_registro">Não houve registros.</span>
+                {% for diagnostico in user.diagnosticos.all %}
                 <div id="diagnosticos">
                     <ul id="diagnostico_ul">
-                        <li class="diagnostico_li">Diagnóstico 1</li>
-                        <li class="diagnostico_li">Diagnóstico 2</li>
+                        <li class="diagnostico_li">{{ diagnostico.diagnostico }}</li>
                     </ul> 
                 </div>
+                {% empty %}
+                <span class="sem_registro">Não houve registros.</span>
+                {% endfor %}
         </div>
         <div class="hmp_container">
             <h4>Cirurgias</h4>
-                <span class="sem_registro">Não houve registros.</span>
+                {% for cirurgia in user.cirurgias.all %}
                 <div id="cirurgias">
                     <ul id="cirurgia_ul">
-                        <li class="cirurgia_li">Sintoma 1</li>
-                        <li class="cirurgia_li">Sintoma 2</li>
+                        <li class="cirurgia_li">{{ cirurgia.cirurgia }}</li>
                     </ul> 
                 </div>
+                {% empty %}
+                <span class="sem_registro">Não houve registros.</span>
+                {% endfor %}
         </div>
         <div class="hmp_container">
             <h4>Internações</h4>
+                {% if user.internacoes.all %}
+                <span>Número de internações:<span id="num_internacoes">{{ user.internacoes.all|length }}</span></span>
+                <span>Motivos:<span id="motivos_internacao">
+                    {% for internacao in user.internacoes.all %}
+                        {% if forloop.last %}
+                            {{ internacao.internacao|lower }}.
+                        {% else %}
+                            {{ internacao.internacao|lower }},
+                        {% endif %}
+                    {% endfor %}
+                </span></span>
+                {% else %}
                 <span class="sem_registro">Não houve registros.</span>
-                <span>Número de internações:<span id="num_internacoes">[número de internações]</span></span>
-                <span>Motivos:<span id="motivos_internacao">[motivos]</span></span>
+                {% endif %}
         </div>
     </div>
 
         <div class="general_container">
             <h3>HISTÓRICO FAMILIAR</h3>
+                {% for condicao in user.condicao_familiar.all %}
+                <span>Grau de parentesco:<span class="grau_parentesco">{{ condicao.get_grau_parentesco_display }}</span></span>
+                <span>Condição: {{ condicao.condicao }}</span>
+                {% empty %}
                 <span class="sem_registro">Não houve registros.</span>
-                <span>Grau de parentesco:<span class="grau_parentesco">[grau de parentesco]</span></span>
-                <span>Condição:<span class="condicao_familiar">[condição]</span></span>
+                {% endfor %}
                     
         </div>
 
@@ -160,20 +183,26 @@
             <h3>USO DE MEDICAMENTOS</h3>
             <div class="inner_container">
                 <span style="font-weight: 440; text-decoration: underline;">Medicamentos utilizados com prescrição médica:</span>
-                    <span class="sem_registro">Não houve registros.</span>
+                    {% for medicamento in user.medicamentos.all|tipo_medicamento:"1" %}
                     <div class="medicamentos">
-                        <span>Nome:<span class="nome_med_cp">[nome do medicamento]</span></span>
-                        <span>Frequência:<span class="freq_med_cp">[frequencia]</span></span>
+                        <span>Nome:<span class="nome_med_cp">{{ medicamento.medicamento }}</span></span>
+                        <span>Frequência:<span class="freq_med_cp">{{ medicamento.get_frequencia_display }}</span></span>
                     </div>
+                    {% empty %}
+                    <span class="sem_registro">Não houve registros.</span>
+                    {% endfor %}
             </div>
 
             <div class="inner_container">
                 <span style="font-weight: 440; text-decoration: underline;">Medicamentos utilizados sem prescrição médica:</span>
-                    <span class="sem_registro">Não houve registros.</span>
+                    {% for medicamento in user.medicamentos.all|tipo_medicamento:"2" %}
                     <div class="medicamentos">
-                        <span>Nome:<span class="nome_med_sp">[nome do medicamento]</span></span>
-                        <span>Frequência:<span class="nome_med_sp">[frequencia]</span></span>
+                        <span>Nome:<span class="nome_med_cp">{{ medicamento.medicamento }}</span></span>
+                        <span>Frequência:<span class="freq_med_cp">{{ medicamento.get_frequencia_display }}</span></span>
                     </div>
+                    {% empty %}
+                    <span class="sem_registro">Não houve registros.</span>
+                    {% endfor %}
             </div>
         </div>
         <hr/>
