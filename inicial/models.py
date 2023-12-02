@@ -145,3 +145,87 @@ class Dados(models.Model):
 
     def __str__(self):
         return self.usuario.username
+
+class Doencas(models.Model):
+
+    class Meta:
+        verbose_name = "doença"
+        verbose_name_plural = "Doenças"
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doencas")
+    doenca = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+
+    def __str__(self):
+        return self.doenca
+
+class Sintomas(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sintomas")
+    sintoma = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    data = models.DateTimeField(null=False, blank=False, default=timezone.now)
+
+    def __str__(self):
+        return self.sintoma
+
+class Diagnostico(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="diagnosticos")
+    diagnostico = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+
+    def __str__(self):
+        return self.diagnostico
+
+class Cirurgia(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cirurgias")
+    cirurgia = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    data = models.DateField(null=False, blank=False, default=timezone.now)
+
+    def __str__(self):
+        return self.cirurgia
+
+class Internacao(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="internacoes")
+    internacao = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    tempo = models.IntegerField(null=False, blank=False, default=0)
+    data = models.DateField(null=False, blank=False, default=timezone.now)
+
+    def __str__(self):
+        return self.internacao
+
+class Condicao_familiar(models.Model):
+
+    GRAU_PARENTESCO = [
+        ("1", "1° Grau"),
+        ("2", "2° Grau"),
+        ("3", "3° Grau")
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="condicao_familiar")
+    condicao = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    grau_parentesco = models.CharField(max_length=10, null=False, blank=False, default="1", choices=GRAU_PARENTESCO)
+
+    def __str__(self):
+        return self.condicao
+
+class Medicamento(models.Model):
+
+    TIPO_MEDICAMENTO = [
+        ("1", "Medicamento com prescrição"),
+        ("2", "Medicamento sem prescrição")
+    ]
+
+    FREQUENCIA = [
+        ("n","Não"),
+        ("d","Diariamente"),
+        ("s","Semanalmente"),
+        ("m","Mensalmente"),
+        ("a","Anualmente")
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="medicamentos")
+    tipo = models.CharField(max_length=200, null=False, blank=False, default="1", choices=TIPO_MEDICAMENTO)
+    medicamento = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    frequencia = models.CharField(max_length=200, null=False, blank=False, default="n", choices=FREQUENCIA)
+    numero_frequencia = models.IntegerField(null=False, blank=False, default=0)
