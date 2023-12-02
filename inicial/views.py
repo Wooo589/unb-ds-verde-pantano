@@ -263,17 +263,6 @@ def avaliacao_completa(request, avaliacao_id):
 
     return render(request, "inicial/av_completa.html", context)
 
-def meus_dados(request):
-    if not request.user.is_authenticated:
-        messages.error(request, "Realize login para visualizar seus dados")
-        return redirect("index")
-
-    buscar2 = BuscarForms()
-    filter_form = FilterForms()
-    context = {"buscar": buscar2, "filter":filter_form}
-
-    return render(request, "inicial/meusdados.html", context)
-
 def triagem(request):
     if request.method=="POST":
         # lógica para modaldd
@@ -368,6 +357,17 @@ def resultado_azul(request):
 
 def resultado_verde(request):
     return render(request, 'inicial/verde_triagem.html')
+
+def meus_dados(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar seus dados")
+        return redirect("index")
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    context = {"buscar": buscar2, "filter":filter_form}
+
+    return render(request, "inicial/meusdados.html", context)
 
 def editar_dados(request):
     if not request.user.is_authenticated:
