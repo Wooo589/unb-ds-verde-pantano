@@ -107,7 +107,17 @@
             </div>
             <div class="group">
                 <span>Tipo sanguíneo:</span>
-                <input type="text" id="tipo_sanguineo" name="tipo_sanguineo">
+                <select name="tipo_sanguineo">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="na">Não sei</option>
+                </select>
             </div>
         </div>
         <div class="inner_container">
@@ -231,10 +241,10 @@
                         <!-- <div class="group"> -->
                             <input type="text" name="sintomas" class="sintomas" placeholder="Descreva aqui o sintoma">
                     </div>
-                            <div class="group">
+                            <!--<div class="group">
                                 <span>Adicione a data e o horário aproximado de início do sintoma:</span>
                                 <input type="datetime-local" class="datetime_sintoma" name="data_sintoma">
-                            </div>
+                            </div>-->
                         <!-- </div> -->
                     </div>
                 </div>  
@@ -344,7 +354,7 @@
                             </div>
                             <div>
                                 <select name="grau_parentesco" class="grau_parentesco">
-                                    <option value=" ">        </option>
+                                    <option value=" ">       </option>
                                     <option value="1">1° Grau</option>
                                     <option value="2">2° Grau</option>
                                     <option value="3">3° Grau</option>

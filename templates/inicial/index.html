@@ -68,7 +68,7 @@
                     <img src="https://cdn-icons-png.flaticon.com/128/3022/3022868.png">
                     </div>
                     <div id="gerais">  
-                        <h3><strong>{{ hospital.nome }}</strong></h3>
+                        <h3><strong><a style="text-decoration:none; color:inherit;" href="{% url "mais_informacoes" hospital.cnes %}">{{ hospital.nome }}</a></strong></h3>
                         <span id="endereco"><small>{{ hospital.endereco }}</small></span>
                         <span id="cep"><small>CEP: {{ hospital.cep }}</small></span>
                         <abbr style="text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">

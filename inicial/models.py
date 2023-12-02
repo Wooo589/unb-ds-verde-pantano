@@ -84,7 +84,7 @@ class Avaliacao(models.Model):
 
     usuario = models.CharField(max_length=100, null=False, blank=False, default="")
     numero = models.IntegerField(null=False, blank=False, default=1)
-    data = models.DateField(null=False, blank=False, default=timezone.now)
+    data = models.DateTimeField(null=False, blank=False, default=timezone.now)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     risco = models.CharField(max_length=100, null=False, blank=False, default="NAO_URGENTE", choices=RISCO)
     horario_entrada = models.DateTimeField(null=False, blank=False, default=timezone.now)
@@ -118,7 +118,7 @@ class Dados(models.Model):
         ("AB-","AB-"),
         ("O+","O+"),
         ("O-","O-"),
-        ("na","Não informado")
+        ("na","Não informado/Não sabe")
     ]
 
     FREQUENCIA = [
@@ -162,7 +162,6 @@ class Sintomas(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sintomas")
     sintoma = models.CharField(max_length=200, null=False, blank=False, default="N/A")
-    data = models.DateTimeField(null=False, blank=False, default=timezone.now)
 
     def __str__(self):
         return self.sintoma
@@ -229,3 +228,6 @@ class Medicamento(models.Model):
     medicamento = models.CharField(max_length=200, null=False, blank=False, default="N/A")
     frequencia = models.CharField(max_length=200, null=False, blank=False, default="n", choices=FREQUENCIA)
     numero_frequencia = models.IntegerField(null=False, blank=False, default=0)
+
+    def __str__(self):
+        return self.medicamento

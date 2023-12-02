@@ -59,7 +59,7 @@ def buscar(request):
 
     context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form}
 
-    return render(request, "inicial/buscar.html", context)
+    return render(request, "inicial/locaisdeatendimento.html", context)
 
 def mais_informacoes(request, hospital_cnes):
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
@@ -131,7 +131,7 @@ def cadastro(request):
             email = cadastro["email"].value()
             senha = cadastro["senha_1"].value()
 
-            if User.objects.filter(username=nome).exists():
+            if User.objects.filter(username=nome).exists() or User.objects.filter(email=email).exists():
                 messages.error(request, "Usuário já existente")
                 return redirect('cadastro')
 
@@ -142,6 +142,7 @@ def cadastro(request):
             )
 
             usuario.save()
+            login(request, usuario)
             messages.success(request, "Usuário cadastrado com sucesso!")
             return redirect('index')
 
@@ -162,7 +163,7 @@ def login_site(request, view_name):
             return redirect(view_name)
 
         else:
-            messages.error(request, "Usuário ou senha incorretos")
+            messages.error(request, "Usuário ou senha incorretos", extra_tags="login")
             return redirect(view_name)
 
 def confirma_email(request, view_name):
@@ -435,16 +436,16 @@ def editar_dados(request):
         if "sim-nao4" in dados:
             if dados["sim-nao4"] != "nao":
                 sintomas = dados["sintomas"]
-                data_sintoma = dados["data_sintoma"]
+                # data_sintoma = dados["data_sintoma"]
 
-                if isinstance(sintomas,list) and isinstance(data_sintoma,list):
+                if isinstance(sintomas,list):
                     sintomas.pop(0)
-                    data_sintoma.pop(0)
+                    # data_sintoma.pop(0)
 
                     for i in range(len(sintomas)):
                         # print(f"Sintoma: {sintomas[i]} Data: {data_sintoma[i]}")
-                        data = datetime.strptime(data_sintoma[i],"%Y-%m-%dT%H:%M")
-                        Sintomas.objects.create(user=request.user, sintoma=sintomas[i], data=data)
+                        # data = datetime.strptime(data_sintoma[i],"%Y-%m-%dT%H:%M")
+                        Sintomas.objects.create(user=request.user, sintoma=sintomas[i])
 
         if "sim-nao5" in dados:
             if dados["sim-nao5"] != "nao":
