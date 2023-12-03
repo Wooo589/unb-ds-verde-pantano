@@ -1,22 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>modal</title>
-        <link rel="stylesheet" href="esqueciSenha.css">
+        <title>Login | MedConnect</title>
+        <link rel="stylesheet" href="{% static "styles/esqueciSenha.css"%}">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     </head>
     <body>
         <div class="modal_box_esqueciSenha">
             <div class="modal_esqueciSenha">
-                <a href="FazerLogin.html"><img class="modal_icon_back" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a>
-                <h1 class="modal_title">Esqueci minha senha</h1>
+                <!-- <a href="FazerLogin.html"><img class="modal_icon_back" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a> -->
+                <div id="modal_title">
+                    <a href="{% url "login" %}"><button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button></a>
+                    <h1 class="modal_title">Esqueci minha senha</h1>
+                </div>
                 <p class="modal_phrase">
                     Para redefinir sua senha, informe o e-mail cadastrado na sua conta e 
-                    lhe enviaremos um link com as instruções:
+                    lhe enviaremos um email com as instruções de como prosseguir:
                 </p>
-                <input class="modal_email" type="email" placeholder="EMAIL">
-                <a href="ConfirmaEmail.html"><input class="modal_button" type="button" value="Enviar"></a>
+                <input name="email" class="modal_email" type="email" placeholder="EMAIL">
+                <a href="{% url "confirma_email" %}"><input class="modal_button" type="button" value="Enviar"></a>
             </div>
         </div>
     </body>

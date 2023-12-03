@@ -13,12 +13,16 @@ class Command(BaseCommand):
             '--display',
             action='store_true'
         )
+        parser.add_argument(
+            '--delete',
+            action='store_true'
+        )
     
     def handle(self, *args, **options):
         df = pd.read_csv(options['path'])
         df = df.fillna('')
 
-        if options['uf']:
+        if options['uf'] != '*':
             df = df[df["UF"] == options['uf']]
             df = df.reset_index(drop=True)
 
@@ -39,6 +43,9 @@ class Command(BaseCommand):
                 entries += 1
 
             self.stdout.write(self.style.SUCCESS(f"Entries: {entries}"))
+
+        if options['delete']:
+            Hospital.objects.filter(uf__exact=options["uf"]).delete()
 
         else:
             created = 0
@@ -63,7 +70,7 @@ class Command(BaseCommand):
                     endereco = endereco + " "
                 endereco = endereco.strip()
 
-                cnes = f"{df['CNES'].iloc[i]}".zfill(7)
+                cnes = f"{df['CNES'].iloc[i]}"
 
                 strings = f"{df['NOME_ESTABELECIMENTO'].iloc[i]}".lower().split()
                 nome = ""
@@ -99,16 +106,29 @@ class Command(BaseCommand):
                 if email == '':
                     email = "Email não informado"
 
+                leitos = df["LEITOS_EXISTENTES"].iloc[i]
+                uti_adulto = df["UTI_ADULTO_EXIST"].iloc[i]
+                uti_pediatrico = df["UTI_PEDIATRICO_EXIST"].iloc[i]
+                uti_neonatal = df["UTI_NEONATAL_EXIST"].iloc[i]
+                uti_queimado = df["UTI_QUEIMADO_EXIST"].iloc[i]
+
                 obj, create = Hospital.objects.update_or_create(
                     cnes=cnes,
-                    nome=nome,
-                    endereço=endereco,
-                    cep=cep,
-                    categoria=categoria,
-                    uf=uf,
-                    municipio=municipio,
-                    telefone=telefone,
-                    email=email              
+                    defaults={
+                        "nome":nome,
+                        "endereco":endereco,
+                        "cep":cep,
+                        "categoria":categoria,
+                        "uf":uf,
+                        "municipio":municipio,
+                        "telefone":telefone,
+                        "email":email,
+                        "leitos":leitos,
+                        "uti_adulto":uti_adulto,
+                        "uti_pediatrico":uti_pediatrico,
+                        "uti_neonatal":uti_neonatal,
+                        "uti_queimado":uti_queimado
+                    }            
                 )
 
                 if create == True:

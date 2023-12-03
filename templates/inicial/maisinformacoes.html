@@ -5,124 +5,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página - Mais informações</title>
+    <title>Mais informações | MedConnect</title>
     <link rel="shortcut icon" href="../img/favicon_io/favicon.ico" typoe="image/x-icon">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'maisinformacoes.css' %}">
+    <link rel="stylesheet" href="{% static "styles/header_e_footer.css"%}">
+    <link rel="stylesheet" href="{% static "styles/maisinformacoes.css"%}">
+    <link rel="stylesheet" href="{% static "styles/FazerLogin.css"%}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!--AVALIAÇÃO EM ESTRELAS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 10,
+            'wght' 200,
+            'GRAD' 0,
+            'opsz' 36;
+            z-index: 1;
+            font-size: 36px;
+            color: gray;
+            font-family: 'Material Symbols Outlined';
+        }      
+    </style>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 10,
+            'wght' 200,
+            'GRAD' 0,
+            'opsz' 36;
+            z-index: 1;
+            font-size: 36px;
+            color: gray;
+            font-family: 'Material Symbols Outlined';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{% static "js/select.js" %}"></script>
+    <script src="{% static "js/login.js" %}"></script>
+    <script src="{% static "js/barra_pesquisa.js"%}"></script>
+    <script src="{% static "js/login_popup.js"%}"></script>
 </head>
 <body>
-    {% include "inicial/partials/_menu.html" %}
+    <!-- MENU SUPERIOR -->
+    {% include "inicial/partials/_login.html" %}
+    {% include "inicial/partials/_header.html" %} 
     <main>
-        <!--<section id="seletores">
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR UF</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
+        <a href="{% url "locais_de_atendimento" %}"><i class="uil uil-angle-down"></i></a>
+        <h1><strong>INFORMAÇÕES GERAIS</strong></h1>
+        <hr/>
+        <div id="inf_gerais">  
+            <div id="gerais">
+                <h3><strong>{{ hospital.nome }}</strong></h3>
+                <span><small>{{ hospital.endereco }}.</small></span>
+                <span><small>CEP: {{ hospital.cep }}</small></span>
+                <div id="container_contato">
+                    <span><small>Contato:</small></span> 
+                    <div id="contato">
+                        <span><small>{{ hospital.telefone }}</small></span>
+                        <span><small>{{ hospital.email }}</small></span>
                     </div>
-                    <ul class="options"></ul>
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR CIDADE</span>
-                    <i class="uil uil-angle-down"></i>
+            <div class="tempos_de_espera">
+                <div class="tempos">
+                    <span class="c-orange"></span>
+                    <span><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
                 </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
+                <div class="tempos">
+                    <span class="c-yellow"></span>
+                    <span><abbr title="Tempo médio de espera para atendimento de pacientes urgentes">{{ hospital.tempo_urgente }} min</abbr></span>
+                </div>   
+                <div class="tempos">   
+                    <span class="c-green"></span>
+                    <span><abbr title="Tempo médio de espera para atendimento de pacientes pouco urgentes">{{ hospital.tempo_pouco_urgente }} min</abbr></span>
+                </div>
+                <div class="tempos">  
+                    <span class="c-blue"></span> 
+                    <span><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
+                </div>     
+            </div>
+        </div>
+        <!-- <hr/> -->
+        <div id="avaliacao">
+            <div id="classificacao">
+                <span>Avaliação geral:</span>
+                <abbr style="text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">
+                    {% for number in counter %}
+                        {% if number <= hospital.nota %}
+                        <span class="fa fa-star checked"></span>
+                        {% else %}
+                        <span class="fa fa-star"></span>
+                        {% endif %}
+                    {% endfor %}
+                </div></abbr>
+            </div>
+            <a href="{% url "avaliar_hospital" hospital.cnes%}" id="link_avaliar"><button id="btn_avaliar"><abbr style="text-decoration:none;" title="Clique aqui para avaliar o local selecionado. É necessario estar autenticado para realizar avaliações">AVALIAR LOCAL</abbr></button></a>
+        </div>
+        <!-- <hr/> -->
+        <br/>
+        <h1><strong>INFORMAÇÕES ADICIONAIS</strong></h1>
+        <hr/>
+        <br/>
+        <div id="container2">
+            <div id="mais_informacoes">
+                <div class="detalhamento"><strong>Especialidades:</strong>
+                    <ul>
+                        <li>A;</li>
+                        <li>B;</li>
+                        <li>C;</li>
+                        <li>D;</li>
+                        <li>E.</li>
+                    </ul>
+                </div>
+                <div class="detalhamento"><strong>Profissionais disponíveis:</strong>
+                    <ul>
+                        <li>A;</li>
+                        <li>B;</li>
+                        <li>C;</li>
+                        <li>D;</li>
+                        <li>E.</li>
+                    </ul>
+                </div>
+                <div class="detalhamento"><strong>Planos atendidos:</strong>
+                    <ul>
+                        <li>a;</li>
+                        <li>b;</li>
+                        <li>c;</li>
+                        <li>d;</li>
+                        <li>e.</li>
+                    </ul>
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>ESPECIALIDADE</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
+        </div>
+        <div class="inline"><strong>🞄 Leitos existentes:</strong>
+            <span>{{ hospital.leitos }}</span>
+        </div>
+        <ul class="list"><strong>🞄 Leitos de UTI:</strong>
+            <li>ADULTO:<span>{{ hospital.uti_adulto }}</span></li>
+            <li>PEDIÁTRICO:<span>{{ hospital.uti_pediatrico }}</span></li>
+            <li>NEONATAL:<span>{{ hospital.uti_neonatal }}</span></li>
+            <li>QUEIMADO:<span>{{ hospital.uti_queimado }}</span></li>
+            <!-- <li>CORONARIANA:<span>x</span></li> -->
+        </ul>
+        <h1><strong>ESCALA DE SERVIÇOS E MEDICAMENTOS DISPONÍVEIS</strong></h1>
+        <hr/>
+        <div id="link">
+            <div class="link">
+                <a href="../sub_paginas/escalas.html"><button>ESCALA DE SERVIÇOS DO DIA</button></a>
             </div>
-            <div class="wrapper">
-                <div class="select-btn">
-                    <span>SELECIONAR LOCAL</span>
-                    <i class="uil uil-angle-down"></i>
-                </div>
-                <div class="content">
-                    <div class="search">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Pesquisar">
-                    </div>
-                    <ul class="options"></ul>
-                </div>
+            <div class="link">
+                <button><a href="../sub_paginas/medicamentos.html">MEDICAMENTOS DISPONÍVEIS</a></button>
             </div>
-
-            <script src="js/script-select-menu.js"></script>
-
-            <button id="btnProcurar"><img src="img/botao-lupa-pesquisa35px.png" alt="Botão de pesquisa."></button>
-        </section>-->
-        <section id="inf-gerais">
-            <i class="uil uil-angle-down"></i>
-            <h1><strong>INFORMAÇÕES GERAIS</strong></h1>
-            
-            <span class="nome-local"><strong>{{ hospital.nome }}</strong></span>
-            <br/>
-            <span class="gerais">{{ hospital.endereço }}</span>
-            <br/>
-            <span class="gerais">CEP: {{ hospital.cep }}</span>
-            <br/>
-            <span class="gerais">Contato: {{ hospital.telefone }}/{{ hospital.email }}</span>
-            <br/>
-            <span class="gerais">Avaliações:</span>
-            <span class="c-orange"></span>
-            <span class="c-yellow"></span>
-            <span class="c-green"></span>
-            <span class="c-blue"></span>
-            <span class="tempos-de-espera">
-                <span class="laranja">x min</span>
-                <span class="amarelo">x min</span>
-                <span class="verde">x min</span>
-                <span class="azul">x min</span>
-            </span>
-            <button class="info "><a href="{% url 'avaliar_hospital' hospital.cnes %}">AVALIAR HOSPITAL</a></button>
-            <br/><br/><br/>
-            <span class="detalhamento">ESPECIALIDADES ATENDIDAS:
-            <ul>
-                <li>A;</li>
-                <li>B;</li>
-                <li>C;</li>
-                <li>D;</li>
-                <li>E.</li>
-            </ul>
-            </span>
-            <span class="detalhamento">PLANOS DE SAÚDE ATENDIDOS:
-            <ul>
-                <li>a;</li>
-                <li>b;</li>
-                <li>c;</li>
-                <li>d;</li>
-                <li>e.</li>
-            </ul>
-            </span>
-            <span class="detalhamento">ESCALA DO DIA:</span>
-                <!--<li>HOSPITAL 2<br/>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111 <span class="c-orange"></span><span class="c-yellow"></span></span><span class="c-green"></span><span class="c-blue"></span><button class="info"><a href="#">Mais informações</a></button></li>
-                <li>HOSPITAL 3<br/>Qs 115, Avenida dos Pinheiros. CEP: 11-111.111 <span class="circles"><span class="c-orange"></span><span class="c-yellow"></span></span><span class="c-green"></span><span class="c-blue"></span></span><button class="info"><a href="#">Mais informações</a></button></li>-->
-        
-        </section> 
+        </div>
+        <hr/>
+        <div id="fontes">
+            <span>FONTES:</span>
+            <div id="f">
+                <a href="https://opendatasus.saude.gov.br/dataset/hospitais-e-leitos/resource/5701f27f-a202-4605-a944-7dbe888c0445/view/3d1e5da4-fefc-4e2c-bdde-917e50d44088">🞄 Banco de dados OPENDATASUS;</a>
+                <a href="https://info.saude.df.gov.br/transparenciaativanovo/">🞄 Portal "Transparência e Prestação de Contas" - SES-DF.</a>
+            </div>
+        </div>
+            <!-- <div class="detalhamento">ESCALA DO DIA:</div> -->
     </main>
-    <!--<footer>
+    <footer>
+        <p>MedConnect, c2023.</p>
         <p>Site criado por feudo 9 - "Verde Pântano".</p>
-    </footer>-->
+    </footer>
 </body>
 </html>
