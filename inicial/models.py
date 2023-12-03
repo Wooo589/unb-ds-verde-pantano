@@ -64,6 +64,7 @@ class Hospital(models.Model):
     uti_pediatrico = models.IntegerField(null=False, blank=False, default=0)
     uti_neonatal = models.IntegerField(null=False, blank=False, default=0)
     uti_queimado = models.IntegerField(null=False, blank=False, default=0)
+    atualizacao = models.DateTimeField(null=False, blank=False, default=timezone.now)
 
     def __str__(self):
         return self.nome

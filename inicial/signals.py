@@ -2,6 +2,7 @@ from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from django.db.models import Avg
 from django.contrib.auth.models import User
+from django.utils import timezone
 from .models import *
 from datetime import timedelta
 
@@ -32,6 +33,7 @@ def update_time(sender, instance, created, **kwargs):
         if risco == "NAO_URGENTE":
             hospital.tempo_nao_urgente = minutos
 
+        hospital.atualizacao = timezone.now
         hospital.save()
 
 @receiver(post_save, sender=User)
