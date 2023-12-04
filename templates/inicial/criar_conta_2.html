@@ -1,30 +1,35 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta | MedConnect</title>
-    <link rel="stylesheet" href="css_criarconta_3.css">
+    <link rel="stylesheet" href="{% static "styles/css_criarconta_3.css"%}">
 </head>
 <body>
     <div class="multi-step-form-container">
-
-        <form id="regForm" action="">
+        <form id="regForm" action="{% url "cadastro" %}" method="POST">
+          {% csrf_token %}
             <div class="tab">
                 <h1>Criar conta -<br>etapa 1 de 2</h1>
-                <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/Google_NoHover.png" style="width:60%;height:auto;">
-                <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/FB_NoHover.png" style="width:60%;height:auto;">
+                <!--<img src="https://electricwoodlands.com/wp-content/uploads/2021/06/Google_NoHover.png" style="width:60%;height:auto;">
+                <img src="https://electricwoodlands.com/wp-content/uploads/2021/06/FB_NoHover.png" style="width:60%;height:auto;">-->
+                {% for message in messages %}
+                <p style="font-weight: bold;">{{ message }}</p>
+                {% endfor %}
                 <div class="formtag">EMAIL:</div>
                 <p>
-                  <input type="email" placeholder="Digite aqui o seu e-mail" oninput="this.className = ''">
+                  <input name="email" type="email" placeholder="Digite aqui o seu e-mail" oninput="this.className = ''">
                 </p>
                 <div class="formtag">Senha:</div>
                 <p>
-                  <input type="password" required="required" pattern="{8,}" placeholder="Digite aqui a sua senha" oninput="this.classeName = ''">
+                  <input name="senha_1" type="password" required="required" pattern="{8,}" placeholder="Digite aqui a sua senha" oninput="this.classeName = ''">
                 </p>
                 <div class="formtag">Confirmar senha:</div>
                 <p>
-                  <input type="password" placeholder="Digite novamente a sua senha" oninput="this.classeName = ''">
+                  <input name="senha_2" type="password" placeholder="Digite novamente a sua senha" oninput="this.classeName = ''">
                 </p>
                 <p id="infosenha">a. Mínimo de 8 caracteres<br>b. Mínimo de <!--2--> 1 número<!--s--><br>c. Mínimo de 1 caractere especial<br>d. Mínimo de 1 letra maiúscula<br>e. Mínimo de 1 letra minúscula</p>
             </div>
@@ -36,14 +41,14 @@
                       <div class="formtag">Nome:
                       </div>
                       <p>
-                        <input placeholder="Digite aqui seu nome" class="input2" oninput="this.className = ''">
+                        <input name="nome" placeholder="Digite aqui seu nome" class="input2" oninput="this.className = ''">
                       </p>
                     </div>
                     <div class="item-2">
                       <div class="formtag">Sobrenome:
                       </div>
                       <p>
-                        <input placeholder="Digite aqui seu sobrenome" class="input2" oninput="this.className = ''">
+                        <input name="sobrenome" placeholder="Digite aqui seu sobrenome" class="input2" oninput="this.className = ''">
                       </p>
                     </div>
                   </div>
@@ -52,7 +57,7 @@
                     <div class="formtag">Data de nascimento: (DD/MM/AA)
                     </div>
                     <p>
-                      <input type="date" placeholder="Digite aqui sua data de nascimento" class="input3" oninput="this.className = ''">
+                      <input name="data_nascimento" type="date" placeholder="Digite aqui sua data de nascimento" class="input3" oninput="this.className = ''">
                     </p>
                   </div>
                   <div class="item-2">
@@ -71,8 +76,8 @@
                         <option value="none" selected disabled hidden>Selecione</option>
                         <option value="homem-cis">Homem cis</option>
                         <option value="homem-trans">Homem trans</option>
-                        <option value="mulher-trans">Mulher cis</option>
-                        <option value="mulher-cis">Mulher trans</option>
+                        <option value="mulher-cis">Mulher cis</option>
+                        <option value="mulher-trans">Mulher trans</option>
                         <option value="nao-binario">Não-binário</option>
                         <option value="outro">Outro</option>
                       </select>

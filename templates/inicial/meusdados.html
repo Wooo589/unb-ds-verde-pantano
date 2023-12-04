@@ -50,11 +50,11 @@
             <hr/>
         <!-- <div id="dados_gerais"> -->
         <div class="general_container">
-            <span id="nome_completo">Nome completo:<span id="nome">{{ user.dados.nome }}</span></span>
+            <span id="nome_completo">Nome completo:<span id="nome">{{ user.first_name }} {{user.last_name}}</span></span>
     
-            <span>Idade:<span id="idade">{{ user.dados.idade }}</span></span>
+            <span>Data de nascimento:<span id="idade">{{ user.dados.data_nascimento|date:"d/m/Y" }}</span></span>
                 
-            <span>Sexo:<span id="sexo">{{ user.dados.get_sexo_display}}</span></span>
+            <span>Sexo:<span id="sexo">{{ user.dados.get_genero_display}}</span></span>
                 
             <span>Profissão:<span id="profissao">{{ user.dados.profissao }}</span></span>
                 

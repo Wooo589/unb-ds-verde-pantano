@@ -6,7 +6,7 @@
 }
 
 body{
-    background-image:url('bg_criarconta.jpg');
+    background-image:url('../img/bg_criarconta.jpg');
     background-size:cover;
     /*background-color: darkolivegreen;*/
 }

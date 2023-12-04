@@ -104,10 +104,14 @@ class Dados(models.Model):
         verbose_name = "dados"
         verbose_name_plural = "Dados"
 
-    SEXO = [
-        ("femininino", "Feminino"),
-        ("masculino", "Masculino"),
-        ("na","Não informado")
+    GENERO = [
+        ("na","Não informado"),
+        ("homem-cis", "Homem cis"),
+        ("homem-trans", "Homem trans"),
+        ("mulher-cis", "Mulher cis"),
+        ("mulher-trans", "Mulher trans"),
+        ("nao-binario", "Não-binário"),
+        ("outro", "Outro")
     ]
 
     TIPO_SANGUINIO = [
@@ -131,9 +135,8 @@ class Dados(models.Model):
     ]
 
     usuario = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
-    nome = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
-    idade = models.IntegerField(null=False, blank=False, default=0)
-    sexo = models.CharField(max_length=20, null=False, blank=False, default="na", choices=SEXO)
+    data_nascimento = models.DateField(null=False, blank=False, default=timezone.now)
+    genero = models.CharField(max_length=20, null=False, blank=False, default="na", choices=GENERO)
     profissao = models.CharField(max_length=200, null=False, blank=False, default="Não informada")
     endereco = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
     telefone = models.CharField(max_length=20, null=False, blank=False, default="Não informado")

@@ -117,38 +117,43 @@ def duvidas_frequentes(request):
 
 def cadastro(request):
 
-    cadastro = CadastroForms()
-
     if request.method == "POST":
-        cadastro = CadastroForms(request.POST)
 
-        if cadastro.is_valid():
-            if cadastro["senha_1"].value() != cadastro["senha_2"].value():
-                messages.error(request, "Digite senhas iguais para concluir o cadastro")
-                return redirect('cadastro')
+        email = request.POST["email"]
+        senha_1 = request.POST["senha_1"]
+        senha_2 = request.POST["senha_2"]
+        nome = request.POST["nome"]
+        sobrenome = request.POST["sobrenome"]
+        data_nascimento = datetime.strptime(request.POST["data_nascimento"],"%Y-%m-%d")
+        genero = request.POST["genero"]
 
-            nome = cadastro["nome_cadastro"].value()
-            email = cadastro["email"].value()
-            senha = cadastro["senha_1"].value()
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email já cadastrado")
+            return redirect('cadastro')
+        
+        if senha_1 != senha_2:
+            messages.error(request, "Digite senhas iguais para concluir o cadastro")
+            return redirect('cadastro')
 
-            if User.objects.filter(username=nome).exists() or User.objects.filter(email=email).exists():
-                messages.error(request, "Usuário já existente")
-                return redirect('cadastro')
+        usuario = User.objects.create_user(
+            username=email,
+            email=email,
+            password=senha_1,
+            first_name=nome,
+            last_name=sobrenome
+        )
 
-            usuario = User.objects.create_user(
-                username=nome,
-                email=email,
-                password=senha
-            )
+        usuario.save()
 
-            usuario.save()
-            login(request, usuario)
-            messages.success(request, "Usuário cadastrado com sucesso!")
-            return redirect('index')
+        Dados.objects.create(usuario=usuario, data_nascimento=data_nascimento, genero=genero)
+
+        login(request, usuario)
+        messages.success(request, "Usuário cadastrado com sucesso!")
+        return redirect('index')
 
     context = {"cadastro":cadastro}
 
-    return render(request, 'inicial/criar_conta.html', context)
+    return render(request, 'inicial/criar_conta_2.html', context)
 
 def login_site(request, view_name):
     if request.method == "POST":
@@ -383,11 +388,11 @@ def editar_dados(request):
         if dados["nome"] != "":
             novos_dados.nome = dados["nome"]
 
-        if dados["idade"] != "":
-            novos_dados.idade = dados["idade"]
+        if dados["data_nascimento"] != "":
+            novos_dados.idade = datetime.strptime(request.POST["data_nascimento"],"%Y-%m-%d")
         
-        if "sexo" in dados:
-            novos_dados.sexo = dados["sexo"]
+        if "genero" in dados:
+            novos_dados.sexo = dados["genero"]
 
         if dados["profissao"] != "":
             novos_dados.profissao = dados["profissao"]
