@@ -79,16 +79,29 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-              'ENGINE': 'django.db.backends.mysql',
-              'NAME': 'medconnect',
-              'USER': 'Admin',
-              'PASSWORD': str(os.getenv('DATABASE_KEY')),
-              'HOST': 'localhost',
-              'PORT': '3306',
-          }
-}
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+    
+else:
+    DATABASES = {
+        'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'medconnect',
+                'USER': 'Admin',
+                'PASSWORD': str(os.getenv('DATABASE_KEY')),
+                'HOST': 'localhost',
+                'PORT': '3306',
+            }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -138,3 +151,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = str(os.getenv("EMAIL_HOST_USER"))
 EMAIL_HOST_PASSWORD = str(os.getenv("EMAIL_HOST_PASSWORD"))
+
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
