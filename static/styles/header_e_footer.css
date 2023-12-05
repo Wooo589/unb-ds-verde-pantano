@@ -42,7 +42,7 @@ body{
     background-color: #ededed;
     min-height: 100vh;
 }
-header#principal-header{
+header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -63,12 +63,15 @@ header#principal-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 3%;
     margin-top: 6px;
 }
 #icone{
     margin-right: 9px;
     margin-bottom: 7px;
+}
+#link_sobre_nos{
+    text-decoration: none;
+    padding-left: 3%;
 }
 #titulo{
     font-family: var(--fonte-titulo);
@@ -76,46 +79,37 @@ header#principal-header{
     color: var(--clr3);
     font-weight: 400;
 }
-.login_box2{
+#account_circle2{
+    display: none;
+}
+#account_circle2:hover{
+    cursor: pointer;
+}
+#box-sl{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    width: 150px;
-    height: 36px;
-    border: 0px;
-    border-radius: 20px;
-    font-size: 10px;
-    padding-left: 7px;
-    margin-top: 7px;
-    margin-right: 3.6%; 
-    /* box-shadow: 1px 1px gray; */
-    border: 1px solid rgba(128, 128, 128, 0.616);
-    z-index: 10;
-}
-.active, .login_box2:hover {
-    border: 1px solid lightgray;
-    cursor: pointer;
-    z-index: 10;
+    margin-right: 10px;
 }
 .login_box{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 150px;
+    min-width: 150px;
     height: 36px;
     border: 0px;
     border-radius: 20px;
     font-size: 10px;
     padding-left: 7px;
     margin-top: 7px;
+    margin-bottom: 7px;
     margin-right: 3.6%; 
     /* box-shadow: 1px 1px gray; */
-    border: 1px solid rgba(128, 128, 128, 0.616);
+    border: 1px solid lightgray;
     z-index: 10;
 }
-.active, .login_box:hover {
+.login_box:hover {
     border: 1px solid lightgray;
     cursor: pointer;
     z-index: 10;
@@ -129,7 +123,7 @@ header#principal-header{
     background-color: transparent;
     width: 186px;
     top: 48px;
-    right: 27px;
+    right: 31px;
     font-size: 8px;
     z-index: 10;
 }
@@ -141,6 +135,12 @@ header#principal-header{
 }
 .content_account > button:hover{
     background-color: lightgray;
+}
+#menu_icon{
+    color: whitesmoke;
+    z-index: 1001;
+    cursor: pointer;
+    display: none;
 }
 .spanPesquisar {
     display: flex;
@@ -168,25 +168,24 @@ header#principal-header{
 }
 #txt_pesquisar_locais,
 #txt_outras_duvidas{
-    float: inline-start;
-    background-color: white;
+    float: left;  
+    background-color: transparent;
     padding-left: 12px;
-    padding-bottom: 2px;
+    padding-bottom: 2px; 
     font-size: 12px;
     font-family: var(--fonte-padrao);
     border: none;
     border-radius: 20px;
     height: 36px;
     min-width: 250px;
-    width: 750px;
-    max-width: 1000px;
+    width: 700px;
+    max-width: 700px;
     outline: none;
-    margin: 7px 15px 7px 5px;
 } 
 .spanPesquisar:hover {
     border: 1px solid lightgray;
 }
-nav#_header{
+nav{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -211,6 +210,22 @@ nav > a:hover {
     color: var(--back-nav-selected1);
     font-size: 7px;
     margin-top: 10px;
+}
+nav.on{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    width: 100%;
+    color: var(--back-nav-selected1);
+    background-color: var(--back-nav-selected2);
+    position: fixed;
+    top: 50px;
+    right: 0;
+    z-index: 3;
+    padding: 20px 0;
+    overflow: hidden;
+    transition: 0.5s;
 }
 /* #pesquisa{
     display: flex;
@@ -289,18 +304,9 @@ nav > a:hover {
     text-decoration: none;
 } 
 #fechar_aba{
-    font-size: 20px;
-    position: absolute;
-    top: 10px;
-    right: 50px;
-    z-index: 3;
-    background-color: transparent;
-    border: none;
-    /* border-radius: 2px; */
-    padding: 4px 8px 0px 8px;
+    font-size: 30px;
 }
 #fechar_aba:hover{
-    background-color:rgb(190, 188, 188);
     cursor: pointer;
 }
 #seletores > ul {
@@ -312,13 +318,11 @@ nav > a:hover {
     border: 1px solid rgba(128, 128, 128, 0.616);
 }
 .wrapper{
-    min-width: 50px;
-    width: 140px;
-    max-width: 140px;
-    margin: 10px 5px 10px 30px;
+    display: block;
+    width: 180px;
+    margin: 10px;
     border: 1px solid rgba(128, 128, 128, 0.616);
     border-radius: 3px;
-    float: left;
 }
 .wrapper span{
     font-family: var(--fonte-destaque);
@@ -328,6 +332,7 @@ nav > a:hover {
     display: flex;
     cursor: pointer;
     align-items: center;
+    z-index: 100;
 }
 .select-btn{
     height: 30px;
@@ -418,7 +423,7 @@ nav > a:hover {
     border: 1px solid var(--c-blue);
     border-radius: 5px;
     padding: 2px 3px 0px 3px;
-    margin: 6.5px 25px 6.5px 25px;
+    margin: 0 25px 0 10px;
     cursor: pointer;
     box-shadow: 1px 1px 10px 0px lightgray;
     z-index: 0;
