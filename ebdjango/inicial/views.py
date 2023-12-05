@@ -7,7 +7,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 import json
-from setup import settings
+from ebdjango import settings
 from .models import *
 from .forms import *
 

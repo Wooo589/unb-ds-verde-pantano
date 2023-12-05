@@ -28,7 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["ds-dev-dev.sa-east-1.elasticbeanstalk.com"]
 
 
 # Application definition
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'setup.urls'
+ROOT_URLCONF = 'ebdjango.urls'
 
 import os
 
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'setup.wsgi.application'
+WSGI_APPLICATION = 'ebdjango.wsgi.application'
 
 
 # Database
@@ -90,7 +90,7 @@ if 'RDS_HOSTNAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
-
+    
 else:
     DATABASES = {
         'default': {
