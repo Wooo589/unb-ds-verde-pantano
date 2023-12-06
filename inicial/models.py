@@ -64,6 +64,7 @@ class Hospital(models.Model):
     uti_pediatrico = models.IntegerField(null=False, blank=False, default=0)
     uti_neonatal = models.IntegerField(null=False, blank=False, default=0)
     uti_queimado = models.IntegerField(null=False, blank=False, default=0)
+    atualizacao = models.DateTimeField(null=False, blank=False, default=timezone.now)
 
     def __str__(self):
         return self.nome
@@ -84,7 +85,7 @@ class Avaliacao(models.Model):
 
     usuario = models.CharField(max_length=100, null=False, blank=False, default="")
     numero = models.IntegerField(null=False, blank=False, default=1)
-    data = models.DateField(null=False, blank=False, default=timezone.now)
+    data = models.DateTimeField(null=False, blank=False, default=timezone.now)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     risco = models.CharField(max_length=100, null=False, blank=False, default="NAO_URGENTE", choices=RISCO)
     horario_entrada = models.DateTimeField(null=False, blank=False, default=timezone.now)
@@ -103,10 +104,14 @@ class Dados(models.Model):
         verbose_name = "dados"
         verbose_name_plural = "Dados"
 
-    SEXO = [
-        ("femininino", "Feminino"),
-        ("masculino", "Masculino"),
-        ("na","Não informado")
+    GENERO = [
+        ("na","Não informado"),
+        ("homem-cis", "Homem cis"),
+        ("homem-trans", "Homem trans"),
+        ("mulher-cis", "Mulher cis"),
+        ("mulher-trans", "Mulher trans"),
+        ("nao-binario", "Não-binário"),
+        ("outro", "Outro")
     ]
 
     TIPO_SANGUINIO = [
@@ -118,7 +123,7 @@ class Dados(models.Model):
         ("AB-","AB-"),
         ("O+","O+"),
         ("O-","O-"),
-        ("na","Não informado")
+        ("na","Não informado/Não sabe")
     ]
 
     FREQUENCIA = [
@@ -130,9 +135,8 @@ class Dados(models.Model):
     ]
 
     usuario = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
-    nome = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
-    idade = models.IntegerField(null=False, blank=False, default=0)
-    sexo = models.CharField(max_length=20, null=False, blank=False, default="na", choices=SEXO)
+    data_nascimento = models.DateField(null=False, blank=False, default=timezone.now)
+    genero = models.CharField(max_length=20, null=False, blank=False, default="na", choices=GENERO)
     profissao = models.CharField(max_length=200, null=False, blank=False, default="Não informada")
     endereco = models.CharField(max_length=200, null=False, blank=False, default="Não informado")
     telefone = models.CharField(max_length=20, null=False, blank=False, default="Não informado")
@@ -145,3 +149,89 @@ class Dados(models.Model):
 
     def __str__(self):
         return self.usuario.username
+
+class Doencas(models.Model):
+
+    class Meta:
+        verbose_name = "doença"
+        verbose_name_plural = "Doenças"
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="doencas")
+    doenca = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+
+    def __str__(self):
+        return self.doenca
+
+class Sintomas(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sintomas")
+    sintoma = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+
+    def __str__(self):
+        return self.sintoma
+
+class Diagnostico(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="diagnosticos")
+    diagnostico = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+
+    def __str__(self):
+        return self.diagnostico
+
+class Cirurgia(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cirurgias")
+    cirurgia = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    data = models.DateField(null=False, blank=False, default=timezone.now)
+
+    def __str__(self):
+        return self.cirurgia
+
+class Internacao(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="internacoes")
+    internacao = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    tempo = models.IntegerField(null=False, blank=False, default=0)
+    data = models.DateField(null=False, blank=False, default=timezone.now)
+
+    def __str__(self):
+        return self.internacao
+
+class Condicao_familiar(models.Model):
+
+    GRAU_PARENTESCO = [
+        ("1", "1° Grau"),
+        ("2", "2° Grau"),
+        ("3", "3° Grau")
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="condicao_familiar")
+    condicao = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    grau_parentesco = models.CharField(max_length=10, null=False, blank=False, default="1", choices=GRAU_PARENTESCO)
+
+    def __str__(self):
+        return self.condicao
+
+class Medicamento(models.Model):
+
+    TIPO_MEDICAMENTO = [
+        ("1", "Medicamento com prescrição"),
+        ("2", "Medicamento sem prescrição")
+    ]
+
+    FREQUENCIA = [
+        ("n","Não"),
+        ("d","Diariamente"),
+        ("s","Semanalmente"),
+        ("m","Mensalmente"),
+        ("a","Anualmente")
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="medicamentos")
+    tipo = models.CharField(max_length=200, null=False, blank=False, default="1", choices=TIPO_MEDICAMENTO)
+    medicamento = models.CharField(max_length=200, null=False, blank=False, default="N/A")
+    frequencia = models.CharField(max_length=200, null=False, blank=False, default="n", choices=FREQUENCIA)
+    numero_frequencia = models.IntegerField(null=False, blank=False, default=0)
+
+    def __str__(self):
+        return self.medicamento

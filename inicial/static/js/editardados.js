@@ -185,9 +185,9 @@ $(document).ready(function(){
     var $address = $(this).parents('.inner_condicao_familiar');
     var nextHtml = $address.clone();
     nextHtml.attr('id', 'condicao_familiar' + count6);
-    $('.1grau', nextHtml).attr('name', 'parentesco' + count6);
+    /*$('.1grau', nextHtml).attr('name', 'parentesco' + count6);
     $('.2grau', nextHtml).attr('name', 'parentesco' + count6);
-    $('.3grau', nextHtml).attr('name', 'parentesco' + count6);
+    $('.3grau', nextHtml).attr('name', 'parentesco' + count6);*/
     var hasRmBtn = $('.rmbtn', nextHtml).length > 0;
     if (!hasRmBtn){
       var rm = "<button type='button' class='rmbtn'>Remover</button>";

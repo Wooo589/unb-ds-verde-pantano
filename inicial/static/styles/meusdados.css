@@ -166,7 +166,7 @@ input[type=text]:focus{
     outline: none;
 }
 input[type=number], #tipo_sanguineo{
-    width: 70px;
+    width: 80px;
     padding-top: 7px;
     padding-bottom: 7px;
     padding-left: 7px;

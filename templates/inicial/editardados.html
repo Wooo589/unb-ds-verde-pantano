@@ -53,19 +53,20 @@
                 <input name="nome" type="text" placeholder="Insira aqui seu nome completo">
             </div>
             <div class="group">
-                <span>Idade:</span>
-                <input name="idade" type="number" id="idade">
+                <span>Data de nascimento:</span>
+                <input name="data_nascimento" type="date" id="idade">
             </div>
             <div class="group">
-                <span>Sexo:</span>
-                <div>
-                    <input type="radio" id="feminino" name="sexo" value="feminino">
-                    <label for="feminino">Feminino</label>
-                </div>
-                <div>
-                    <input type="radio" id="masculino" name="sexo" value="masculino">
-                    <label for="masculino">Masculino</label>
-                </div>
+                <span>Genero:</span>
+                <select name="genero" class="genero">
+                    <option value="none" selected disabled hidden>Selecione</option>
+                    <option value="homem-cis">Homem cis</option>
+                    <option value="homem-trans">Homem trans</option>
+                    <option value="mulher-cis">Mulher cis</option>
+                    <option value="mulher-trans">Mulher trans</option>
+                    <option value="nao-binario">Não-binário</option>
+                    <option value="outro">Outro</option>
+                  </select>
             </div>
                 <!--<input type="radio" id="feminino" name="feminino" value="feminino">
                 <label for="feminino">Feminino</label>-->
@@ -107,7 +108,17 @@
             </div>
             <div class="group">
                 <span>Tipo sanguíneo:</span>
-                <input type="text" id="tipo_sanguineo" name="tipo_sanguineo">
+                <select name="tipo_sanguineo">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="na">Não sei</option>
+                </select>
             </div>
         </div>
         <div class="inner_container">
@@ -231,10 +242,10 @@
                         <!-- <div class="group"> -->
                             <input type="text" name="sintomas" class="sintomas" placeholder="Descreva aqui o sintoma">
                     </div>
-                            <div class="group">
+                            <!--<div class="group">
                                 <span>Adicione a data e o horário aproximado de início do sintoma:</span>
                                 <input type="datetime-local" class="datetime_sintoma" name="data_sintoma">
-                            </div>
+                            </div>-->
                         <!-- </div> -->
                     </div>
                 </div>  
@@ -314,7 +325,7 @@
                         </div>
                         <div>
                             <span class="subquestion">Tempo:</span>
-                            <input type='number' name='tempo_internacao' class="tempo_internacao" placeholder="Adicione o tempo de duração da internação em dias">
+                            <input type='number' name='tempo_internacao' class="tempo_internacao" placeholder="Em dias">
                         </div>
                         <div>
                           <span>Data:<input type='date' name='data_internacao' class="data_internacao"></span>
@@ -343,12 +354,18 @@
                                 <span>Grau de parentesco:</span>
                             </div>
                             <div>
-                                <input type='radio' class="1grau" value="1" name="grau_parentesco">
+                                <select name="grau_parentesco" class="grau_parentesco">
+                                    <option value=" ">       </option>
+                                    <option value="1">1° Grau</option>
+                                    <option value="2">2° Grau</option>
+                                    <option value="3">3° Grau</option>
+                                </select>
+                                <!--<input type='radio' class="1grau" value="1" name="grau_parentesco">
                                     <label for="1grau">1º grau</label>
                                 <input type='radio' class="2grau" value="2" name="grau_parentesco">
                                     <label for="2grau">2º grau</label>
                                 <input type='radio' class="3grau" value="3" name="grau_parentesco">
-                                    <label for="3grau">3º grau</label>
+                                    <label for="3grau">3º grau</label>-->
                             </div>
                             <div>
                                 <span>Condição:</span>
@@ -380,25 +397,32 @@
                           <input name="medicamento_cp" type='text' class="med_cp" placeholder="Nome/tipo do medicamento">
                         </div>
                         <div>
-                          <span>Frequência:</span>
-                          <div class='f'>
-                              <div>
-                                <input type='radio' class="d3" name="freq3" value="d">
-                                <label for= "d3">Diariamente</label>
-                              </div>
-                              <div>
-                                <input type="radio" class="s3" name="freq3" value="s">
-                                <label for="s3">Semanalmente</label>
-                              </div>
-                              <div>
-                                <input type='radio' class="m3" name="freq3" value="m">
-                                <label for="m3">Mensalmente</label>
-                              </div>
-                              <div>
-                                <input type='radio' class="a3" name="freq3" value="a">
-                                <label for="a3">Anualmente</label>
-                              </div>  
-                          </div>
+                            <span>Frequência:</span>
+                            <div class='f'>
+                                <select name="freq3">
+                                    <option value=""></option>
+                                    <option value="d">Diariamente</option>
+                                    <option value="s">Semanalmente</option>
+                                    <option value="m">Mensalmente</option>
+                                    <option value="a">Anualmente</option>
+                                </select>
+                                <!--<div>
+                                    <input type='radio' class="d3" name="freq3" value="d">
+                                    <label for= "d3">Diariamente</label>
+                                </div>
+                                <div>
+                                    <input type="radio" class="s3" name="freq3" value="s">
+                                    <label for="s3">Semanalmente</label>
+                                </div>
+                                <div>
+                                    <input type='radio' class="m3" name="freq3" value="m">
+                                    <label for="m3">Mensalmente</label>
+                                </div>
+                                <div>
+                                    <input type='radio' class="a3" name="freq3" value="a">
+                                    <label for="a3">Anualmente</label>
+                                </div>-->
+                            </div>
                         </div>
                         <span>Neste período, quantas vezes você usa o medicamento?</span>
                         <input type='number' class="freq_med_cp" name="freq_med_cp">
@@ -425,25 +449,32 @@
                           <input name="medicamento_sp" type='text' class="med_sp" placeholder="Nome/tipo do medicamento">
                         </div>
                         <div>
-                          <span>Frequência:</span>
-                          <div class='f'>
-                              <div>
-                                <input type='radio' class="d4" name="freq4" value="d">
-                                <label for="d4">Diariamente</label>
-                              </div>
-                              <div>
-                                <input type='radio' class="s4" name="freq4" value="s">
-                                <label for="s4">Semanalmente</label>
-                              </div> 
-                              <div>
-                                <input type='radio' class="m4" name="freq4" value="m">
-                                <label for="m4">Mensalmente</label>
-                              </div>
-                              <div>
-                                <input type='radio' class="a4" name="freq4" value="a">
-                                <label for="a4">Anualmente</label>
-                              </div>
-                          </div>
+                            <span>Frequência:</span>
+                            <div class='f'>
+                                <select name="freq4">
+                                    <option value=""></option>
+                                    <option value="d">Diariamente</option>
+                                    <option value="s">Semanalmente</option>
+                                    <option value="m">Mensalmente</option>
+                                    <option value="a">Anualmente</option>
+                                </select>
+                                <!--<div>
+                                    <input type='radio' class="d4" name="freq4" value="d">
+                                    <label for="d4">Diariamente</label>
+                                </div>
+                                <div>
+                                    <input type='radio' class="s4" name="freq4" value="s">
+                                    <label for="s4">Semanalmente</label>
+                                </div> 
+                                <div>
+                                    <input type='radio' class="m4" name="freq4" value="m">
+                                    <label for="m4">Mensalmente</label>
+                                </div>
+                                <div>
+                                    <input type='radio' class="a4" name="freq4" value="a">
+                                    <label for="a4">Anualmente</label>
+                                </div>-->
+                            </div>
                           Neste período, quantas vezes você usa o medicamento?
                           <input type='number' class="freq_med_sp" name="freq_med_sp">
                         </div>

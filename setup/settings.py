@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inicial',
+    'inicial.apps.InicialConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,15 +79,16 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-              'ENGINE': 'django.db.backends.mysql',
-              'NAME': 'medconnect',
-              'USER': 'Admin',
-              'PASSWORD': str(os.getenv('DATABASE_KEY')),
-              'HOST': 'localhost',
-              'PORT': '3306',
-          }
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'medconnect',
+            'USER': 'Admin',
+            'PASSWORD': str(os.getenv('DATABASE_KEY')),
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
 }
 
 # Password validation

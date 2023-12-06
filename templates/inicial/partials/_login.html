@@ -16,7 +16,7 @@
                 {% with view_name='locais_de_atendimento' %}
                     <form action="{% url "login" view_name %}" method="POST">
                         {% csrf_token %}
-                        <input name="usuario" class="email_login" style="display: block;" type="text" placeholder="USUARIO">
+                        <input name="usuario" class="email_login" style="display: block;" type="text" placeholder="EMAIL">
                         <input name="senha" class="password_login" style="display: block;" type="password" placeholder="SENHA">
                         <p class="link_esqueciSenha">esqueci a senha</p>
                         <input type="submit" style="display: block;" type="button" value="REALIZAR LOGIN" id="button_login">
@@ -31,9 +31,9 @@
                         <input type="submit" style="display: block;" type="button" value="REALIZAR LOGIN" id="button_login">
                     </form>
             {% endif %}
-            <p style="text-align: center;"> OU </p>
+            <!--<p style="text-align: center;"> OU </p>
             <input class="login_google" type="button" value="CONTINUAR COM O GOOGLE">
-            <input class="login_facebook" type="button" value="CONTINUAR COM O FACEBOOK">
+            <input class="login_facebook" type="button" value="CONTINUAR COM O FACEBOOK">-->
         </div>
         <div class="modal_esqueciSenha hidden">
             <!-- <a href="FazerLogin.html"><img class="modal_icon_back" src="MIDIA/IMG/voltar (1).png" alt="icone voltar"></a> -->

@@ -17,6 +17,7 @@ urlpatterns = [
     path("perfil/avaliacoes/", pesquisar_avaliacoes, name="pesquisar_avaliacoes"),
     path("perfil/avaliacoes/<int:avaliacao_id>", avaliacao_completa, name="avaliacao_completa"),
     path("perfil/meus_dados", meus_dados, name="meus_dados"),
+    path("perfil/editar_dados", editar_dados, name="editar_dados"),
     path("triagem", triagem, name="triagem"),
     path("triagem/a1",adulto1, name="adulto1"),
     path("triagem/a2",adulto2, name="adulto2"),
@@ -31,5 +32,4 @@ urlpatterns = [
     path("resultado_amarelo",resultado_amarelo, name="resultado_amarelo"),
     path("resultado_verde",resultado_verde, name="resultado_verde"),
     path("resultado_azul",resultado_azul, name="resultado_azul"),
-    path("perfil/editar_dados", editar_dados, name="editar_dados"),
 ]

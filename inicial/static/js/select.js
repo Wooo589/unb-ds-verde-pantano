@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.fn.select2.defaults.set("allowClear", "true");
 
-    $(".select-uf").select2({
+    /*$(".select-uf").select2({
         placeholder: 'UF',
     });
 
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
     $(".select-especialidade").select2({
         placeholder: 'Especialidade',
-    });
+    });*/
 
     $(".select-categoria").select2({
         placeholder: 'Categoria',

@@ -12,7 +12,7 @@ from .models import *
 from .forms import *
 
 def index(request):
-    hospitais = Hospital.objects.order_by("-nota")[:3]
+    hospitais = Hospital.objects.order_by("-nota")[:8]
     buscar2 = BuscarForms()
     filter_form = FilterForms()
     counter = (1, 2, 3, 4, 5)
@@ -59,7 +59,7 @@ def buscar(request):
 
     context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form}
 
-    return render(request, "inicial/buscar.html", context)
+    return render(request, "inicial/locaisdeatendimento.html", context)
 
 def mais_informacoes(request, hospital_cnes):
     hospital = get_object_or_404(Hospital, pk=hospital_cnes)
@@ -117,37 +117,43 @@ def duvidas_frequentes(request):
 
 def cadastro(request):
 
-    cadastro = CadastroForms()
-
     if request.method == "POST":
-        cadastro = CadastroForms(request.POST)
 
-        if cadastro.is_valid():
-            if cadastro["senha_1"].value() != cadastro["senha_2"].value():
-                messages.error(request, "Digite senhas iguais para concluir o cadastro")
-                return redirect('cadastro')
+        email = request.POST["email"]
+        senha_1 = request.POST["senha_1"]
+        senha_2 = request.POST["senha_2"]
+        nome = request.POST["nome"]
+        sobrenome = request.POST["sobrenome"]
+        data_nascimento = datetime.strptime(request.POST["data_nascimento"],"%Y-%m-%d")
+        genero = request.POST["genero"]
 
-            nome = cadastro["nome_cadastro"].value()
-            email = cadastro["email"].value()
-            senha = cadastro["senha_1"].value()
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email já cadastrado")
+            return redirect('cadastro')
+        
+        if senha_1 != senha_2:
+            messages.error(request, "Digite senhas iguais para concluir o cadastro")
+            return redirect('cadastro')
 
-            if User.objects.filter(username=nome).exists():
-                messages.error(request, "Usuário já existente")
-                return redirect('cadastro')
+        usuario = User.objects.create_user(
+            username=email,
+            email=email,
+            password=senha_1,
+            first_name=nome,
+            last_name=sobrenome
+        )
 
-            usuario = User.objects.create_user(
-                username=nome,
-                email=email,
-                password=senha
-            )
+        usuario.save()
 
-            usuario.save()
-            messages.success(request, "Usuário cadastrado com sucesso!")
-            return redirect('index')
+        Dados.objects.create(usuario=usuario, data_nascimento=data_nascimento, genero=genero)
+
+        login(request, usuario)
+        messages.success(request, "Usuário cadastrado com sucesso!")
+        return redirect('index')
 
     context = {"cadastro":cadastro}
 
-    return render(request, 'inicial/criar_conta.html', context)
+    return render(request, 'inicial/criar_conta_2.html', context)
 
 def login_site(request, view_name):
     if request.method == "POST":
@@ -162,7 +168,7 @@ def login_site(request, view_name):
             return redirect(view_name)
 
         else:
-            messages.error(request, "Usuário ou senha incorretos")
+            messages.error(request, "Usuário ou senha incorretos", extra_tags="login")
             return redirect(view_name)
 
 def confirma_email(request, view_name):
@@ -263,17 +269,6 @@ def avaliacao_completa(request, avaliacao_id):
 
     return render(request, "inicial/av_completa.html", context)
 
-def meus_dados(request):
-    if not request.user.is_authenticated:
-        messages.error(request, "Realize login para visualizar seus dados")
-        return redirect("index")
-
-    buscar2 = BuscarForms()
-    filter_form = FilterForms()
-    context = {"buscar": buscar2, "filter":filter_form}
-
-    return render(request, "inicial/meusdados.html", context)
-
 def triagem(request):
     if request.method=="POST":
         # lógica para modaldd
@@ -369,6 +364,17 @@ def resultado_azul(request):
 def resultado_verde(request):
     return render(request, 'inicial/verde_triagem.html')
 
+def meus_dados(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Realize login para visualizar seus dados")
+        return redirect("index")
+
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    context = {"buscar": buscar2, "filter":filter_form}
+
+    return render(request, "inicial/meusdados.html", context)
+
 def editar_dados(request):
     if not request.user.is_authenticated:
         messages.error(request, "Realize login para visualizar seus dados")
@@ -377,17 +383,16 @@ def editar_dados(request):
     if request.method == "POST":
         dados = json.loads(request.POST["dados"])
         dados.pop("dados")
-        # print(dados)
         novos_dados = Dados.objects.get(usuario=request.user)
 
         if dados["nome"] != "":
             novos_dados.nome = dados["nome"]
 
-        if dados["idade"] != "":
-            novos_dados.idade = dados["idade"]
+        if dados["data_nascimento"] != "":
+            novos_dados.idade = datetime.strptime(request.POST["data_nascimento"],"%Y-%m-%d")
         
-        if "sexo" in dados:
-            novos_dados.sexo = dados["sexo"]
+        if "genero" in dados:
+            novos_dados.sexo = dados["genero"]
 
         if dados["profissao"] != "":
             novos_dados.profissao = dados["profissao"]
@@ -407,17 +412,14 @@ def editar_dados(request):
         if dados["tipo_sanguineo"] != "":
             novos_dados.tipo_sanguineo = dados["tipo_sanguineo"]
 
-        if "sim-nao1" in dados:
+        if "sim-nao1" in dados and "freq1" in dados:
             if dados["sim-nao1"] != "nao":
-                if "freq1" in dados:
-                    novos_dados.fumo_alcool = dados["freq1"]
+                novos_dados.fumo_alcool = dados["freq1"]
 
-        if "sim-nao2" in dados:
-            if dados["exercicio"] != "":
-                novos_dados.exercicio = dados["exercicio"]
-                
+        if "sim-nao2" in dados and "freq2" in dados:
             if dados["sim-nao2"] != "nao":
-                if "freq2" in dados:
+                if dados["exercicio"] != "":
+                    novos_dados.exercicio = dados["exercicio"]
                     novos_dados.exercicio_frequencia = dados["freq2"]
 
         if "sim-nao3" in dados:
@@ -425,45 +427,56 @@ def editar_dados(request):
                 if "doenca_cronica" in dados:
                     doencas = dados["doenca_cronica"]
 
-                    if isinstance(doencas,list):
-                        doencas.pop(0)
+                    if isinstance(doencas, str):
+                        if doencas != "":
+                            Doencas.objects.create(user=request.user, doenca=doencas)
 
-                        for i in doencas:
-                            print(f"Doença: {i}")
+                    if isinstance(doencas, list):
+                        for doenca in doencas:
+                            if doenca != "":
+                                Doencas.objects.create(user=request.user, doenca=doenca)
 
         if "sim-nao4" in dados:
             if dados["sim-nao4"] != "nao":
                 sintomas = dados["sintomas"]
-                data_sintoma = dados["data_sintoma"]
 
-                if isinstance(sintomas,list) and isinstance(data_sintoma,list):
-                    sintomas.pop(0)
-                    data_sintoma.pop(0)
+                if isinstance(sintomas, str):
+                    if sintomas != "":
+                        Sintomas.objects.create(user=request.user, sintoma=sintomas)
 
-                    for i in range(len(sintomas)):
-                        print(f"Sintoma: {sintomas[i]} Data: {data_sintoma[i]}")
+                if isinstance(sintomas,list):
+                    for sintoma in sintomas:
+                        if sintoma != "":
+                            Sintomas.objects.create(user=request.user, sintoma=sintoma)
 
         if "sim-nao5" in dados:
             if dados["sim-nao5"] != "nao":
                 diagnosticos = dados["doencas-diag"]
 
-                if isinstance(diagnosticos, list):
-                    diagnosticos.pop(0)
+                if isinstance(diagnosticos, str):
+                    if diagnosticos != "":
+                        Diagnostico.objects.create(user=request.user, diagnostico=diagnosticos)
 
-                    for i in diagnosticos:
-                        print(f"Diagnosticos: {i}")
+                if isinstance(diagnosticos, list):
+                    for diagnostico in diagnosticos:
+                        if diagnostico != "":
+                            Diagnostico.objects.create(user=request.user, diagnostico=diagnostico)
 
         if "sim-nao6" in dados:
             if dados["sim-nao6"] != "nao":
                 cirurgias = dados["cirurgias"]
                 data_cirurgia = dados["data_cirurgia"]
 
-                if isinstance(cirurgias, list) and isinstance(data_cirurgia, list):
-                    cirurgias.pop(0)
-                    data_cirurgia.pop(0)
+                if isinstance(cirurgias, str) and isinstance(data_cirurgia, str):
+                    if cirurgias != "" and data_cirurgia != "":
+                        data = datetime.strptime(data_cirurgia,"%Y-%m-%d")
+                        Cirurgia.objects.create(user=request.user, cirurgia=cirurgias, data=data)
 
+                if isinstance(cirurgias, list) and isinstance(data_cirurgia, list):
                     for i in range(len(cirurgias)):
-                        print(f"Cirurgia: {cirurgias[i]} Data: {data_cirurgia[i]}")
+                        if cirurgias[i] != "" and data_cirurgia[i] != "":
+                            data = datetime.strptime(data_cirurgia[i],"%Y-%m-%d")
+                            Cirurgia.objects.create(user=request.user, cirurgia=cirurgias[i], data=data)
 
         if "sim-nao7" in dados:
             if dados["sim-nao7"] != "nao":
@@ -471,26 +484,31 @@ def editar_dados(request):
                 tempo_internacao = dados["tempo_internacao"]
                 data_internacao = dados["data_internacao"]
 
-                if isinstance(motivo, list) and isinstance(tempo_internacao, list) and isinstance(data_internacao, list):
-                    motivo.pop(0)
-                    tempo_internacao.pop(0)
-                    data_internacao.pop(0)
+                if isinstance(motivo, str) and isinstance(tempo_internacao, str) and isinstance(data_internacao, str):
+                    if motivo != "" and tempo_internacao != "" and data_internacao != "":
+                        data = datetime.strptime(data_internacao,"%Y-%m-%d")
+                        Internacao.objects.create(user=request.user, tempo=tempo_internacao, data=data, internacao=motivo)
 
+                if isinstance(motivo, list) and isinstance(tempo_internacao, list) and isinstance(data_internacao, list):
                     for i in range(len(motivo)):
-                        print(f"Motivo: {motivo[i]} Tempo: {tempo_internacao[i]} dias Data: {data_internacao[i]}")
+                        if motivo[i] != "" and tempo_internacao[i] != "" and data_internacao[i] != "":
+                            data = datetime.strptime(data_internacao[i],"%Y-%m-%d")
+                            Internacao.objects.create(user=request.user, tempo=tempo_internacao[i], data=data, internacao=motivo[i])
 
         if "sim-nao8" in dados:
             if dados["sim-nao8"] != "nao":
                 if "condicao" in dados and "grau_parentesco" in dados:
                     grau_parentesco = dados["grau_parentesco"]
                     condicao = dados["condicao"]
-                    grau_parentesco = list(grau_parentesco)
+
+                    if isinstance(grau_parentesco, str) and isinstance(condicao, str):
+                        if grau_parentesco != "" and condicao != "":
+                            Condicao_familiar.objects.create(user=request.user, condicao=condicao, grau_parentesco=grau_parentesco)
 
                     if isinstance(grau_parentesco, list) and isinstance(condicao, list):
-                        condicao.pop(0)
-
-                        for i in range(len(grau_parentesco)):
-                            print(f"Grau: {grau_parentesco} Condicao: {condicao}")
+                        for i in range(len(condicao)):
+                            if grau_parentesco[i] != "" and condicao[i] != "":
+                                Condicao_familiar.objects.create(user=request.user, condicao=condicao[i], grau_parentesco=grau_parentesco[i])
 
         if "sim-nao9" in dados:
             if dados["sim-nao9"] != "nao":
@@ -500,12 +518,22 @@ def editar_dados(request):
                     freq3 = dados["freq3"]
                     freq3 = list(freq3)
 
-                    if isinstance(medicamento_cp, list) and isinstance(freq_cp, list) and isinstance(freq3, list):
-                        medicamento_cp.pop(0)
-                        freq_cp.pop(0)
+                    if isinstance(medicamento_cp, str) and isinstance(freq_cp, str) and isinstance(freq3, str):
+                        if medicamento_cp != "" and freq_cp != "" and freq3 != "":
+                            Medicamento.objects.create(user=request.user, 
+                                tipo="1", 
+                                medicamento=medicamento_cp, 
+                                frequencia=freq3,
+                                numero_frequencia=freq_cp)
 
+                    if isinstance(medicamento_cp, list) and isinstance(freq_cp, list) and isinstance(freq3, list):
                         for i in range(len(medicamento_cp)):
-                            print(f"Medicamento: {medicamento_cp} Frequência: {freq_cp} {freq3}")
+                            if medicamento_cp[i] != "" and freq_cp[i] != "" and freq3[i] != "":
+                                Medicamento.objects.create(user=request.user, 
+                                    tipo="1", 
+                                    medicamento=medicamento_cp[i], 
+                                    frequencia=freq3[i],
+                                    numero_frequencia=freq_cp[i])
 
         if "sim-nao10" in dados:
             if dados["sim-nao10"] != "nao":
@@ -515,14 +543,26 @@ def editar_dados(request):
                     freq4 = dados["freq4"]
                     freq4 = list(freq4)
 
-                    if isinstance(medicamento_sp, list) and isinstance(freq_sp, list) and isinstance(freq4, list):
-                        medicamento_sp.pop(0)
-                        freq_sp.pop(0)
+                    if isinstance(medicamento_sp, str) and isinstance(freq_sp, str) and isinstance(freq4, str):
+                        if medicamento_sp != "" and freq_sp != "" and freq4 != "":
+                            Medicamento.objects.create(user=request.user, 
+                                tipo="2", 
+                                medicamento=medicamento_sp, 
+                                frequencia=freq4,
+                                numero_frequencia=freq_sp)
 
+                    if isinstance(medicamento_sp, list) and isinstance(freq_sp, list) and isinstance(freq4, list):
                         for i in range(len(medicamento_sp)):
-                            print(f"Medicamento: {medicamento_sp} Frequência: {freq_sp} {freq4}")
+                            if medicamento_sp[i] != "" and freq_sp[i] != "" and freq4[i] != "":
+                                Medicamento.objects.create(user=request.user, 
+                                    tipo="2", 
+                                    medicamento=medicamento_sp[i], 
+                                    frequencia=freq4[i],
+                                    numero_frequencia=freq_sp[i])
 
         novos_dados.save()
+        messages.success(request, "Dados alterados com sucesso!")
+        return redirect("meus_dados")
 
     buscar2 = BuscarForms()
     filter_form = FilterForms()
