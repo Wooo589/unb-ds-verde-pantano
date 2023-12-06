@@ -8,6 +8,7 @@ urlpatterns = [
     path("informacoes/<int:hospital_cnes>", mais_informacoes, name='mais_informacoes'),
     path("avaliar/<int:hospital_cnes>", avaliar_hospital, name='avaliar_hospital'),
     path("duvidas_frequentes", duvidas_frequentes, name='duvidas_frequentes'),
+    path("sobrenos", sobre_nos, name="sobre_nos"),
     path("cadastro", cadastro, name='cadastro'),
     path("login/<str:view_name>", login_site, name='login'),
     path("login/confirmacao/<str:view_name>", confirma_email, name="confirma_email"),

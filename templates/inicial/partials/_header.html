@@ -1,10 +1,10 @@
 {% load static %}
 
 <header id="principal-header">
-    <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos">
-    <a href="../Página - Sobre nós/SobreNos.html" id="link_sobre_nos">
+    {% comment %} <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos"> {% endcomment %}
+    <a href="{% url "sobre_nos" %}" id="link_sobre_nos">
         <div id="logotipo">
-            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <img id="icone" src="{% static "img/estetoscopio32px.png" %}" alt="MedConnect logo." />
             <span id="titulo">MedConnect</span>
         </div>
     </a>

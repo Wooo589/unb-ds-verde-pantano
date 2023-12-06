@@ -115,6 +115,13 @@ def duvidas_frequentes(request):
 
     return render(request, 'inicial/duvidas_frequentes.html', context)
 
+def sobre_nos(request):
+    buscar2 = BuscarForms()
+    filter_form = FilterForms()
+    context = {"buscar": buscar2, "filter":filter_form}
+
+    return render(request, 'inicial/SobreNos.html', context)
+
 def cadastro(request):
 
     if request.method == "POST":
