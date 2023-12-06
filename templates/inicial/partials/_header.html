@@ -2,10 +2,13 @@
 
 <header id="principal-header">
     <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos">
-    <div id="logotipo">
-        <img id="icone" src="{% static "img/estetoscopio32px.png"%}" alt="MedConnect logo." />
-        <span id="titulo">MedConnect</span>
-    </div>
+    <a href="../Página - Sobre nós/SobreNos.html" id="link_sobre_nos">
+        <div id="logotipo">
+            <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+            <span id="titulo">MedConnect</span>
+        </div>
+    </a>
+    
     <nav id="_header">
             {% if request.path == "/" %}
             
