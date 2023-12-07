@@ -86,7 +86,7 @@ DATABASES = {
             'NAME': 'medconnect',
             'USER': 'Admin',
             'PASSWORD': str(os.getenv('DATABASE_KEY')),
-            'HOST': 'localhost',
+            'HOST': 'medconnect.crxdzw6vmqyq.sa-east-1.rds.amazonaws.com',
             'PORT': '3306',
         }
 }
