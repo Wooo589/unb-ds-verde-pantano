@@ -28,7 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["54.233.157.114"]
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
             'NAME': 'medconnect',
             'USER': 'Admin',
             'PASSWORD': str(os.getenv('DATABASE_KEY')),
-            'HOST': 'localhost',
+            'HOST': 'medconnect.crxdzw6vmqyq.sa-east-1.rds.amazonaws.com',
             'PORT': '3306',
         }
 }
