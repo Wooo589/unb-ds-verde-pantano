@@ -76,7 +76,7 @@
             {% for hospital in hospitais %}
             <div class="slide" id="slide{{forloop.counter}}">
                 <div class="inf_gerais">  
-                    <h3><strong>{{ hospital.nome }}</strong></h3>
+                    <h3><strong><a style="text-decoration:none; color:inherit;" href="{% url "mais_informacoes" hospital.cnes %}">{{ hospital.nome }}</a></strong></h3>
                     <!-- <span id="endereco"><small>Qs 115, Avenida dos Pinheiros. Qs 115, Avenida dos Pinheiros Qs 115, Avenida dos Pinheiros</small></span> -->
                     <span class="cep"><small>CEP: {{ hospital.cep }}</small></span>
                     <div class="inner-flex-item">
