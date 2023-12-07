@@ -59,18 +59,21 @@
         <div id="inf_gerais">  
             <div id="gerais">
                 <h3><strong>{{ hospital.nome }}</strong></h3>
-                <span><small>{{ hospital.endereco }}.</small></span>
-                <span><small>CEP: {{ hospital.cep }}</small></span>
+                <span style="margin-bottom: 10px;"><small>{{ hospital.endereco }}.</small></span>
+                <span style="margin-bottom: 10px;"><small>CEP: {{ hospital.cep }}</small></span>
                 <div id="container_contato">
-                    <span><small>Contato:</small></span> 
-                    <div id="contato">
+                    <div style="margin-bottom: 10px;" class="#">
+                        <span><small>Contato: </small></span> 
                         <span><small>{{ hospital.telefone }}</small></span>
+                    </div>
+                    <div style="margin-bottom: 10px;" class="#">
+                        <span><small>Email: </small></span> 
                         <span><small>{{ hospital.email }}</small></span>
                     </div>
                 </div>
             </div>
             <div class="tempos_de_espera">
-                <div class="tempos">
+                <div style="margin-left: 10px;" class="tempos">
                     <span class="c-orange"></span>
                     <span><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
                 </div>
@@ -86,6 +89,8 @@
                     <span class="c-blue"></span> 
                     <span><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
                 </div> 
+                <br>
+                <p style="color: #353535">última atualização: {{hospital.atualizacao|date:"d/m/y - H:i"}}</p>
             </div>
         </div>
         <!-- <hr/> -->
