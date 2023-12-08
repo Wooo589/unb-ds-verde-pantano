@@ -71,7 +71,6 @@ def mais_informacoes(request, hospital_cnes):
     return render(request, "inicial/maisinformacoes.html", context)
 
 def avaliar_hospital(request, hospital_cnes):
-
     if not request.user.is_authenticated:
         messages.error(request, "Usuário precisa estar autenticado para avaliar hospitais")
         return redirect('mais_informacoes', hospital_cnes)
@@ -123,7 +122,6 @@ def sobre_nos(request):
     return render(request, 'inicial/SobreNos.html', context)
 
 def cadastro(request):
-
     if request.method == "POST":
 
         email = request.POST["email"]
@@ -179,7 +177,6 @@ def login_site(request, view_name):
             return redirect(view_name)
 
 def confirma_email(request, view_name):
-
     if request.method == "POST":
         email = request.POST["email"]
 
@@ -213,7 +210,6 @@ def logout_site(request):
     return redirect('index')
 
 def redefinir_senha(request, username, token):
-
     usuario = User.objects.get(username=username)
 
     if request.method == "POST":
@@ -327,8 +323,6 @@ def adulto2(request):
 
 def resultado_laranja(request):
     return render(request, 'inicial/laranja_triagem.html')
-# falta terminar a logica das crianças, integrar os resultados e adulto do 2 pra cima
-# e crianÇa tbm
 
 def crianca3(request):
     if request.method=="POST":
