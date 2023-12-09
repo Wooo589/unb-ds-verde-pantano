@@ -88,3 +88,27 @@ height: 320px;
 .voltar:hover{
     cursor: pointer;
 }
+@media (max-width: 2560px) {
+    .modal_notification{
+        width: 400px;
+    }
+}
+@media (max-width: 375px) {
+    .modal_notification{
+        width: 90vw;
+    }
+    .modal_button{
+        width: 90%;
+    }
+    #modal_title > h1{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 320px) {
+    .modal_button{
+        width: 90%;
+    }
+    #modal_title > h1{
+        margin-left: 0;
+    }
+}

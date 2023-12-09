@@ -35,13 +35,13 @@
 }
 html{
     height: 100%;
+    font-size: 62.5%;
 }
 body{
     background-color: #ededed;
     /* min-height: 100vh; */
 }
 main{
-    width: 65%;
     margin: auto;
     background-color: #f5f5f5;
     padding: 22px 50px 120px 50px;
@@ -53,7 +53,7 @@ main i:before{
     color: gray;
     /* position: absolute; */
     transform: rotate(90deg);
-    font-size: 30px;
+    font-size: 3rem;
     z-index: 1;
 }
 main i:hover{
@@ -76,14 +76,14 @@ h1{
     position: relative;
     display: block;
     color: var(--color3);
-    font-size: 26px;
+    font-size: 2.6rem;
     padding: 2px 0;
     /* margin-top: 22px; */
     margin-left: 10px;
     margin-bottom: 6px;   
 }
 h2{
-    font-size: 22px;
+    font-size: 2.2rem;
     margin: 20px 0;
     font-weight: 550;
     font-family: var(--fonte-destaque);
@@ -96,6 +96,9 @@ h3{
 }
 .subtitle{
     margin: 5px 0;
+}
+h3, h4, span{
+    font-size: 2rem;
 }
 .inner_container_av{
     display: flex;
@@ -113,7 +116,8 @@ h3{
     align-items: center;
 }
 .link{
-    font-size: 16px;
+    text-align: center;
+    font-size: 1.6rem;
     font-weight: 500;
     color: black;
     background-color: var(--c-orange);
@@ -159,4 +163,33 @@ h3{
     margin: auto;
     text-align: justify;
     text-justify: inter-word;
+}
+
+@media (max-width: 2560px) {
+    main{
+        width: 40%;
+    }
+}
+@media (max-width: 1440px) {
+    main{
+        width: 70%;
+    }
+}
+@media (max-width: 768px){
+    main{
+        width: 90%;
+    }
+    h1, h2, h3{
+        font-size: 1.7rem;
+    }
+}
+@media (max-width: 425px) {
+    main{
+        width: 100%;
+    }
+}
+@media (max-width: 320px) {
+    main{
+        padding: 22px 20px 120px 20px;
+    }
 }
