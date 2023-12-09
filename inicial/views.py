@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
-import json
 from setup import settings
-from .models import *
-from .forms import *
+from .models import Hospital, Avaliacao, Dados, Doencas, Sintomas, Diagnostico, Cirurgia, Internacao, Condicao_familiar, Medicamento
+from .forms import BuscarForms, FilterForms
+import json
 
 def index(request):
     hospitais = Hospital.objects.order_by("-nota")[:8]
@@ -160,7 +160,7 @@ def cadastro(request):
 
     return render(request, 'inicial/criar_conta_2.html', context)
 
-def login_site(request, view_name):
+def login_site(request):
     if request.method == "POST":
         usuario = request.POST["usuario"]
         senha = request.POST["senha"]
@@ -170,13 +170,13 @@ def login_site(request, view_name):
         if user is not None:
             login(request, user)
             messages.success(request, f"{usuario} autenticado com sucesso!")
-            return redirect(view_name)
+            return redirect(request.POST["url"])
 
         else:
             messages.error(request, "Usuário ou senha incorretos", extra_tags="login")
-            return redirect(view_name)
+            return redirect(request.POST["url"])
 
-def confirma_email(request, view_name):
+def confirma_email(request):
     if request.method == "POST":
         email = request.POST["email"]
 
@@ -202,7 +202,7 @@ def confirma_email(request, view_name):
         else:
             messages.error(request, "Nenhum usuário encontrado com o email informado")
 
-    return redirect(view_name)
+    return redirect(request.POST["url"])
 
 def logout_site(request):
     logout(request)
