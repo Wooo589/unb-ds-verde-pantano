@@ -7,6 +7,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 from setup import settings
+from urllib.parse import urlparse
 from .models import Hospital, Avaliacao, Dados, Doencas, Sintomas, Diagnostico, Cirurgia, Internacao, Condicao_familiar, Medicamento
 from .forms import BuscarForms, FilterForms
 import json
@@ -170,11 +171,11 @@ def login_site(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"{usuario} autenticado com sucesso!")
-            return redirect(request.POST["url"])
+            return redirect("index")
 
         else:
             messages.error(request, "Usuário ou senha incorretos", extra_tags="login")
-            return redirect(request.POST["url"])
+            return redirect("index")
 
 def confirma_email(request):
     if request.method == "POST":
@@ -202,7 +203,7 @@ def confirma_email(request):
         else:
             messages.error(request, "Nenhum usuário encontrado com o email informado")
 
-    return redirect(request.POST["url"])
+    return redirect("index")
 
 def logout_site(request):
     logout(request)
