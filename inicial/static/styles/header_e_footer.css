@@ -13,7 +13,7 @@
     --back-nav1: #64C27B;
     --back-nav-selected1: #2A8C4A;
     --back-nav2: #D0FDD7;
-    --back-nav-selected2: #76b88ccf;
+    --back-nav-selected2: #d6f1e0;
     --back-nav3: #76B88C;
     --black: #000000;
     --color3: #024053;
@@ -37,27 +37,33 @@
 }
 html{
     height: 100%;
+    font-size: 62.5%;
 }
 body{
     background-color: #ededed;
     min-height: 100vh;
 }
-header#principal-header{
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    z-index: 2; 
+    margin: auto;
+    background-color: var(--back-header1);
+    border-bottom: 6px solid #33975488;
+}
+.header_content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     position: sticky; 
-    top: 0px;
-    background-color: var(--back-header1);
+    top: 0px; 
     margin: auto;
-    height: 60px;
-    width: 100%;
-    text-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+    width: 100vw;
     z-index: 2;
-    border-bottom: 6px solid #33975488;
 }
 #logotipo{
     display: flex;
@@ -75,7 +81,7 @@ header#principal-header{
 }
 #titulo{
     font-family: var(--fonte-titulo);
-    font-size: 27px;
+    font-size: 2.7rem;
     color: var(--clr3);
     font-weight: 400;
 }
@@ -91,16 +97,16 @@ header#principal-header{
     align-items: center;
     margin-right: 10px;
 }
-.login_box, .login_box2{
+.login_box{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    min-width: 150px;
+    /* min-width: 150px; */
     height: 36px;
     border: 0px;
     border-radius: 20px;
-    font-size: 10px;
+    font-size: 1rem;
     padding-left: 7px;
     margin-top: 7px;
     margin-bottom: 7px;
@@ -109,10 +115,13 @@ header#principal-header{
     border: 1px solid lightgray;
     z-index: 10;
 }
-.login_box:hover, .login_box2:hover {
+.login_box:hover {
     border: 1px solid lightgray;
     cursor: pointer;
     z-index: 10;
+}
+#name-account{
+    font-size: 1.1rem;
 }
 .content_account {
     padding: 0 18px;
@@ -124,7 +133,7 @@ header#principal-header{
     width: 186px;
     top: 48px;
     right: 31px;
-    font-size: 8px;
+    font-size: 0.8rem;
     z-index: 10;
 }
 .content_account > button{
@@ -154,7 +163,6 @@ header#principal-header{
     max-width: 750px;
     height: 36px;
     text-indent: 30px;
-    margin: auto;
 }
 .spanPesquisar span{
     float:left;
@@ -172,7 +180,7 @@ header#principal-header{
     background-color: transparent;
     padding-left: 12px;
     padding-bottom: 2px; 
-    font-size: 12px;
+    font-size: 1.2rem;
     font-family: var(--fonte-padrao);
     border: none;
     border-radius: 20px;
@@ -185,7 +193,7 @@ header#principal-header{
 .spanPesquisar:hover {
     border: 1px solid lightgray;
 }
-nav#_header{
+nav{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -198,7 +206,7 @@ nav > a {
     color: var(--letter-nav);
     padding: 6px 12px;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 500;
     border-radius: 3px;
 }
@@ -208,7 +216,7 @@ nav > a:hover {
 }
 .divisor {
     color: var(--back-nav-selected1);
-    font-size: 7px;
+    font-size: 0.7rem;
     margin-top: 10px;
 }
 nav.on{
@@ -256,6 +264,11 @@ nav.on{
 #btnPesquisar:hover{
     background-color: #60c2797a;
 }
+#txt_btnPesquisar{
+    font-size: 1.5rem; 
+    font-weight: 500; 
+    margin-right: 7px;
+}
 #top-bar1,
 #top-bar2,
 #top-bar3{
@@ -288,7 +301,7 @@ nav.on{
 #locais_de_atendimento,
 #outras_duvidas{
     font-family: var(--fonte-padrao);
-    font-size: 15px;
+    font-size: 1.5rem;
     background-color: whitesmoke;
     padding: 7px;
     border: 1px solid rgba(128, 128, 128, 0.616);
@@ -304,7 +317,7 @@ nav.on{
     text-decoration: none;
 } 
 #fechar_aba{
-    font-size: 30px;
+    font-size: 3rem;
 }
 #fechar_aba:hover{
     cursor: pointer;
@@ -326,7 +339,7 @@ nav.on{
 }
 .wrapper span{
     font-family: var(--fonte-destaque);
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 .select-btn, .options li{
     display: flex;
@@ -336,7 +349,7 @@ nav.on{
 }
 .select-btn{
     height: 30px;
-    font-size: 15px;
+    font-size: 1.5rem;
     padding: 0 0 0 7px;
     border-radius: 2.5px;
     background: whitesmoke;
@@ -346,7 +359,7 @@ nav.on{
     left: 7px;
 }
 .select-btn i{
-    font-size: 31px;
+    font-size: 3.1rem;
     transition: transform 0.3s linear;
 }
 .wrapper.active .select-btn i{
@@ -368,15 +381,15 @@ nav.on{
 .search i{
     left: 15px;
     color: #999;
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 2rem;
+    line-height: 3rem;
     position: absolute;
 }
 .search input{
     height: 30px;
     width: 100%;
     outline: none;
-    font-size: 17px;
+    font-size: 1.7rem;
     border-radius: 5px;
     padding: 0 15px 0 43px;
     border: 1px solid #b3b3b3;
@@ -401,7 +414,7 @@ nav.on{
 .options li{
     height: 25px;
     padding: 0 70px;
-    font-size: 15px;
+    font-size: 1.5rem;
     border-radius: 5px;
 }
 .options li:hover, li.selected{
@@ -423,7 +436,7 @@ nav.on{
     border: 1px solid var(--c-blue);
     border-radius: 5px;
     padding: 2px 3px 0px 3px;
-    margin: 6.5px 25px 6.5px 25px;
+    margin: 0 25px 0 10px;
     cursor: pointer;
     box-shadow: 1px 1px 10px 0px lightgray;
     z-index: 0;
@@ -443,15 +456,111 @@ nav.on{
 footer {
     position: relative;  
     bottom: 0;
-    justify-content: left;
-    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
     font-weight: bold;
     width:100%;
     background-color: var(--back-header1);
     border-top: 1px solid #06411950;
     color: #000000;
-    padding: 10px 10px 10px 70px;
-    align-content: right;
+    padding: 10px;
     margin-top: auto;
     margin-bottom: 0px;
+}
+@media (max-width: 2560px){
+    .header_content{
+        max-width: 1500px;
+    }
+    #login_box{
+        margin-right: 0;
+    }
+    #footer_content{
+        max-width: 1500px;
+        margin: auto;
+    }
+}
+@media (max-width: 1440px){
+    main{
+        width: 100%;
+    }
+    .header_content,
+    .footer_content{
+        max-width: 1400px;
+    }
+}
+@media (max-width: 1024px){
+    #txt_btnPesquisar, nav > a, #name-account, #content_account{
+        font-size: 1.05rem;
+    }
+    #titulo{
+        font-size: 2rem;
+    }
+}
+@media (max-width:768px){
+    .header_content,
+    .footer_content{
+        max-width: 700px;
+    }
+    #top-bar1, #top-bar1.fixed{
+        padding: .6% 8%;
+        z-index: 1;
+    }
+    .divisor{
+        display: none;
+    }
+    nav {
+        display: none;
+    }
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        width: 100%;
+        color: var(--back-nav-selected1);
+        background-color: #d6f1e0;
+        position: fixed;
+        top: 50px;
+        right: 0;
+        z-index: 3;
+        padding: 20px 0;
+        overflow: hidden;
+        transition: 0.5s;
+        box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+    nav a{
+        margin: 5px 0;
+        font-size: 1.6rem;
+    }
+    #menu_icon{
+        display: block;
+        color: var(--back-nav-selected1);
+        margin-left: 10px;
+    }
+    .login_box{
+        display: none;
+    }
+    #account_circle1{
+        display: none;
+    }
+    #account_circle2{
+        display: inline-block;
+    }
+    #btnPesquisar{
+        margin: 0;
+    }
+    #name-account{
+        display: none;
+    } 
+    .c-orange,
+    .c-yellow,
+    .c-green,
+    .c-blue {
+    height: 25px;
+    width: 25px;
+    }
+    #btnPesquisar > p{
+        display: none;
+    }
 }
