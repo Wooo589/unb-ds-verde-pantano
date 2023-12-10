@@ -55,22 +55,25 @@
                 </div>
             </div>
             <br/>
-            <div class="tempos_de_espera">
-                <div class="tempos">
-                    <span class="c-orange"><abbr title="Tempo médio de espera para pacientes muito urgentes"></abbr></span>
-                    <span><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
-                </div>
-                <div class="tempos">
-                    <span class="c-yellow"><abbr title="Tempo médio de espera para pacientes urgentes"></abbr></span>
-                    <span><abbr title="Tempo médio de espera para atendimento de pacientes urgentes">{{ hospital.tempo_urgente }} min</abbr></span>
-                </div>   
-                <div class="tempos">   
-                    <span class="c-green"><abbr title="Tempo médio de espera para pacientes pouco urgentes"></abbr></span>
-                    <span><abbr title="Tempo médio de espera para atendimento de pacientes pouco urgentes">{{ hospital.tempo_pouco_urgente }} min</abbr></span>
-                </div>
-                <div class="tempos">  
-                    <span class="c-blue"><abbr title="Tempo médio de espera para pacientes não urgentes"></abbr></span> 
-                    <span><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
+            <div class="box_tempos_medios">
+                <span>Tempos médios de espera:</span>
+                <div class="tempos_de_espera">
+                    <div class="tempos">
+                        <span class="c-orange"><abbr title="Tempo médio de espera para pacientes muito urgentes"></abbr></span>
+                        <span><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
+                    </div>
+                    <div class="tempos">
+                        <span class="c-yellow"><abbr title="Tempo médio de espera para pacientes urgentes"></abbr></span>
+                        <span><abbr title="Tempo médio de espera para atendimento de pacientes urgentes">{{ hospital.tempo_urgente }} min</abbr></span>
+                    </div>   
+                    <div class="tempos">   
+                        <span class="c-green"><abbr title="Tempo médio de espera para pacientes pouco urgentes"></abbr></span>
+                        <span><abbr title="Tempo médio de espera para atendimento de pacientes pouco urgentes">{{ hospital.tempo_pouco_urgente }} min</abbr></span>
+                    </div>
+                    <div class="tempos">  
+                        <span class="c-blue"><abbr title="Tempo médio de espera para pacientes não urgentes"></abbr></span> 
+                        <span><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,23 +95,23 @@
                 <span>• QUAL FOI A CLASSIFICAÇÃO DE RISCO RECEBIDA?</span>
                 <div id="class_de_risco">   
                     <div class="risco">
-                        <input type="radio" id="red" name="risco" value="EMERGENTE" style="height:35px; width:35px; vertical-align: middle; accent-color: red;">
+                        <input type="radio" id="red" name="risco" value="EMERGENTE" style="accent-color: red;">
                         <label for="red" title="text" style="font-weight: 400;">Emergente</label>
                     </div>
                     <div class="risco">
-                        <input type="radio" id="orange" name="risco" value="MUITO_URGENTE" style="height:35px; width:35px; vertical-align: middle; accent-color: orange;">
+                        <input type="radio" id="orange" name="risco" value="MUITO_URGENTE" style="accent-color: orange;">
                         <label for="orange" title="text" style="font-weight: 400;">Muito urgente</label>
                     </div>
                     <div class="risco">
-                        <input type="radio" id="yellow" name="risco" value="URGENTE" style="height:35px; width:35px; vertical-align: middle; accent-color: yellow;">
+                        <input type="radio" id="yellow" name="risco" value="URGENTE" style="accent-color: yellow;">
                         <label for="yellow" title="text" style="font-weight: 400;">Urgente</label>
                     </div>   
                     <div class="risco">   
-                        <input type="radio" id="green" name="risco" value="POUCO_URGENTE" style="height:35px; width:35px; vertical-align: middle; accent-color: green;">
+                        <input type="radio" id="green" name="risco" value="POUCO_URGENTE" style="accent-color: green;">
                         <label for="green" title="text" style="font-weight: 400;">Pouco urgente</label>
                     </div>
                     <div class="risco">  
-                        <input type="radio" id="blue" name="risco" value="NAO_URGENTE" style="height:35px; width:35px; vertical-align: middle; accent-color: blue;">
+                        <input type="radio" id="blue" name="risco" value="NAO_URGENTE" style="accent-color: blue;">
                         <label for="blue" title="text" style="font-weight: 400;">Não urgente</label>  
                     </div>     
                 </div>
@@ -163,9 +166,7 @@
         </form>
     </div>
     </main>
-    <footer>
-        <p>MedConnect, c2023.</p>
-        <p>Site criado por feudo 9 - "Verde Pântano".</p>
-    </footer>
+    {% include "inicial/partials/_footer.html"%}
+    <script src="js/togglemenu.js"></script>
 </body>
 </html>
