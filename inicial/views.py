@@ -10,14 +10,37 @@ from setup import settings
 from urllib.parse import urlparse
 from .models import Hospital, Avaliacao, Dados, Doencas, Sintomas, Diagnostico, Cirurgia, Internacao, Condicao_familiar, Medicamento
 from .forms import BuscarForms, FilterForms
+from bs4 import BeautifulSoup
+import requests
 import json
 
 def index(request):
+
+    news_url = "https://g1.globo.com/bemestar/"
+    response = requests.get(news_url)
+    news_website = BeautifulSoup(response.text, "html.parser")
+
+    titles = news_website.find_all('h2')
+    links = news_website.find_all('a', class_="feed-post-link gui-color-primary gui-color-hover")
+    images = news_website.find_all('img', class_="bstn-fd-picture-image")
+    summaries = news_website.find_all('div', class_="feed-post-body-resumo")
+
+    h2_texts = [title.text for title in titles] 
+    src_values = [image.get('src') for image in images]
+    href_values = [link.get('href') for link in links]
+    p_texts = [summary.text for summary in summaries]
+
+    news_data = list(zip(h2_texts, src_values, p_texts, href_values))
     hospitais = Hospital.objects.order_by("-nota")[:8]
     buscar2 = BuscarForms()
     filter_form = FilterForms()
     counter = (1, 2, 3, 4, 5)
-    context = {"hospitais": hospitais, "buscar": buscar2, "filter":filter_form, "counter":counter}
+
+    context = {"news_data": news_data,
+               "hospitais": hospitais, 
+               "buscar": buscar2, 
+               "filter":filter_form, 
+               "counter":counter}
 
     return render(request, 'inicial/index.html', context)
 
