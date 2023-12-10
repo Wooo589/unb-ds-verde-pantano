@@ -36,6 +36,8 @@ body{
     width: 100vw;
     height: 100vh;
     display: grid;
+    z-index: 4;
+    background-color: #8080807d;
 }
 .modal_login{
     background-color: white;
