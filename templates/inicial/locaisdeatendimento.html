@@ -45,7 +45,7 @@
                 {% for hospital in hospitais %}
                 <li>
                     <div class="nome_local">
-                        <h3><strong>{{ hospital.nome }}</strong></h3>
+                        <h3><strong><a style="text-decoration:none; color:inherit;" href="{% url "mais_informacoes" hospital.cnes %}">{{ hospital.nome }}<a></strong></h3>
                         <span>{{ hospital.endereco }}. CEP: {{ hospital.cep }}</span> 
                     </div>
                     <div class="informacoes">

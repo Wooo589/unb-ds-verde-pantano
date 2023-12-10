@@ -7,7 +7,6 @@
     /*--letter-nav: #064119;*/
     --letter-nav: #042a10;
     --back-header1: #9BFAB0;
-    --back-header2: #F0F0F0;
 
     --division-line: #64C27B;
     --back-nav1: #64C27B;
@@ -24,7 +23,6 @@
     --clr:#9BFAB0;
     --clr2:#64C27B;
     --clr3:#2A8C4A;
-    --clr4:#002653;
 
     --fonte-padrao: 'Inter', sans-serif;
     --fonte-destaque: 'Open sans', sans-serif;
@@ -38,32 +36,11 @@
 }
 html{
     height: 100%;
+    font-size: 62.5%;
 }
 body{
     background-color: #ededed;
     min-height: 100vh;
-}
-.login_box{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 150px;
-    height: 36px;
-    border: 0px;
-    border-radius: 20px;
-    font-size: 10px;
-    padding-left: 7px;
-    margin-top: 7px;
-    margin-right: 3.6%; 
-    /* box-shadow: 1px 1px gray; */
-    border: 1px solid rgba(128, 128, 128, 0.616);
-    z-index: 10;
-}
-.active, .login_box:hover {
-    border: 1px solid lightgray;
-    cursor: pointer;
-    z-index: 10;
 }
 section#resultados-da-pesquisa {
     font-family: var(--fonte-destaque);
@@ -81,22 +58,26 @@ section#resultados-da-pesquisa {
     z-index: 1;
     left: 50%;
     transform: translate(-50%);
-    width: 75%;
+}
+.voltar > i{
+    margin-left: 25px;
+    font-size: 30px; 
+    color: gray; 
 }
 section#resultados-da-pesquisa > h1 {
     color: var(--color3);
-    font-size: 18px;
+    font-size: 1.8rem;
     padding: 2px 0 2px 25px;
     margin-bottom: 6px;
 }
 section#resultados-da-pesquisa  span{
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 section#resultados-da-pesquisa > ul > li{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     min-height: 90px;
-    max-width: 1015px;
     display: flex;
     margin: 5px auto;
     top: 100px;
@@ -118,14 +99,15 @@ section#resultados-da-pesquisa > ul {
     min-height: 30px;
     max-width: 400px;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 .informacoes{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    width: 500px;
-    font-size: 15px;
+    width: 100%;
+    font-size: 1.5rem;
 }
 .tempos_de_espera{
     display: flex;
@@ -143,7 +125,7 @@ section#resultados-da-pesquisa > ul {
     height: 50px;
 }
 .tempos span{
-    font-size: 30px;
+    font-size: 3.0rem;
 }
 .circles{
     display: flex;
@@ -185,15 +167,11 @@ section#resultados-da-pesquisa > ul {
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
     min-width: 155px;
 }
-.info:hover{
-    background-color: var(--clr4);
-    box-shadow: none;
-}
 .info > a {
     color: whitesmoke;
     text-decoration: none;
     text-align: center;
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 .info:hover{
     border: 1px solid #196fd2;
@@ -202,7 +180,7 @@ footer {
     position: relative;  
     bottom: 0;
     justify-content: left;
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: bold;
     width:100%;
     background-color: var(--back-header1);
@@ -213,3 +191,116 @@ footer {
     margin-top: auto;
     margin-bottom: 0px;
 }
+  
+  /* 2 - Sintaxe, apenas para telas, breakpoint */
+  @media (max-width: 2560px) {
+    main, #top-bar3-content{
+        width: 55%;
+        margin: auto;
+    }
+    .nome_local{
+        width: 90%;
+    }
+    #resultados-da-pesquisa{
+        width: 75%;
+    }
+    section#resultados-da-pesquisa > ul > li{
+        flex-wrap: nowrap;
+    }
+    .informacoes{
+        justify-content: space-around;
+    }
+  }
+  @media (max-width: 1440px) {
+    main, #top-bar3-content{
+        width: 90%;
+        margin: auto;
+    }
+  } 
+  @media (max-width: 1024px) {
+    section#resultados-da-pesquisa > ul > li{
+        flex-wrap: wrap;
+        padding: 20px 10px 20px 25px;
+    }
+    .informacoes{
+        margin-top: 15px;
+    }
+
+  }
+  @media (max-width: 425px) {
+    #resultados-da-pesquisa{
+        width: 90%;
+    }
+    .info{
+        margin-top: 20px;
+        margin-right: 0;
+    }
+    strong{
+        font-size: 1.5rem;
+    }
+  }
+  
+  /* 4 - Todos os modos */
+  @media (max-width: 375px) {
+    .voltar, .voltar > i{
+        margin-left: 0;
+    }
+    
+  }
+  
+  /* 5 - Mobile first */
+  @media (min-width: 200px) {
+    
+  }
+  
+  /* 6 - AND na media query */
+  @media (min-width: 300px) and (max-width: 400px) {
+    
+  }
+  
+  /* 7 - Orientation */
+  @media (orientation: landscape) {
+    
+  }
+  
+  /* 8 - OR na media query */
+  @media (max-width: 200px), (orientation: landscape) {
+    
+  }
+  
+  /* 9 - Cuidado ao aplicar */
+  /* Regras depois da MQ a sobreescrevem */
+  @media (min-width: 600px) {
+    
+  }
+  
+  /* 10 - breakpoints */
+  /* h5 {
+    font-size: 3em;
+  } */
+  
+  /* 320px - 480px = mobile */
+  /* Em mobile first não precisa de MQ */
+  /* h5 {
+    color: aqua;
+  } */
+  
+  /* 480px - 768px = tablet */
+  @media (min-width: 480px) {
+    
+  }
+  
+  /* 768px - 1024px = telas menores, laptops */
+  @media (min-width: 768px) {
+    
+  }
+  
+  /* 1024px - 1200px = desktop */
+  @media (min-width: 1024px) {
+    
+  }
+  
+  /* 1200 e + = telas maiores, tvs */
+  @media (min-width: 1200px) {
+    
+  }

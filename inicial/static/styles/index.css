@@ -13,8 +13,8 @@
     --back-nav1: #64C27B;
     --back-nav-selected1: #2A8C4A;
     --back-nav2: #D0FDD7;
-    --back-nav-selected2: #76b88ccf;
-    --back-nav3: #76B88C;
+    --back-nav-selected2: #d6f1e0;
+    --back-nav3: #b4efc8;
     --black: #000000;
     --color3: #024053;
     --c-orange: #fda035;
@@ -42,16 +42,32 @@ html{
 body{
     background-color: rgba(245, 245, 245, 0.600);
     min-height: 100vh;
+    width: 100%;
 }
 #box_banner{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: rgba(240, 240, 240);
+    width: 100%;
+    height: auto;
     /* border-bottom: 1px solid lightgray; */
 }
+#text_banner{
+    font-family: var(--fonte-titulo);
+    font-weight: 200;
+    font-size: 3.5rem;
+    color: var(--color3);
+    margin-top: 65px;
+    text-shadow: 2px 3px rgba(0, 0, 255, .2);
+    width: 90%;
+}
+#box_banner img{
+    height: auto;
+    width: 100%;
+}
 #banner{
-    background-image: url("../img/banner.jpg");
+    background-image: url("../../img/banner.jpg");
     background-size: cover;    
     /* background-attachment: fixed; */
     /* height: 200px;  */
@@ -59,36 +75,74 @@ body{
     /* margin-top: 10px; */
     /* opacity: 50%; */
 }
-#text_banner{
-    font-family: var(--fonte-titulo);
-    font-size: 35px;
-    font-weight: 200;
-    color: var(--color3);
-    margin-top: 85px;
-    margin-left: 120px; 
-    text-shadow: 2px 3px rgba(0, 0, 255, .2);
-    height: 160px;
-    width: 90%;
-}
 main{
     position: relative;
+    
     top: 0px;
     bottom: 0px;
     padding-top: 20px;
     padding-bottom: 100px;
     width: 90%;
+    min-width: 320px;
     margin: auto;
 }
-main > h1{
-    font-size: 20px;
-    margin: 10px 5% 20px 5%;
-    /* border-top: 1px solid rgba(128, 128, 128, 0.496);
-    border-bottom: 1px solid rgba(128, 128, 128, 0.496); */
-    padding: 5px 10%;
-    font-weight: 600;
-    color: var(--color3);
-    background-color: rgba(70, 131, 180, 0.25);
-    border-radius: 2.5px;
+#lista_hospitais{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 75vw;
+    margin: auto;
+}
+.slide{
+    vertical-align: middle;
+    display: inline-block;
+    width: 40%;
+    background-color: whitesmoke;
+    border: 1px solid rgba(128, 128, 128, 0.393);
+    border-radius: 10px;
+    margin-left: 1.2%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 255, .2);
+}
+#lista_news{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 75vw;
+    margin: auto;
+    height: 250px;
+    margin-bottom: 120px;
+}
+.slide_news{
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    width: 30%;
+    background-color: whitesmoke;
+    border: 1px solid rgba(128, 128, 128, 0.393);
+    border-radius: 10px;
+    margin-left: 1.2%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 255, .2);
+    height: 250px;
+}
+#arrow_left1, #arrow_right1{
+    position: absolute;
+    top: 17%;
+    /* transform: translateY(-50%); */
+    cursor: pointer;
+    font-size: 60px;
+    width: 5%;
+}
+#arrow_left2, #arrow_right2{
+    position: absolute;
+    top: 60%;
+    /* transform: translateY(-50%); */
+    cursor: pointer;
+    font-size: 60px;
+    width: 5%;
+}
+.arrow_left{
+    left: 20px;
+}
+.arrow_right{
+    right: 20px;
 }
 #locais_proximos, #noticias{
     font-size: 20px;
@@ -106,109 +160,12 @@ main > h1{
     margin-top: 10px;
 }
 #noticias{
-    margin-top: 50px;
+    margin-top: 120px;
+
 }
 img{
     margin:0;
 }
-
-.bar ol{
-    list-style-type: none;
-    /*padding: 15px;*/
-    margin:0;
-    color: #000;
-}
-
-.bar_element{
-    display: inline-block;
-    margin-left:50px;
-    margin-right:50px;
-    /*background-color:red;*/
-    padding:15px;
-}
-
-.bar_element a{
-    color: #000;
-    text-decoration:none;
-    transition: 0.3s;
-    text-transform: uppercase;
-}
-
-.bar_element a:hover{
-    /*text-decoration:underline;*/
-    color: #fff;
-}
-
-.bar_element_active{
-    background-color:#71fdb5;
-    display:inline-block;
-    margin-left:50px;
-    margin-right:50px;
-    flex-shrink:0;
-    /*filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));*/
-    padding:15px;
-    text-transform:uppercase;
-    box-shadow: 2px 3px 0px 0px rgba(0, 0, 255, .2);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-/*UNDERLINE HOVER.bar_element a {
-    color: #000;
-    text-decoration: none;
-    position: relative; Adicione esta linha
-}
-
-.bar_element a::after { Adicione esta regra para simular o sublinhado
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 2px; /* Altura do sublinhado 
-    background-color: #000; /* Cor do sublinhado 
-    transition: width 0.5s; /* Duração da transição para expandir o sublinhado
-    opacity: 0; /* Comece com opacidade zero (oculto)
-}
-
-.bar_element a:hover::after {
-    width: 100%; /* Expande o sublinhado quando o mouse passa por cima
-    opacity: 1; /* Torna o sublinhado visível
-}*/
-
-/*#input-pesquisa{
-    border:none;
-    border-radius:40px;
-    /*height: 40px;
-    width: 700px;
-    text-align:center;
-    text-transform:uppercase;
-    /*position:relative;
-    top:-170px;
-    left:350px;
-    /*position:absolute;
-    position:absolute;
-    top: 6%;
-    left: 25%;
-    width: 50%;
-    height: 5%;
-    /*padding:5px;
-    box-shadow: 2px 3px 0px 0px /*#9e9e9ergba(0, 0, 255, .2);
-}*/
-
-#input-pesquisa{
-    border:none;
-    border-radius:40px;
-    text-align:center;
-    text-transform:uppercase;
-    /*position:absolute;*/
-    top: 6%;
-    left: 25%;
-    width: 700px;
-    height: 30px;
-    box-shadow: 2px 3px 0px 0px /*#9e9e9e*/rgba(0, 0, 255, .2);
-}
-
 .nome-hospital{
     font-weight:bold;
     text-transform:uppercase;
@@ -220,88 +177,40 @@ img{
     margin:0;
 }
 
-footer{
-    /* background-color:#71fdb5;
-    display:block;
-    margin:-8px;
-    text-align:center;
-    padding:200px; */
-    position: relative;  
-    bottom: 0;
-    justify-content: left;
-    font-size: 13px;
-    font-weight: bold;
-    width:100%;
-    background-color: var(--back-header1);
-    border-top: 1px solid #06411950;
-    color: #000000;
-    padding: 10px 10px 10px 70px;
-    align-content: right;
-    margin-top: auto;
-    margin-bottom: 0px;
-}
-
-.outer-flex-container{
-	display: flex;
-    flex-direction: row;
-    background-color: whitesmoke;/*pink? qual cor tava no meu w3schools tryit*/
-    /*align-items:center;*/
-    /* margin-left:50px;
-    margin-right:50px; */
-    margin: auto;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    /* box-shadow: 2px 3px 0px 0px /*#9e9e9e*rgba(0, 0, 255, .2); */
-    align-items: center;
-    justify-content: space-around;
-    width: 85%;
-    margin-bottom: 70px;
-    /* box-shadow: 1px 1px 10px 0px rgb(194, 194, 194); */
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.inner-flex-container{
-    position: relative;
-	display:flex;
-    flex-direction:row;
-    background-color:whitesmoke; 
-    margin: 15px;  /*espaço entre os inner-flex-containers (blocos verticais)*/
-    align-items:center;
-    /* border-style: solid; */
-    /* border-width: 0px 0px 2px 0px;ONDE TA A COR DESSA BORDA */
-    /* border-color:#bab; */
-    width: 60%;
-    justify-content: flex-start;
-    padding-right: 20px;
-    
-}
-#gerais{
+.inf_gerais{
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
     margin-bottom: 20px;
-    margin-left: 30px;
+    margin: 0 20px;
+    overflow-wrap: break-word;
 }
-#gerais > h3{
+.inf_gerais > h3{
     font-family: var(--fonte-destaque);
     margin-top: 12px;
     margin-bottom: 2px;
-    font-size: 18px;
+    font-size: 15px;
+    overflow: hidden;  
 }
 #endereco,
-#cep{
+.cep{
     font-family: var(--fonte-destaque);
     font-size: 20px;
 }
-#cep{
+.cep{
     margin-bottom: 12px;
 }
-
-.informacoes{
+.title_tempos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+.inf_especificas{
 	display: flex;
     flex-direction:column;
     justify-content: space-between;
-    align-items: flex-end;
     background-color:white;/*blue*/
     /* margin:10px;espaço entre os inner-flex-containers (blocos verticais) */
     align-items:center;
@@ -312,37 +221,32 @@ footer{
     
 }
 
-/* .inner-flex-item{
-	margin:10px;/*espaço entre os inner-flex-items (blocos horizontais)*
-    background-color:white;/*
-} */
 .tempos_de_espera{
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
-	margin:10px 10px 50px 10px;/*espaço entre os inner-flex-items (blocos horizontais)*/
+	margin:10px 10px 10px 10px;/*espaço entre os inner-flex-items (blocos horizontais)*/
     background-color: whitesmoke;/**/
     /* height: 200px; */
+    width: 90%;
 }
 .tempos{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 65px;
-    margin: 0 7px;
     /* height: 200px; */
 }
 .tempos span{
     font-family: var(--fonte-padrao);
-    font-size: 18px;
+    font-size: 16px;
 }
 .circles{
     display: flex;
     justify-content: space-between;
     flex-flow: row;
     min-width: 220px;
-    max-width: 260px;
 }
 .c-orange,
 .c-yellow,
@@ -369,7 +273,65 @@ footer{
 .checked{
     color:orange;
 }
-
+#info-class-urg{
+    display: none;
+}
+#info-class-urg.on{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+    z-index: 2;
+    width: 50%;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.25);
+}
+#info-class-urg h2{
+    font-weight: 500;
+}
+#info-class-urg > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#info-class-urg > p{
+    text-indent: 30px;
+    text-align: justify;
+    letter-spacing: .5px;
+    line-height: 1.6;
+}
+#title-info-class-urg{
+    margin-bottom: 10px;
+}
+#box-info{
+    margin: 20px 0;
+}
+.info-cor{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 7px; 
+}
+.info-cor > p{
+    margin-left: 10px;
+    font-weight: 500;
+}
+.btn-info-class:hover{
+    cursor: pointer;
+}
+#close{
+    font-size: 30px;
+}
+#close:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
 /*.owl-item{
     background-color: white;
     height:400px;
@@ -378,32 +340,7 @@ footer{
     box-shadow: 2px 3px 0px 0px rgba(0, 0, 255, .2);
     padding:30px;
 }*/
-
-.item{
-    text-align: justify;
-    background-color:whitesmoke;
-    padding: 15px 25px;
-    border-radius:30px;
-    /* box-shadow: 2px 5px 5px 2px rgba(0, 0, 255, .2); */
-    border: 1px solid lightgray;
-    /* box-shadow: 1px 1px 10px 0px rgb(194, 194, 194); */
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom:10px;
-    /*margin-left:50px;
-    margin-right:50px;
-    height:400px;
-    width:300px;*/
-    /*margin-left:50px;
-    margin-right:50px;
-    width:200px;*/
-    /* margin-left:50px;
-    margin-right:50px; */
-    margin: auto;
-    width:350px;/*ACHO QUE O PROBLEMA TAVA AQUI, NA DIFERENÇA ENTRE ESSES 2, TENTAR COM O OUTRO SCRIPT DEPOIS, TO USANDO O CENTER MAS ERA O PRIMEIRO DAS DEMOS DO OWL CAROUSEL, O BASIC*/
-    height: 300px;
-}
-
-.info {
+.more_info {
     text-decoration: none;
     background-color: #1D7FF1;
     border: none;
@@ -412,133 +349,175 @@ footer{
     height: 36px;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
     min-width: 155px;
+    margin: 14px;
 }
-.info > a {
+.more_info > a {
     color: whitesmoke;
     text-decoration: none;
     text-align: center;
     font-size: 14px;
 }
-.info:hover{
-    border: 1px solid #196fd2;
+.more_info:hover{
+    background-color: #196fd2;
 }
 .owl-carousel{
     /* margin: 10px 10%; */
     margin-bottom:10px;
 }
 
-.logo a:link{
-    color: #2A8C4A;
-    font-family: Oleo Script;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    /*padding:0;
-    flex-shrink:0;
-    margin: -30px 0px -30px -30px;*/
-    margin-top:0;
-    margin-bottom:0;
-    text-decoration:none;
-}
-
-.logo a:visited{
-    color: #2A8C4A;
-    text-decoration:none;
-    font-family: Josefin Sans;
-}
-
-/* #header_container{
-    /*background-color:pink;*
-    margin-top:-50px;
-    margin-bottom:-50px;
-    display:flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    justify-content:center;
-    margin-left:-50px;
-    margin-right:-50px;
-} */
-
-/* .header_container_item{
-    /*background-color:white;blue*
-    margin:0px 10px 0px 10px;
-    align-self:center;
-}
-
-#header_button{
-    background-color:#ede;
-    border:none;
-    border-radius:50px;
-    color:black;
-    text-transform:uppercase;
-    padding:10px;
-    display:flex;/**
-    justify-content:center;
-    align-items:center;
-    font-family: Josefin Sans;
-    box-shadow: 2px 3px 0px 0px /*#9e9e9e*rgba(0, 0, 255, .2);
-} */
-
-/* #faq-container{
-    background-color: white;
-    box-shadow: 2px 3px 0px 0px /*#9e9e9e*rgba(0, 0, 255, .2);
-    margin-left:50px;
-    margin-right:50px;
-    border-radius:30px;
-    padding:30px;
-    margin-top:50px;
-} */
-
 div.c{
     position: relative;
     margin:2em;
 }
 
-/*problema acima*/
-
-h1.index{
-    background:steelblue;
-    color:white;
-    padding:1em;
-    position: relative;
+input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity:0;
+    visibility: 0;
 }
-/*daqui pra baixo parei de prestar mt atenção*/
-label::before{
-    content:"";
-    display: inline-block;
-    border: 15px solid transparent;
-    border-left:20px solid white;
-  }
-
-  label{
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  div.p{
-    max-height:0px;
-    overflow: hidden;
-    transition:max-height 0.5s;
-    background-color: white;
-    box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);
-  }
-  div.p p {
-    padding:2em;
-  }
-
-  input:checked ~ h1 label::before{
-    border-left:15px solid transparent;
-    border-top:20px solid white;
-    margin-top:12px;
-    margin-right:10px;
-  }
-
-  input:checked ~ h1 ~ div.p{
-    max-height:100px;
-  }
-  a{
-    color:steelblue;
-  }
+@media (max-width: 2560px) {
+    main{
+        width: 55%;
+        margin: auto;
+    }
+    #lista_hospitais, #lista_news{
+        width: 80%;
+    }
+    #text_banner{
+        margin-top: 30px;
+        margin-left: 1000px;
+    }
+    #info-class-urg.on{
+        width: 20%;
+    }
+}
+@media (max-width: 1440px) {
+    main{
+        width: 85%;
+    }
+    #text_banner{
+        margin-left: 200px;
+    }
+    #info-class-urg.on{
+        width: 30%;
+    }
+}
+@media (max-device-width: 1024px) {
+    .arrow {
+      width: 20%;
+    }
+    .slide {
+        width: 70%
+    }
+    .slide_news {
+        width: 60%
+    }
+    /* nav {
+        display: flex;
+    }  */
+    #text_banner{
+        margin-left: 120px;
+    }
+    #info-class-urg.on{
+        width: 50%;
+    }
+}
+@media (max-width: 768px) {
+    .slide {
+        width: 90%
+    }
+    .slide_news {
+        width: 60%
+    }
+    #locais_proximos, #noticias{
+        font-size: 1.5rem;
+    }
+    #box_banner{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: rgba(240, 240, 240);
+        /* border-bottom: 1px solid lightgray; */
+    }
+    #banner{
+        background-image: url("../../img/banner.jpg");
+        /* background-size: cover;     */
+        /* background-attachment: fixed;  */
+        /* height: 200px;  */
+        width: 100%;  
+        /* margin-top: 10px; */
+        /* opacity: 50%; */
+    }
+    #text_banner{
+        margin-top: 35px;
+        margin-left: 70px;
+        font-size: 2rem;
+        height: auto;
+        width: 90%;
+    }
+    #info-class-urg{
+        font-size: 10px;
+    }
+    .arrow_left{
+        left: 0px;
+        margin-left: -15px;
+    }
+}
+@media (max-width: 425px) {
+    #text_banner{
+        font-size: 1.3rem;
+        height: auto;
+        margin-top: 20px;
+    }
+    #info-class-urg.on{
+        top: 50%;
+    }
+    #locais_proximos, #noticias, strong, small{
+        font-size: 1.2rem;
+    }
+    .tempos span{
+        font-size: 1rem;
+    }
+    .tempos{
+        margin: 0px;
+    }
+    .c-orange, .c-yellow, .c-green, .c-blue{
+        width: 25px;
+        height: 25px;
+    }
+    .footer_content{
+        font-size: .8rem;
+        margin: auto;
+    }
+}
+@media (max-width: 425px), (orientation: landscape) {
+    #info-class-urg.on{
+        top: 50%;
+        width: 85%;
+    }
+}
+@media (max-width: 375px){
+    .c-orange, .c-yellow, .c-green, .c-blue{
+        width: 20px;
+        height: 20px;
+    }
+    #title-info-class-urg{
+        font-size: .8rem;
+    }
+    #info-class-urg.on{
+        padding: 20px;
+    }
+}
+@media (max-width: 320px){
+    #text_banner{
+        margin-top: 7px;
+        margin-left: 30px;
+    }
+    #arrow_left1, #arrow_left2, #arrow_right1, #arrow_right2 {
+        display: none;
+    }
+}

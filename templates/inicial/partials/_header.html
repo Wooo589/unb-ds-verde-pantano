@@ -1,11 +1,14 @@
 {% load static %}
 
 <header id="principal-header">
-    <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos">
-    <div id="logotipo">
-        <img id="icone" src="{% static "img/estetoscopio32px.png"%}" alt="MedConnect logo." />
-        <span id="titulo">MedConnect</span>
-    </div>
+    {% comment %} <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos"> {% endcomment %}
+    <a href="{% url "sobre_nos" %}" id="link_sobre_nos">
+        <div id="logotipo">
+            <img id="icone" src="{% static "img/estetoscopio32px.png" %}" alt="MedConnect logo." />
+            <span id="titulo">MedConnect</span>
+        </div>
+    </a>
+    
     <nav id="_header">
             {% if request.path == "/" %}
             
@@ -106,8 +109,8 @@
         <div id="top-bar2" style="display: none;">
             <button class="voltar"><i class="uil uil-angle-left" style="font-size: 30px; color: gray;"></i></button>
             <form action="{% url 'buscar' %}">
-                <input name="buscar" type="text" id="txt_outras_duvidas" placeholder="PESQUISAR..."/>
-                <div class="wrapper">
+                <input name="buscar" type="text" id="txt_outras_duvidas" placeholder="PESQUISAR HOSPITAL"/>
+                <!--<div class="wrapper">
                     {{ filter.uf }}
                 </div>
                 <div class="wrapper">
@@ -115,7 +118,7 @@
                 </div>
                 <div class="wrapper">
                     {{ filter.especialidade }}
-                </div>
+                </div>-->
                 <div class="wrapper">
                     {{ filter.categoria }}
                 </div>

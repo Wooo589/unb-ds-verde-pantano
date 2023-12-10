@@ -58,9 +58,11 @@
     color: white;
     border-radius: 5px;
     padding: 10px;
+    bottom: 20px;
+    position: relative;
 }
 .btn_adulto1_continuar{
-    position: relative;
+    
     left: 635px;
 }
 .btn_adulto1_continuar:hover, .btn_adulto1_voltar:hover{

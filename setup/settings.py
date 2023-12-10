@@ -28,7 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["18.231.186.20"]
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inicial',
+    'inicial.apps.InicialConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,15 +79,16 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-              'ENGINE': 'django.db.backends.mysql',
-              'NAME': 'medconnect',
-              'USER': 'Admin',
-              'PASSWORD': str(os.getenv('DATABASE_KEY')),
-              'HOST': 'localhost',
-              'PORT': '3306',
-          }
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'medconnect',
+            'USER': 'Admin',
+            'PASSWORD': str(os.getenv('DATABASE_KEY')),
+            'HOST': "medconnect.crxdzw6vmqyq.sa-east-1.rds.amazonaws.com", # em deploy usar: 'medconnect.crxdzw6vmqyq.sa-east-1.rds.amazonaws.com'
+            'PORT': '3306',
+        }
 }
 
 # Password validation
