@@ -72,9 +72,10 @@
             <input class="checkbox_adulto1" type="checkbox" name="quest_b1" value="1">
             <label class="subtitule_adulto1" for="quest_b1"> O paciente não responde</label>
                 <p class="phrase_adulto1">O paciente não responde a estímulos simples, como chamar seu nome, tocar seu ombro ou sacudi-la suavemente.</p>
-        <a style="margin-top:20px;" href="{% url "triagem" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
-        
-        <input style="margin-top:20px;" class="btn_adulto1_continuar" type="submit" value="continuar">
+            <div id="box-button">
+                <a style="margin-top:20px;" href="{% url "triagem" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
+                <input style="margin-top:20px;" class="btn_adulto1_continuar" type="submit" value="continuar">
+            </div>
         </div>
     </form>
 </body>
