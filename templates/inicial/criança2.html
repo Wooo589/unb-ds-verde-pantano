@@ -64,13 +64,17 @@
             <label class="subtitule_adulto1" for="quest_b2"> O paciente está com febre alta?</label>        
             <p class="phrase_adulto1">Febre alta é definida como uma temperatura corporal acima de 39 graus Celsius.</p>
             <br>
-            <a href="{%url "crianca1" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
-        <input class="btn_adulto1_continuar" type="submit" value="continuar">
+            <div id="box-button">
+                <a href="{%url "crianca1" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
+                <input class="btn_adulto1_continuar" type="submit" value="continuar">
+            </div>
         </div>
     </form>
 </body>
 <footer style="margin-top:10px;">
-    <p>©2023, MedConnect.</p>
-    <p>Verde Pântano - Desenvolvimento de Software, 2023/2.</p>
+    <div class="footer_content">
+        <p>©2023, MedConnect.</p>
+        <p>Verde Pântano - Desenvolvimento de Software, 2023/2.</p>
+    </div>
 </footer>
 </html>
