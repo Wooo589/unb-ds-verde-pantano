@@ -32,8 +32,8 @@
     </style>
 </head>
 <body>
-    {% include "inicial/partials/_header.html"%}
     {% include "inicial/partials/_login.html"%}
+    {% include "inicial/partials/_header.html"%}
     <form action="{% url "crianca3" %}" method="POST">
         {% csrf_token %}
         <div class="container_adulto1">
