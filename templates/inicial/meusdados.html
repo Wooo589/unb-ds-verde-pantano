@@ -40,7 +40,8 @@
 
     <main>
         <!-- <div id="dados_gerais"> -->
-            <h1>MEUS DADOS
+            <h1 id="box_title">
+                <span id="title">MEUS DADOS</span>
                 <div id="editar_dados">
                     <a href="{% url "editar_dados" %}">
                         <button id="btn_editar_dados">EDITAR DADOS</button>
@@ -219,8 +220,11 @@
             Atendendo a esses padrões, o documento on-line tem o mesmo efeito do histórico em papel, sendo válido para fins assistenciais, legais e jurídicos, nas situações que forem requeridas.-->
         </main>
         <footer>
-            <p>©2023, MedConnect.</p>
-            <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
+            <div class="footer_content">
+                <p>©2023, MedConnect.</p>
+                <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
+            </div>
         </footer>
+        <script src="js/togglemenu.js"></script>
 </body>
 </html>
