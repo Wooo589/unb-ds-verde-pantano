@@ -43,7 +43,7 @@
         <p style="background-color: rgba(70, 131, 180, 0.25); padding: 5px 0; margin-bottom: 15px; border-top: 1px solid lightgray; border-bottom: 1px solid lightgray;">Leia as perguntas mais frequentes sobre os seguintes tópicos:</p>
         <div id="topic_box_container">
             <div id="c1">     
-                <h1 id="topic1"><a href="#acesso a informacoes">ACESSO A INFORMAÇÕES</a></h1>
+                <h1 id="topic1">ACESSO A INFORMAÇÕES</h1>
                 <ul>
                     <div class="question_answer">
                         <h2 class="question1"><li>Como posso acessar informações sobre o local em que recebo atendimento?</li></h2>
@@ -56,7 +56,7 @@
                 </ul> 
             </div>    
             <div id="c2">
-                <h1 id="topic2"><a href="#avaliacao de locais">AVALIAÇÃO DE LOCAIS</a></h1>
+                <h1 id="topic2">AVALIAÇÃO DE LOCAIS</h1>
                 <ul>
                     <div class="question_answer">
                         <h2 class="question1"><li>Como avaliar o local em que recebo atendimento?</li></h2>
@@ -71,7 +71,7 @@
             </div>
     
             <div id="c3">
-                <h1 id="topic3"><a href="#minha conta">MINHA CONTA</a></h1>
+                <h1 id="topic3">MINHA CONTA</h1>
                 <ul>
                     <div class="question_answer"> 
                         <h2 class="question1"><li>Como preencher minhas informações pessoais?</li></h2>
@@ -85,7 +85,7 @@
             </div>
 
             <div id="c4">
-                <h1 id="topic4"><a href="#funcionalidades do site">FUNCIONALIDADES DO SITE</a></h1>
+                <h1 id="topic4">FUNCIONALIDADES DO SITE</h1>
                 <!-- </label> -->
                 <ul>
                     <div class="question_answer">
@@ -102,7 +102,7 @@
                 </ul>
             </div>
             <div id="c5">     
-                <h1 id="topic5"><a href="#sobre_nos">SOBRE NÓS</a></h1>
+                <h1 id="topic5">SOBRE NÓS</h1>
                 <ul>
                     <div class="question_answer">
                         <h2 class="question1"><li>QUEM SOMOS</li></h2>
@@ -133,40 +133,38 @@
             </div>    
         </div>    
     </main>
-    <aside id="navigation_aside" style="position: fixed; top: 100px;">
+    <aside id="navigation_aside">
         <nav class="aside_nav">
             <div id="nav-aside-container">
-                <header id="navigation-aside-header">
+                <div id="navigation-aside-header">
                     <h2 id="navigation-aside-title">Nesta página:</h2>
-                </header>
+                </div>
                 <ul id="navigation-aside-list">
-                    <li><a href="#acesso a informacoes" aria-current="true">Acesso a informações</a></li>
-                    <li><a href="#avaliacao de locais" aria-current="true">Avaliação de locais</a></li>
-                    <li><a href="#minha conta" aria-current="true">Minha conta</a></li>
-                    <li><a href="#funcionalidades do site" aria-current="true">Funcionalidades do site</a></li>
-                    <li><a href="#sobre_nos" aria-current="true">Sobre nós</a></li>
+                    <li><a href="#topic1" aria-current="true">Acesso a informações</a></li>
+                    <li><a href="#topic2" aria-current="true">Avaliação de locais</a></li>
+                    <li><a href="#topic3" aria-current="true">Minha conta</a></li>
+                    <li><a href="#topic4" aria-current="true">Funcionalidades do site</a></li>
+                    <li><a href="#topic5" aria-current="true">Sobre nós</a></li>
                 </ul>
             </div>
         </nav>
     </aside>
     <aside id="numbers_aside" style="position: fixed; top: 100px;">
-        <nav class="aside_nav">
+        <div class="aside_nav">
             <div id="numbers-aside-container">
-                <header id="num-aside-header">
+                <div id="num-aside-header">
                     <h2 id="numbers_aside_title">Telefones úteis:</h2>
-                </header>
+                </div>
                 <ul id="numbers-aside-list">
                     <li><span class="span1">160</span><span class="span2">DISQUE SAÚDE</span></li>
                     <li><span class="span1">192</span><span class="span2">SAMU</span></li>
                     <li><span class="span1">193</span><span class="span2">BOMBEIROS</span></li>
                 </ul>
             </div>
-        </nav>
+        </div>
     </aside>
-    <footer>
-        <p>©MedConnect 2023</p>
-        <p>Site criado por feudo 9 - "Verde Pântano".</p>
-    </footer>
+    {% include "inicial/partials/_footer.html"%}
+    <script src="js/togglemenu.js"></script>
     </div>
 </body>
 </html>
