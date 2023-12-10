@@ -59,9 +59,10 @@
         <label class="subtitule_adulto1" for="quest_a3"> O paciente está com febre alta?</label>
         <p class="phrase_adulto1">Febre alta é definida como uma temperatura corporal acima de 39 graus Celsius.</p>
             <br>
-            <a href= "{% url "adulto2" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
-    
-            <input class="btn_adulto1_continuar" type="submit" value="continuar">
+            <div id="box-button">
+                <a href= "{% url "adulto2" %}"><input class="btn_adulto1_voltar" type="button" value="voltar"></a>
+                <input class="btn_adulto1_continuar" type="submit" value="continuar">
+            </div>
         </div>
     </form>
 </body>
