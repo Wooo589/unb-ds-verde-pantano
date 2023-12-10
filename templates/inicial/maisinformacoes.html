@@ -72,24 +72,26 @@
                     </div>
                 </div>
             </div>
-            <div class="tempos_de_espera">
-                <div class="tempos">
-                    <span class="c-orange"></span>
-                    <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
+            <div class="box_tempos_medios">
+                <div class="tempos_de_espera">
+                    <div class="tempos">
+                        <span class="c-orange"></span>
+                        <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes muito urgentes">{{ hospital.tempo_muito_urgente}} min</abbr></span>
+                    </div>
+                    <div class="tempos">
+                        <span class="c-yellow"></span>
+                        <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes urgentes">{{ hospital.tempo_urgente }} min</abbr></span>
+                    </div>   
+                    <div class="tempos">   
+                        <span class="c-green"></span>
+                        <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes pouco urgentes">{{ hospital.tempo_pouco_urgente }} min</abbr></span>
+                    </div>
+                    <div class="tempos">  
+                        <span class="c-blue"></span> 
+                        <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
+                    </div> 
+                    <p style="color: #353535; font-size: small;">última atualização: {{hospital.atualizacao|date:"d/m/y - H:i"}}</p>
                 </div>
-                <div class="tempos">
-                    <span class="c-yellow"></span>
-                    <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes urgentes">{{ hospital.tempo_urgente }} min</abbr></span>
-                </div>   
-                <div class="tempos">   
-                    <span class="c-green"></span>
-                    <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes pouco urgentes">{{ hospital.tempo_pouco_urgente }} min</abbr></span>
-                </div>
-                <div class="tempos">  
-                    <span class="c-blue"></span> 
-                    <span style="font-size: small;"><abbr title="Tempo médio de espera para atendimento de pacientes não urgentes">{{ hospital.tempo_nao_urgente }} min</abbr></span>  
-                </div> 
-                <p style="color: #353535; font-size: small;">última atualização: {{hospital.atualizacao|date:"d/m/y - H:i"}}</p>
             </div>
         </div>
         <!-- <hr/> -->
@@ -113,35 +115,6 @@
         <h1><strong>INFORMAÇÕES ADICIONAIS</strong></h1>
         <hr/>
         <!--<div id="container2">
-            <div id="mais_informacoes">
-                <div class="detalhamento"><strong>Especialidades:</strong>
-                    <ul>
-                        <li>A;</li>
-                        <li>B;</li>
-                        <li>C;</li>
-                        <li>D;</li>
-                        <li>E.</li>
-                    </ul>
-                </div>
-                <div class="detalhamento"><strong>Profissionais disponíveis:</strong>
-                    <ul>
-                        <li>A;</li>
-                        <li>B;</li>
-                        <li>C;</li>
-                        <li>D;</li>
-                        <li>E.</li>
-                    </ul>
-                </div>
-                <div class="detalhamento"><strong>Planos atendidos:</strong>
-                    <ul>
-                        <li>a;</li>
-                        <li>b;</li>
-                        <li>c;</li>
-                        <li>d;</li>
-                        <li>e.</li>
-                    </ul>
-                </div>
-            </div>
         </div>-->
         <div class="inline"><strong>🞄 Leitos existentes:</strong>
             <span>{{ hospital.leitos }}</span>
@@ -163,17 +136,17 @@
             </div>
         </div>
         <hr/>
+        >-->
+        <hr/>
         <div id="fontes">
             <span>FONTES:</span>
             <div id="f">
                 <a href="https://opendatasus.saude.gov.br/dataset/hospitais-e-leitos/resource/5701f27f-a202-4605-a944-7dbe888c0445/view/3d1e5da4-fefc-4e2c-bdde-917e50d44088">🞄 Banco de dados OPENDATASUS;</a>
                 <a href="https://info.saude.df.gov.br/transparenciaativanovo/">🞄 Portal "Transparência e Prestação de Contas" - SES-DF.</a>
             </div>
-        </div>-->
+        </div
     </main>
-    <footer>
-        <p>MedConnect, c2023.</p>
-        <p>Site criado por feudo 9 - "Verde Pântano".</p>
-    </footer>
+    {% include "inicial/partials/_footer.html"%}
+    <script src="js/togglemenu.js"></script>
 </body>
 </html>
