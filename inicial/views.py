@@ -298,12 +298,9 @@ def avaliacao_completa(request, avaliacao_id):
 
 def triagem(request):
     if request.method=="POST":
-        # lógica para modaldd
-        print(request.POST)
         if "idade" not in request.POST or "termo" not in request.POST:
             messages.error(request,"Você precisa selecionar os campos.")
-            return redirect("triagem")        
-        # lógica para selecionas qual tipo de atendimento}
+            return redirect("triagem")
         elif request.POST["idade"] == "1":
             return redirect("crianca1")
         else:
