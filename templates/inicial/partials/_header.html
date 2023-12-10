@@ -1,97 +1,90 @@
 {% load static %}
 
 <header id="principal-header">
-    {% comment %} <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos"> {% endcomment %}
-    <a href="{% url "sobre_nos" %}" id="link_sobre_nos">
-        <div id="logotipo">
-            <img id="icone" src="{% static "img/estetoscopio32px.png" %}" alt="MedConnect logo." />
-            <span id="titulo">MedConnect</span>
-        </div>
-    </a>
-    
-    <nav id="_header">
-            {% if request.path == "/" %}
-            
-            <a href="{% url "index" %}" rel="prev" target="_self" style="font-weight: 650;">
-                <abbr style='text-decoration:none; color: inherit;' title="página inicial">INÍCIO</abbr>
+    <div class="header_content">
+        {% comment %} <a style="text-decoration:none; color: inherit;" href="{% url "index" %}" id="link_sobre_nos"> {% endcomment %
+        <span class="material-symbols-outlined" id="menu_icon" onclick="togglemenu()">menu</span>
+            <a href="{% url "sobre_nos" %}" id="link_sobre_nos">
+            <div id="logotipo">
+                <img id="icone" src="../img/estetoscopio32px.png" alt="MedConnect logo." />
+                <span id="titulo">MedConnect</span>
+            </div>
             </a>
+        
+        <nav id="menuList">
+                {% if request.path == "/" %}
+                
+                <a href="{% url "index" %}" rel="prev" target="_self" style="font-weight: 650;">
+                    <abbr style='text-decoration:none; color: inherit;' title="página inicial">INÍCIO</abbr>
+                </a>
+                    <span class="divisor">|</span>
+                {% else %}
+                    <a href="{% url "index" %}" rel="prev" target="_self">
+                        <abbr style="text-decoration:none; color:inherit;" title="página inicial">INÍCIO</abbr>
+                    </a>
+                    <span class="divisor">|</span>
+                {% endif %}
+            
+            {% if request.path == "/atendimento"%}
+                <a href="{% url "locais_de_atendimento" %}" target="_self" style="font-weight: 650;">
+                    <abbr style="text-decoration:none; color:inherit;" title="pesquisa de hospitais">LOCAIS DE ATENDIMENTO</abbr>
+                </a>
                 <span class="divisor">|</span>
             {% else %}
-                <a href="{% url "index" %}" rel="prev" target="_self">
-                    <abbr style="text-decoration:none; color:inherit;" title="página inicial">INÍCIO</abbr>
+                <a href="{% url "locais_de_atendimento" %}" target="_self">
+                    <abbr style="text-decoration:none; color:inherit;" title="pesquisa de hospitais">LOCAIS DE ATENDIMENTO</abbr>
                 </a>
                 <span class="divisor">|</span>
             {% endif %}
-        
-        {% if request.path == "/atendimento"%}
-            <a href="{% url "locais_de_atendimento" %}" target="_self" style="font-weight: 650;">
-                <abbr style="text-decoration:none; color:inherit;" title="pesquisa de hospitais">LOCAIS DE ATENDIMENTO</abbr>
-            </a>
-            <span class="divisor">|</span>
-        {% else %}
-            <a href="{% url "locais_de_atendimento" %}" target="_self">
-                <abbr style="text-decoration:none; color:inherit;" title="pesquisa de hospitais">LOCAIS DE ATENDIMENTO</abbr>
-            </a>
-            <span class="divisor">|</span>
-        {% endif %}
-        {% if request.path == "/triagem" %}
-            <a href="{% url "triagem" %}" target="_self" style="font-weight: 650;">
-                <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
-            </a>
-            <span class="divisor">|</span>
-        {% else %}
-            <a href="{% url "triagem" %}" target="_self">
-                <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
-            </a>
-            <span class="divisor">|</span>
-        {% endif %}
-        {% if request.path == "/duvidas_frequentes" %}
-            <a href="{% url "duvidas_frequentes" %}" target="_self" style="font-weight: 650;">
-                <abbr style="text-decoration:none; color:inherit;" title="informações sobre o site">DÚVIDAS FREQUENTES</abbr>
-            </a>
-        {% else %}
-            <a href="{% url "duvidas_frequentes" %}" target="_self">
-                <abbr style="text-decoration:none; color:inherit;" title="informações sobre o site">DÚVIDAS FREQUENTES</abbr>
-            </a>
-        {% endif %}
-        
-    </nav>
-    <button id="btnPesquisar">
-        <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">
-            <abbr style="text-decoration:none; color:inherit;" title="filtrar e buscar informação">PESQUISAR</abbr>
-        </p>
-        <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
-    </button>
-    {% if user.is_authenticated %}
-        <button type="button" class="login_box">
-            <span style="font-size: 11px;">{{ user.username }}</span>
-            <span class="material-symbols-outlined">account_circle</span>
-        </button>
-    {% else %}
-        <button type="button" class="login_box2">
-            <span  style="font-size: 11px;">Realizar Login</span>
-            <span class="material-symbols-outlined">account_circle</span>
-        </button>
-    {% endif %}
-        <!--</a>-->
+            {% if request.path == "/triagem" %}
+                <a href="{% url "triagem" %}" target="_self" style="font-weight: 650;">
+                    <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
+                </a>
+                <span class="divisor">|</span>
+            {% else %}
+                <a href="{% url "triagem" %}" target="_self">
+                    <abbr style="text-decoration:none; color:inherit;" title="avaliação de urgência">PRÉ-TRIAGEM</abbr>
+                </a>
+                <span class="divisor">|</span>
+            {% endif %}
+            {% if request.path == "/duvidas_frequentes" %}
+                <a href="{% url "duvidas_frequentes" %}" target="_self" style="font-weight: 650;">
+                    <abbr style="text-decoration:none; color:inherit;" title="informações sobre o site">DÚVIDAS FREQUENTES</abbr>
+                </a>
+            {% else %}
+                <a href="{% url "duvidas_frequentes" %}" target="_self">
+                    <abbr style="text-decoration:none; color:inherit;" title="informações sobre o site">DÚVIDAS FREQUENTES</abbr>
+                </a>
+            {% endif %}
             
-    <div class="content_account">
-        <button><a style="text-decoration: none; color: inherit;" href="{% url "meus_dados" %}"><p style="font-size: 11px; padding: 9px 0;"><abbr style="text-decoration:none; color: inherit;" title="minhas informações pessoais">MEUS DADOS</abbr></p></a></button>
-        <button><a style="text-decoration: none; color: inherit;" href="{% url "minhas_avaliacoes" %}"><p style="font-size: 11px; padding: 9px 0;"><abbr style="text-decoration:none; color: inherit;" title="minhas avaliações de hospitais">MINHAS AVALIAÇÕES</abbr></p></a></button>
-        <button style="border-radius: 0px 0px 20px 20px;"><a style="text-decoration: none; color: inherit;" href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
+        </nav>
+        <div id="box-sl">
+        <button id="btnPesquisar">
+            <p style="font-size: 15px; font-weight: 500; margin-right: 7px;">
+                <abbr style="text-decoration:none; color:inherit;" title="filtrar e buscar informação">PESQUISAR</abbr>
+            </p>
+            <span class="material-symbols-outlined" style="color: black; font-size: 25px;">search</span>
+        </button>
+        <span class="material-symbols-outlined" id="account_circle2">account_circle</span>
+        {% if user.is_authenticated %}
+            <button type="button" class="login_box">
+                <span id="name-account" style="font-size: 11px;">{{ user.username }}</span>
+                <span class="material-symbols-outlined" id="account_circle1">account_circle</span>
+            </button>
+        {% else %}
+            <button type="button" class="login_box2">
+                <span  style="font-size: 11px;">Realizar Login</span>
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+        {% endif %}
+            <!--</a>-->
+                
+        <div class="content_account">
+            <button><a style="text-decoration: none; color: inherit;" href="{% url "meus_dados" %}"><p style="font-size: 11px; padding: 9px 0;"><abbr style="text-decoration:none; color: inherit;" title="minhas informações pessoais">MEUS DADOS</abbr></p></a></button>
+            <button><a style="text-decoration: none; color: inherit;" href="{% url "minhas_avaliacoes" %}"><p style="font-size: 11px; padding: 9px 0;"><abbr style="text-decoration:none; color: inherit;" title="minhas avaliações de hospitais">MINHAS AVALIAÇÕES</abbr></p></a></button>
+            <button style="border-radius: 0px 0px 20px 20px;"><a style="text-decoration: none; color: inherit;" href="{% url "logout" %}"><p style="font-size: 11px; padding: 9px 0;">SAIR DO PERFIL</p></a></button>
+        </div>
     </div>
-
-    <!-- <nav>         
-        <a href="index.html" rel="prev" target="_self">INÍCIO</a>
-        <span class="divisor">|</span>
-        <a href="locais_de_atendimento.html" target="_self">LOCAIS DE ATENDIMENTO</a>
-        <span class="divisor">|</span>
-        <a href="area_do_paciente.html" target="_self">PRÉ-TRIAGEM</a>
-        <!-<a href="area_do_colaborador.html" target="_self">ÁREA DO COLABORADOR</a>--
-        <span class="divisor">|</span>
-        <a href="duvidas_frequentes.html" target="_self">DÚVIDAS FREQUENTES</a>
-        <!- 'target="_self"': continua na mesma aba. -- 
-    </nav> -->
 </header>
     <section id="pesquisa"> 
         <div id="top-bar1" style="display: none;">
