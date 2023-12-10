@@ -149,11 +149,10 @@
         </div>-->
         <div class="owl-carousel owl-theme">
             {% for i in news_data %}
-            <li>
-                <h2>{{ i.0 }}</h2>
-                <img src="{{ i.1 }}" alt="Imagem da notícia">
-                <p>{{ i.2 }}</p>
-                <a href="{{ i.3 }}" target="_blank" rel="noreferrer noopener">Leia mais</a>
+            <li style="list-style:none; padding: 0 1rem 0 1rem;">
+                <h2 class="news-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size:1.2rem; padding-top: 1rem;">{{ i.0 }}</h2>
+                <a class="news-link" href="{{ i.3 }}" target="_blank" rel="noreferrer noopener" style="text-align:center;"><img class="carousel-image" src="{{ i.1 }}" alt="Imagem da notícia" style="border-radius: 2rem; border: 0.4rem solid #2A8C4A; margin: 1rem 0 1rem 0;"></a>
+                <p class="text-p" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 1rem 0 1rem 0;">{{ i.2 }}<br><br><strong>Fonte: g1</strong></p>
             </li>
             {% endfor %}
         </div>
