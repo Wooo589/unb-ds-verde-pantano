@@ -46,6 +46,13 @@ body{
     width: 450px;
     height: 300px;
 }
+.modal_esqueciSenha{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 450px;
+    height: 200px;
+}
 .CriarConta{
     color: var(--clr);
     text-align: end;
