@@ -42,6 +42,7 @@ html{
 body{
     background-color: rgba(245, 245, 245, 0.600);
     min-height: 100vh;
+    width: 100%;
 }
 #box_banner{
     display: flex;
@@ -49,31 +50,30 @@ body{
     justify-content: space-between;
     background-color: rgba(240, 240, 240);
     width: 100%;
-    height: 200px;
+    height: auto;
     /* border-bottom: 1px solid lightgray; */
 }
+#text_banner{
+    font-family: var(--fonte-titulo);
+    font-weight: 200;
+    font-size: 3.5rem;
+    color: var(--color3);
+    margin-top: 65px;
+    text-shadow: 2px 3px rgba(0, 0, 255, .2);
+    width: 90%;
+}
 #box_banner img{
-    height: 100%;
+    height: auto;
+    width: 100%;
 }
 #banner{
-    background-image: url('../img/banner.jpg');
+    background-image: url("../../img/banner.jpg");
     background-size: cover;    
     /* background-attachment: fixed; */
     /* height: 200px;  */
     width: 100%;  
     /* margin-top: 10px; */
     /* opacity: 50%; */
-}
-#text_banner{
-    font-family: var(--fonte-titulo);
-    font-size: 35px;
-    font-weight: 200;
-    color: var(--color3);
-    margin-top: 85px;
-    margin-left: 120px; 
-    text-shadow: 2px 3px rgba(0, 0, 255, .2);
-    height: 100px;
-    width: 90%;
 }
 main{
     position: relative;
@@ -229,13 +229,13 @@ img{
 	margin:10px 10px 10px 10px;/*espaço entre os inner-flex-items (blocos horizontais)*/
     background-color: whitesmoke;/**/
     /* height: 200px; */
+    width: 90%;
 }
 .tempos{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 65px;
-    margin: 0 7px;
     /* height: 200px; */
 }
 .tempos span{
@@ -369,85 +369,72 @@ div.c{
     position: relative;
     margin:2em;
 }
+
+input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity:0;
+    visibility: 0;
+}
+@media (max-width: 2560px) {
+    main{
+        width: 55%;
+        margin: auto;
+    }
+    #lista_hospitais, #lista_news{
+        width: 80%;
+    }
+    #text_banner{
+        margin-top: 30px;
+        margin-left: 1000px;
+    }
+    #info-class-urg.on{
+        width: 20%;
+    }
+}
+@media (max-width: 1440px) {
+    main{
+        width: 85%;
+    }
+    #text_banner{
+        margin-left: 200px;
+    }
+    #info-class-urg.on{
+        width: 30%;
+    }
+}
 @media (max-device-width: 1024px) {
     .arrow {
       width: 20%;
     }
     .slide {
-        width: 90%
+        width: 70%
     }
     .slide_news {
         width: 60%
     }
-    nav {
+    /* nav {
         display: flex;
-    } 
-}
-  
-@media (max-width: 768px) {
-    .arrow {
-      width: 10%;
+    }  */
+    #text_banner{
+        margin-left: 120px;
     }
+    #info-class-urg.on{
+        width: 50%;
+    }
+}
+@media (max-width: 768px) {
     .slide {
         width: 90%
     }
     .slide_news {
         width: 60%
     }
-}
-@media only screen and (max-width:700px){
-    #top-bar1, #top-bar1.fixed{
-        padding: .6% 8%;
-        z-index: 1;
-    }
-    .divisor{
-        display: none;
-    }
-    nav {
-        display: none;
-    }
-    nav{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        display: none;
-        width: 100%;
-        color: var(--back-nav-selected1);
-        background-color: var(--back-nav-selected2);
-        position: fixed;
-        top: 50px;
-        right: 0;
-        z-index: 3;
-        padding: 20px 0;
-        overflow: hidden;
-        transition: 0.5s;
-        box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.25);
-    }
-    nav a{
-        margin: 5px 0;
-    }
-    #menu_icon{
-        display: block;
-        color: var(--back-nav-selected1);
-        margin-left: 10px;
-    }
-    .login_box{
-        display: none;
-    }
-    #account_circle1{
-        display: none;
-    }
-    #account_circle2{
-        display: inline-block;
-    }
-    #btnPesquisar{
-        margin: 0;
-    }
-    #name-account{
-        display: none;
-    }
     #locais_proximos, #noticias{
-        font-size: 15px;
+        font-size: 1.5rem;
     }
     #box_banner{
         display: flex;
@@ -455,7 +442,6 @@ div.c{
         justify-content: space-between;
         background-color: rgba(240, 240, 240);
         /* border-bottom: 1px solid lightgray; */
-        height: 130px;
     }
     #banner{
         background-image: url("../../img/banner.jpg");
@@ -467,31 +453,71 @@ div.c{
         /* opacity: 50%; */
     }
     #text_banner{
-        font-family: var(--fonte-titulo);
-        font-size: 15px;
-        font-weight: 200;
-        color: var(--color3);
-        margin-top: 25px;
-        margin-left: 35px; 
-        text-shadow: 2px 3px rgba(0, 0, 255, .2);
-        height: 160px;
+        margin-top: 35px;
+        margin-left: 70px;
+        font-size: 2rem;
+        height: auto;
         width: 90%;
     }
     #info-class-urg{
         font-size: 10px;
     }
-    .c-orange,
-    .c-yellow,
-    .c-green,
-    .c-blue {
-    height: 25px;
-    width: 25px;
-    }
-    #btnPesquisar > p{
-        display: none;
-    }
     .arrow_left{
         left: 0px;
         margin-left: -15px;
+    }
+}
+@media (max-width: 425px) {
+    #text_banner{
+        font-size: 1.3rem;
+        height: auto;
+        margin-top: 20px;
+    }
+    #info-class-urg.on{
+        top: 50%;
+    }
+    #locais_proximos, #noticias, strong, small{
+        font-size: 1.2rem;
+    }
+    .tempos span{
+        font-size: 1rem;
+    }
+    .tempos{
+        margin: 0px;
+    }
+    .c-orange, .c-yellow, .c-green, .c-blue{
+        width: 25px;
+        height: 25px;
+    }
+    .footer_content{
+        font-size: .8rem;
+        margin: auto;
+    }
+}
+@media (max-width: 425px), (orientation: landscape) {
+    #info-class-urg.on{
+        top: 50%;
+        width: 85%;
+    }
+}
+@media (max-width: 375px){
+    .c-orange, .c-yellow, .c-green, .c-blue{
+        width: 20px;
+        height: 20px;
+    }
+    #title-info-class-urg{
+        font-size: .8rem;
+    }
+    #info-class-urg.on{
+        padding: 20px;
+    }
+}
+@media (max-width: 320px){
+    #text_banner{
+        margin-top: 7px;
+        margin-left: 30px;
+    }
+    #arrow_left1, #arrow_left2, #arrow_right1, #arrow_right2 {
+        display: none;
     }
 }

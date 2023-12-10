@@ -37,6 +37,7 @@
 }
 html{
     height: 100%;
+    font-size: 62.5%;
 }
 body{
     background-color: #ededed;
@@ -53,30 +54,35 @@ main{
     top: 0px;
     min-width: 300px;
     max-width: 900px;
-    padding: 50px 50px 100px 50px;
+    padding: 22px 50px 120px 50px;
+}
+h1{
+    position: relative;
+    display: block;
+    color: var(--color3);
+    font-size: 2.6rem;
+    padding: 2px 0;
+    /* margin-top: 22px; */
+    margin-left: 10px;
+    margin-bottom: 6px;   
+}
+h2{
+    font-size: 2.2rem;
+    margin: 30px 0 20px 0;
+    font-weight: 550;
+    font-family: var(--fonte-destaque);
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
 }
 article{
     margin-bottom: 50px;
-}
-/* main > span > article > */h1{
-    font-family: var(--fonte-padrao);
-    font-size: 20px;
-    /* width: 490px; */
-    margin-bottom: 20px;
-    color: #000;
-    /* font-family: Montserrat; */
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    position: relative;
-    /* top: 20px; */
 }
 main > span > article > p{
     font-family: var(--fonte-padrao);
     color: #000;
     text-align: justify;
     /* font-family: Montserrat; */
-    font-size: clamp(1em,1em+1vh,1.5em);
+    font-size: 1.7rem;
     font-style: normal;
     font-weight: 400;
     line-height: 25px;

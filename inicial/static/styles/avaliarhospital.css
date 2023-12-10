@@ -122,7 +122,9 @@ main .detalhamento {
     flex-direction: column;
     align-items: center;
 }
-
+.min{
+    font-size: 1.6rem;
+}
 .detalhamento > ul {
     position: absolute;
     display: flex;
