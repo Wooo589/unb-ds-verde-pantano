@@ -39,9 +39,9 @@
     {% include "inicial/partials/_login.html" %}
     {% include "inicial/partials/_header.html" %} 
         <main>
-        <div id="title">
+        <div id="box_title">
             <a href="{% url "meus_dados" %}"><i class="uil uil-angle-down"></i></a>
-            <h1>MEUS DADOS</h1>
+            <h1 id="title">MEUS DADOS</h1>
         </div>
             <hr/>
             <span id="aviso">*Os dados informados não são obrigatórios. Podem ajudar no entendimento de seu caso de saúde.</span>
@@ -496,10 +496,8 @@
     </form>
     <!--<pre id="result"></pre>-->
         </main>
-        <footer>
-            <p>©2023, MedConnect.</p>
-            <p>Verde Pântano - Desenvolvimento de Sotfware, 2023/2.</p>
-        </footer>
+        {% include "inicial/partials/_footer.html"%}
+        <script src="js/togglemenu.js"></script>
         <script src="{% static "js/editardados.js"%}"></script>
 </body>
 </html>
