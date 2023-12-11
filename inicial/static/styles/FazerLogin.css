@@ -60,6 +60,7 @@ p.modal_phrase{
     /* font-family: Josefin Sans; */
     margin-top: 10px;
     padding: 20px;
+    font-size: 14px;
 }
 .modal_login{
     background-color: white;
