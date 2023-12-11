@@ -6,6 +6,9 @@
     padding: 0px;
     box-sizing: border-box;
 }
+html{
+    height: 100vh;
+}
 .container_adulto1{
     padding-top: 22px;
     margin: auto;

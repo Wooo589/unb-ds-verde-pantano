@@ -18,6 +18,7 @@
     --black: #000000;
     --color3: #024053;
     --c-orange: #FF9533;
+    --c-orange2: #c56104;
     --c-yellow: #FBFE2D;
     --c-green: #6EFF57;
     --c-blue: #577CFF;
@@ -36,7 +37,6 @@
 }
 html{
     height: 100%;
-    font-size: 62.5%;
 }
 body{
     font-family: var(--fonte-padrao);  
@@ -65,17 +65,9 @@ main > h1 {
     display: block;
     color: var(--color3);
     /* background-color: #e2e2e2be; */
-    font-size: 1.8rem;
+    font-size: 18px;
     margin-top: 22px;  
     margin-bottom: 6px;
-}
-.box_tempos_medios{
-    display: flex;
-    flex-direction: column;
-}
-.box_tempos_medios > span{
-    font-size: 1.5rem;
-    margin-bottom: 7px;
 }
 #gerais{
     display: flex;
@@ -86,34 +78,34 @@ main > h1 {
     font-family: var(--fonte-destaque);
     margin-top: 12px;
     margin-bottom: 2px;
-    font-size: 1.8rem;
+    font-size: 18px;
 }
 #gerais span{
     font-family: var(--fonte-destaque);
-    font-size: 1.8rem;
+    font-size: 18px;
 }
 #container_contato{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 125px;
-}
-#contato{
-    display: flex;
-    flex-direction: column;
+    width: 425px;
 }
 #inf_gerais{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: auto;
     width: 90%;
 }
 .tempos_de_espera{
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 25%;
+    gap: 20px;
     margin-top: 10px;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     width: 270px;
+    height: 120px;
+    background-color:  rgba(226, 226, 226, 0.733);
 }
 .tempos span{
     font-family: var(--fonte-padrao);
@@ -122,9 +114,6 @@ main > h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.min{
-    font-size: 1.6rem;
 }
 #classificacao{
     display: flex;
@@ -145,14 +134,13 @@ main > h1 {
     background-color: rgba(70, 131, 180, 0.25);
     border-radius: 3px;
 }
-#classificacao > span{
-    font-size: 1.6rem;
-}
 #estrelas{
     margin-left: 20px;
 }
-#estrelas > span{
-    font-size: 2rem;
+#container2{
+    display: flex;
+    width: 90%;
+    margin: auto;
 }
 #mais_informacoes{
     display: flex;
@@ -181,7 +169,7 @@ main i{
     transform: rotate(90deg);
     top: 14px;
     left: 15px;
-    font-size: 3rem;
+    font-size: 30px;
     z-index: 1;
 }
 main i:hover{
@@ -209,6 +197,7 @@ main i:hover{
 .c-blue {
     background-color: var(--c-blue);
 }
+
 #btn_avaliar {
     display: flex;
     font-family: var(--fonte-destaque);
@@ -222,8 +211,11 @@ main i:hover{
     margin-bottom: 15px;
     align-items: center;
     color: #F0F0F0;
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 500;
+}
+#btn_avaliar:hover{
+    background-color: rgb(177, 54, 9);
 }
 #link_avaliar{ 
     /* font-size: 14px; */
@@ -247,7 +239,7 @@ main i:hover{
 .link button{
     background-color: #BBD9FB;
     font-family: var(--fonte-destaque);
-    font-size: 1.5rem;
+    font-size: 15px;
     font-weight: 500;
     padding: 7px 0 7px 0;
     height: 150px;
@@ -270,15 +262,16 @@ main i:hover{
     color:orange;
 }
 .inline{
-    font-size: 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px 20px 100px 40px;
-    width: 20%;
+    margin: 40px 20px 10px 40px;
+    width: 23%;
+    font-size: 14px;
 }
-/* .list{
+.list{
     margin: 20px 20px 40px 40px;
+    font-size: 14px;
 }
 .list > li{
     display: flex;
@@ -286,19 +279,20 @@ main i:hover{
     justify-content: space-between;
     margin: 7px 0 0 20px;
     width: 15%;
-} */
+    font-size: 14px;
+}
 #fontes{
-    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     margin: 30px 0 0 40px;
+    font-size: 14px;
 }
 #f{
     display: flex;
     flex-direction: column;
+    font-size: 14px;
 }
 #f > a{
-    font-size: 1.5rem;
     margin-top: 7px;
 }
 
@@ -331,6 +325,9 @@ main i:hover{
     }
 }
 @media (max-width: 768px) {
+    .email_1{
+        display: block;
+    }
     main{
         width: 90%;
     }

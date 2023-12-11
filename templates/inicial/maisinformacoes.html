@@ -67,7 +67,7 @@
                         <span><small>{{ hospital.telefone }}</small></span>
                     </div>
                     <div style="margin-bottom: 10px;" class="#">
-                        <span><small>Email: </small></span> 
+                        <span class="email_1"><small>Email: </small></span> 
                         <span><small>{{ hospital.email }}</small></span>
                     </div>
                 </div>
@@ -97,8 +97,8 @@
         <!-- <hr/> -->
         <div id="avaliacao">
             <div id="classificacao">
-                <span>Avaliação geral:</span>
-                <abbr style="text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">
+                <span  style="font-size:16px;">Avaliação geral:</span>
+                <abbr style="font-size:16px; text-decoration:none;" title="Nota média do hospital baseado nas avaliações de usuários: {{ hospital.nota }}"><div class="inner-flex-item">
                     {% for number in counter %}
                         {% if number <= hospital.nota %}
                         <span class="fa fa-star checked"></span>
@@ -144,7 +144,7 @@
                 <a href="https://opendatasus.saude.gov.br/dataset/hospitais-e-leitos/resource/5701f27f-a202-4605-a944-7dbe888c0445/view/3d1e5da4-fefc-4e2c-bdde-917e50d44088">🞄 Banco de dados OPENDATASUS;</a>
                 <a href="https://info.saude.df.gov.br/transparenciaativanovo/">🞄 Portal "Transparência e Prestação de Contas" - SES-DF.</a>
             </div>
-        </div
+        </div>
     </main>
     {% include "inicial/partials/_footer.html"%}
     <script src="../static/js/togglemenu.js"></script>
