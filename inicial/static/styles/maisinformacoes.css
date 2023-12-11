@@ -94,11 +94,14 @@ main > h1 {
     width: 90%;
 }
 .box_tempos_medios{
+    display: flex;
+    flex-direction: column;
     background-color: lightgray;
     border-radius: 7px;
 }
 .box_tempos_medios > span{
     font-size: 14px;
+    margin-bottom: 7px;
 }
 .tempos_de_espera{
     border-radius: 10px;
