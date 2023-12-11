@@ -102,7 +102,7 @@ header{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    /* min-width: 150px; */
+    min-width: 113.66px;
     height: 36px;
     border: 0px;
     border-radius: 20px;
@@ -126,13 +126,13 @@ header{
 .content_account {
     padding: 0 18px;
     display: none;
-    position: fixed;
+    position: absolute;
     flex-direction: column;
     overflow: hidden;
     background-color: transparent;
-    width: 186px;
-    top: 48px;
-    right: 31px;
+    width: 150px;
+    top: 42px;
+    right: -8px;
     font-size: 0.8rem;
     z-index: 10;
 }
@@ -289,6 +289,7 @@ nav.on{
 }
 #top-bar1 > span{
     font-size: 14px;
+}
 #top-bar2{
     padding: 0px 2%;
 }
@@ -490,7 +491,7 @@ footer {
     }
 }
 @media (max-width: 1024px){
-    #txt_btnPesquisar, nav > a, #name-account, #content_account{
+    #txt_btnPesquisar, nav > a, #name-account, .content_account{
         font-size: 1.05rem;
     }
     #titulo{
@@ -538,7 +539,7 @@ footer {
         color: var(--back-nav-selected1);
         margin-left: 10px;
     }
-    .login_box, .login_box2{
+    .login_box, .login_box2, .content_account{
         display: none;
     }
     #account_circle1{

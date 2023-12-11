@@ -7,7 +7,7 @@ $(document).ready(function(){
             this.style.borderRadius = "20px";
         } else {
         content_account.style.display = "flex";
-        this.style.borderRadius = "20px";
+        this.style.borderRadius = "20px 20px 0 0";
         }
     });
 });
