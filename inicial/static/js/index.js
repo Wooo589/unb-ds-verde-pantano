@@ -1,42 +1,3 @@
-//Evento de digitação no campo de pesquisa??
-// document.getElemenyById('input-pesquisa').addEventListener('input',function(){
-//     const query=this.value.trim();
-//     //Verifi"cando se a consulta não está vazia
-//     if(query!== ''){
-//         //Envia solicitação AJAX para o servidor para obter sugestões *??
-//         //SUBSTITUIR ESSA PARTE COM SUA LÓGICA REAL DE OBTENÇÃO DE SUGESTÕES DO SERVIDOR
-//         const suggestions = getSuggestionsFromServer(query);
-//         //Atualizar as sugestões no DOM *??
-//         displaySuggestions(suggestions);
-//     }
-//     else{
-//         //Se o campo de pesquisa estiver vazio, limpe as sugestões
-//         clearSuggestions();
-//     }
-// });
-// function getSuggestionsFromServer(query){
-//     //SIMULANDO UMA SOLICITAÇÃO AO SERVIDOR PARA OBTER SUGESTÕES
-//     //SUBSTITUIR ISSO COM SUA LÓGICA DE BUSCA REAL
-//     const suggestions=[
-//         'Hospital Regional do Gama',
-//         'Hospital Regional de Santa Maria',
-//         'Hospital Regional de Planaltina'
-//     ];
-//     return suggestions;
-// }
-// function displaySuggestions(suggestions){
-//     const sugestoesContainer=document.getElementById('sugestoes-container');
-//     sugestoesContainer.innerHTML='';//*??
-//     suggestions.forEach(function(suggestion){
-//         const suggestionElement=document.createElement('div');
-//         suggestionElement.textContent=suggestion;
-//         suggestionsContainer.appendChild(suggestionElement);
-//     });
-// }
-// function clearSuggestions(){
-//     const suggestionsContainer = document.getElementById('sugestoes-container');
-//     suggestionsContainer.innerHTML='';
-// }
 $(document).ready(function(){
     var interval = window.setInterval(rotateSlides, 6000)
 
@@ -116,78 +77,44 @@ $(document).ready(function(){
         });
     }
 
-    // $("#menu_icon").click(function(){
-    //     $("#menuList").toggle();
-    // })
+    $(".btn-info-class").click(function(){
+        $("#info-class-urg").addClass("on");
+    })
+    $("#close").click(function(){
+        $("#info-class-urg").removeClass("on");
+    })
+    $("#btnPesquisar").click(function(){
+        $("#top-bar1").toggle("fast");
+        $("#top-bar2").hide("fast");
+        $("#top-bar3").hide("fast");
+        $("#fechar_aba").show("fast");
+      })  
+      $("#fechar_aba").click(function(){
+        $("#top-bar1").hide();
+        $("#top-bar2").hide();
+        $("#top-bar3").hide();
+      })
+      $(".voltar").click(function(){
+        $("#top-bar1").show();
+        $("#top-bar2").hide();
+        $("#top-bar3").hide();
+        $("#fechar_aba").show("fast");
+      })
+      $(".login_box").click(function(){
+        $("#top-bar1").hide();
+        $("#top-bar2").hide();
+        $("#top-bar3").hide();
+      }) 
 });
-
-var menuList = document.getElementById("menuList");
-
-function togglemenu() {
-    if(menuList.style.display == "none")
-    {
-        menuList.style.display = "flex";
-        menuList.style.maxHeight = "190px";
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 1){  
+    $("#top-bar1").addClass("fixed");
+    $("#top-bar2").addClass("fixed");
+    $("#top-bar3").addClass("fixed");
     }
-    else
-    {
-        menuList.style.display = "none";
-        
+    else{
+    $("#top-bar1").removeClass("fixed");
+    $("#top-bar2").removeClass("fixed");
+    $("#top-bar3").removeClass("fixed");
     }
-}
-
-  
-  
- 
-  
-
-
-
-// var swiper = new Swiper(".mySwiper", {
-//     slidesPerView: 3,
-//     spaceBetween: 25,
-//     // slidesPerGroup: 3,
-//     loop: true,
-//     // loopFillGroupWithBlank: true,
-//     centerSlide: 'true',
-//     fade: 'true',
-//     grabCursor: 'true',
-//     pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//     },
-//     navigation: {
-//       nextEl: ".swiper-button-next",
-//       prevEl: ".swiper-button-prev",
-//     },
-
-//     breakpoints:{
-//         0: {
-//             slidesPerView: 1,
-//         },
-//         520: {
-//             slidesPerView: 2,
-//         },
-//         950: {
-//             slidesPerView: 2,
-//         },
-//     },
-// });
-
-//OWL CAROUSEL-->
-
-// $('.loop').owlCarousel({
-// center: true,
-// items:2,
-// loop:true,
-// margin:10,
-// responsive:{
-// 600:{
-// items:4
-// }
-// }
-// });
-// //INICIANDO
-// $(document).ready(function(){
-//     $(".owl-carousel").owlCarousel();
-// });
+});
