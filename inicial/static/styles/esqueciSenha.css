@@ -50,6 +50,7 @@ height: 320px;
     /* margin: auto; */
 }
 .modal_phrase{
+    font-size: 14px;
     text-align: justify;
     align-items: center;
     /* font-family: Josefin Sans; */
