@@ -105,6 +105,7 @@ div#modal_title > h1{
     /* margin: auto; */
 }
 .CriarConta{
+    font-size: 14px;
     color: var(--clr);
     text-align: end;
     /* font-family: Josefin Sans; */
@@ -113,6 +114,8 @@ div#modal_title > h1{
 .CriarConta:hover{
     text-decoration: underline;
 }
+.modal_title{
+    font-size: 14px;
 .email_login{
     width: 370px;
     height: 40px;
