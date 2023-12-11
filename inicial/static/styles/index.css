@@ -159,6 +159,10 @@ main{
 #locais_proximos{
     margin-top: 10px;
 }
+.first-line{
+	font-size: 1.5rem;
+}
+
 #noticias{
     margin-top: 120px;
 
@@ -284,7 +288,6 @@ img{
     left: 50%;
     transform: translate(-50%,-50%); 
     z-index: 2;
-    width: 50%;
     background-color: whitesmoke;
     border: 1px solid lightgray;
     border-radius: 10px;
@@ -301,6 +304,8 @@ img{
     align-items: center;
 }
 #info-class-urg > p{
+    font-size: 1.4rem;	
+    font-weight: 400;
     text-indent: 30px;
     text-align: justify;
     letter-spacing: .5px;
@@ -319,6 +324,7 @@ img{
     margin-bottom: 7px; 
 }
 .info-cor > p{
+    font-size: 1.4rem;
     margin-left: 10px;
     font-weight: 500;
 }
@@ -382,7 +388,7 @@ div.c{
         margin-left: 1000px;
     }
     #info-class-urg.on{
-        width: 20%;
+        width: 50%;
     }
 }
 @media (max-width: 1440px) {
@@ -393,7 +399,7 @@ div.c{
         margin-left: 200px;
     }
     #info-class-urg.on{
-        width: 30%;
+        width: 50%;
     }
 }
 @media (max-device-width: 1024px) {
@@ -411,9 +417,6 @@ div.c{
     }  */
     #text_banner{
         margin-left: 120px;
-    }
-    #info-class-urg.on{
-        width: 50%;
     }
 }
 @media (max-width: 768px) {
