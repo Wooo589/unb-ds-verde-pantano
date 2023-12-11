@@ -176,10 +176,10 @@ header{
 }
 #txt_pesquisar_locais,
 input#txt_outras_duvidas{
-    float: left;  
+    float: left;
     background-color: white;
     padding-left: 12px;
-    padding-bottom: 2px; 
+    padding-bottom: 2px;
     font-size: 1.2rem;
     font-family: var(--fonte-padrao);
     border: none;
@@ -189,6 +189,7 @@ input#txt_outras_duvidas{
     width: 700px;
     max-width: 700px;
     outline: none;
+    margin: 10px;
 }
 .spanPesquisar:hover {
     border: 1px solid lightgray;
@@ -331,9 +332,8 @@ nav.on{
     border: 1px solid rgba(128, 128, 128, 0.616);
 }
 .wrapper{
-    display: block;
+    display: inline-block;
     width: 180px;
-    margin: 10px;
     border: 1px solid rgba(128, 128, 128, 0.616);
     border-radius: 3px;
 }
@@ -431,15 +431,13 @@ nav.on{
     background-color:rgb(190, 188, 188);
 }
 #btnProcurar {
-    /* position: absolute; */
     background-color: #BBD9FB;
     border: 1px solid var(--c-blue);
     border-radius: 5px;
     padding: 2px 3px 0px 3px;
-    margin: 0 25px 0 10px;
+    margin: 10px 25px 10px 10px;
     cursor: pointer;
     box-shadow: 1px 1px 10px 0px lightgray;
-    z-index: 0;
 }
 #btnProcurar:hover{
     cursor:pointer;
@@ -538,7 +536,7 @@ footer {
         color: var(--back-nav-selected1);
         margin-left: 10px;
     }
-    .login_box{
+    .login_box, .login_box2{
         display: none;
     }
     #account_circle1{
