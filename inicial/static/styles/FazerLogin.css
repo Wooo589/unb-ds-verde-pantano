@@ -198,7 +198,7 @@ div#modal_title > h1{
     background-color: #ededed;
     box-shadow: none;
 }
-.voltar{
+.voltar3{
     background-color: transparent;
     border: none;
     padding: 0 5px;
@@ -206,7 +206,7 @@ div#modal_title > h1{
     font-size: 30px; 
     color: gray;
 }
-.voltar:hover{
+.voltar3:hover{
     cursor: pointer;
 }
 
