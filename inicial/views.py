@@ -497,6 +497,8 @@ def editar_dados(request):
                     novos_dados.exercicio_frequencia = dados["freq2"]
 
         if "sim-nao3" in dados:
+            Doencas.objects.filter(user=request.user).delete()
+
             if dados["sim-nao3"] != "nao":
                 if "doenca_cronica" in dados:
                     doencas = dados["doenca_cronica"]
@@ -511,6 +513,8 @@ def editar_dados(request):
                                 Doencas.objects.create(user=request.user, doenca=doenca)
 
         if "sim-nao4" in dados:
+            Sintomas.objects.filter(user=request.user).delete()
+
             if dados["sim-nao4"] != "nao":
                 sintomas = dados["sintomas"]
 
@@ -524,6 +528,8 @@ def editar_dados(request):
                             Sintomas.objects.create(user=request.user, sintoma=sintoma)
 
         if "sim-nao5" in dados:
+            Diagnostico.objects.filter(user=request.user).delete()
+
             if dados["sim-nao5"] != "nao":
                 diagnosticos = dados["doencas-diag"]
 
@@ -537,6 +543,8 @@ def editar_dados(request):
                             Diagnostico.objects.create(user=request.user, diagnostico=diagnostico)
 
         if "sim-nao6" in dados:
+            Cirurgia.objects.filter(user=request.user).delete()
+
             if dados["sim-nao6"] != "nao":
                 cirurgias = dados["cirurgias"]
                 data_cirurgia = dados["data_cirurgia"]
@@ -553,6 +561,8 @@ def editar_dados(request):
                             Cirurgia.objects.create(user=request.user, cirurgia=cirurgias[i], data=data)
 
         if "sim-nao7" in dados:
+            Internacao.objects.filter(user=request.user).delete()
+
             if dados["sim-nao7"] != "nao":
                 motivo = dados["motivo_internacao"]
                 tempo_internacao = dados["tempo_internacao"]
@@ -570,6 +580,8 @@ def editar_dados(request):
                             Internacao.objects.create(user=request.user, tempo=tempo_internacao[i], data=data, internacao=motivo[i])
 
         if "sim-nao8" in dados:
+            Condicao_familiar.objects.filter(user=request.user).delete()
+
             if dados["sim-nao8"] != "nao":
                 if "condicao" in dados and "grau_parentesco" in dados:
                     grau_parentesco = dados["grau_parentesco"]
@@ -585,6 +597,8 @@ def editar_dados(request):
                                 Condicao_familiar.objects.create(user=request.user, condicao=condicao[i], grau_parentesco=grau_parentesco[i])
 
         if "sim-nao9" in dados:
+            Medicamento.objects.filter(user=request.user).filter(tipo__iexact="1").delete()
+
             if dados["sim-nao9"] != "nao":
                 if "medicamento_cp" in dados and "freq_med_cp" in dados and "freq3" in dados: 
                     medicamento_cp = dados["medicamento_cp"]
@@ -609,6 +623,8 @@ def editar_dados(request):
                                     numero_frequencia=freq_cp[i])
 
         if "sim-nao10" in dados:
+            Medicamento.objects.filter(user=request.user).filter(tipo__iexact="2").delete()
+
             if dados["sim-nao10"] != "nao":
                 if "medicamento_sp" in dados and "freq_med_sp" in dados and "freq4" in dados:
                     medicamento_sp = dados["medicamento_sp"]
