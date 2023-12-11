@@ -84,7 +84,7 @@ main .detalhamento {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: auto;
+    margin: 0px;
     width: 90%; 
 }
 .nome_local > h3{
@@ -99,9 +99,9 @@ main .detalhamento {
 }
 #container_contato{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    width: 125px;
+    width: 425px;
 }
 #contato{
     display: flex;
@@ -129,7 +129,6 @@ main .detalhamento {
     position: absolute;
     display: flex;
     flex-direction: column;
-   
 }
 .detalhamento > ul > li{
     position: relative;
@@ -153,10 +152,12 @@ main i:hover{
     align-items: flex-start;
     width: 90%;
     margin: auto;
+    font-size:15px;
 }
 .box_tempos_medios{
     display: flex;
     flex-direction: column;
+    font-size: 14px;
 }
 .box_tempos_medios > span{
     font-size: 1.5rem;
@@ -454,6 +455,9 @@ footer {
 }
        
 @media (max-width: 768px) {
+    .email_1{
+        display: block;
+    }
     main{
         width: 90%;
     }

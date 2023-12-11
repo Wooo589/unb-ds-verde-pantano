@@ -45,11 +45,15 @@
         <div id="inf_gerais">
             <div class="nome_local">
                 <h3><strong>{{ hospital.nome }}</strong></h3>
-                <span><small>{{ hospital.endereco }}.</small></span> <span><small>CEP: {{ hospital.nome }}</small></span>
+                <span style="margin-bottom: 10px;"><small>{{ hospital.endereco }}.</small></span> 
+                <span style="margin-bottom: 10px;"><small>CEP: {{ hospital.nome }}</small></span>
                 <div id="container_contato">
-                    <span><small>Contato:</small></span> 
-                    <div id="contato">
+                    <div style="margin-bottom: 10px;" class="#">
+                        <span><small>Contato: </small></span> 
                         <span><small>{{ hospital.telefone }}</small></span>
+                    </div>
+                    <div style="margin-bottom: 0px;" class="#">
+                        <span class="email_1"><small>Email: </small></span> 
                         <span><small>{{ hospital.email }}</small></span>
                     </div>
                 </div>
