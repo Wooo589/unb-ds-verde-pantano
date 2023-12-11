@@ -297,6 +297,9 @@ def avaliacao_completa(request, avaliacao_id):
     return render(request, "inicial/av_completa.html", context)
 
 def triagem(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "idade" not in request.POST or "termo" not in request.POST:
             messages.error(request,"Você precisa selecionar os campos.")
@@ -305,17 +308,23 @@ def triagem(request):
             return redirect("crianca1")
         else:
             return redirect("adulto1")
-    return render(request, 'inicial/PreTriagem.html')
+    return render(request, 'inicial/PreTriagem.html', context)
 
 def adulto1(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_a1" not in request.POST:
             return redirect("adulto2")   
         if request.POST["quest_a1"] == "1":
             return redirect("resultado_vermelho")
-    return render(request, 'inicial/adulto1.html')
+    return render(request, 'inicial/adulto1.html', context)
 
 def crianca1(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_b1" not in request.POST:
             return redirect("crianca2")   
@@ -324,67 +333,97 @@ def crianca1(request):
     return render(request, 'inicial/criança1.html' )
 
 def resultado_vermelho(request):
-    return render(request, 'inicial/vermelho_triagem.html')
+    return render(request, 'inicial/vermelho_triagem.html', context)
 
 def crianca2(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_b2" not in request.POST:
             return redirect("crianca3")   
         if request.POST["quest_b2"] == "1":
             return redirect("resultado_laranja")
-    return render(request, 'inicial/criança2.html') 
+    return render(request, 'inicial/criança2.html', context) 
 
 def adulto2(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_a2" not in request.POST:
             return redirect("adulto3")   
         if request.POST["quest_a2"] == "1":
             return redirect("resultado_laranja")
-    return render(request, 'inicial/adulto2.html')
+    return render(request, 'inicial/adulto2.html', context)
 
 def resultado_laranja(request):
-    return render(request, 'inicial/laranja_triagem.html')
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
+    return render(request, 'inicial/laranja_triagem.html', context)
 
 def crianca3(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_b3" not in request.POST:
             return redirect("crianca4")   
         if request.POST["quest_b3"] == "1":
             return redirect("resultado_amarelo")
-    return render(request, 'inicial/criança3.html')
+    return render(request, 'inicial/criança3.html', context)
 
 def adulto3(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_a3" not in request.POST:
             return redirect("adulto4")   
         if request.POST["quest_a3"] == "1":
             return redirect("resultado_amarelo")
-    return render(request, 'inicial/adulto3.html')
+    return render(request, 'inicial/adulto3.html', context)
 
 def resultado_amarelo(request):
-    return render(request, 'inicial/amarelo_triagem.html')
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
+    return render(request, 'inicial/amarelo_triagem.html', context)
 
 def crianca4(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_b4" not in request.POST:
             return redirect("resultado_azul")   
         if request.POST["quest_b4"] == "1":
             return redirect("resultado_verde")
-    return render(request,'inicial/criança4.html')
+    return render(request,'inicial/criança4.html', context)
 
 def adulto4(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
     if request.method=="POST":
         if "quest_a4" not in request.POST:
             return redirect("resultado_azul")   
         if request.POST["quest_a4"] == "1":
             return redirect("resultado_verde")
-    return render(request, 'inicial/adulto4.html')
+    return render(request, 'inicial/adulto4.html', context)
 
 def resultado_azul(request):
-    return render(request, 'inicial/azul_triagem.html')
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
+    return render(request, 'inicial/azul_triagem.html', context)
 
 def resultado_verde(request):
-    return render(request, 'inicial/verde_triagem.html')
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+
+    return render(request, 'inicial/verde_triagem.html', context)
 
 def meus_dados(request):
     if not request.user.is_authenticated:
