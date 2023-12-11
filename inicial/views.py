@@ -333,6 +333,9 @@ def crianca1(request):
     return render(request, 'inicial/criança1.html' )
 
 def resultado_vermelho(request):
+    filter_form = FilterForms()
+    context = {"filter":filter_form}
+    
     return render(request, 'inicial/vermelho_triagem.html', context)
 
 def crianca2(request):
