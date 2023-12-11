@@ -255,7 +255,18 @@ input[type=datetime-local]{
     box-shadow: 1px 1px 4px 0px gray;
     margin-top: 10px;
 }
-#btn_editar_dados:hover, #submit:hover{
+#submit2{
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #577bff89;
+    padding: 7px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px 0px gray;
+    margin-top: 10px;
+    display: none;
+}
+#btn_editar_dados:hover, #submit:hover, #submit2:hover{
     cursor: pointer;
     background-color: #577CFF;
 }

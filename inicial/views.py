@@ -197,7 +197,7 @@ def login_site(request):
             return redirect("index")
 
         else:
-            messages.error(request, "Usuário ou senha incorretos", extra_tags="login")
+            messages.error(request, "Email ou senha incorretos", extra_tags="login")
             return redirect("index")
 
 def confirma_email(request):
@@ -406,15 +406,19 @@ def editar_dados(request):
         dados = json.loads(request.POST["dados"])
         dados.pop("dados")
         novos_dados = Dados.objects.get(usuario=request.user)
+        user = request.user
 
-        if dados["nome"] != "":
-            novos_dados.nome = dados["nome"]
+        if dados["p_nome"] != "":
+            user.first_name = dados["p_nome"]
+
+        if dados["s_nome"] != "":
+            user.last_name = dados["s_nome"]
 
         if dados["data_nascimento"] != "":
-            novos_dados.idade = datetime.strptime(request.POST["data_nascimento"],"%Y-%m-%d")
+            novos_dados.data_nascimento = datetime.strptime(request.POST["data_nascimento"],"%Y-%m-%d")
         
         if "genero" in dados:
-            novos_dados.sexo = dados["genero"]
+            novos_dados.genero = dados["genero"]
 
         if dados["profissao"] != "":
             novos_dados.profissao = dados["profissao"]
@@ -434,12 +438,18 @@ def editar_dados(request):
         if dados["tipo_sanguineo"] != "":
             novos_dados.tipo_sanguineo = dados["tipo_sanguineo"]
 
-        if "sim-nao1" in dados and "freq1" in dados:
-            if dados["sim-nao1"] != "nao":
+        if "sim-nao1" in dados:
+            if dados["sim-nao1"] == "nao":
+                novos_dados.fumo_alcool = "n"
+
+            if dados["sim-nao1"] != "nao" and "freq1" in dados:
                 novos_dados.fumo_alcool = dados["freq1"]
 
-        if "sim-nao2" in dados and "freq2" in dados:
-            if dados["sim-nao2"] != "nao":
+        if "sim-nao2" in dados:
+            if dados["sim-nao1"] == "nao":
+                novos_dados.exercicio_frequencia = "n"
+
+            if dados["sim-nao2"] != "nao" and "freq2" in dados:
                 if dados["exercicio"] != "":
                     novos_dados.exercicio = dados["exercicio"]
                     novos_dados.exercicio_frequencia = dados["freq2"]
@@ -538,7 +548,6 @@ def editar_dados(request):
                     medicamento_cp = dados["medicamento_cp"]
                     freq_cp = dados["freq_med_cp"]
                     freq3 = dados["freq3"]
-                    freq3 = list(freq3)
 
                     if isinstance(medicamento_cp, str) and isinstance(freq_cp, str) and isinstance(freq3, str):
                         if medicamento_cp != "" and freq_cp != "" and freq3 != "":
@@ -563,7 +572,6 @@ def editar_dados(request):
                     medicamento_sp = dados["medicamento_sp"]
                     freq_sp = dados["freq_med_sp"]
                     freq4 = dados["freq4"]
-                    freq4 = list(freq4)
 
                     if isinstance(medicamento_sp, str) and isinstance(freq_sp, str) and isinstance(freq4, str):
                         if medicamento_sp != "" and freq_sp != "" and freq4 != "":
@@ -583,6 +591,7 @@ def editar_dados(request):
                                     numero_frequencia=freq_sp[i])
 
         novos_dados.save()
+        user.save()
         messages.success(request, "Dados alterados com sucesso!")
         return redirect("meus_dados")
 

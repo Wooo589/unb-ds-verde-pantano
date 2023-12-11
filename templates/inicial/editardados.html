@@ -49,8 +49,10 @@
         {% csrf_token %}
         <div class="general_container">
             <div class="group">
-                <span>Nome completo:</span>
-                <input name="nome" type="text" placeholder="Insira aqui seu nome completo">
+                <span>Nome:</span>
+                <input name="p_nome" type="text" placeholder="Insira aqui seu nome">
+                <span>Sobrenome:</span>
+                <input name="s_nome" type="text" placeholder="Insira aqui seu sobrenome">
             </div>
             <div class="group">
                 <span>Data de nascimento:</span>
@@ -81,7 +83,6 @@
                 <input name="endereco" type="text" placeholder="Caso deseje, informe seu endereço">
             </div>
             <div class="group">
-                <span>Contato:</span>
                 <div id="contato">
                     <!-- <span>Contato:</span> -->
                     <div class="group">

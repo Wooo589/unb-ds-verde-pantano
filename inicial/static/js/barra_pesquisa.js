@@ -28,15 +28,3 @@ $(document).ready(function(){
    $("#top-bar3").hide();
  }); 
 });
-$(window).scroll(function() {
-   if ($(this).scrollTop() > 1){  
-   $("#top-bar1").addClass("fixed");
-   $("#top-bar2").addClass("fixed");
-   $("#top-bar3").addClass("fixed");
-   }
-   else{
-   $("#top-bar1").removeClass("fixed");
-   $("#top-bar2").removeClass("fixed");
-   $("#top-bar3").removeClass("fixed");
-   }
-});
