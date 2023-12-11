@@ -369,16 +369,6 @@ div.c{
     position: relative;
     margin:2em;
 }
-
-input{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    opacity:0;
-    visibility: 0;
-}
 @media (max-width: 2560px) {
     main{
         width: 55%;
