@@ -536,7 +536,7 @@ footer {
         color: var(--back-nav-selected1);
         margin-left: 10px;
     }
-    .login_box{
+    .login_box, .login_box2{
         display: none;
     }
     #account_circle1{
