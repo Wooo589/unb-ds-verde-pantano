@@ -96,12 +96,13 @@ main > h1 {
 .box_tempos_medios{
     display: flex;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: #E2E2E2BB;
     border-radius: 7px;
+    margin: 20px 0;
 }
 .box_tempos_medios > span{
     font-size: 14px;
-    margin-bottom: 7px;
+    margin: 10px 0 0 7px;
 }
 .tempos_de_espera{
     border-radius: 10px;
@@ -333,7 +334,7 @@ main i:hover{
         width: auto;
         margin-left: 10px;
     }
-}
+}   
 @media (max-width: 768px) {
     .email_1{
         display: block;

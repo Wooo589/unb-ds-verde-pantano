@@ -107,6 +107,17 @@ main .detalhamento {
     display: flex;
     flex-direction: column;
 }
+.box_tempos_medios{
+    display: flex;
+    flex-direction: column;
+    background-color: #E2E2E2BB;
+    border-radius: 7px;
+    margin: 20px 0;
+}
+.box_tempos_medios > span{
+    font-size: 14px;
+    margin: 10px 0 0 7px;
+}
 .tempos_de_espera{
     display: flex;
     margin-top: 10px;
