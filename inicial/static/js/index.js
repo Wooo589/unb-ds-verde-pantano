@@ -82,29 +82,7 @@ $(document).ready(function(){
     })
     $("#close").click(function(){
         $("#info-class-urg").removeClass("on");
-    })
-    $("#btnPesquisar").click(function(){
-        $("#top-bar1").toggle("fast");
-        $("#top-bar2").hide("fast");
-        $("#top-bar3").hide("fast");
-        $("#fechar_aba").show("fast");
-      })  
-      $("#fechar_aba").click(function(){
-        $("#top-bar1").hide();
-        $("#top-bar2").hide();
-        $("#top-bar3").hide();
-      })
-      $(".voltar").click(function(){
-        $("#top-bar1").show();
-        $("#top-bar2").hide();
-        $("#top-bar3").hide();
-        $("#fechar_aba").show("fast");
-      })
-      $(".login_box").click(function(){
-        $("#top-bar1").hide();
-        $("#top-bar2").hide();
-        $("#top-bar3").hide();
-      }) 
+    }) 
 });
 $(window).scroll(function() {
     if ($(this).scrollTop() > 1){  
