@@ -287,6 +287,8 @@ nav.on{
 #top-bar1{
     padding: .6% 28%;
 }
+#top-bar1 > span{
+    font-size: 14px;
 #top-bar2{
     padding: 0px 2%;
 }
