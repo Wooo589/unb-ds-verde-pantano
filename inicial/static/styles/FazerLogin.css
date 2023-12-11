@@ -114,8 +114,6 @@ div#modal_title > h1{
 .CriarConta:hover{
     text-decoration: underline;
 }
-.modal_title{
-    font-size: 14px;
 .email_login{
     width: 370px;
     height: 40px;
@@ -143,6 +141,7 @@ div#modal_title > h1{
     box-shadow: none;
 }
 .link_esqueciSenha{
+    font-size: 14px;
     text-align: end;
     color: black;
     /* font-family: Josefin Sans; */
