@@ -90,7 +90,7 @@
                     </div>
                 </div>  
                 <div class="title_tempos">
-                    <span>Tempos médios de espera:</span>
+                    <span style="font-size:14px;">Tempos médios de espera:</span>
                     <span class="material-symbols-outlined btn-info-class">info</span>
                 </div>
                 <div class="inf_especificas">
@@ -126,12 +126,12 @@
             <span class="material-symbols-outlined arrow_left" id="arrow_left2">arrow_circle_left</span>
             <span class="material-symbols-outlined arrow_right" id="arrow_right2">arrow_circle_right</span>
             {% for i in news_data %}
-                <div class="slide_news" style="padding: 0 1rem 0 1rem;">
+                <div class="slide_news" style="padding: 10px">
                     <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size:1.2rem; padding-top: 1rem;">{{ i.0 }}</h2>
                     <a href="{{ i.3 }}" target="_blank" rel="noreferrer noopener" style="text-align:center;">
-                        <img src="{{ i.1 }}" alt="Imagem da notícia" style="border-radius: 2rem; border: 0.4rem solid #2A8C4A; margin: 1rem 0 1rem 0;">
+                        <img src="{{ i.1 }}" alt="Imagem da notícia" style="border-radius: 2rem; border: 0.4rem solid #2A8C4A; width: 90%; height: auto; margin: 10px 13px 0px 13px">
                     </a>
-                    <p class="text-p" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 1rem 0 1rem 0;">{{ i.2 }}<br><br><strong>Fonte: g1</strong></p>
+                    <p class="text-p" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size:14px; padding: 1rem 0 1rem 0;">{{ i.2 }}<br><br><strong>Fonte: g1</strong></p>
                 </div>
             {% endfor %}
         </section>
