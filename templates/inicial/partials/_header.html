@@ -68,7 +68,7 @@
         <span class="material-symbols-outlined" id="account_circle2">account_circle</span>
         {% if user.is_authenticated %}
             <button type="button" class="login_box">
-                <span id="name-account" style="font-size: 11px;">{{ user.username }}</span>
+                <span id="name-account" style="font-size: 11px;">{{ user.first_name }}</span>
                 <span class="material-symbols-outlined" id="account_circle1">account_circle</span>
             </button>
         {% else %}
